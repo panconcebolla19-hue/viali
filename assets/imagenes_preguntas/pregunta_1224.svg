@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <rect width="400" height="400" fill="#90C060"/>
+  <!-- Interurban road: 3 lanes same direction + 3 opposite -->
+  <rect x="0" y="60" width="400" height="280" fill="#888888"/>
+  <!-- Central divider -->
+  <rect x="185" y="60" width="30" height="280" fill="#70A040"/>
+  <line x1="185" y1="60" x2="185" y2="340" stroke="#FFD700" stroke-width="3"/>
+  <line x1="215" y1="60" x2="215" y2="340" stroke="#FFD700" stroke-width="3"/>
+  <!-- Left side: 3 lanes going right -->
+  <line x1="62" y1="60" x2="62" y2="340" stroke="white" stroke-width="2" stroke-dasharray="18,12"/>
+  <line x1="124" y1="60" x2="124" y2="340" stroke="white" stroke-width="2" stroke-dasharray="18,12"/>
+  <line x1="0" y1="60" x2="0" y2="340" stroke="white" stroke-width="3"/>
+  <!-- Right side: 3 lanes going left -->
+  <line x1="276" y1="60" x2="276" y2="340" stroke="white" stroke-width="2" stroke-dasharray="18,12"/>
+  <line x1="338" y1="60" x2="338" y2="340" stroke="white" stroke-width="2" stroke-dasharray="18,12"/>
+  <line x1="400" y1="60" x2="400" y2="340" stroke="white" stroke-width="3"/>
+  <!-- Speed sign for center lane (70 km/h minimum) -->
+  <circle cx="95" cy="170" r="28" fill="white" stroke="#336699" stroke-width="5"/>
+  <text x="95" y="178" text-anchor="middle" font-family="Arial,sans-serif" font-weight="bold" font-size="20" fill="#336699">70</text>
+  <!-- Arrow pointing to center lane -->
+  <line x1="95" y1="142" x2="95" y2="130" stroke="#336699" stroke-width="2"/>
+  <polygon points="85,138 95,120 105,138" fill="#336699"/>
+  <!-- Our car correctly in RIGHT lane -->
+  <rect x="8" y="200" width="36" height="60" rx="6" fill="#3399FF"/>
+  <rect x="13" y="208" width="12" height="18" rx="2" fill="#CCE8FF" opacity="0.8"/>
+  <rect x="28" y="208" width="12" height="18" rx="2" fill="#CCE8FF" opacity="0.8"/>
+  <circle cx="14" cy="262" r="6" fill="#333"/>
+  <circle cx="38" cy="262" r="6" fill="#333"/>
+  <!-- Green checkmark -->
+  <circle cx="45" cy="220" r="14" fill="#2ECC40"/>
+  <polyline points="37,220 43,228 53,212" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Lane labels -->
+  <text x="31" y="50" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="white">Carril</text>
+  <text x="31" y="62" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="white">DERECHO</text>
+  <text x="93" y="50" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="white">Centro</text>
+  <text x="155" y="50" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="white">Izq.</text>
+  <!-- Direction arrows -->
+  <polygon points="31,360 36,345 41,360" fill="white" opacity="0.5"/>
+  <polygon points="93,360 98,345 103,360" fill="white" opacity="0.5"/>
+  <polygon points="155,360 160,345 165,360" fill="white" opacity="0.5"/>
+  <!-- Caption -->
+  <text x="200" y="390" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#333333">Norma general: circular por el carril derecho</text>
+</svg>

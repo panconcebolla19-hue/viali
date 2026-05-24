@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <rect width="400" height="400" fill="#E8E8E8"/>
+  <!-- Road roller / compactadora (vehículo especial de obras) -->
+  <!-- Body frame -->
+  <rect x="90" y="180" width="220" height="120" rx="8" fill="#F5A623"/>
+  <!-- Cab -->
+  <rect x="240" y="140" width="80" height="90" rx="8" fill="#F5A623" stroke="#CC7700" stroke-width="2"/>
+  <!-- Cab window -->
+  <rect x="248" y="148" width="60" height="44" rx="4" fill="#CCE8FF" stroke="#AACCEE" stroke-width="2"/>
+  <!-- Roll drum (front) -->
+  <ellipse cx="155" cy="315" rx="68" ry="32" fill="#888888" stroke="#555" stroke-width="4"/>
+  <ellipse cx="155" cy="315" rx="62" ry="27" fill="#999999"/>
+  <ellipse cx="155" cy="315" rx="12" ry="12" fill="#666"/>
+  <!-- Roll drum (rear) -->
+  <ellipse cx="295" cy="315" rx="45" ry="28" fill="#888888" stroke="#555" stroke-width="4"/>
+  <ellipse cx="295" cy="315" rx="40" ry="23" fill="#999999"/>
+  <ellipse cx="295" cy="315" rx="10" ry="10" fill="#666"/>
+  <!-- Engine details -->
+  <rect x="100" y="190" width="40" height="30" rx="4" fill="#CC7700"/>
+  <!-- Exhaust pipe -->
+  <rect x="115" y="155" width="10" height="36" rx="3" fill="#888"/>
+  <!-- Exhaust smoke -->
+  <circle cx="120" cy="145" r="8" fill="#CCCCCC" opacity="0.6"/>
+  <circle cx="128" cy="133" r="6" fill="#CCCCCC" opacity="0.4"/>
+  <!-- Operator seat -->
+  <rect x="250" y="170" width="28" height="18" rx="4" fill="#CC7700"/>
+  <!-- Safety sign on body -->
+  <rect x="175" y="198" width="60" height="32" rx="5" fill="#FFDD00" stroke="#CC8800" stroke-width="2"/>
+  <text x="205" y="219" text-anchor="middle" font-family="Arial,sans-serif" font-weight="bold" font-size="14" fill="#333333">OBRAS</text>
+  <!-- Warning triangle on cab -->
+  <polygon points="280,152 295,128 310,152" fill="#FFDD00" stroke="#CC0000" stroke-width="2"/>
+  <text x="295" y="148" text-anchor="middle" font-family="Arial,sans-serif" font-weight="bold" font-size="10" fill="#CC0000">!</text>
+  <!-- Road surface being compacted -->
+  <rect x="60" y="338" width="280" height="25" fill="#777777"/>
+  <rect x="60" y="338" width="280" height="8" fill="#888888"/>
+  <!-- Caption -->
+  <text x="200" y="383" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#333333">Vehículo especial de</text>
+  <text x="200" y="400" text-anchor="middle" font-family="Arial,sans-serif" font-weight="bold" font-size="15" fill="#CC5500">OBRAS</text>
+</svg>

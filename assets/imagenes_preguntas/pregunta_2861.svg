@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <rect width="400" height="400" fill="#333333"/>
+  <!-- Overhead lane signals — motorway perspective -->
+  <!-- Road receding into distance -->
+  <polygon points="0,400 400,400 300,180 100,180" fill="#666666"/>
+  <!-- Lane markings -->
+  <line x1="133" y1="400" x2="167" y2="180" stroke="white" stroke-width="2" stroke-dasharray="18,12"/>
+  <line x1="200" y1="400" x2="200" y2="180" stroke="white" stroke-width="2" stroke-dasharray="18,12"/>
+  <line x1="267" y1="400" x2="233" y2="180" stroke="white" stroke-width="2" stroke-dasharray="18,12"/>
+  <!-- Hard shoulder lines -->
+  <line x1="0" y1="400" x2="100" y2="180" stroke="white" stroke-width="3"/>
+  <line x1="400" y1="400" x2="300" y2="180" stroke="white" stroke-width="3"/>
+  <!-- Gantry structure -->
+  <rect x="30" y="110" width="340" height="14" rx="4" fill="#999999"/>
+  <!-- Gantry legs -->
+  <rect x="38" y="110" width="12" height="75" fill="#888888"/>
+  <rect x="350" y="110" width="12" height="75" fill="#888888"/>
+  <!-- Lane signal boxes (4 lanes) -->
+  <!-- Lane 1 (leftmost) - GREEN ARROW DOWN -->
+  <rect x="65" y="72" width="58" height="44" rx="6" fill="#222222" stroke="#555555" stroke-width="2"/>
+  <circle cx="94" cy="94" r="18" fill="#00AA00"/>
+  <polygon points="94,108 80,82 108,82" fill="#00CC00"/>
+  <line x1="94" y1="74" x2="94" y2="85" stroke="#00DD00" stroke-width="4"/>
+  <!-- Lane 2 - GREEN ARROW DOWN -->
+  <rect x="141" y="72" width="58" height="44" rx="6" fill="#222222" stroke="#555555" stroke-width="2"/>
+  <circle cx="170" cy="94" r="18" fill="#00AA00"/>
+  <polygon points="170,108 156,82 184,82" fill="#00CC00"/>
+  <line x1="170" y1="74" x2="170" y2="85" stroke="#00DD00" stroke-width="4"/>
+  <!-- Lane 3 - RED X -->
+  <rect x="217" y="72" width="58" height="44" rx="6" fill="#222222" stroke="#555555" stroke-width="2"/>
+  <circle cx="246" cy="94" r="18" fill="#880000"/>
+  <line x1="233" y1="81" x2="259" y2="107" stroke="#FF0000" stroke-width="5" stroke-linecap="round"/>
+  <line x1="259" y1="81" x2="233" y2="107" stroke="#FF0000" stroke-width="5" stroke-linecap="round"/>
+  <!-- Lane 4 (rightmost) - RED X -->
+  <rect x="293" y="72" width="58" height="44" rx="6" fill="#222222" stroke="#555555" stroke-width="2"/>
+  <circle cx="322" cy="94" r="18" fill="#880000"/>
+  <line x1="309" y1="81" x2="335" y2="107" stroke="#FF0000" stroke-width="5" stroke-linecap="round"/>
+  <line x1="335" y1="81" x2="309" y2="107" stroke="#FF0000" stroke-width="5" stroke-linecap="round"/>
+  <!-- Caption -->
+  <text x="200" y="360" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#EEEEEE">Señalización de carril — solo carriles</text>
+  <text x="200" y="378" text-anchor="middle" font-family="Arial,sans-serif" font-weight="bold" font-size="13" fill="#00CC00">con flecha verde</text>
+</svg>

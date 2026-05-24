@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <rect width="400" height="400" fill="#F0F0F0"/>
+  <!-- Warning triangle: road narrowing from LEFT (white background, standard sign) -->
+  <!-- Triangle border -->
+  <polygon points="200,60 360,340 40,340" fill="white" stroke="#CC0000" stroke-width="10"/>
+  <!-- Road narrowing from left symbol -->
+  <!-- Road area inside triangle -->
+  <!-- Left road edge narrows inward (from left) -->
+  <!-- Right road edge stays straight -->
+  <!-- Draw the narrowing road shape -->
+  <!-- Right lane (straight) -->
+  <line x1="240" y1="320" x2="255" y2="145" stroke="#444444" stroke-width="5"/>
+  <!-- Left lane (narrows from left — squeezes right) -->
+  <line x1="160" y1="320" x2="220" y2="145" stroke="#444444" stroke-width="5"/>
+  <!-- Arrow showing left side narrowing -->
+  <!-- Left boundary narrows -->
+  <line x1="120" y1="310" x2="180" y2="150" stroke="#444444" stroke-width="5"/>
+  <!-- The left lane disappears (merges) — dashed junction -->
+  <line x1="160" y1="320" x2="220" y2="145" stroke="#333" stroke-width="5"/>
+  <!-- Center road fill -->
+  <polygon points="160,320 240,320 255,145 220,145" fill="#888888"/>
+  <!-- Left extra lane (disappearing) -->
+  <polygon points="120,310 160,320 220,145 195,145" fill="#888888"/>
+  <!-- Arrow pointing inward from left -->
+  <line x1="95" y1="255" x2="165" y2="255" stroke="#CC0000" stroke-width="5"/>
+  <polygon points="165,248 180,255 165,262" fill="#CC0000"/>
+  <!-- Caption below triangle -->
+  <text x="200" y="370" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#333333">Estrechamiento por la izquierda</text>
+</svg>

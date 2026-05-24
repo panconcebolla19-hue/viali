@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <rect width="400" height="400" fill="#90C060"/>
+  <!-- Road surface: 4 lanes going down -->
+  <rect x="20" y="0" width="360" height="340" fill="#888888"/>
+  <!-- Lane lines -->
+  <line x1="110" y1="0" x2="110" y2="340" stroke="white" stroke-width="2" stroke-dasharray="18,12"/>
+  <line x1="200" y1="0" x2="200" y2="340" stroke="white" stroke-width="2" stroke-dasharray="18,12"/>
+  <line x1="290" y1="0" x2="290" y2="340" stroke="white" stroke-width="2" stroke-dasharray="18,12"/>
+  <!-- Edge lines -->
+  <line x1="20" y1="0" x2="20" y2="340" stroke="white" stroke-width="3"/>
+  <line x1="380" y1="0" x2="380" y2="340" stroke="white" stroke-width="3"/>
+  <!-- Overhead signal gantry -->
+  <rect x="10" y="55" width="380" height="12" rx="5" fill="#888888" stroke="#555" stroke-width="2"/>
+  <line x1="30" y1="55" x2="30" y2="0" stroke="#666" stroke-width="6"/>
+  <line x1="370" y1="55" x2="370" y2="0" stroke="#666" stroke-width="6"/>
+  <!-- Lane 1 signal: GREEN ARROW (open) -->
+  <rect x="30" y="20" width="60" height="32" rx="6" fill="#222222"/>
+  <polygon points="60,24 60,48 75,36" fill="#00CC44"/>
+  <!-- Lane 2 signal: RED X (closed) -->
+  <rect x="120" y="20" width="60" height="32" rx="6" fill="#222222"/>
+  <line x1="128" y1="26" x2="172" y2="50" stroke="#FF3333" stroke-width="6" stroke-linecap="round"/>
+  <line x1="172" y1="26" x2="128" y2="50" stroke="#FF3333" stroke-width="6" stroke-linecap="round"/>
+  <!-- Lane 3 signal: GREEN ARROW (open) -->
+  <rect x="210" y="20" width="60" height="32" rx="6" fill="#222222"/>
+  <polygon points="240,24 240,48 255,36" fill="#00CC44"/>
+  <!-- Lane 4 signal: RED X (closed) -->
+  <rect x="300" y="20" width="60" height="32" rx="6" fill="#222222"/>
+  <line x1="308" y1="26" x2="352" y2="50" stroke="#FF3333" stroke-width="6" stroke-linecap="round"/>
+  <line x1="352" y1="26" x2="308" y2="50" stroke="#FF3333" stroke-width="6" stroke-linecap="round"/>
+  <!-- Cars -->
+  <!-- Car in lane 1 (open) -->
+  <rect x="42" y="170" width="36" height="60" rx="6" fill="#3399FF"/>
+  <rect x="47" y="178" width="12" height="18" rx="2" fill="#CCE8FF" opacity="0.8"/>
+  <rect x="63" y="178" width="12" height="18" rx="2" fill="#CCE8FF" opacity="0.8"/>
+  <!-- Car in lane 3 (open) -->
+  <rect x="222" y="200" width="36" height="60" rx="6" fill="#FF6600"/>
+  <rect x="227" y="208" width="12" height="18" rx="2" fill="#FFE8CC" opacity="0.8"/>
+  <rect x="243" y="208" width="12" height="18" rx="2" fill="#FFE8CC" opacity="0.8"/>
+  <!-- Labels -->
+  <text x="65" y="360" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="white">LIBRE</text>
+  <text x="155" y="360" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="white">CERRADO</text>
+  <text x="245" y="360" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="white">LIBRE</text>
+  <text x="335" y="360" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="white">CERRADO</text>
+  <text x="200" y="390" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#333333">Utilizar carriles con flecha verde ↓</text>
+</svg>

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <rect width="400" height="400" fill="#E8E8E8"/>
+  <!-- Fire truck body -->
+  <!-- Main body -->
+  <rect x="40" y="200" width="290" height="110" rx="8" fill="#CC2200"/>
+  <!-- Cab -->
+  <rect x="270" y="170" width="90" height="140" rx="8" fill="#CC2200" stroke="#990000" stroke-width="2"/>
+  <!-- Cab windows -->
+  <rect x="278" y="178" width="74" height="50" rx="5" fill="#CCE8FF" stroke="#AACCEE" stroke-width="2"/>
+  <!-- Windshield -->
+  <rect x="312" y="178" width="36" height="50" rx="4" fill="#B8D8EE"/>
+  <!-- Equipment boxes on truck body -->
+  <rect x="55" y="215" width="55" height="50" rx="4" fill="#AA1800" stroke="#880000" stroke-width="1"/>
+  <rect x="118" y="215" width="55" height="50" rx="4" fill="#AA1800" stroke="#880000" stroke-width="1"/>
+  <rect x="181" y="215" width="55" height="50" rx="4" fill="#AA1800" stroke="#880000" stroke-width="1"/>
+  <!-- Box handles -->
+  <rect x="78" y="235" width="12" height="4" rx="2" fill="#CC8800"/>
+  <rect x="141" y="235" width="12" height="4" rx="2" fill="#CC8800"/>
+  <rect x="204" y="235" width="12" height="4" rx="2" fill="#CC8800"/>
+  <!-- Wheels -->
+  <circle cx="110" cy="318" r="36" fill="#333333"/>
+  <circle cx="110" cy="318" r="24" fill="#555555"/>
+  <circle cx="110" cy="318" r="10" fill="#888888"/>
+  <circle cx="290" cy="318" r="36" fill="#333333"/>
+  <circle cx="290" cy="318" r="24" fill="#555555"/>
+  <circle cx="290" cy="318" r="10" fill="#888888"/>
+  <circle cx="350" cy="318" r="28" fill="#333333"/>
+  <circle cx="350" cy="318" r="18" fill="#555555"/>
+  <circle cx="350" cy="318" r="8" fill="#888888"/>
+  <!-- Emergency lights on roof -->
+  <rect x="80" y="192" width="170" height="16" rx="4" fill="#CC0000"/>
+  <!-- Blue+red flashing lights -->
+  <circle cx="100" cy="192" r="10" fill="#2255FF"/>
+  <circle cx="130" cy="192" r="10" fill="#FF3333"/>
+  <circle cx="160" cy="192" r="10" fill="#2255FF"/>
+  <circle cx="190" cy="192" r="10" fill="#FF3333"/>
+  <circle cx="220" cy="192" r="10" fill="#2255FF"/>
+  <circle cx="250" cy="192" r="10" fill="#FF3333"/>
+  <!-- Hose reel on top -->
+  <ellipse cx="180" cy="198" rx="35" ry="10" fill="#CC8800"/>
+  <!-- BOMBEROS text -->
+  <text x="185" y="255" text-anchor="middle" font-family="Arial,sans-serif" font-weight="bold" font-size="14" fill="#FFDD00">BOMBEROS</text>
+  <!-- Caption -->
+  <text x="200" y="378" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#333333">Vehículo de bomberos — preferencia solo</text>
+  <text x="200" y="396" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#333333">en servicio urgente señalizado</text>
+</svg>

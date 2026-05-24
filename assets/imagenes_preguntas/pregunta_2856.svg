@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <rect width="400" height="400" fill="#90C060"/>
+  <!-- Two-lane road, truck driving normally, car behind -->
+  <!-- Road -->
+  <rect x="0" y="120" width="400" height="200" fill="#888888"/>
+  <!-- Road edges -->
+  <line x1="0" y1="120" x2="400" y2="120" stroke="white" stroke-width="4"/>
+  <line x1="0" y1="320" x2="400" y2="320" stroke="white" stroke-width="4"/>
+  <!-- Center line -->
+  <line x1="0" y1="220" x2="400" y2="220" stroke="white" stroke-width="3" stroke-dasharray="20,15"/>
+  <!-- Shoulder lines -->
+  <line x1="0" y1="150" x2="400" y2="150" stroke="white" stroke-width="1.5" stroke-dasharray="10,8" opacity="0.5"/>
+  <line x1="0" y1="290" x2="400" y2="290" stroke="white" stroke-width="1.5" stroke-dasharray="10,8" opacity="0.5"/>
+  <!-- TRUCK (in right lane, driving normally, not on shoulder) -->
+  <!-- Trailer -->
+  <rect x="60" y="155" width="160" height="72" rx="5" fill="#888888" stroke="#666" stroke-width="2"/>
+  <!-- Trailer stripes -->
+  <rect x="60" y="155" width="160" height="8" fill="#FF6600" opacity="0.8"/>
+  <rect x="60" y="219" width="160" height="8" fill="#FF6600" opacity="0.8"/>
+  <!-- Cab -->
+  <rect x="220" y="148" width="65" height="80" rx="8" fill="#555566" stroke="#444" stroke-width="2"/>
+  <!-- Cab windows -->
+  <rect x="228" y="156" width="50" height="35" rx="4" fill="#AADDFF" stroke="#88BBDD" stroke-width="1.5"/>
+  <!-- Cab front -->
+  <rect x="280" y="160" width="14" height="30" rx="4" fill="#444455"/>
+  <!-- Headlights -->
+  <circle cx="290" cy="168" r="5" fill="#FFFFAA"/>
+  <circle cx="290" cy="183" r="5" fill="#FFFFEE"/>
+  <!-- Truck wheels -->
+  <circle cx="90" cy="232" r="20" fill="#333"/>
+  <circle cx="90" cy="232" r="13" fill="#555"/>
+  <circle cx="90" cy="232" r="5" fill="#888"/>
+  <circle cx="140" cy="232" r="20" fill="#333"/>
+  <circle cx="140" cy="232" r="13" fill="#555"/>
+  <circle cx="140" cy="232" r="5" fill="#888"/>
+  <circle cx="245" cy="232" r="20" fill="#333"/>
+  <circle cx="245" cy="232" r="13" fill="#555"/>
+  <circle cx="245" cy="232" r="5" fill="#888"/>
+  <circle cx="280" cy="232" r="20" fill="#333"/>
+  <circle cx="280" cy="232" r="13" fill="#555"/>
+  <circle cx="280" cy="232" r="5" fill="#888"/>
+  <!-- CAR behind truck (also in right lane) -->
+  <rect x="315" y="183" width="48" height="34" rx="5" fill="#3399FF"/>
+  <rect x="320" y="189" width="15" height="14" rx="2" fill="#CCE8FF" opacity="0.8"/>
+  <rect x="338" y="189" width="15" height="14" rx="2" fill="#CCE8FF" opacity="0.8"/>
+  <circle cx="322" cy="218" r="7" fill="#333"/>
+  <circle cx="354" cy="218" r="7" fill="#333"/>
+  <!-- Truck is NOT on the shoulder — cross mark next to shoulder -->
+  <line x1="30" y1="290" x2="55" y2="310" stroke="#CC0000" stroke-width="4"/>
+  <line x1="55" y1="290" x2="30" y2="310" stroke="#CC0000" stroke-width="4"/>
+  <!-- Caption -->
+  <text x="200" y="355" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#333333">Camión circulando normalmente</text>
+  <text x="200" y="372" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="#555555">No está obligado a desplazarse al arcén</text>
+</svg>

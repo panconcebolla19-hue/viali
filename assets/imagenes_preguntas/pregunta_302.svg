@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <rect width="400" height="400" fill="#90C060"/>
+  <!-- Road -->
+  <rect x="100" y="0" width="200" height="400" fill="#888888"/>
+  <!-- Solid center line (no overtaking) -->
+  <line x1="200" y1="0" x2="200" y2="400" stroke="#FFD700" stroke-width="5"/>
+  <!-- Right shoulder edge -->
+  <line x1="100" y1="0" x2="100" y2="400" stroke="white" stroke-width="3"/>
+  <line x1="300" y1="0" x2="300" y2="400" stroke="white" stroke-width="3"/>
+  <!-- Lane dashes right side -->
+  <line x1="150" y1="30" x2="150" y2="370" stroke="white" stroke-width="2" stroke-dasharray="18,12"/>
+  <line x1="250" y1="30" x2="250" y2="370" stroke="white" stroke-width="2" stroke-dasharray="18,12"/>
+  <!-- White car (ahead, same direction) -->
+  <rect x="162" y="220" width="36" height="60" rx="6" fill="white" stroke="#AAAAAA" stroke-width="2"/>
+  <rect x="167" y="226" width="11" height="20" rx="2" fill="#C8E8FF" opacity="0.8"/>
+  <rect x="182" y="226" width="11" height="20" rx="2" fill="#C8E8FF" opacity="0.8"/>
+  <circle cx="168" cy="282" r="6" fill="#333"/>
+  <circle cx="192" cy="282" r="6" fill="#333"/>
+  <!-- Green car (behind, same lane) -->
+  <rect x="162" y="310" width="36" height="60" rx="6" fill="#2ECC40"/>
+  <rect x="167" y="316" width="11" height="20" rx="2" fill="#C8FFD8" opacity="0.8"/>
+  <rect x="182" y="316" width="11" height="20" rx="2" fill="#C8FFD8" opacity="0.8"/>
+  <circle cx="168" cy="372" r="6" fill="#333"/>
+  <circle cx="192" cy="372" r="6" fill="#333"/>
+  <!-- Red car coming ONCOMING (opposite lane) -->
+  <rect x="214" y="60" width="36" height="60" rx="6" fill="#FF3333"/>
+  <rect x="219" y="72" width="11" height="20" rx="2" fill="#FFDADA" opacity="0.8"/>
+  <rect x="234" y="72" width="11" height="20" rx="2" fill="#FFDADA" opacity="0.8"/>
+  <circle cx="220" cy="62" r="6" fill="#333"/>
+  <circle cx="244" cy="62" r="6" fill="#333"/>
+  <!-- Arrows showing directions -->
+  <polygon points="180,208 185,195 190,208" fill="#2ECC40"/>
+  <polygon points="232,132 227,145 222,132" fill="#FF3333"/>
+  <!-- Prohibited sign -->
+  <circle cx="330" cy="60" r="24" fill="white" stroke="#CC0000" stroke-width="5"/>
+  <line x1="313" y1="43" x2="347" y2="77" stroke="#CC0000" stroke-width="7" stroke-linecap="round"/>
+  <!-- Labels -->
+  <text x="180" y="20" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="white">Sentido →</text>
+  <text x="250" y="20" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="white">← Sentido</text>
+  <text x="200" y="395" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#333333">No se puede adelantar: vehículo en sentido contrario</text>
+</svg>

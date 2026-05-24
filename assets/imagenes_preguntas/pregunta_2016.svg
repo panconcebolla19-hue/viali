@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <rect width="400" height="400" fill="#E8E8E8"/>
+  <!-- Municipal service / utility truck (garbage truck style) -->
+  <!-- Main body -->
+  <rect x="50" y="190" width="230" height="120" rx="8" fill="#3A7D44"/>
+  <!-- Cab -->
+  <rect x="260" y="160" width="100" height="150" rx="8" fill="#3A7D44" stroke="#2A5D34" stroke-width="2"/>
+  <!-- Cab windows -->
+  <rect x="268" y="168" width="82" height="55" rx="5" fill="#AADDFF" stroke="#88BBDD" stroke-width="2"/>
+  <!-- Windshield divider -->
+  <line x1="310" y1="168" x2="310" y2="223" stroke="#2A5D34" stroke-width="3"/>
+  <!-- Rear compactor body -->
+  <rect x="50" y="190" width="60" height="120" rx="4" fill="#2A5D34"/>
+  <!-- Compactor opening -->
+  <rect x="55" y="240" width="50" height="60" rx="3" fill="#1A3D24"/>
+  <!-- Hopper -->
+  <polygon points="55,240 105,240 100,210 60,210" fill="#2A5D34" stroke="#1A3D24" stroke-width="2"/>
+  <!-- Service logo / city emblem -->
+  <circle cx="190" cy="245" r="30" fill="#FFFFFF" opacity="0.25"/>
+  <text x="190" y="242" text-anchor="middle" font-family="Arial,sans-serif" font-weight="bold" font-size="13" fill="#FFFFFF">SERV.</text>
+  <text x="190" y="258" text-anchor="middle" font-family="Arial,sans-serif" font-weight="bold" font-size="13" fill="#FFFFFF">MUN.</text>
+  <!-- Orange warning stripes on rear -->
+  <rect x="50" y="295" width="230" height="15" fill="#FF6600" opacity="0.7"/>
+  <line x1="70" y1="295" x2="60" y2="310" stroke="#222" stroke-width="2" opacity="0.4"/>
+  <line x1="95" y1="295" x2="85" y2="310" stroke="#222" stroke-width="2" opacity="0.4"/>
+  <line x1="120" y1="295" x2="110" y2="310" stroke="#222" stroke-width="2" opacity="0.4"/>
+  <line x1="145" y1="295" x2="135" y2="310" stroke="#222" stroke-width="2" opacity="0.4"/>
+  <line x1="170" y1="295" x2="160" y2="310" stroke="#222" stroke-width="2" opacity="0.4"/>
+  <line x1="195" y1="295" x2="185" y2="310" stroke="#222" stroke-width="2" opacity="0.4"/>
+  <line x1="220" y1="295" x2="210" y2="310" stroke="#222" stroke-width="2" opacity="0.4"/>
+  <line x1="245" y1="295" x2="235" y2="310" stroke="#222" stroke-width="2" opacity="0.4"/>
+  <line x1="270" y1="295" x2="260" y2="310" stroke="#222" stroke-width="2" opacity="0.4"/>
+  <!-- Wheels -->
+  <circle cx="110" cy="318" r="32" fill="#333"/>
+  <circle cx="110" cy="318" r="21" fill="#555"/>
+  <circle cx="110" cy="318" r="9" fill="#888"/>
+  <circle cx="270" cy="318" r="32" fill="#333"/>
+  <circle cx="270" cy="318" r="21" fill="#555"/>
+  <circle cx="270" cy="318" r="9" fill="#888"/>
+  <circle cx="330" cy="318" r="26" fill="#333"/>
+  <circle cx="330" cy="318" r="17" fill="#555"/>
+  <circle cx="330" cy="318" r="7" fill="#888"/>
+  <!-- Flashing amber light on roof -->
+  <rect x="290" y="153" width="40" height="12" rx="5" fill="#FF9900"/>
+  <circle cx="310" cy="153" r="7" fill="#FFCC00"/>
+  <!-- Caption -->
+  <text x="200" y="375" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#333333">Vehículo de servicios municipales</text>
+</svg>

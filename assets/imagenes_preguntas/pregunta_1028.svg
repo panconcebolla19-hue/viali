@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <rect width="400" height="400" fill="white"/>
+  <!-- Post -->
+  <rect x="193" y="180" width="14" height="200" fill="#555555"/>
+  <!-- STOP sign (octagon) -->
+  <polygon points="200,25 240,45 265,85 265,135 240,175 200,195 160,175 135,135 135,85 160,45"
+           fill="#CC0000" stroke="#990000" stroke-width="3"/>
+  <text x="200" y="121" text-anchor="middle" font-family="Arial,sans-serif" font-weight="bold" font-size="36" fill="white" letter-spacing="1">STOP</text>
+  <!-- No right turn sign (R-401b) below -->
+  <circle cx="200" cy="300" r="55" fill="white" stroke="#CC0000" stroke-width="8"/>
+  <!-- Right-turn arrow -->
+  <path d="M185,330 Q185,270 220,270 Q240,270 240,290" fill="none" stroke="#333333" stroke-width="10" stroke-linecap="round"/>
+  <polygon points="232,276 250,288 238,302" fill="#333333"/>
+  <!-- Red diagonal prohibition bar -->
+  <line x1="155" y1="255" x2="245" y2="345" stroke="#CC0000" stroke-width="10" stroke-linecap="round"/>
+  <!-- Caption -->
+  <text x="200" y="380" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#333333">STOP + Prohibido girar a la derecha</text>
+</svg>

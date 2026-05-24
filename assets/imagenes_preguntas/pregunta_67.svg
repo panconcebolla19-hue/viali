@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <rect width="400" height="400" fill="white"/>
+  <!-- Triangular warning sign: narrow winding road -->
+  <polygon points="200,48 368,328 32,328" fill="white" stroke="#CC0000" stroke-width="14" stroke-linejoin="round"/>
+  <!-- Winding narrow road symbol -->
+  <path d="M190,295 L190,258 Q190,235 215,222 Q240,210 240,188 Q240,165 215,152 Q190,140 190,115 L190,90"
+        fill="none" stroke="#222222" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Width arrows showing narrowness -->
+  <line x1="162" y1="188" x2="240" y2="188" stroke="#222222" stroke-width="4" stroke-dasharray="5,4"/>
+  <polygon points="155,188 168,182 168,194" fill="#222222"/>
+  <polygon points="247,188 234,182 234,194" fill="#222222"/>
+  <!-- Caption -->
+  <text x="200" y="365" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#555555">Calzada estrecha con curvas</text>
+</svg>

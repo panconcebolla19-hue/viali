@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <rect width="400" height="400" fill="#333344"/>
+  <!-- Tunnel walls -->
+  <rect x="0" y="0" width="400" height="90" fill="#555566"/>
+  <rect x="0" y="310" width="400" height="90" fill="#555566"/>
+  <!-- Tunnel ceiling arch shadow -->
+  <rect x="0" y="90" width="400" height="220" fill="#444455"/>
+  <!-- Road surface -->
+  <rect x="20" y="200" width="360" height="130" fill="#666677"/>
+  <!-- Single lane markings -->
+  <line x1="200" y1="200" x2="200" y2="330" stroke="#FFD700" stroke-width="3"/>
+  <!-- Edge lines -->
+  <line x1="20" y1="200" x2="20" y2="330" stroke="white" stroke-width="2"/>
+  <line x1="380" y1="200" x2="380" y2="330" stroke="white" stroke-width="2"/>
+  <!-- Tunnel lights on ceiling -->
+  <ellipse cx="80" cy="100" rx="25" ry="8" fill="#FFFF99" opacity="0.8"/>
+  <ellipse cx="200" cy="100" rx="25" ry="8" fill="#FFFF99" opacity="0.8"/>
+  <ellipse cx="320" cy="100" rx="25" ry="8" fill="#FFFF99" opacity="0.8"/>
+  <!-- Light cones -->
+  <polygon points="65,108 95,108 115,200 45,200" fill="#FFFF99" opacity="0.08"/>
+  <polygon points="185,108 215,108 235,200 165,200" fill="#FFFF99" opacity="0.08"/>
+  <polygon points="305,108 335,108 355,200 285,200" fill="#FFFF99" opacity="0.08"/>
+  <!-- Car 1 (ahead) -->
+  <rect x="75" y="220" width="75" height="45" rx="7" fill="#3399FF"/>
+  <rect x="82" y="226" width="22" height="18" rx="3" fill="#CCE8FF" opacity="0.9"/>
+  <rect x="110" y="226" width="22" height="18" rx="3" fill="#CCE8FF" opacity="0.9"/>
+  <circle cx="85" cy="266" r="8" fill="#222"/>
+  <circle cx="140" cy="266" r="8" fill="#222"/>
+  <!-- Rear lights of car 1 -->
+  <rect x="75" y="230" width="8" height="14" rx="2" fill="#FF3333"/>
+  <!-- Car 2 (behind, our car) -->
+  <rect x="240" y="220" width="75" height="45" rx="7" fill="#FF6600"/>
+  <rect x="247" y="226" width="22" height="18" rx="3" fill="#FFE8CC" opacity="0.9"/>
+  <rect x="275" y="226" width="22" height="18" rx="3" fill="#FFE8CC" opacity="0.9"/>
+  <circle cx="250" cy="266" r="8" fill="#222"/>
+  <circle cx="305" cy="266" r="8" fill="#222"/>
+  <!-- 100m distance arrow -->
+  <line x1="150" y1="295" x2="240" y2="295" stroke="#FFDD00" stroke-width="3"/>
+  <polygon points="150,289 138,295 150,301" fill="#FFDD00"/>
+  <polygon points="240,289 252,295 240,301" fill="#FFDD00"/>
+  <rect x="175" y="283" width="50" height="18" rx="4" fill="#333344"/>
+  <text x="200" y="296" text-anchor="middle" font-family="Arial,sans-serif" font-weight="bold" font-size="13" fill="#FFDD00">100 m</text>
+  <!-- Tunnel entrance perspective lines -->
+  <line x1="20" y1="90" x2="20" y2="200" stroke="#666" stroke-width="1"/>
+  <line x1="380" y1="90" x2="380" y2="200" stroke="#666" stroke-width="1"/>
+  <!-- Caption -->
+  <text x="200" y="370" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="white">Túnel con un carril — distancia mínima: 100 m</text>
+</svg>

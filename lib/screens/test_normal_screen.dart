@@ -7,6 +7,9 @@ import '../models/test_resultado.dart';
 import '../data/preguntas_repository.dart';
 import '../data/test_historial_repository.dart';
 import '../data/falladas_repository.dart';
+import '../data/daily_streak_repository.dart';
+import '../services/notification_service.dart';
+import '../widgets/confetti_overlay.dart';
 
 const _kYellow = Color(0xFFF5A623);
 const _kGreen = Color(0xFF4CAF50);
@@ -39,7 +42,8 @@ class TestNormalScreen extends StatefulWidget {
   State<TestNormalScreen> createState() => _TestNormalScreenState();
 }
 
-class _TestNormalScreenState extends State<TestNormalScreen> {
+class _TestNormalScreenState extends State<TestNormalScreen>
+    with SingleTickerProviderStateMixin {
   bool _cargando = true;
   List<Pregunta> _todasPreguntas = [];
   Set<int> _falladasHistorial = {};
@@ -67,18 +71,27 @@ class _TestNormalScreenState extends State<TestNormalScreen> {
   int _segundosRestantes = 2700;
   bool _tiempoAgotado = false;
 
+  // Confetti
+  late final AnimationController _confettiCtrl;
+  List<ConfettiParticle> _confettiParticles = [];
+
   // Results state
   TestResultado? _resultado;
 
   @override
   void initState() {
     super.initState();
+    _confettiCtrl = AnimationController(
+      duration: const Duration(milliseconds: 3200),
+      vsync: this,
+    );
     _cargar();
   }
 
   @override
   void dispose() {
     _timerCountdown?.cancel();
+    _confettiCtrl.dispose();
     super.dispose();
   }
 
@@ -235,6 +248,10 @@ class _TestNormalScreenState extends State<TestNormalScreen> {
     _timerCountdown?.cancel();
     _timerCountdown = null;
     final correctas = _aciertos.values.where((v) => v).length;
+    final streakResult = await DailyStreakRepository.registrarEstudio();
+    if (streakResult.streak >= 1) {
+      unawaited(NotificationService.scheduleStreakWarning(streakResult.streak));
+    }
     final modoLabel = switch (_modo) {
       'Por temática' =>
         _temas.firstWhere((t) => t.$2 == _tema, orElse: () => (_tema, _tema)).$1,
@@ -260,6 +277,10 @@ class _TestNormalScreenState extends State<TestNormalScreen> {
               ? _EstadoMascota.fallo
               : _EstadoMascota.normal;
     });
+    if (r.aprobado) {
+      _confettiParticles = generateConfettiParticles(count: 72);
+      _confettiCtrl.forward(from: 0);
+    }
   }
 
   void _repetirFalladas() {
@@ -282,6 +303,7 @@ class _TestNormalScreenState extends State<TestNormalScreen> {
   }
 
   void _nuevoTest() async {
+    _confettiCtrl.stop();
     setState(() {
       _fase = _Fase.seleccion;
       _resultado = null;
@@ -301,7 +323,16 @@ class _TestNormalScreenState extends State<TestNormalScreen> {
     return switch (_fase) {
       _Fase.seleccion => _buildSeleccion(),
       _Fase.test => _buildTest(),
-      _Fase.resultados => _buildResultados(),
+      _Fase.resultados => Stack(
+          fit: StackFit.expand,
+          children: [
+            _buildResultados(),
+            ConfettiOverlay(
+              controller: _confettiCtrl,
+              particles: _confettiParticles,
+            ),
+          ],
+        ),
     };
   }
 

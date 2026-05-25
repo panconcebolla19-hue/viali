@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -6,6 +7,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../models/pregunta.dart';
 import '../data/preguntas_repository.dart';
 import '../data/falladas_repository.dart';
+import '../data/daily_streak_repository.dart';
+import '../services/notification_service.dart';
+import '../widgets/confetti_overlay.dart';
 
 const _kYellow = Color(0xFFF5A623);
 const _kGold = Color(0xFFFFD600);
@@ -44,7 +48,8 @@ class _ModoRachaScreenState extends State<ModoRachaScreen>
   // ── Tension / record state ───────────────────────────────────────────────────
   bool _isNewRecord = false;
   bool _showRecordBanner = false;
-  List<_Particle> _confettiParticles = [];
+  List<ConfettiParticle> _confettiParticles = [];
+  bool _estudiadoHoy = false;
 
   // ── Animation controllers ────────────────────────────────────────────────────
   late AnimationController _pulseCtrl;   // loops: counter pulse
@@ -235,9 +240,20 @@ class _ModoRachaScreenState extends State<ModoRachaScreen>
       final esNuevoRecord = nuevaRacha > _recordPersonal;
 
       if (esNuevoRecord) {
-        _confettiParticles = _generarParticulas();
+        _confettiParticles = generateConfettiParticles();
         final prefs = await SharedPreferences.getInstance();
         await prefs.setInt('racha_record', nuevaRacha);
+      }
+
+      if (!_estudiadoHoy) {
+        _estudiadoHoy = true;
+        unawaited(
+          DailyStreakRepository.registrarEstudio().then((r) {
+            if (r.streak >= 1 && mounted) {
+              NotificationService.scheduleStreakWarning(r.streak);
+            }
+          }),
+        );
       }
 
       setState(() {
@@ -268,24 +284,6 @@ class _ModoRachaScreenState extends State<ModoRachaScreen>
     setState(() => _rachaActual = 0);
     _updatePulseForRacha(0);
     _siguientePregunta();
-  }
-
-  List<_Particle> _generarParticulas() {
-    final rng = Random();
-    const colors = [
-      _kYellow, _kGold, _kGreen,
-      Colors.white, Color(0xFFFFF8EC), Color(0xFF81C784),
-    ];
-    return List.generate(48, (i) => _Particle(
-          x: rng.nextDouble(),
-          startY: -0.05 - rng.nextDouble() * 0.12,
-          speed: 0.55 + rng.nextDouble() * 0.45,
-          color: colors[rng.nextInt(colors.length)],
-          size: 5.0 + rng.nextDouble() * 7.0,
-          rotation: rng.nextDouble() * 2 * pi,
-          rotationSpeed: (rng.nextDouble() - 0.5) * 10,
-          drift: (rng.nextDouble() - 0.5) * 0.14,
-        ));
   }
 
   // ── Build ─────────────────────────────────────────────────────────────────────
@@ -426,7 +424,7 @@ class _ModoRachaScreenState extends State<ModoRachaScreen>
                 child: AnimatedBuilder(
                   animation: _recordCtrl,
                   builder: (context, _) => CustomPaint(
-                    painter: _ConfettiPainter(
+                    painter: ConfettiPainter(
                       progress: _recordCtrl.value,
                       particles: _confettiParticles,
                     ),
@@ -659,74 +657,6 @@ class _ModoRachaScreenState extends State<ModoRachaScreen>
       ),
     );
   }
-}
-
-// ── Particle ──────────────────────────────────────────────────────────────────
-
-class _Particle {
-  final double x;
-  final double startY;
-  final double speed;
-  final Color color;
-  final double size;
-  final double rotation;
-  final double rotationSpeed;
-  final double drift;
-
-  const _Particle({
-    required this.x,
-    required this.startY,
-    required this.speed,
-    required this.color,
-    required this.size,
-    required this.rotation,
-    required this.rotationSpeed,
-    required this.drift,
-  });
-}
-
-// ── Confetti painter ──────────────────────────────────────────────────────────
-
-class _ConfettiPainter extends CustomPainter {
-  final double progress;
-  final List<_Particle> particles;
-
-  _ConfettiPainter({required this.progress, required this.particles});
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    if (progress <= 0 || progress >= 1 || particles.isEmpty) return;
-
-    final fadeOpacity = progress < 0.65
-        ? 1.0
-        : (1.0 - (progress - 0.65) / 0.35).clamp(0.0, 1.0);
-
-    final paint = Paint()..style = PaintingStyle.fill;
-
-    for (final p in particles) {
-      final x = (p.x + p.drift * progress) * size.width;
-      final y = (p.startY + p.speed * progress) * size.height;
-      if (y < -p.size || y > size.height + p.size) continue;
-
-      paint.color = p.color.withValues(alpha: fadeOpacity * 0.92);
-
-      canvas.save();
-      canvas.translate(x, y);
-      canvas.rotate(p.rotation + progress * p.rotationSpeed);
-      canvas.drawRRect(
-        RRect.fromRectAndRadius(
-          Rect.fromCenter(
-              center: Offset.zero, width: p.size, height: p.size * 0.48),
-          const Radius.circular(2),
-        ),
-        paint,
-      );
-      canvas.restore();
-    }
-  }
-
-  @override
-  bool shouldRepaint(_ConfettiPainter old) => progress != old.progress;
 }
 
 // ── Mascota ───────────────────────────────────────────────────────────────────

@@ -13,6 +13,10 @@ class NotificationService {
   static const _keyHour = 'notif_hour';
   static const _keyMinute = 'notif_minute';
 
+  static const _streakChannelId = 'viali_racha';
+  static const _streakChannelName = 'Racha en peligro';
+  static const _streakNotifId = 43;
+
   static Future<void> init() async {
     tz_data.initializeTimeZones();
 
@@ -59,6 +63,38 @@ class NotificationService {
       hour: prefs.getInt(_keyHour) ?? 19,
       minute: prefs.getInt(_keyMinute) ?? 0,
     );
+  }
+
+  static Future<void> scheduleStreakWarning(int streakDias) async {
+    if (streakDias < 1) return;
+    await _plugin.cancel(_streakNotifId);
+    final now = DateTime.now();
+    final offset = now.timeZoneOffset;
+    final tomorrow = DateTime(now.year, now.month, now.day + 1, 20, 0);
+    final utc = tomorrow.subtract(offset);
+    final scheduled = tz.TZDateTime.from(utc, tz.UTC);
+    await _plugin.zonedSchedule(
+      _streakNotifId,
+      '¡Tu racha de $streakDias ${streakDias == 1 ? 'día' : 'días'} corre peligro! 🔥',
+      'Practica aunque sea un poco para mantenerla.',
+      scheduled,
+      const NotificationDetails(
+        android: AndroidNotificationDetails(
+          _streakChannelId,
+          _streakChannelName,
+          channelDescription: 'Aviso cuando la racha de días está en peligro',
+          importance: Importance.high,
+          priority: Priority.high,
+        ),
+      ),
+      androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
+      uiLocalNotificationDateInterpretation:
+          UILocalNotificationDateInterpretation.absoluteTime,
+    );
+  }
+
+  static Future<void> cancelStreakWarning() async {
+    await _plugin.cancel(_streakNotifId);
   }
 
   static Future<void> _schedule(int hour, int minute) async {

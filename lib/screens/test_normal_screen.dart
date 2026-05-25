@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -61,6 +62,11 @@ class _TestNormalScreenState extends State<TestNormalScreen> {
   Map<int, bool> _aciertos = {};
   List<int> _falladasTest = [];
 
+  // Timer state
+  Timer? _timerCountdown;
+  int _segundosRestantes = 2700;
+  bool _tiempoAgotado = false;
+
   // Results state
   TestResultado? _resultado;
 
@@ -68,6 +74,44 @@ class _TestNormalScreenState extends State<TestNormalScreen> {
   void initState() {
     super.initState();
     _cargar();
+  }
+
+  @override
+  void dispose() {
+    _timerCountdown?.cancel();
+    super.dispose();
+  }
+
+  void _iniciarTimer() {
+    _timerCountdown?.cancel();
+    _segundosRestantes = 45 * 60;
+    _tiempoAgotado = false;
+    _timerCountdown = Timer.periodic(const Duration(seconds: 1), (_) {
+      if (!mounted) return;
+      if (_segundosRestantes <= 1) {
+        _timerCountdown?.cancel();
+        _timerCountdown = null;
+        setState(() {
+          _segundosRestantes = 0;
+          _tiempoAgotado = true;
+        });
+        _finalizar();
+      } else {
+        setState(() => _segundosRestantes--);
+      }
+    });
+  }
+
+  String _formatTiempo(int s) {
+    final m = (s ~/ 60).toString().padLeft(2, '0');
+    final sec = (s % 60).toString().padLeft(2, '0');
+    return '$m:$sec';
+  }
+
+  Color get _colorTimer {
+    if (_segundosRestantes > 600) return _kTextDark;
+    if (_segundosRestantes > 300) return const Color(0xFFFF9800);
+    return _kRed;
   }
 
   Future<void> _cargar() async {
@@ -149,6 +193,7 @@ class _TestNormalScreenState extends State<TestNormalScreen> {
       _estadoMascota = _EstadoMascota.normal;
     });
     _prepararPregunta();
+    _iniciarTimer();
   }
 
   void _prepararPregunta() {
@@ -187,6 +232,8 @@ class _TestNormalScreenState extends State<TestNormalScreen> {
   }
 
   Future<void> _finalizar() async {
+    _timerCountdown?.cancel();
+    _timerCountdown = null;
     final correctas = _aciertos.values.where((v) => v).length;
     final modoLabel = switch (_modo) {
       'Por temática' =>
@@ -228,8 +275,10 @@ class _TestNormalScreenState extends State<TestNormalScreen> {
       _aciertos = {};
       _falladasTest = [];
       _estadoMascota = _EstadoMascota.normal;
+      _tiempoAgotado = false;
     });
     _prepararPregunta();
+    _iniciarTimer();
   }
 
   void _nuevoTest() async {
@@ -421,13 +470,38 @@ class _TestNormalScreenState extends State<TestNormalScreen> {
           style: const TextStyle(
               color: _kTextDark, fontWeight: FontWeight.w700, fontSize: 18),
         ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 16),
+            child: Center(
+              child: Text(
+                _formatTiempo(_segundosRestantes),
+                style: TextStyle(
+                  color: _colorTimer,
+                  fontWeight: FontWeight.w800,
+                  fontSize: 15,
+                ),
+              ),
+            ),
+          ),
+        ],
         bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(4),
-          child: LinearProgressIndicator(
-            value: progreso,
-            backgroundColor: const Color(0xFFEEEEEE),
-            color: _kYellow,
-            minHeight: 4,
+          preferredSize: const Size.fromHeight(8),
+          child: Column(
+            children: [
+              LinearProgressIndicator(
+                value: progreso,
+                backgroundColor: const Color(0xFFEEEEEE),
+                color: _kYellow,
+                minHeight: 4,
+              ),
+              LinearProgressIndicator(
+                value: _segundosRestantes / (45 * 60),
+                backgroundColor: const Color(0xFFEEEEEE),
+                color: _colorTimer,
+                minHeight: 4,
+              ),
+            ],
           ),
         ),
       ),
@@ -517,6 +591,34 @@ class _TestNormalScreenState extends State<TestNormalScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            if (_tiempoAgotado) ...[
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                decoration: BoxDecoration(
+                  color: const Color(0xFFFFF3E0),
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(
+                    color: const Color(0xFFFF9800).withValues(alpha: 0.35),
+                    width: 1.5,
+                  ),
+                ),
+                child: const Row(
+                  children: [
+                    Icon(Icons.timer_off_rounded, color: Color(0xFFFF9800), size: 20),
+                    SizedBox(width: 10),
+                    Text(
+                      'Tiempo agotado — el test finalizó automáticamente',
+                      style: TextStyle(
+                        color: Color(0xFFFF9800),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 13,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 16),
+            ],
             // Score card
             Container(
               padding: const EdgeInsets.all(28),

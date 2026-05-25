@@ -55,7 +55,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   Future<void> _finish() async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setBool('onboarding_done', true);
+    await prefs.setBool('onboarding_completado', true);
     if (!mounted) return;
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(builder: (_) => const HomeScreen()),

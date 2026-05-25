@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../services/notification_service.dart';
+import 'privacidad_screen.dart';
 
 const _kYellow = Color(0xFFF5A623);
 const _kDark = Color(0xFF1A1A1A);
@@ -70,6 +72,54 @@ class _AjustesScreenState extends State<AjustesScreen> {
     if (_notifEnabled) {
       await NotificationService.enable(nueva.hour, nueva.minute);
     }
+  }
+
+  Future<void> _resetearOnboarding() async {
+    final confirmar = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        title: const Text(
+          '¿Restablecer bienvenida?',
+          style: TextStyle(fontWeight: FontWeight.w700),
+        ),
+        content: const Text(
+          'La próxima vez que abras la app se mostrará la pantalla de bienvenida.',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx, false),
+            child: const Text('Cancelar', style: TextStyle(color: _kGrey)),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(ctx, true),
+            child: const Text(
+              'Restablecer',
+              style: TextStyle(color: _kYellow, fontWeight: FontWeight.w700),
+            ),
+          ),
+        ],
+      ),
+    );
+    if (confirmar != true) return;
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove('onboarding_completado');
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Bienvenida restablecida'),
+          behavior: SnackBarBehavior.floating,
+          duration: Duration(seconds: 2),
+        ),
+      );
+    }
+  }
+
+  void _abrirPrivacidad() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => const PrivacidadScreen()),
+    );
   }
 
   Future<void> _guardar() async {
@@ -165,6 +215,25 @@ class _AjustesScreenState extends State<AjustesScreen> {
                             ),
                           ),
                   ),
+                ),
+                const SizedBox(height: 32),
+                // ── Sección general ───────────────────────────────────────────
+                const _SectionHeader(label: 'General'),
+                const SizedBox(height: 12),
+                _SettingsTile(
+                  icon: Icons.privacy_tip_rounded,
+                  title: 'Política de privacidad',
+                  subtitle: 'Sin servidores, sin datos externos',
+                  onTap: _abrirPrivacidad,
+                  trailing: const Icon(Icons.chevron_right_rounded, color: _kGrey),
+                ),
+                const SizedBox(height: 8),
+                _SettingsTile(
+                  icon: Icons.restart_alt_rounded,
+                  title: 'Restablecer bienvenida',
+                  subtitle: 'Muestra la pantalla de bienvenida al reabrir',
+                  onTap: _resetearOnboarding,
+                  trailing: const Icon(Icons.chevron_right_rounded, color: _kGrey),
                 ),
               ],
             ),

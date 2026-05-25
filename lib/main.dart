@@ -12,7 +12,7 @@ void main() async {
   await NotificationService.init();
 
   final prefs = await SharedPreferences.getInstance();
-  final onboardingDone = prefs.getBool('onboarding_done') ?? false;
+  final onboardingDone = prefs.getBool('onboarding_completado') ?? false;
 
   FlutterNativeSplash.remove();
 

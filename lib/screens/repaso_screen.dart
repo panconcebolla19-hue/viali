@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -5,6 +6,7 @@ import '../models/pregunta.dart';
 import '../data/preguntas_repository.dart';
 import '../data/falladas_repository.dart';
 import '../data/test_historial_repository.dart';
+import '../data/anki_repository.dart';
 
 const _kYellow = Color(0xFFF5A623);
 const _kDark = Color(0xFF1A1A1A);
@@ -87,6 +89,7 @@ class _RepasoScreenState extends State<RepasoScreen> {
       _estadoMascota = ok ? _EstadoMascota.correcto : _EstadoMascota.fallo;
       if (ok) _correctas++;
     });
+    unawaited(AnkiRepository.registrarRespuesta(p.id, ok));
   }
 
   void _siguiente() {

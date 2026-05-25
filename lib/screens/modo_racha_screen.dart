@@ -9,6 +9,8 @@ import '../data/preguntas_repository.dart';
 import '../data/falladas_repository.dart';
 import '../data/daily_streak_repository.dart';
 import '../data/logros_repository.dart';
+import '../data/anki_repository.dart';
+import '../data/marcadas_repository.dart';
 import '../services/notification_service.dart';
 import '../widgets/confetti_overlay.dart';
 import 'logros_screen.dart';
@@ -46,6 +48,7 @@ class _ModoRachaScreenState extends State<ModoRachaScreen>
   bool _respondida = false;
   bool _cargando = true;
   _EstadoMascota _estadoMascota = _EstadoMascota.normal;
+  Set<int> _marcadas = {};
 
   // ── Tension / record state ───────────────────────────────────────────────────
   bool _isNewRecord = false;
@@ -158,14 +161,29 @@ class _ModoRachaScreenState extends State<ModoRachaScreen>
   Future<void> _init() async {
     final preguntas = await PreguntasRepository.cargarPreguntas();
     final prefs = await SharedPreferences.getInstance();
+    final marcadas = await MarcadasRepository.cargar();
     setState(() {
       _preguntas = preguntas;
       _indicesPendientes =
           List.generate(preguntas.length, (i) => i)..shuffle();
       _recordPersonal = prefs.getInt('racha_record') ?? 0;
+      _marcadas = marcadas;
       _cargando = false;
     });
     _siguientePregunta();
+  }
+
+  Future<void> _toggleMarcada(int id) async {
+    final marcada = await MarcadasRepository.alternar(id);
+    if (mounted) {
+      setState(() {
+        if (marcada) {
+          _marcadas.add(id);
+        } else {
+          _marcadas.remove(id);
+        }
+      });
+    }
   }
 
   // ── Game logic ────────────────────────────────────────────────────────────────
@@ -286,6 +304,7 @@ class _ModoRachaScreenState extends State<ModoRachaScreen>
         if (mounted) _shakeCtrl.value = 0;
       });
     }
+    unawaited(AnkiRepository.registrarRespuesta(_preguntaActual!.id, esCorrecta));
   }
 
   void _continuar() => _siguientePregunta();
@@ -421,7 +440,7 @@ class _ModoRachaScreenState extends State<ModoRachaScreen>
           // Green flash overlay
           AnimatedBuilder(
             animation: _flashAnim,
-            builder: (_, _) => IgnorePointer(
+            builder: (_, child) => IgnorePointer(
               child: Container(
                 color: _kGreen.withValues(alpha: _flashAnim.value),
               ),
@@ -604,67 +623,104 @@ class _ModoRachaScreenState extends State<ModoRachaScreen>
   }
 
   Widget _buildQuestionCard(int tension) {
-    // Plain card for tension < 3
+    final p = _preguntaActual!;
+    final esMarcada = _marcadas.contains(p.id);
+
+    Widget card;
     if (tension < 3) {
-      return _QuestionCard(enunciado: _preguntaActual!.enunciado, imagen: _preguntaActual!.imagen, imagenOculta: _preguntaActual!.imagenOculta);
-    }
-
-    // Animated glowing border for tension 3+
-    final borderColor =
-        tension >= 4 ? const Color(0xFFFF8C00) : _kYellow;
-
-    return AnimatedBuilder(
-      animation: _borderAnim,
-      builder: (_, _) => Container(
-        padding: const EdgeInsets.all(22),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(22),
-          border: Border.all(
-            color: borderColor.withValues(alpha: _borderAnim.value),
-            width: 2.5,
+      card = _QuestionCard(
+          enunciado: p.enunciado,
+          imagen: p.imagen,
+          imagenOculta: p.imagenOculta);
+    } else {
+      final borderColor =
+          tension >= 4 ? const Color(0xFFFF8C00) : _kYellow;
+      card = AnimatedBuilder(
+        animation: _borderAnim,
+        builder: (_, child) => Container(
+          padding: const EdgeInsets.all(22),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(22),
+            border: Border.all(
+              color: borderColor.withValues(alpha: _borderAnim.value),
+              width: 2.5,
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: borderColor.withValues(alpha: _borderAnim.value * 0.18),
+                blurRadius: 18,
+                spreadRadius: 2,
+                offset: const Offset(0, 4),
+              ),
+              BoxShadow(
+                color: Colors.black.withValues(alpha: 0.05),
+                blurRadius: 12,
+                offset: const Offset(0, 4),
+              ),
+            ],
           ),
-          boxShadow: [
-            BoxShadow(
-              color:
-                  borderColor.withValues(alpha: _borderAnim.value * 0.18),
-              blurRadius: 18,
-              spreadRadius: 2,
-              offset: const Offset(0, 4),
-            ),
-            BoxShadow(
-              color: Colors.black.withValues(alpha: 0.05),
-              blurRadius: 12,
-              offset: const Offset(0, 4),
-            ),
-          ],
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            if (_preguntaActual!.imagen != null && !_preguntaActual!.imagenOculta) ...[
-              ClipRRect(
-                borderRadius: BorderRadius.circular(12),
-                child: SvgPicture.asset(
-                  _preguntaActual!.imagen!,
-                  height: 180,
-                  fit: BoxFit.contain,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              if (p.imagen != null && !p.imagenOculta) ...[
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: SvgPicture.asset(
+                    p.imagen!,
+                    height: 180,
+                    fit: BoxFit.contain,
+                  ),
+                ),
+                const SizedBox(height: 14),
+              ],
+              Text(
+                p.enunciado,
+                style: const TextStyle(
+                  fontSize: 17,
+                  fontWeight: FontWeight.w700,
+                  color: _kTextDark,
+                  height: 1.45,
                 ),
               ),
-              const SizedBox(height: 14),
             ],
-            Text(
-              _preguntaActual!.enunciado,
-              style: const TextStyle(
-                fontSize: 17,
-                fontWeight: FontWeight.w700,
-                color: _kTextDark,
-                height: 1.45,
+          ),
+        ),
+      );
+    }
+
+    return Stack(
+      children: [
+        card,
+        Positioned(
+          top: 8,
+          right: 8,
+          child: GestureDetector(
+            onTap: () => _toggleMarcada(p.id),
+            child: Container(
+              width: 36,
+              height: 36,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                shape: BoxShape.circle,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withValues(alpha: 0.08),
+                    blurRadius: 6,
+                  ),
+                ],
+              ),
+              child: Icon(
+                esMarcada
+                    ? Icons.bookmark_rounded
+                    : Icons.bookmark_border_rounded,
+                color: esMarcada ? _kYellow : _kTextGrey,
+                size: 20,
               ),
             ),
-          ],
+          ),
         ),
-      ),
+      ],
     );
   }
 }

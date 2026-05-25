@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../data/daily_streak_repository.dart';
 import '../data/preguntas_repository.dart';
 import '../data/pregunta_dia_repository.dart';
+import '../data/anki_repository.dart';
 import '../models/pregunta.dart';
 import 'modo_racha_screen.dart';
 import 'test_normal_screen.dart';
@@ -12,6 +14,8 @@ import 'repaso_screen.dart';
 import 'progreso_screen.dart';
 import 'ajustes_screen.dart';
 import 'logros_screen.dart';
+import 'marcadas_screen.dart';
+import 'repaso_anki_screen.dart';
 
 const _kYellow = Color(0xFFF5A623);
 const _kGreen = Color(0xFF4CAF50);
@@ -20,6 +24,16 @@ const _kDark = Color(0xFF1A1A1A);
 const _kGrey = Color(0xFF9E9E9E);
 const _kBorder = Color(0xFFE8E8E8);
 
+const _kMensajes = [
+  '¡Vamos! Cada pregunta te acerca al carnet. 💪',
+  'Un día más de práctica, un paso más cerca. 🚗',
+  '¡Buenos días! Hoy es un buen día para estudiar. 🌟',
+  'La constancia es la clave del éxito. ¡Tú puedes! 🔑',
+  'Recuerda: la DGT no perdona los errores. ¡Practica! 🚦',
+  '¡Ánimo! Cada acierto cuenta. 🎯',
+  'Hoy también puedes aprender algo nuevo. 📚',
+];
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -27,22 +41,41 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen>
+    with SingleTickerProviderStateMixin {
   int _racha = 0;
+  int _ankiPendientes = 0;
+  String? _mensajeHoy;
 
   // Pregunta del día
   Pregunta? _preguntaDia;
   bool? _resultadoDia;
   bool _cargandoPregunta = true;
 
+  late final AnimationController _flameCtrl;
+  late final Animation<double> _flameAnim;
+
   @override
   void initState() {
     super.initState();
+    _flameCtrl = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 900),
+    )..repeat(reverse: true);
+    _flameAnim = Tween<double>(begin: 0.92, end: 1.08).animate(
+      CurvedAnimation(parent: _flameCtrl, curve: Curves.easeInOut),
+    );
     _cargar();
   }
 
+  @override
+  void dispose() {
+    _flameCtrl.dispose();
+    super.dispose();
+  }
+
   Future<void> _cargar() async {
-    await Future.wait([_cargarRacha(), _cargarPreguntaDia()]);
+    await Future.wait([_cargarRacha(), _cargarPreguntaDia(), _cargarMensaje()]);
   }
 
   Future<void> _cargarRacha() async {
@@ -54,18 +87,39 @@ class _HomeScreenState extends State<HomeScreen> {
     final preguntas = await PreguntasRepository.cargarPreguntas();
     final idx = PreguntaDiaRepository.indiceDelDia(preguntas.length);
     final resultado = await PreguntaDiaRepository.getResultadoHoy();
+    final todosIds = preguntas.map((p) => p.id).toList();
+    final pendientes = await AnkiRepository.pendientesHoy(todosIds);
     if (mounted) {
       setState(() {
         _preguntaDia = preguntas[idx];
         _resultadoDia = resultado;
+        _ankiPendientes = pendientes.length;
         _cargandoPregunta = false;
       });
     }
   }
 
+  Future<void> _cargarMensaje() async {
+    final prefs = await SharedPreferences.getInstance();
+    final hoy = _isoHoy();
+    final ultima = prefs.getString('ultima_apertura_dia');
+    if (ultima != hoy) {
+      await prefs.setString('ultima_apertura_dia', hoy);
+      final d = DateTime.now();
+      final idx = (d.day + d.month) % _kMensajes.length;
+      if (mounted) setState(() => _mensajeHoy = _kMensajes[idx]);
+    }
+  }
+
+  String _isoHoy() {
+    final d = DateTime.now();
+    return '${d.year}-${d.month.toString().padLeft(2, '0')}-${d.day.toString().padLeft(2, '0')}';
+  }
+
   Future<void> _ir(Widget screen) async {
     await Navigator.push(context, MaterialPageRoute(builder: (_) => screen));
     _cargarRacha();
+    _cargarPreguntaDia();
   }
 
   Future<void> _abrirPreguntaDia() async {
@@ -125,14 +179,25 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               const SizedBox(height: 14),
-              _StreakBadge(racha: _racha),
+              _StreakBadge(racha: _racha, flameAnim: _flameAnim),
               const SizedBox(height: 14),
               Image.asset(
                 'assets/semaforo_normal.png',
                 height: 90,
                 fit: BoxFit.contain,
               ),
+              if (_mensajeHoy != null) ...[
+                const SizedBox(height: 10),
+                _MensajeMotivacional(mensaje: _mensajeHoy!),
+              ],
               const SizedBox(height: 16),
+              if (!_cargandoPregunta && _ankiPendientes > 0) ...[
+                _AnkiPendientesCard(
+                  pendientes: _ankiPendientes,
+                  onTap: () => _ir(const RepasoAnkiScreen()),
+                ),
+                const SizedBox(height: 10),
+              ],
               if (!_cargandoPregunta && _preguntaDia != null)
                 _PreguntaDiaCard(
                   pregunta: _preguntaDia!,
@@ -191,6 +256,19 @@ class _HomeScreenState extends State<HomeScreen> {
                       icon: Icons.emoji_events_rounded,
                       fontSize: 13,
                       onTap: () => _ir(const LogrosScreen()),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 10),
+              Row(
+                children: [
+                  Expanded(
+                    child: _HomeButton(
+                      label: 'Marcadas',
+                      icon: Icons.bookmark_rounded,
+                      fontSize: 13,
+                      onTap: () => _ir(const MarcadasScreen()),
                     ),
                   ),
                 ],
@@ -574,11 +652,114 @@ class _PreguntaDiaModalState extends State<_PreguntaDiaModal> {
   }
 }
 
+// ── Anki pendientes card ──────────────────────────────────────────────────────
+
+class _AnkiPendientesCard extends StatelessWidget {
+  final int pendientes;
+  final VoidCallback onTap;
+
+  const _AnkiPendientesCard({required this.pendientes, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.all(14),
+        decoration: BoxDecoration(
+          color: const Color(0xFFFFFBEE),
+          borderRadius: BorderRadius.circular(18),
+          border: Border.all(color: _kYellow.withValues(alpha: 0.6), width: 1.8),
+          boxShadow: [
+            BoxShadow(
+              color: _kYellow.withValues(alpha: 0.15),
+              blurRadius: 12,
+              offset: const Offset(0, 3),
+            ),
+          ],
+        ),
+        child: Row(
+          children: [
+            Container(
+              width: 42,
+              height: 42,
+              decoration: BoxDecoration(
+                color: _kYellow,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: const Icon(Icons.auto_stories_rounded,
+                  color: Colors.white, size: 22),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'REPASO INTELIGENTE',
+                    style: TextStyle(
+                      fontSize: 10,
+                      fontWeight: FontWeight.w700,
+                      color: _kGrey,
+                      letterSpacing: 0.8,
+                    ),
+                  ),
+                  const SizedBox(height: 3),
+                  Text(
+                    '📚 Tienes $pendientes ${pendientes == 1 ? 'pregunta' : 'preguntas'} para repasar hoy',
+                    style: const TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w700,
+                      color: _kDark,
+                      height: 1.3,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Icon(Icons.chevron_right_rounded, color: _kGrey, size: 20),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// ── Mensaje motivacional ──────────────────────────────────────────────────────
+
+class _MensajeMotivacional extends StatelessWidget {
+  final String mensaje;
+  const _MensajeMotivacional({required this.mensaje});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+      decoration: BoxDecoration(
+        color: const Color(0xFFF5F5F5),
+        borderRadius: BorderRadius.circular(14),
+      ),
+      child: Text(
+        mensaje,
+        textAlign: TextAlign.center,
+        style: const TextStyle(
+          fontSize: 13,
+          fontWeight: FontWeight.w500,
+          color: _kGrey,
+          height: 1.4,
+        ),
+      ),
+    );
+  }
+}
+
 // ── Streak badge ──────────────────────────────────────────────────────────────
 
 class _StreakBadge extends StatelessWidget {
   final int racha;
-  const _StreakBadge({required this.racha});
+  final Animation<double> flameAnim;
+  const _StreakBadge({required this.racha, required this.flameAnim});
 
   @override
   Widget build(BuildContext context) {
@@ -615,7 +796,14 @@ class _StreakBadge extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Text('🔥', style: TextStyle(fontSize: 18)),
+          AnimatedBuilder(
+            animation: flameAnim,
+            builder: (_, child) => Transform.scale(
+              scale: flameAnim.value,
+              child: child,
+            ),
+            child: const Text('🔥', style: TextStyle(fontSize: 18)),
+          ),
           const SizedBox(width: 7),
           Text(
             label,

@@ -14,6 +14,8 @@ import '../data/test_historial_repository.dart';
 import '../data/falladas_repository.dart';
 import '../data/daily_streak_repository.dart';
 import '../data/logros_repository.dart';
+import '../data/anki_repository.dart';
+import '../data/marcadas_repository.dart';
 import '../services/notification_service.dart';
 import '../widgets/confetti_overlay.dart';
 import 'logros_screen.dart';
@@ -82,6 +84,9 @@ class _TestNormalScreenState extends State<TestNormalScreen>
   late final AnimationController _confettiCtrl;
   List<ConfettiParticle> _confettiParticles = [];
 
+  // Marcadas
+  Set<int> _marcadas = {};
+
   // Results state
   TestResultado? _resultado;
   final GlobalKey _shareKey = GlobalKey();
@@ -137,13 +142,30 @@ class _TestNormalScreenState extends State<TestNormalScreen>
 
   Future<void> _cargar() async {
     setState(() => _cargando = true);
-    final preguntas = await PreguntasRepository.cargarPreguntas();
-    final falladas = await TestHistorialRepository.idsPreguntasFalladas();
+    final results = await Future.wait([
+      PreguntasRepository.cargarPreguntas(),
+      TestHistorialRepository.idsPreguntasFalladas(),
+      MarcadasRepository.cargar(),
+    ]);
     setState(() {
-      _todasPreguntas = preguntas;
-      _falladasHistorial = falladas;
+      _todasPreguntas = results[0] as List<Pregunta>;
+      _falladasHistorial = results[1] as Set<int>;
+      _marcadas = results[2] as Set<int>;
       _cargando = false;
     });
+  }
+
+  Future<void> _toggleMarcada(int id) async {
+    final marcada = await MarcadasRepository.alternar(id);
+    if (mounted) {
+      setState(() {
+        if (marcada) {
+          _marcadas.add(id);
+        } else {
+          _marcadas.remove(id);
+        }
+      });
+    }
   }
 
   String _detectarTema(Pregunta p) {
@@ -241,6 +263,7 @@ class _TestNormalScreenState extends State<TestNormalScreen>
       if (!ok) _falladasTest.add(p.id);
       _estadoMascota = ok ? _EstadoMascota.correcto : _EstadoMascota.fallo;
     });
+    unawaited(AnkiRepository.registrarRespuesta(p.id, ok));
   }
 
   void _continuar() {
@@ -668,7 +691,41 @@ class _TestNormalScreenState extends State<TestNormalScreen>
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  _QuestionCard(enunciado: pregunta.enunciado, imagen: pregunta.imagen, imagenOculta: pregunta.imagenOculta),
+                  Stack(
+                    children: [
+                      _QuestionCard(enunciado: pregunta.enunciado, imagen: pregunta.imagen, imagenOculta: pregunta.imagenOculta),
+                      Positioned(
+                        top: 8,
+                        right: 8,
+                        child: GestureDetector(
+                          onTap: () => _toggleMarcada(pregunta.id),
+                          child: Container(
+                            width: 36,
+                            height: 36,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              shape: BoxShape.circle,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withValues(alpha: 0.08),
+                                  blurRadius: 6,
+                                ),
+                              ],
+                            ),
+                            child: Icon(
+                              _marcadas.contains(pregunta.id)
+                                  ? Icons.bookmark_rounded
+                                  : Icons.bookmark_border_rounded,
+                              color: _marcadas.contains(pregunta.id)
+                                  ? _kYellow
+                                  : _kTextGrey,
+                              size: 20,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                   const SizedBox(height: 16),
                   ...List.generate(_opcionesMezcladas.length, (i) {
                     _EstadoOpcion estado;

@@ -17,8 +17,10 @@ import 'logros_screen.dart';
 import 'marcadas_screen.dart';
 import 'repaso_anki_screen.dart';
 import 'flashcards_screen.dart';
+import 'repaso_expres_screen.dart';
 
 const _kYellow = Color(0xFFF5A623);
+const _kAmber = Color(0xFFE67E00);
 const _kGreen = Color(0xFF4CAF50);
 const _kRed = Color(0xFFF44336);
 const _kDark = Color(0xFF1A1A1A);
@@ -46,6 +48,7 @@ class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
   int _racha = 0;
   int _ankiPendientes = 0;
+  int _falladasCount = 0;
   String? _mensajeHoy;
 
   // Pregunta del día
@@ -76,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen>
   }
 
   Future<void> _cargar() async {
-    await Future.wait([_cargarRacha(), _cargarPreguntaDia(), _cargarMensaje()]);
+    await Future.wait([_cargarRacha(), _cargarPreguntaDia(), _cargarMensaje(), _cargarFalladas()]);
   }
 
   Future<void> _cargarRacha() async {
@@ -100,6 +103,12 @@ class _HomeScreenState extends State<HomeScreen>
     }
   }
 
+  Future<void> _cargarFalladas() async {
+    final mapa = await AnkiRepository.cargar();
+    final count = mapa.values.where((e) => e.totalFalladas > 0).length;
+    if (mounted) setState(() => _falladasCount = count);
+  }
+
   Future<void> _cargarMensaje() async {
     final prefs = await SharedPreferences.getInstance();
     final hoy = _isoHoy();
@@ -121,6 +130,7 @@ class _HomeScreenState extends State<HomeScreen>
     await Navigator.push(context, MaterialPageRoute(builder: (_) => screen));
     _cargarRacha();
     _cargarPreguntaDia();
+    _cargarFalladas();
   }
 
   Future<void> _abrirPreguntaDia() async {
@@ -229,6 +239,11 @@ class _HomeScreenState extends State<HomeScreen>
                 label: 'Modo Repaso',
                 icon: Icons.menu_book_rounded,
                 onTap: () => _ir(const RepasoScreen()),
+              ),
+              const SizedBox(height: 10),
+              _RepasoExpresButton(
+                falladasCount: _falladasCount,
+                onTap: () => _ir(const RepasoExpresScreen()),
               ),
               const SizedBox(height: 10),
               Row(
@@ -824,6 +839,106 @@ class _StreakBadge extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+// ── Repaso Exprés button ──────────────────────────────────────────────────────
+
+class _RepasoExpresButton extends StatelessWidget {
+  final int falladasCount;
+  final VoidCallback onTap;
+
+  const _RepasoExpresButton({required this.falladasCount, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(22),
+        gradient: const LinearGradient(
+          colors: [_kYellow, _kAmber],
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: _kYellow.withValues(alpha: 0.35),
+            blurRadius: 18,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Material(
+        color: Colors.transparent,
+        borderRadius: BorderRadius.circular(22),
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(22),
+          splashColor: Colors.white.withValues(alpha: 0.15),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 16),
+            child: Row(
+              children: [
+                const Text('⚡', style: TextStyle(fontSize: 22)),
+                const SizedBox(width: 14),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          const Text(
+                            'Repaso Exprés',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 17,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          if (falladasCount > 0) ...[
+                            const SizedBox(width: 8),
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 7, vertical: 2),
+                              decoration: BoxDecoration(
+                                color: Colors.white.withValues(alpha: 0.25),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Text(
+                                '$falladasCount falladas',
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ],
+                      ),
+                      const SizedBox(height: 2),
+                      const Text(
+                        'Para el día antes del examen',
+                        style: TextStyle(
+                          color: Colors.white70,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Icon(
+                  Icons.chevron_right_rounded,
+                  color: Colors.white.withValues(alpha: 0.7),
+                  size: 22,
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

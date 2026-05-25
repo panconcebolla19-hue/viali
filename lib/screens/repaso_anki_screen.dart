@@ -1,9 +1,11 @@
+import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import '../models/pregunta.dart';
 import '../data/preguntas_repository.dart';
 import '../data/anki_repository.dart';
+import '../data/logros_repository.dart';
+import 'logros_screen.dart';
 
 const _kYellow = Color(0xFFF5A623);
 const _kGreen = Color(0xFF4CAF50);
@@ -25,6 +27,7 @@ class RepasoAnkiScreen extends StatefulWidget {
 class _RepasoAnkiScreenState extends State<RepasoAnkiScreen> {
   bool _cargando = true;
   List<Pregunta> _preguntas = [];
+  Map<int, AnkiEntry> _ankiData = {};
 
   int _indice = 0;
   List<String> _opcionesMezcladas = [];
@@ -34,6 +37,7 @@ class _RepasoAnkiScreenState extends State<RepasoAnkiScreen> {
   _EstadoMascota _estadoMascota = _EstadoMascota.normal;
   int _correctas = 0;
   bool _finalizado = false;
+  int _intervalMensaje = 1;
 
   @override
   void initState() {
@@ -44,7 +48,12 @@ class _RepasoAnkiScreenState extends State<RepasoAnkiScreen> {
   Future<void> _cargar() async {
     final todasPreguntas = await PreguntasRepository.cargarPreguntas();
     final todosIds = todasPreguntas.map((p) => p.id).toList();
-    final pendienteIds = await AnkiRepository.pendientesHoy(todosIds);
+    final results = await Future.wait([
+      AnkiRepository.pendientesHoy(todosIds),
+      AnkiRepository.cargar(),
+    ]);
+    final pendienteIds = results[0] as List<int>;
+    final ankiData = results[1] as Map<int, AnkiEntry>;
     final pendienteSet = Set<int>.from(pendienteIds);
 
     final seleccionadas = todasPreguntas
@@ -54,6 +63,7 @@ class _RepasoAnkiScreenState extends State<RepasoAnkiScreen> {
 
     setState(() {
       _preguntas = seleccionadas;
+      _ankiData = ankiData;
       _cargando = false;
     });
 
@@ -78,13 +88,40 @@ class _RepasoAnkiScreenState extends State<RepasoAnkiScreen> {
     final p = _preguntas[_indice];
     final idxOrig = _mapaIndices[opcionDisplay];
     final ok = idxOrig == p.respuestaCorrecta;
-    AnkiRepository.registrarRespuesta(p.id, ok);
+    unawaited(AnkiRepository.registrarRespuesta(p.id, ok));
+    _actualizarLogros();
+
+    final entry = _ankiData[p.id] ?? const AnkiEntry();
+    final int intervalo;
+    if (!ok) {
+      intervalo = 1;
+    } else {
+      final nuevas = entry.acertadasSeguidas + 1;
+      intervalo = switch (nuevas) {
+        1 => 3,
+        2 => 7,
+        3 => 21,
+        _ => 60,
+      };
+    }
+
     setState(() {
       _respuestaSeleccionada = opcionDisplay;
       _respondida = true;
       _estadoMascota = ok ? _EstadoMascota.correcto : _EstadoMascota.fallo;
       if (ok) _correctas++;
+      _intervalMensaje = intervalo;
     });
+  }
+
+  Future<void> _actualizarLogros() async {
+    await LogrosRepository.incrementarPreguntas(1);
+    final nuevos = await LogrosRepository.checkAndUpdate();
+    if (mounted && nuevos.isNotEmpty) {
+      for (final l in nuevos) {
+        await mostrarLogroPopup(context, l);
+      }
+    }
   }
 
   void _siguiente() {
@@ -379,7 +416,7 @@ class _RepasoAnkiScreenState extends State<RepasoAnkiScreen> {
                               const SizedBox(width: 8),
                               Text(
                                 esCorrecta
-                                    ? '¡Correcto! +3 días'
+                                    ? '¡Correcto! +$_intervalMensaje días'
                                     : 'Incorrecto — mañana de nuevo',
                                 style: TextStyle(
                                   fontWeight: FontWeight.w800,
@@ -515,7 +552,12 @@ class _AnkiQuestionCard extends StatelessWidget {
           if (imagen != null && !imagenOculta) ...[
             ClipRRect(
               borderRadius: BorderRadius.circular(10),
-              child: SvgPicture.asset(imagen!, height: 170, fit: BoxFit.contain),
+              child: Image.asset(
+                'assets/images/$imagen',
+                height: 170,
+                fit: BoxFit.contain,
+                errorBuilder: (_, error, stackTrace) => const SizedBox.shrink(),
+              ),
             ),
             const SizedBox(height: 12),
           ],

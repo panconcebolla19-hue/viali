@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../services/notification_service.dart';
 import 'privacidad_screen.dart';
+import 'onboarding_screen.dart';
 
 const _kYellow = Color(0xFFF5A623);
 const _kDark = Color(0xFF1A1A1A);
@@ -80,11 +81,11 @@ class _AjustesScreenState extends State<AjustesScreen> {
       builder: (ctx) => AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         title: const Text(
-          '¿Restablecer bienvenida?',
+          '¿Ver onboarding ahora?',
           style: TextStyle(fontWeight: FontWeight.w700),
         ),
         content: const Text(
-          'La próxima vez que abras la app se mostrará la pantalla de bienvenida.',
+          'Se borrará la marca de "completado" y se abrirá la pantalla de bienvenida ahora mismo.',
         ),
         actions: [
           TextButton(
@@ -94,7 +95,7 @@ class _AjustesScreenState extends State<AjustesScreen> {
           TextButton(
             onPressed: () => Navigator.pop(ctx, true),
             child: const Text(
-              'Restablecer',
+              'Ver ahora',
               style: TextStyle(color: _kYellow, fontWeight: FontWeight.w700),
             ),
           ),
@@ -104,15 +105,11 @@ class _AjustesScreenState extends State<AjustesScreen> {
     if (confirmar != true) return;
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove('onboarding_completado');
-    if (mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Bienvenida restablecida'),
-          behavior: SnackBarBehavior.floating,
-          duration: Duration(seconds: 2),
-        ),
-      );
-    }
+    if (!mounted) return;
+    Navigator.of(context).pushAndRemoveUntil(
+      MaterialPageRoute(builder: (_) => const OnboardingScreen()),
+      (_) => false,
+    );
   }
 
   void _abrirPrivacidad() {

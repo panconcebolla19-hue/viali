@@ -7,6 +7,8 @@ import '../data/anki_repository.dart';
 import '../data/marcadas_repository.dart';
 import '../data/falladas_repository.dart';
 import '../data/test_historial_repository.dart';
+import '../data/logros_repository.dart';
+import 'logros_screen.dart';
 
 const _kYellow = Color(0xFFF5A623);
 const _kGreen = Color(0xFF4CAF50);
@@ -215,6 +217,7 @@ class _FlashcardsScreenState extends State<FlashcardsScreen>
   void _registrarYavanzar(int calificacion) {
     final p = _cartas[_indiceActual];
     unawaited(AnkiRepository.registrarFlashcard(p.id, calificacion));
+    _actualizarLogros();
 
     _EstadoMascota mascota;
     if (calificacion == 2) {
@@ -251,6 +254,16 @@ class _FlashcardsScreenState extends State<FlashcardsScreen>
         }
         _fase = _FaseFlash.resumen;
       });
+    }
+  }
+
+  Future<void> _actualizarLogros() async {
+    await LogrosRepository.incrementarPreguntas(1);
+    final nuevos = await LogrosRepository.checkAndUpdate();
+    if (mounted && nuevos.isNotEmpty) {
+      for (final l in nuevos) {
+        await mostrarLogroPopup(context, l);
+      }
     }
   }
 

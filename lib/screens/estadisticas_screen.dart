@@ -78,6 +78,37 @@ class _EstadisticasScreenState extends State<EstadisticasScreen> {
   }
 
   bool get _hayDatos => _recordRacha > 0 || _historial.isNotEmpty;
+  bool get _sinDatos => !_hayDatos;
+
+  Widget _buildVacio() {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 40),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset('assets/semaforo_normal.png', height: 120),
+            const SizedBox(height: 24),
+            const Text(
+              'Aún sin estadísticas',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.w900,
+                color: _kTextDark,
+              ),
+            ),
+            const SizedBox(height: 12),
+            const Text(
+              'Juega al Modo Racha o haz un Test para ver tu historial aquí.',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 15, color: _kTextGrey, height: 1.5),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -118,7 +149,7 @@ class _EstadisticasScreenState extends State<EstadisticasScreen> {
             ),
         ],
       ),
-      body: SingleChildScrollView(
+      body: _sinDatos ? _buildVacio() : SingleChildScrollView(
         padding: const EdgeInsets.fromLTRB(20, 8, 20, 40),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,

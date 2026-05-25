@@ -203,7 +203,7 @@ class _ProgresoScreenState extends State<ProgresoScreen> {
     final totalCorrectas = d.historial.fold(0, (s, r) => s + r.correctas);
     final mediaAciertos =
         totalRespondidas > 0 ? totalCorrectas / totalRespondidas : 0.0;
-    final sinDatos = testsTotales == 0;
+    final sinDatosTema = d.topFalladas.isEmpty && d.falladasPorTema.isEmpty;
 
     return ListView(
       padding: const EdgeInsets.fromLTRB(20, 12, 20, 40),
@@ -237,7 +237,9 @@ class _ProgresoScreenState extends State<ProgresoScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '$testsTotales ${testsTotales == 1 ? 'test' : 'tests'} realizados',
+                      testsTotales == 0
+                          ? 'Aún no has hecho ningún test'
+                          : '$testsTotales ${testsTotales == 1 ? 'test' : 'tests'} realizados',
                       style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w800,
@@ -248,7 +250,7 @@ class _ProgresoScreenState extends State<ProgresoScreen> {
                       '$totalRespondidas preguntas respondidas',
                       style: const TextStyle(fontSize: 13, color: _kGrey),
                     ),
-                    if (!sinDatos) ...[
+                    if (totalRespondidas > 0) ...[
                       const SizedBox(height: 4),
                       Text(
                         'Media de aciertos: ${(mediaAciertos * 100).toStringAsFixed(0)}%',
@@ -314,13 +316,13 @@ class _ProgresoScreenState extends State<ProgresoScreen> {
         _SeccionTitulo('Progreso por temática'),
         const SizedBox(height: 4),
         Text(
-          sinDatos
+          sinDatosTema
               ? 'Empieza a practicar para ver tus estadísticas por tema.'
               : 'Basado en preguntas falladas alguna vez.',
           style: const TextStyle(fontSize: 13, color: _kGrey),
         ),
         const SizedBox(height: 16),
-        if (sinDatos)
+        if (sinDatosTema)
           Center(
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 32),
@@ -337,7 +339,7 @@ class _ProgresoScreenState extends State<ProgresoScreen> {
                   ),
                   const SizedBox(height: 6),
                   const Text(
-                    'Haz algún test para ver tu progreso por temas.',
+                    'Practica para ver tu progreso por temas.',
                     style: TextStyle(fontSize: 14, color: _kGrey),
                     textAlign: TextAlign.center,
                   ),

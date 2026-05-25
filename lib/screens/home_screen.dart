@@ -155,67 +155,70 @@ class _HomeScreenState extends State<HomeScreen>
       backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 28),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // ── Header ───────────────────────────────────────────────────
               const SizedBox(height: 12),
-              Align(
-                alignment: Alignment.centerRight,
-                child: IconButton(
-                  icon: const Icon(Icons.settings_rounded,
-                      color: Color(0xFFBDBDBD)),
-                  onPressed: () => _ir(const AjustesScreen()),
+              Row(
+                children: [
+                  const Spacer(),
+                  Text(
+                    'Viali',
+                    style: GoogleFonts.nunito(
+                      fontSize: 42,
+                      fontWeight: FontWeight.w900,
+                      color: _kYellow,
+                      letterSpacing: -1.2,
+                      height: 1,
+                    ),
+                  ),
+                  const Spacer(),
+                  IconButton(
+                    icon: const Icon(Icons.settings_rounded,
+                        color: Color(0xFFBDBDBD)),
+                    onPressed: () => _ir(const AjustesScreen()),
+                  ),
+                ],
+              ),
+              Center(
+                child: Text(
+                  'Prepara tu examen DGT',
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: _kGrey,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
               ),
-              const SizedBox(height: 2),
-              Text(
-                'Viali',
-                textAlign: TextAlign.center,
-                style: GoogleFonts.nunito(
-                  fontSize: 52,
-                  fontWeight: FontWeight.w900,
-                  color: _kYellow,
-                  letterSpacing: -1.5,
-                  height: 1,
+              const SizedBox(height: 12),
+              Center(child: _StreakBadge(racha: _racha, flameAnim: _flameAnim)),
+              const SizedBox(height: 10),
+              Center(
+                child: Image.asset(
+                  'assets/semaforo_normal.png',
+                  height: 76,
+                  fit: BoxFit.contain,
                 ),
-              ),
-              const SizedBox(height: 6),
-              const Text(
-                'Prepara tu examen DGT',
-                style: TextStyle(
-                  fontSize: 15,
-                  color: _kGrey,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-              const SizedBox(height: 14),
-              _StreakBadge(racha: _racha, flameAnim: _flameAnim),
-              const SizedBox(height: 14),
-              Image.asset(
-                'assets/semaforo_normal.png',
-                height: 90,
-                fit: BoxFit.contain,
               ),
               if (_mensajeHoy != null) ...[
-                const SizedBox(height: 10),
+                const SizedBox(height: 8),
                 _MensajeMotivacional(mensaje: _mensajeHoy!),
               ],
-              const SizedBox(height: 16),
-              if (!_cargandoPregunta && _ankiPendientes > 0) ...[
-                _AnkiPendientesCard(
-                  pendientes: _ankiPendientes,
-                  onTap: () => _ir(const RepasoAnkiScreen()),
-                ),
-                const SizedBox(height: 10),
-              ],
-              if (!_cargandoPregunta && _preguntaDia != null)
+              if (!_cargandoPregunta && _preguntaDia != null) ...[
+                const SizedBox(height: 14),
                 _PreguntaDiaCard(
                   pregunta: _preguntaDia!,
                   resultado: _resultadoDia,
                   onTap: _abrirPreguntaDia,
                 ),
-              const SizedBox(height: 18),
+              ],
+              const SizedBox(height: 24),
+
+              // ── Sección: Practicar ────────────────────────────────────────
+              _SectionLabel('PRACTICAR'),
+              const SizedBox(height: 10),
               _HomeButton(
                 label: 'Modo Racha',
                 icon: Icons.local_fire_department_rounded,
@@ -234,6 +237,21 @@ class _HomeScreenState extends State<HomeScreen>
                 icon: Icons.assignment_outlined,
                 onTap: () => _ir(const ExamenSimuladoScreen()),
               ),
+              const SizedBox(height: 24),
+
+              // ── Sección: Repasar ──────────────────────────────────────────
+              _SectionLabel('REPASAR'),
+              const SizedBox(height: 10),
+              _RepasoInteligenteButton(
+                pendientes: _ankiPendientes,
+                cargando: _cargandoPregunta,
+                onTap: () => _ir(const RepasoAnkiScreen()),
+              ),
+              const SizedBox(height: 10),
+              _RepasoExpresButton(
+                falladasCount: _falladasCount,
+                onTap: () => _ir(const RepasoExpresScreen()),
+              ),
               const SizedBox(height: 10),
               _HomeButton(
                 label: 'Modo Repaso',
@@ -241,10 +259,31 @@ class _HomeScreenState extends State<HomeScreen>
                 onTap: () => _ir(const RepasoScreen()),
               ),
               const SizedBox(height: 10),
-              _RepasoExpresButton(
-                falladasCount: _falladasCount,
-                onTap: () => _ir(const RepasoExpresScreen()),
+              Row(
+                children: [
+                  Expanded(
+                    child: _HomeButton(
+                      label: 'Flashcards',
+                      icon: Icons.style_rounded,
+                      fontSize: 13,
+                      onTap: () => _ir(const FlashcardsScreen()),
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: _HomeButton(
+                      label: 'Marcadas',
+                      icon: Icons.bookmark_rounded,
+                      fontSize: 13,
+                      onTap: () => _ir(const MarcadasScreen()),
+                    ),
+                  ),
+                ],
               ),
+              const SizedBox(height: 24),
+
+              // ── Sección: Ver progreso ─────────────────────────────────────
+              _SectionLabel('VER PROGRESO'),
               const SizedBox(height: 10),
               Row(
                 children: [
@@ -276,32 +315,12 @@ class _HomeScreenState extends State<HomeScreen>
                   ),
                 ],
               ),
-              const SizedBox(height: 10),
-              Row(
-                children: [
-                  Expanded(
-                    child: _HomeButton(
-                      label: 'Flashcards',
-                      icon: Icons.style_rounded,
-                      fontSize: 13,
-                      onTap: () => _ir(const FlashcardsScreen()),
-                    ),
-                  ),
-                  const SizedBox(width: 10),
-                  Expanded(
-                    child: _HomeButton(
-                      label: 'Marcadas',
-                      icon: Icons.bookmark_rounded,
-                      fontSize: 13,
-                      onTap: () => _ir(const MarcadasScreen()),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 24),
-              const Text(
-                'Basado en los tests oficiales de la DGT',
-                style: TextStyle(color: Color(0xFFBDBDBD), fontSize: 12),
+              const SizedBox(height: 28),
+              Center(
+                child: const Text(
+                  'Basado en los tests oficiales de la DGT',
+                  style: TextStyle(color: Color(0xFFBDBDBD), fontSize: 12),
+                ),
               ),
               const SizedBox(height: 24),
             ],
@@ -677,80 +696,6 @@ class _PreguntaDiaModalState extends State<_PreguntaDiaModal> {
   }
 }
 
-// ── Anki pendientes card ──────────────────────────────────────────────────────
-
-class _AnkiPendientesCard extends StatelessWidget {
-  final int pendientes;
-  final VoidCallback onTap;
-
-  const _AnkiPendientesCard({required this.pendientes, required this.onTap});
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: double.infinity,
-        padding: const EdgeInsets.all(14),
-        decoration: BoxDecoration(
-          color: const Color(0xFFFFFBEE),
-          borderRadius: BorderRadius.circular(18),
-          border: Border.all(color: _kYellow.withValues(alpha: 0.6), width: 1.8),
-          boxShadow: [
-            BoxShadow(
-              color: _kYellow.withValues(alpha: 0.15),
-              blurRadius: 12,
-              offset: const Offset(0, 3),
-            ),
-          ],
-        ),
-        child: Row(
-          children: [
-            Container(
-              width: 42,
-              height: 42,
-              decoration: BoxDecoration(
-                color: _kYellow,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: const Icon(Icons.auto_stories_rounded,
-                  color: Colors.white, size: 22),
-            ),
-            const SizedBox(width: 12),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    'REPASO INTELIGENTE',
-                    style: TextStyle(
-                      fontSize: 10,
-                      fontWeight: FontWeight.w700,
-                      color: _kGrey,
-                      letterSpacing: 0.8,
-                    ),
-                  ),
-                  const SizedBox(height: 3),
-                  Text(
-                    '📚 Tienes $pendientes ${pendientes == 1 ? 'pregunta' : 'preguntas'} para repasar hoy',
-                    style: const TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w700,
-                      color: _kDark,
-                      height: 1.3,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Icon(Icons.chevron_right_rounded, color: _kGrey, size: 20),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
 // ── Mensaje motivacional ──────────────────────────────────────────────────────
 
 class _MensajeMotivacional extends StatelessWidget {
@@ -839,6 +784,126 @@ class _StreakBadge extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+// ── Section label ─────────────────────────────────────────────────────────────
+
+class _SectionLabel extends StatelessWidget {
+  final String text;
+  const _SectionLabel(this.text);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: const TextStyle(
+        fontSize: 11,
+        fontWeight: FontWeight.w700,
+        color: _kGrey,
+        letterSpacing: 0.9,
+      ),
+    );
+  }
+}
+
+// ── Repaso Inteligente button (always visible) ─────────────────────────────────
+
+class _RepasoInteligenteButton extends StatelessWidget {
+  final int pendientes;
+  final bool cargando;
+  final VoidCallback onTap;
+
+  const _RepasoInteligenteButton({
+    required this.pendientes,
+    required this.cargando,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final hayPendientes = !cargando && pendientes > 0;
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(22),
+        color: hayPendientes ? const Color(0xFFFFFBEE) : Colors.white,
+        border: Border.all(
+          color: hayPendientes
+              ? _kYellow.withValues(alpha: 0.6)
+              : _kBorder,
+          width: 1.8,
+        ),
+        boxShadow: hayPendientes
+            ? [
+                BoxShadow(
+                  color: _kYellow.withValues(alpha: 0.15),
+                  blurRadius: 12,
+                  offset: const Offset(0, 3),
+                ),
+              ]
+            : [
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: 0.04),
+                  blurRadius: 8,
+                  offset: const Offset(0, 2),
+                ),
+              ],
+      ),
+      child: Material(
+        color: Colors.transparent,
+        borderRadius: BorderRadius.circular(22),
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(22),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 16),
+            child: Row(
+              children: [
+                Icon(
+                  Icons.auto_stories_rounded,
+                  color: hayPendientes ? _kYellow : _kGrey,
+                  size: 24,
+                ),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Repaso Inteligente',
+                        style: TextStyle(
+                          color: hayPendientes ? _kDark : _kGrey,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      const SizedBox(height: 2),
+                      Text(
+                        cargando
+                            ? 'Cargando…'
+                            : pendientes > 0
+                                ? '$pendientes ${pendientes == 1 ? 'pregunta pendiente' : 'preguntas pendientes'} hoy'
+                                : '0 pendientes hoy — vuelve mañana',
+                        style: TextStyle(
+                          color: hayPendientes ? _kYellow : _kGrey,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Icon(
+                  Icons.chevron_right_rounded,
+                  color: hayPendientes ? _kGrey : const Color(0xFFDDDDDD),
+                  size: 22,
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

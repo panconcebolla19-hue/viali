@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import '../models/pregunta.dart';
 import '../data/preguntas_repository.dart';
 import '../data/anki_repository.dart';
+import '../data/logros_repository.dart';
+import 'logros_screen.dart';
 
 const _kYellow = Color(0xFFF5A623);
 const _kAmber = Color(0xFFE67E00);
@@ -132,7 +134,7 @@ class _RepasoExpresScreenState extends State<RepasoExpresScreen> {
 
   void _prepararPregunta() {
     final p = _preguntas[_indiceActual];
-    final mapa = [0, 1, 2]..shuffle(Random());
+    final mapa = List.generate(p.opciones.length, (i) => i)..shuffle(Random());
     setState(() {
       _mapaIndices = mapa;
       _opcionesMezcladas = mapa.map((i) => p.opciones[i]).toList();
@@ -154,6 +156,7 @@ class _RepasoExpresScreenState extends State<RepasoExpresScreen> {
       if (ok) _correctas++;
     });
     unawaited(AnkiRepository.registrarRespuesta(p.id, ok));
+    _actualizarLogros();
 
     _autoAdvanceTimer?.cancel();
     _autoAdvanceTimer = Timer(const Duration(milliseconds: 1800), _avanzar);
@@ -167,6 +170,16 @@ class _RepasoExpresScreenState extends State<RepasoExpresScreen> {
       _prepararPregunta();
     } else {
       _finalizar();
+    }
+  }
+
+  Future<void> _actualizarLogros() async {
+    await LogrosRepository.incrementarPreguntas(1);
+    final nuevos = await LogrosRepository.checkAndUpdate();
+    if (mounted && nuevos.isNotEmpty) {
+      for (final l in nuevos) {
+        await mostrarLogroPopup(context, l);
+      }
     }
   }
 

@@ -27,16 +27,6 @@ const _kDark = Color(0xFF1A1A1A);
 const _kGrey = Color(0xFF9E9E9E);
 const _kBorder = Color(0xFFE8E8E8);
 
-const _kMensajes = [
-  '¡Vamos! Cada pregunta te acerca al carnet. 💪',
-  'Un día más de práctica, un paso más cerca. 🚗',
-  '¡Buenos días! Hoy es un buen día para estudiar. 🌟',
-  'La constancia es la clave del éxito. ¡Tú puedes! 🔑',
-  'Recuerda: la DGT no perdona los errores. ¡Practica! 🚦',
-  '¡Ánimo! Cada acierto cuenta. 🎯',
-  'Hoy también puedes aprender algo nuevo. 📚',
-];
-
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -44,42 +34,24 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen>
-    with SingleTickerProviderStateMixin {
+class _HomeScreenState extends State<HomeScreen> {
   int _racha = 0;
   int _ankiPendientes = 0;
   int _falladasCount = 0;
-  String? _mensajeHoy;
+  int _totalPreguntas = 0;
 
-  // Pregunta del día
   Pregunta? _preguntaDia;
   bool? _resultadoDia;
   bool _cargandoPregunta = true;
 
-  late final AnimationController _flameCtrl;
-  late final Animation<double> _flameAnim;
-
   @override
   void initState() {
     super.initState();
-    _flameCtrl = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 900),
-    )..repeat(reverse: true);
-    _flameAnim = Tween<double>(begin: 0.92, end: 1.08).animate(
-      CurvedAnimation(parent: _flameCtrl, curve: Curves.easeInOut),
-    );
     _cargar();
   }
 
-  @override
-  void dispose() {
-    _flameCtrl.dispose();
-    super.dispose();
-  }
-
   Future<void> _cargar() async {
-    await Future.wait([_cargarRacha(), _cargarPreguntaDia(), _cargarMensaje(), _cargarFalladas()]);
+    await Future.wait([_cargarRacha(), _cargarPreguntaDia(), _cargarExtras()]);
   }
 
   Future<void> _cargarRacha() async {
@@ -103,34 +75,22 @@ class _HomeScreenState extends State<HomeScreen>
     }
   }
 
-  Future<void> _cargarFalladas() async {
-    final mapa = await AnkiRepository.cargar();
-    final count = mapa.values.where((e) => e.totalFalladas > 0).length;
-    if (mounted) setState(() => _falladasCount = count);
-  }
-
-  Future<void> _cargarMensaje() async {
+  Future<void> _cargarExtras() async {
     final prefs = await SharedPreferences.getInstance();
-    final hoy = _isoHoy();
-    final ultima = prefs.getString('ultima_apertura_dia');
-    if (ultima != hoy) {
-      await prefs.setString('ultima_apertura_dia', hoy);
-      final d = DateTime.now();
-      final idx = (d.day + d.month) % _kMensajes.length;
-      if (mounted) setState(() => _mensajeHoy = _kMensajes[idx]);
+    final mapa = await AnkiRepository.cargar();
+    if (mounted) {
+      setState(() {
+        _falladasCount = mapa.values.where((e) => e.totalFalladas > 0).length;
+        _totalPreguntas = prefs.getInt('preguntas_total') ?? 0;
+      });
     }
-  }
-
-  String _isoHoy() {
-    final d = DateTime.now();
-    return '${d.year}-${d.month.toString().padLeft(2, '0')}-${d.day.toString().padLeft(2, '0')}';
   }
 
   Future<void> _ir(Widget screen) async {
     await Navigator.push(context, MaterialPageRoute(builder: (_) => screen));
     _cargarRacha();
     _cargarPreguntaDia();
-    _cargarFalladas();
+    _cargarExtras();
   }
 
   Future<void> _abrirPreguntaDia() async {
@@ -149,182 +109,549 @@ class _HomeScreenState extends State<HomeScreen>
     if (mounted) setState(() => _resultadoDia = resultado);
   }
 
+  Widget _buildHeader() {
+    return Container(
+      decoration: const BoxDecoration(
+        color: _kYellow,
+        borderRadius: BorderRadius.vertical(bottom: Radius.circular(28)),
+      ),
+      child: SafeArea(
+        bottom: false,
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(8, 8, 8, 20),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  IconButton(
+                    icon: const Icon(Icons.settings_rounded,
+                        color: Colors.white, size: 24),
+                    onPressed: () => _ir(const AjustesScreen()),
+                  ),
+                  Expanded(
+                    child: Center(
+                      child: Text(
+                        'Viali',
+                        style: GoogleFonts.nunito(
+                          fontSize: 26,
+                          fontWeight: FontWeight.w900,
+                          color: Colors.white,
+                          height: 1,
+                        ),
+                      ),
+                    ),
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.emoji_events_rounded,
+                        color: Colors.white, size: 24),
+                    onPressed: () => _ir(const LogrosScreen()),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 12),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  _PillBadge(
+                    text: _racha == 0 ? '🚦 Empieza hoy' : '🔥 $_racha días',
+                  ),
+                  const SizedBox(width: 10),
+                  _PillBadge(text: '📚 $_totalPreguntas respondidas'),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // ── Header ───────────────────────────────────────────────────
-              const SizedBox(height: 12),
-              Row(
+      backgroundColor: const Color(0xFFF3F3F3),
+      body: Column(
+        children: [
+          _buildHeader(),
+          Expanded(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.fromLTRB(20, 20, 20, 40),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  const Spacer(),
-                  Text(
-                    'Viali',
-                    style: GoogleFonts.nunito(
-                      fontSize: 42,
-                      fontWeight: FontWeight.w900,
-                      color: _kYellow,
-                      letterSpacing: -1.2,
-                      height: 1,
+                  if (!_cargandoPregunta && _preguntaDia != null) ...[
+                    _PreguntaDiaCard(
+                      pregunta: _preguntaDia!,
+                      resultado: _resultadoDia,
+                      onTap: _abrirPreguntaDia,
                     ),
+                    const SizedBox(height: 20),
+                  ],
+                  _ModoRachaButton(onTap: () => _ir(const ModoRachaScreen())),
+                  const SizedBox(height: 28),
+                  const _SectionTitle('PRACTICAR'),
+                  const SizedBox(height: 6),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: _PracticarCard(
+                          label: 'Test Normal',
+                          icon: Icons.quiz_outlined,
+                          onTap: () => _ir(const TestNormalScreen()),
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: _PracticarCard(
+                          label: 'Examen Simulado',
+                          icon: Icons.assignment_outlined,
+                          onTap: () => _ir(const ExamenSimuladoScreen()),
+                        ),
+                      ),
+                    ],
                   ),
-                  const Spacer(),
-                  IconButton(
-                    icon: const Icon(Icons.settings_rounded,
-                        color: Color(0xFFBDBDBD)),
-                    onPressed: () => _ir(const AjustesScreen()),
+                  const SizedBox(height: 28),
+                  const _SectionTitle('REPASAR'),
+                  const SizedBox(height: 6),
+                  GridView.count(
+                    crossAxisCount: 2,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    mainAxisSpacing: 12,
+                    crossAxisSpacing: 12,
+                    childAspectRatio: 1.4,
+                    children: [
+                      _RepasoCard(
+                        label: 'Repaso Inteligente',
+                        icon: Icons.auto_stories_rounded,
+                        badge: _ankiPendientes > 0 ? '$_ankiPendientes' : null,
+                        onTap: () => _ir(const RepasoAnkiScreen()),
+                      ),
+                      _RepasoCard(
+                        label: 'Repaso Exprés',
+                        icon: Icons.bolt_rounded,
+                        badge: _falladasCount > 0
+                            ? '$_falladasCount falladas'
+                            : null,
+                        onTap: () => _ir(const RepasoExpresScreen()),
+                      ),
+                      _RepasoCard(
+                        label: 'Flashcards',
+                        icon: Icons.style_rounded,
+                        onTap: () => _ir(const FlashcardsScreen()),
+                      ),
+                      _RepasoCard(
+                        label: 'Modo Repaso',
+                        icon: Icons.menu_book_rounded,
+                        onTap: () => _ir(const RepasoScreen()),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-              Center(
-                child: Text(
-                  'Prepara tu examen DGT',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: _kGrey,
-                    fontWeight: FontWeight.w400,
+                  const SizedBox(height: 12),
+                  _MarcadasTile(onTap: () => _ir(const MarcadasScreen())),
+                  const SizedBox(height: 28),
+                  const _SectionTitle('VER PROGRESO'),
+                  const SizedBox(height: 6),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: _ProgresoCard(
+                          label: 'Progreso',
+                          icon: Icons.trending_up_rounded,
+                          onTap: () => _ir(const ProgresoScreen()),
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: _ProgresoCard(
+                          label: 'Estadísticas',
+                          icon: Icons.bar_chart_rounded,
+                          onTap: () => _ir(const EstadisticasScreen()),
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: _ProgresoCard(
+                          label: 'Logros',
+                          icon: Icons.emoji_events_rounded,
+                          onTap: () => _ir(const LogrosScreen()),
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-              ),
-              const SizedBox(height: 12),
-              Center(child: _StreakBadge(racha: _racha, flameAnim: _flameAnim)),
-              const SizedBox(height: 10),
-              Center(
-                child: Image.asset(
-                  'assets/semaforo_normal.png',
-                  height: 76,
-                  fit: BoxFit.contain,
-                ),
-              ),
-              if (_mensajeHoy != null) ...[
-                const SizedBox(height: 8),
-                _MensajeMotivacional(mensaje: _mensajeHoy!),
-              ],
-              if (!_cargandoPregunta && _preguntaDia != null) ...[
-                const SizedBox(height: 14),
-                _PreguntaDiaCard(
-                  pregunta: _preguntaDia!,
-                  resultado: _resultadoDia,
-                  onTap: _abrirPreguntaDia,
-                ),
-              ],
-              const SizedBox(height: 24),
-
-              // ── Sección: Practicar ────────────────────────────────────────
-              _SectionLabel('PRACTICAR'),
-              const SizedBox(height: 10),
-              _HomeButton(
-                label: 'Modo Racha',
-                icon: Icons.local_fire_department_rounded,
-                isPrimary: true,
-                onTap: () => _ir(const ModoRachaScreen()),
-              ),
-              const SizedBox(height: 10),
-              _HomeButton(
-                label: 'Test Normal',
-                icon: Icons.quiz_outlined,
-                onTap: () => _ir(const TestNormalScreen()),
-              ),
-              const SizedBox(height: 10),
-              _HomeButton(
-                label: 'Examen Simulado',
-                icon: Icons.assignment_outlined,
-                onTap: () => _ir(const ExamenSimuladoScreen()),
-              ),
-              const SizedBox(height: 24),
-
-              // ── Sección: Repasar ──────────────────────────────────────────
-              _SectionLabel('REPASAR'),
-              const SizedBox(height: 10),
-              _RepasoInteligenteButton(
-                pendientes: _ankiPendientes,
-                cargando: _cargandoPregunta,
-                onTap: () => _ir(const RepasoAnkiScreen()),
-              ),
-              const SizedBox(height: 10),
-              _RepasoExpresButton(
-                falladasCount: _falladasCount,
-                onTap: () => _ir(const RepasoExpresScreen()),
-              ),
-              const SizedBox(height: 10),
-              _HomeButton(
-                label: 'Modo Repaso',
-                icon: Icons.menu_book_rounded,
-                onTap: () => _ir(const RepasoScreen()),
-              ),
-              const SizedBox(height: 10),
-              Row(
-                children: [
-                  Expanded(
-                    child: _HomeButton(
-                      label: 'Flashcards',
-                      icon: Icons.style_rounded,
-                      fontSize: 13,
-                      onTap: () => _ir(const FlashcardsScreen()),
-                    ),
-                  ),
-                  const SizedBox(width: 10),
-                  Expanded(
-                    child: _HomeButton(
-                      label: 'Marcadas',
-                      icon: Icons.bookmark_rounded,
-                      fontSize: 13,
-                      onTap: () => _ir(const MarcadasScreen()),
+                  const SizedBox(height: 24),
+                  const Center(
+                    child: Text(
+                      'Basado en los tests oficiales de la DGT',
+                      style: TextStyle(color: Color(0xFFBDBDBD), fontSize: 12),
                     ),
                   ),
                 ],
               ),
-              const SizedBox(height: 24),
-
-              // ── Sección: Ver progreso ─────────────────────────────────────
-              _SectionLabel('VER PROGRESO'),
-              const SizedBox(height: 10),
-              Row(
-                children: [
-                  Expanded(
-                    child: _HomeButton(
-                      label: 'Progreso',
-                      icon: Icons.trending_up_rounded,
-                      fontSize: 13,
-                      onTap: () => _ir(const ProgresoScreen()),
-                    ),
-                  ),
-                  const SizedBox(width: 10),
-                  Expanded(
-                    child: _HomeButton(
-                      label: 'Estadísticas',
-                      icon: Icons.bar_chart_rounded,
-                      fontSize: 13,
-                      onTap: () => _ir(const EstadisticasScreen()),
-                    ),
-                  ),
-                  const SizedBox(width: 10),
-                  Expanded(
-                    child: _HomeButton(
-                      label: 'Logros',
-                      icon: Icons.emoji_events_rounded,
-                      fontSize: 13,
-                      onTap: () => _ir(const LogrosScreen()),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 28),
-              Center(
-                child: const Text(
-                  'Basado en los tests oficiales de la DGT',
-                  style: TextStyle(color: Color(0xFFBDBDBD), fontSize: 12),
-                ),
-              ),
-              const SizedBox(height: 24),
-            ],
+            ),
           ),
+        ],
+      ),
+    );
+  }
+}
+
+// ── Pill badge ────────────────────────────────────────────────────────────────
+
+class _PillBadge extends StatelessWidget {
+  final String text;
+  const _PillBadge({required this.text});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+      decoration: BoxDecoration(
+        color: Colors.white.withValues(alpha: 0.22),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Text(
+        text,
+        style: const TextStyle(
+          color: Colors.white,
+          fontSize: 13,
+          fontWeight: FontWeight.w700,
+        ),
+      ),
+    );
+  }
+}
+
+// ── Section title ─────────────────────────────────────────────────────────────
+
+class _SectionTitle extends StatelessWidget {
+  final String text;
+  const _SectionTitle(this.text);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: const TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w800,
+        color: _kDark,
+      ),
+    );
+  }
+}
+
+// ── Modo Racha hero button ────────────────────────────────────────────────────
+
+class _ModoRachaButton extends StatelessWidget {
+  final VoidCallback onTap;
+  const _ModoRachaButton({required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(22),
+        gradient: const LinearGradient(
+          colors: [_kYellow, _kAmber],
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: _kYellow.withValues(alpha: 0.35),
+            blurRadius: 20,
+            offset: const Offset(0, 5),
+          ),
+        ],
+      ),
+      child: Material(
+        color: Colors.transparent,
+        borderRadius: BorderRadius.circular(22),
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(22),
+          splashColor: Colors.white.withValues(alpha: 0.15),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 20),
+            child: Row(
+              children: [
+                const Text('🔥', style: TextStyle(fontSize: 28)),
+                const SizedBox(width: 16),
+                const Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Modo Racha',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                      SizedBox(height: 3),
+                      Text(
+                        'Responde seguidas sin fallar',
+                        style: TextStyle(
+                          color: Colors.white70,
+                          fontSize: 13,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Icon(
+                  Icons.chevron_right_rounded,
+                  color: Colors.white.withValues(alpha: 0.7),
+                  size: 26,
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// ── Practicar card (2-col grid) ───────────────────────────────────────────────
+
+class _PracticarCard extends StatelessWidget {
+  final String label;
+  final IconData icon;
+  final VoidCallback onTap;
+
+  const _PracticarCard({
+    required this.label,
+    required this.icon,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.all(18),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.05),
+              blurRadius: 10,
+              offset: const Offset(0, 3),
+            ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              width: 44,
+              height: 44,
+              decoration: BoxDecoration(
+                color: const Color(0xFFFFF8EE),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Icon(icon, color: _kYellow, size: 22),
+            ),
+            const SizedBox(height: 14),
+            Text(
+              label,
+              style: const TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w700,
+                color: _kDark,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// ── Repaso card (2×2 grid) ────────────────────────────────────────────────────
+
+class _RepasoCard extends StatelessWidget {
+  final String label;
+  final IconData icon;
+  final String? badge;
+  final VoidCallback onTap;
+
+  const _RepasoCard({
+    required this.label,
+    required this.icon,
+    required this.onTap,
+    this.badge,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.05),
+              blurRadius: 10,
+              offset: const Offset(0, 3),
+            ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Container(
+                  width: 38,
+                  height: 38,
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFFFF8EE),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Icon(icon, color: _kYellow, size: 20),
+                ),
+                if (badge != null) ...[
+                  const SizedBox(width: 8),
+                  Flexible(
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 7, vertical: 3),
+                      decoration: BoxDecoration(
+                        color: _kYellow,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Text(
+                        badge!,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 10,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ],
+            ),
+            const SizedBox(height: 10),
+            Text(
+              label,
+              maxLines: 2,
+              style: const TextStyle(
+                fontSize: 13,
+                fontWeight: FontWeight.w700,
+                color: _kDark,
+                height: 1.3,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// ── Marcadas tile ─────────────────────────────────────────────────────────────
+
+class _MarcadasTile extends StatelessWidget {
+  final VoidCallback onTap;
+  const _MarcadasTile({required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.04),
+              blurRadius: 8,
+              offset: const Offset(0, 2),
+            ),
+          ],
+        ),
+        child: const Row(
+          children: [
+            Icon(Icons.bookmark_rounded, color: _kYellow, size: 22),
+            SizedBox(width: 14),
+            Expanded(
+              child: Text(
+                'Marcadas',
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w700,
+                  color: _kDark,
+                ),
+              ),
+            ),
+            Icon(Icons.chevron_right_rounded, color: _kGrey, size: 20),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// ── Progreso card (row of 3) ──────────────────────────────────────────────────
+
+class _ProgresoCard extends StatelessWidget {
+  final String label;
+  final IconData icon;
+  final VoidCallback onTap;
+
+  const _ProgresoCard({
+    required this.label,
+    required this.icon,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 18),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.04),
+              blurRadius: 8,
+              offset: const Offset(0, 2),
+            ),
+          ],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(icon, color: _kYellow, size: 24),
+            const SizedBox(height: 8),
+            Text(
+              label,
+              style: const TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w700,
+                color: _kDark,
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -367,7 +694,7 @@ class _PreguntaDiaCard extends StatelessWidget {
         iconData = Icons.close_rounded;
       }
     } else {
-      bgColor = const Color(0xFFFFFBEE);
+      bgColor = const Color(0xFFFFF8EE);
       borderColor = _kYellow.withValues(alpha: 0.45);
       iconBg = _kYellow;
       iconData = Icons.today_rounded;
@@ -534,8 +861,7 @@ class _PreguntaDiaModalState extends State<_PreguntaDiaModal> {
               children: [
                 Row(
                   children: [
-                    const Icon(Icons.today_rounded,
-                        color: _kYellow, size: 18),
+                    const Icon(Icons.today_rounded, color: _kYellow, size: 18),
                     const SizedBox(width: 6),
                     const Text(
                       'PREGUNTA DEL DÍA',
@@ -682,8 +1008,7 @@ class _PreguntaDiaModalState extends State<_PreguntaDiaModal> {
                     child: const Text(
                       'Ya respondiste la pregunta de hoy. ¡Vuelve mañana!',
                       textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontSize: 13, color: _kGrey, height: 1.4),
+                      style: TextStyle(fontSize: 13, color: _kGrey, height: 1.4),
                     ),
                   ),
                 const SizedBox(height: 8),
@@ -691,397 +1016,6 @@ class _PreguntaDiaModalState extends State<_PreguntaDiaModal> {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-// ── Mensaje motivacional ──────────────────────────────────────────────────────
-
-class _MensajeMotivacional extends StatelessWidget {
-  final String mensaje;
-  const _MensajeMotivacional({required this.mensaje});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-      decoration: BoxDecoration(
-        color: const Color(0xFFF5F5F5),
-        borderRadius: BorderRadius.circular(14),
-      ),
-      child: Text(
-        mensaje,
-        textAlign: TextAlign.center,
-        style: const TextStyle(
-          fontSize: 13,
-          fontWeight: FontWeight.w500,
-          color: _kGrey,
-          height: 1.4,
-        ),
-      ),
-    );
-  }
-}
-
-// ── Streak badge ──────────────────────────────────────────────────────────────
-
-class _StreakBadge extends StatelessWidget {
-  final int racha;
-  final Animation<double> flameAnim;
-  const _StreakBadge({required this.racha, required this.flameAnim});
-
-  @override
-  Widget build(BuildContext context) {
-    if (racha == 0) {
-      return Container(
-        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 9),
-        decoration: BoxDecoration(
-          color: const Color(0xFFF5F5F5),
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: const Text(
-          '🚦 Empieza tu racha hoy',
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w600,
-            color: _kGrey,
-          ),
-        ),
-      );
-    }
-
-    final label = racha == 1 ? '1 día seguido' : '$racha días seguidos';
-
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 9),
-      decoration: BoxDecoration(
-        color: const Color(0xFFFFF3E0),
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(
-          color: _kYellow.withValues(alpha: 0.45),
-          width: 1.5,
-        ),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          AnimatedBuilder(
-            animation: flameAnim,
-            builder: (_, child) => Transform.scale(
-              scale: flameAnim.value,
-              child: child,
-            ),
-            child: const Text('🔥', style: TextStyle(fontSize: 18)),
-          ),
-          const SizedBox(width: 7),
-          Text(
-            label,
-            style: const TextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.w800,
-              color: _kYellow,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-// ── Section label ─────────────────────────────────────────────────────────────
-
-class _SectionLabel extends StatelessWidget {
-  final String text;
-  const _SectionLabel(this.text);
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: const TextStyle(
-        fontSize: 11,
-        fontWeight: FontWeight.w700,
-        color: _kGrey,
-        letterSpacing: 0.9,
-      ),
-    );
-  }
-}
-
-// ── Repaso Inteligente button (always visible) ─────────────────────────────────
-
-class _RepasoInteligenteButton extends StatelessWidget {
-  final int pendientes;
-  final bool cargando;
-  final VoidCallback onTap;
-
-  const _RepasoInteligenteButton({
-    required this.pendientes,
-    required this.cargando,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final hayPendientes = !cargando && pendientes > 0;
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(22),
-        color: hayPendientes ? const Color(0xFFFFFBEE) : Colors.white,
-        border: Border.all(
-          color: hayPendientes
-              ? _kYellow.withValues(alpha: 0.6)
-              : _kBorder,
-          width: 1.8,
-        ),
-        boxShadow: hayPendientes
-            ? [
-                BoxShadow(
-                  color: _kYellow.withValues(alpha: 0.15),
-                  blurRadius: 12,
-                  offset: const Offset(0, 3),
-                ),
-              ]
-            : [
-                BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.04),
-                  blurRadius: 8,
-                  offset: const Offset(0, 2),
-                ),
-              ],
-      ),
-      child: Material(
-        color: Colors.transparent,
-        borderRadius: BorderRadius.circular(22),
-        child: InkWell(
-          onTap: onTap,
-          borderRadius: BorderRadius.circular(22),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 16),
-            child: Row(
-              children: [
-                Icon(
-                  Icons.auto_stories_rounded,
-                  color: hayPendientes ? _kYellow : _kGrey,
-                  size: 24,
-                ),
-                const SizedBox(width: 16),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Repaso Inteligente',
-                        style: TextStyle(
-                          color: hayPendientes ? _kDark : _kGrey,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      const SizedBox(height: 2),
-                      Text(
-                        cargando
-                            ? 'Cargando…'
-                            : pendientes > 0
-                                ? '$pendientes ${pendientes == 1 ? 'pregunta pendiente' : 'preguntas pendientes'} hoy'
-                                : '0 pendientes hoy — vuelve mañana',
-                        style: TextStyle(
-                          color: hayPendientes ? _kYellow : _kGrey,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Icon(
-                  Icons.chevron_right_rounded,
-                  color: hayPendientes ? _kGrey : const Color(0xFFDDDDDD),
-                  size: 22,
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-// ── Repaso Exprés button ──────────────────────────────────────────────────────
-
-class _RepasoExpresButton extends StatelessWidget {
-  final int falladasCount;
-  final VoidCallback onTap;
-
-  const _RepasoExpresButton({required this.falladasCount, required this.onTap});
-
-  @override
-  Widget build(BuildContext context) {
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(22),
-        gradient: const LinearGradient(
-          colors: [_kYellow, _kAmber],
-          begin: Alignment.centerLeft,
-          end: Alignment.centerRight,
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: _kYellow.withValues(alpha: 0.35),
-            blurRadius: 18,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      child: Material(
-        color: Colors.transparent,
-        borderRadius: BorderRadius.circular(22),
-        child: InkWell(
-          onTap: onTap,
-          borderRadius: BorderRadius.circular(22),
-          splashColor: Colors.white.withValues(alpha: 0.15),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 16),
-            child: Row(
-              children: [
-                const Text('⚡', style: TextStyle(fontSize: 22)),
-                const SizedBox(width: 14),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          const Text(
-                            'Repaso Exprés',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 17,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                          if (falladasCount > 0) ...[
-                            const SizedBox(width: 8),
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 7, vertical: 2),
-                              decoration: BoxDecoration(
-                                color: Colors.white.withValues(alpha: 0.25),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              child: Text(
-                                '$falladasCount falladas',
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 11,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ],
-                      ),
-                      const SizedBox(height: 2),
-                      const Text(
-                        'Para el día antes del examen',
-                        style: TextStyle(
-                          color: Colors.white70,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Icon(
-                  Icons.chevron_right_rounded,
-                  color: Colors.white.withValues(alpha: 0.7),
-                  size: 22,
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-// ── Home button ───────────────────────────────────────────────────────────────
-
-class _HomeButton extends StatelessWidget {
-  final String label;
-  final IconData icon;
-  final bool isPrimary;
-  final VoidCallback onTap;
-  final double fontSize;
-
-  const _HomeButton({
-    required this.label,
-    required this.icon,
-    required this.onTap,
-    this.isPrimary = false,
-    this.fontSize = 17,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(22),
-        color: isPrimary ? _kYellow : Colors.white,
-        border: isPrimary ? null : Border.all(color: _kBorder, width: 1.5),
-        boxShadow: [
-          BoxShadow(
-            color: isPrimary
-                ? _kYellow.withValues(alpha: 0.28)
-                : Colors.black.withValues(alpha: 0.04),
-            blurRadius: isPrimary ? 18 : 8,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      child: Material(
-        color: Colors.transparent,
-        borderRadius: BorderRadius.circular(22),
-        child: InkWell(
-          onTap: onTap,
-          borderRadius: BorderRadius.circular(22),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 18),
-            child: Row(
-              children: [
-                Icon(
-                  icon,
-                  color: isPrimary ? Colors.white : _kDark,
-                  size: 24,
-                ),
-                const SizedBox(width: 16),
-                Expanded(
-                  child: Text(
-                    label,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      color: isPrimary ? Colors.white : _kDark,
-                      fontSize: fontSize,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                ),
-                Icon(
-                  Icons.chevron_right_rounded,
-                  color: isPrimary
-                      ? Colors.white.withValues(alpha: 0.7)
-                      : const Color(0xFFBDBDBD),
-                  size: 22,
-                ),
-              ],
-            ),
-          ),
-        ),
       ),
     );
   }

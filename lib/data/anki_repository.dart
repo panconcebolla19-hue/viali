@@ -154,6 +154,50 @@ class AnkiRepository {
     await prefs.setString(_keyActividad, jsonEncode(actividad));
   }
 
+  // calificacion: 0=no sabía (→1d), 1=casi (→3d), 2=lo sabía (→7/21/60d)
+  static Future<void> registrarFlashcard(int preguntaId, int calificacion) async {
+    final prefs = await SharedPreferences.getInstance();
+    final mapa = await _cargarMapa(prefs);
+    final entry = mapa[preguntaId] ?? const AnkiEntry();
+    final AnkiEntry updated;
+    switch (calificacion) {
+      case 0:
+        updated = entry.copyWith(
+          acertadasSeguidas: 0,
+          totalFalladas: entry.totalFalladas + 1,
+          intervaloDias: 1,
+          vistas: entry.vistas + 1,
+          ultimoRepaso: _hoy(),
+        );
+        break;
+      case 1:
+        updated = entry.copyWith(
+          acertadasSeguidas: entry.acertadasSeguidas > 0 ? entry.acertadasSeguidas : 1,
+          intervaloDias: 3,
+          vistas: entry.vistas + 1,
+          ultimoRepaso: _hoy(),
+        );
+        break;
+      default:
+        final nuevasAcertadas = entry.acertadasSeguidas + 1;
+        final int nuevoIntervalo;
+        switch (nuevasAcertadas) {
+          case 1: nuevoIntervalo = 7; break;
+          case 2: nuevoIntervalo = 21; break;
+          default: nuevoIntervalo = 60;
+        }
+        updated = entry.copyWith(
+          acertadasSeguidas: nuevasAcertadas,
+          intervaloDias: nuevoIntervalo,
+          vistas: entry.vistas + 1,
+          ultimoRepaso: _hoy(),
+        );
+    }
+    mapa[preguntaId] = updated;
+    await _guardarMapa(prefs, mapa);
+    await _incrementarActividad(prefs);
+  }
+
   static Future<List<int>> pendientesHoy(List<int> todosIds) async {
     final prefs = await SharedPreferences.getInstance();
     final mapa = await _cargarMapa(prefs);

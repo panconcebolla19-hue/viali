@@ -16,6 +16,7 @@ import 'ajustes_screen.dart';
 import 'logros_screen.dart';
 import 'marcadas_screen.dart';
 import 'repaso_anki_screen.dart';
+import 'flashcards_screen.dart';
 
 const _kYellow = Color(0xFFF5A623);
 const _kGreen = Color(0xFF4CAF50);
@@ -263,6 +264,15 @@ class _HomeScreenState extends State<HomeScreen>
               const SizedBox(height: 10),
               Row(
                 children: [
+                  Expanded(
+                    child: _HomeButton(
+                      label: 'Flashcards',
+                      icon: Icons.style_rounded,
+                      fontSize: 13,
+                      onTap: () => _ir(const FlashcardsScreen()),
+                    ),
+                  ),
+                  const SizedBox(width: 10),
                   Expanded(
                     child: _HomeButton(
                       label: 'Marcadas',

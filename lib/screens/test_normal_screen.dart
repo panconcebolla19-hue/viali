@@ -1,15 +1,22 @@
 import 'dart:async';
+import 'dart:io';
 import 'dart:math';
+import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:share_plus/share_plus.dart';
 import '../models/pregunta.dart';
 import '../models/test_resultado.dart';
 import '../data/preguntas_repository.dart';
 import '../data/test_historial_repository.dart';
 import '../data/falladas_repository.dart';
 import '../data/daily_streak_repository.dart';
+import '../data/logros_repository.dart';
 import '../services/notification_service.dart';
 import '../widgets/confetti_overlay.dart';
+import 'logros_screen.dart';
 
 const _kYellow = Color(0xFFF5A623);
 const _kGreen = Color(0xFF4CAF50);
@@ -77,6 +84,7 @@ class _TestNormalScreenState extends State<TestNormalScreen>
 
   // Results state
   TestResultado? _resultado;
+  final GlobalKey _shareKey = GlobalKey();
 
   @override
   void initState() {
@@ -268,6 +276,8 @@ class _TestNormalScreenState extends State<TestNormalScreen>
     );
     await TestHistorialRepository.guardar(r);
     await FalladasRepository.agregar(_falladasTest);
+    await LogrosRepository.incrementarPreguntas(_preguntasTest.length);
+    final nuevosLogros = await LogrosRepository.checkAndUpdate();
     setState(() {
       _resultado = r;
       _fase = _Fase.resultados;
@@ -281,6 +291,119 @@ class _TestNormalScreenState extends State<TestNormalScreen>
       _confettiParticles = generateConfettiParticles(count: 72);
       _confettiCtrl.forward(from: 0);
     }
+    if (nuevosLogros.isNotEmpty && mounted) {
+      WidgetsBinding.instance.addPostFrameCallback((_) async {
+        for (final logro in nuevosLogros) {
+          if (!mounted) break;
+          await mostrarLogroPopup(context, logro);
+        }
+      });
+    }
+  }
+
+  Future<void> _compartirResultado(TestResultado r) async {
+    try {
+      final boundary =
+          _shareKey.currentContext?.findRenderObject() as RenderRepaintBoundary?;
+      if (boundary == null) return;
+      final image = await boundary.toImage(pixelRatio: 3.0);
+      final byteData =
+          await image.toByteData(format: ui.ImageByteFormat.png);
+      if (byteData == null) return;
+      final bytes = byteData.buffer.asUint8List();
+      final dir = await getTemporaryDirectory();
+      final file = File('${dir.path}/resultado_viali.png');
+      await file.writeAsBytes(bytes);
+      await Share.shareXFiles(
+        [XFile(file.path)],
+        text: '¿Puedes superarme? Descarga Viali 🚦',
+      );
+    } catch (_) {}
+  }
+
+  Widget _buildShareCard(TestResultado r) {
+    final pct = (r.porcentaje * 100).round();
+    final color = r.aprobado ? _kGreen : _kRed;
+    return Container(
+      padding: const EdgeInsets.all(24),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(color: _kBorder, width: 1.5),
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset('assets/semaforo_normal.png', height: 26),
+              const SizedBox(width: 8),
+              const Text(
+                'Viali',
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.w900,
+                  color: _kYellow,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 14),
+          RichText(
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: '${r.correctas}',
+                  style: TextStyle(
+                    fontSize: 48,
+                    fontWeight: FontWeight.w900,
+                    color: color,
+                    height: 1,
+                  ),
+                ),
+                TextSpan(
+                  text: '/${r.totalPreguntas}',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.w700,
+                    color: color.withValues(alpha: 0.6),
+                    height: 1,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 10),
+          Container(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+            decoration: BoxDecoration(
+              color: color,
+              borderRadius: BorderRadius.circular(16),
+            ),
+            child: Text(
+              r.aprobado ? 'APROBADO · $pct%' : 'SUSPENSO · $pct%',
+              style: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w800,
+                fontSize: 12,
+              ),
+            ),
+          ),
+          const SizedBox(height: 14),
+          const Text(
+            '¿Puedes superarme?\nDescarga Viali 🚦',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 12,
+              color: _kTextGrey,
+              height: 1.4,
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   void _repetirFalladas() {
@@ -722,6 +845,19 @@ class _TestNormalScreenState extends State<TestNormalScreen>
                   ),
                 ],
               ),
+            ),
+            // Share card
+            const SizedBox(height: 20),
+            RepaintBoundary(
+              key: _shareKey,
+              child: _buildShareCard(r),
+            ),
+            const SizedBox(height: 10),
+            _ActionButton(
+              label: 'Compartir resultado',
+              icon: Icons.share_rounded,
+              color: _kTextDark,
+              onTap: () => _compartirResultado(r),
             ),
             // Failed questions
             if (preguntasFalladas.isNotEmpty) ...[

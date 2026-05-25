@@ -8,8 +8,10 @@ import '../models/pregunta.dart';
 import '../data/preguntas_repository.dart';
 import '../data/falladas_repository.dart';
 import '../data/daily_streak_repository.dart';
+import '../data/logros_repository.dart';
 import '../services/notification_service.dart';
 import '../widgets/confetti_overlay.dart';
+import 'logros_screen.dart';
 
 const _kYellow = Color(0xFFF5A623);
 const _kGold = Color(0xFFFFD600);
@@ -270,6 +272,14 @@ class _ModoRachaScreenState extends State<ModoRachaScreen>
 
       _boingCtrl.forward(from: 0);
       _flashCtrl.forward(from: 0);
+      unawaited(() async {
+        await LogrosRepository.incrementarPreguntas(1);
+        final nuevosLogros = await LogrosRepository.checkAndUpdate();
+        for (final logro in nuevosLogros) {
+          if (!mounted) break;
+          await mostrarLogroPopup(context, logro);
+        }
+      }());
     } else {
       FalladasRepository.agregar([_preguntaActual!.id]);
       _shakeCtrl.forward(from: 0).then((_) {

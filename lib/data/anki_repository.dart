@@ -135,11 +135,12 @@ class AnkiRepository {
     Map<String, int> actividad;
     try {
       actividad = raw == null
-          ? {}
-          : (jsonDecode(raw) as Map<String, dynamic>).map((k, v) => MapEntry(k, v as int));
+          ? <String, int>{}
+          : (jsonDecode(raw) as Map<String, dynamic>)
+              .map((k, v) => MapEntry(k, (v as num?)?.toInt() ?? 0));
     } catch (e) {
       debugPrint('AnkiRepository: error al parsear anki_actividad: $e');
-      actividad = {};
+      actividad = <String, int>{};
     }
 
     final hoy = _hoy();
@@ -229,11 +230,12 @@ class AnkiRepository {
   static Future<Map<String, int>> cargarActividad() async {
     final prefs = await SharedPreferences.getInstance();
     final raw = prefs.getString(_keyActividad);
-    if (raw == null) return {};
+    if (raw == null) return <String, int>{};
     try {
-      return (jsonDecode(raw) as Map<String, dynamic>).map((k, v) => MapEntry(k, v as int));
+      return (jsonDecode(raw) as Map<String, dynamic>)
+          .map((k, v) => MapEntry(k, (v as num?)?.toInt() ?? 0));
     } catch (_) {
-      return {};
+      return <String, int>{};
     }
   }
 }

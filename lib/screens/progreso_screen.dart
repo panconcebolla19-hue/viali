@@ -81,7 +81,7 @@ class _ProgresoScreenState extends State<ProgresoScreen> {
     final preguntas = results[0] as List<Pregunta>;
     final historial = results[1] as List<TestResultado>;
     final ankiMapa = results[2] as Map<int, AnkiEntry>;
-    final actividadMapa = results[3] as Map<String, int>;
+    final actividadMapa = (results[3] as Map?)?.cast<String, int>() ?? <String, int>{};
     final streakData = results[4] as ({int streak, int maxStreak});
 
     final preguntasMapa = {for (final p in preguntas) p.id: p};

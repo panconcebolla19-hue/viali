@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../data/daily_streak_repository.dart';
+import '../data/falladas_repository.dart';
 import '../data/preguntas_repository.dart';
 import '../data/pregunta_dia_repository.dart';
 import '../data/anki_repository.dart';
@@ -77,10 +78,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Future<void> _cargarExtras() async {
     final prefs = await SharedPreferences.getInstance();
-    final mapa = await AnkiRepository.cargar();
+    final falladasIds = await FalladasRepository.cargar();
     if (mounted) {
       setState(() {
-        _falladasCount = mapa.values.where((e) => e.totalFalladas > 0).length;
+        _falladasCount = falladasIds.length;
         _totalPreguntas = prefs.getInt('preguntas_total') ?? 0;
       });
     }
@@ -190,7 +191,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   _ModoRachaButton(onTap: () => _ir(const ModoRachaScreen())),
                   const SizedBox(height: 28),
                   const _SectionTitle('PRACTICAR'),
-                  const SizedBox(height: 6),
+                  const SizedBox(height: 4),
                   Row(
                     children: [
                       Expanded(
@@ -212,11 +213,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   const SizedBox(height: 28),
                   const _SectionTitle('REPASAR'),
-                  const SizedBox(height: 6),
+                  const SizedBox(height: 4),
                   GridView.count(
                     crossAxisCount: 2,
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
+                    padding: EdgeInsets.zero,
                     mainAxisSpacing: 12,
                     crossAxisSpacing: 12,
                     childAspectRatio: 1.4,
@@ -251,7 +253,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   _MarcadasTile(onTap: () => _ir(const MarcadasScreen())),
                   const SizedBox(height: 28),
                   const _SectionTitle('VER PROGRESO'),
-                  const SizedBox(height: 6),
+                  const SizedBox(height: 4),
                   Row(
                     children: [
                       Expanded(

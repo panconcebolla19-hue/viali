@@ -168,6 +168,7 @@ class _ExamenSimuladoScreenState extends State<ExamenSimuladoScreen>
 
     if (nuevosLogros.isNotEmpty && mounted) {
       WidgetsBinding.instance.addPostFrameCallback((_) async {
+        if (!mounted) return;
         for (final logro in nuevosLogros) {
           if (!mounted) break;
           await mostrarLogroPopup(context, logro);
@@ -566,9 +567,9 @@ class _ExamenSimuladoScreenState extends State<ExamenSimuladoScreen>
                   const SizedBox(height: 12),
                   Text(
                     apto
-                        ? '¡Enhorabuena! Estás listo para el examen real.'
-                        : r.correctas >= 27
-                            ? ''
+                        ? '¡Enhorabuena! Estás listo para el examen real. 🎉'
+                        : r.correctas >= 25
+                            ? '¡Muy cerca! Un poco más de práctica y lo consigues.'
                             : 'Necesitas ${27 - r.correctas} ${27 - r.correctas == 1 ? "acierto más" : "aciertos más"} para aprobar. ¡Sigue practicando!',
                     textAlign: TextAlign.center,
                     style: const TextStyle(
@@ -899,6 +900,17 @@ class _RevisionCard extends StatelessWidget {
                       height: 1.3,
                     ),
                   ),
+                  if (pregunta.explicacion.isNotEmpty) ...[
+                    const SizedBox(height: 4),
+                    Text(
+                      pregunta.explicacion,
+                      style: const TextStyle(
+                        fontSize: 11,
+                        color: _kTextGrey,
+                        height: 1.3,
+                      ),
+                    ),
+                  ],
                 ],
               ],
             ),

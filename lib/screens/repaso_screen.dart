@@ -7,6 +7,7 @@ import '../data/preguntas_repository.dart';
 import '../data/falladas_repository.dart';
 import '../data/test_historial_repository.dart';
 import '../data/anki_repository.dart';
+import '../data/daily_streak_repository.dart';
 
 const _kYellow = Color(0xFFF5A623);
 const _kDark = Color(0xFF1A1A1A);
@@ -40,6 +41,7 @@ class _RepasoScreenState extends State<RepasoScreen> {
   _EstadoMascota _estadoMascota = _EstadoMascota.normal;
   int _correctas = 0;
   bool _finalizado = false;
+  bool _estudiadoHoy = false;
 
   @override
   void initState() {
@@ -67,6 +69,7 @@ class _RepasoScreenState extends State<RepasoScreen> {
   }
 
   void _prepararPregunta() {
+    if (_indice >= _preguntas.length) return;
     final p = _preguntas[_indice];
     final indices = List.generate(p.opciones.length, (i) => i)..shuffle(Random());
     setState(() {
@@ -90,6 +93,10 @@ class _RepasoScreenState extends State<RepasoScreen> {
       if (ok) _correctas++;
     });
     unawaited(AnkiRepository.registrarRespuesta(p.id, ok));
+    if (!_estudiadoHoy) {
+      _estudiadoHoy = true;
+      unawaited(DailyStreakRepository.registrarEstudio());
+    }
   }
 
   void _siguiente() {

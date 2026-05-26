@@ -7,6 +7,7 @@ import '../data/test_historial_repository.dart';
 import '../models/test_resultado.dart';
 import '../data/anki_repository.dart';
 import '../data/daily_streak_repository.dart';
+import '../utils/tema_utils.dart';
 
 const _kYellow = Color(0xFFF5A623);
 const _kDark = Color(0xFF1A1A1A);
@@ -26,39 +27,6 @@ const _temas = [
   ('Documentación', 'documentacion'),
   ('Otras', 'otro'),
 ];
-
-String _detectarTema(Pregunta p) {
-  final t = p.enunciado.toLowerCase();
-  if (t.contains('señal') || t.contains('prohibi') || t.contains('advertenc') ||
-      t.contains('stop') || t.contains('ceda') || t.contains('indicaci')) {
-    return 'señales';
-  }
-  if (t.contains('velocidad') || t.contains('km/h') || t.contains('límite') ||
-      t.contains('limite')) {
-    return 'velocidad';
-  }
-  if (t.contains('alcohol') || t.contains('tasa') || t.contains('droga') ||
-      t.contains('estupef')) {
-    return 'alcohol';
-  }
-  if (t.contains('adelant') || t.contains('rebasar')) return 'adelantamientos';
-  if (t.contains('distancia') || t.contains('separaci') || t.contains('intervalo')) {
-    return 'distancias';
-  }
-  if (t.contains('autopista') || t.contains('autovía') || t.contains('autovia') ||
-      t.contains('vía rápida')) {
-    return 'autopista';
-  }
-  if (t.contains('medio ambi') || t.contains('contaminac') || t.contains('emisione') ||
-      t.contains('neumátic') || t.contains('neumatic')) {
-    return 'medio_ambiente';
-  }
-  if (t.contains('documentac') || t.contains('carnet') || t.contains('permiso') ||
-      t.contains('itv') || t.contains(' seguro')) {
-    return 'documentacion';
-  }
-  return 'otro';
-}
 
 String _isoDate(DateTime d) =>
     '${d.year}-${d.month.toString().padLeft(2, '0')}-${d.day.toString().padLeft(2, '0')}';
@@ -126,7 +94,7 @@ class _ProgresoScreenState extends State<ProgresoScreen> {
     final totalPorTema = <String, int>{};
     final falladasPorTema = <String, int>{};
     for (final p in preguntas) {
-      final tema = _detectarTema(p);
+      final tema = detectarTema(p);
       totalPorTema[tema] = (totalPorTema[tema] ?? 0) + 1;
       if (todasFalladas.contains(p.id)) {
         falladasPorTema[tema] = (falladasPorTema[tema] ?? 0) + 1;
@@ -205,9 +173,45 @@ class _ProgresoScreenState extends State<ProgresoScreen> {
         totalRespondidas > 0 ? totalCorrectas / totalRespondidas : 0.0;
     final sinDatosTema = d.topFalladas.isEmpty && d.falladasPorTema.isEmpty;
 
+    // ── Preparación estimada ──────────────────────────────────────────────
+    final totalPreguntasTodas =
+        d.totalPorTema.values.fold(0, (a, b) => a + b);
+    final dominadasPct =
+        totalPreguntasTodas > 0 ? d.dominadas.length / totalPreguntasTodas : 0.0;
+    final streakPct = (d.streak / 30.0).clamp(0.0, 1.0);
+    final readiness =
+        ((mediaAciertos * 0.5) + (dominadasPct * 0.3) + (streakPct * 0.2))
+            .clamp(0.0, 1.0);
+
+    String? peorTema;
+    if (d.falladasPorTema.isNotEmpty) {
+      final sorted = d.totalPorTema.entries
+          .where((e) => e.value > 0)
+          .map((e) {
+            final falladas = d.falladasPorTema[e.key] ?? 0;
+            return (key: e.key, pct: (e.value - falladas) / e.value);
+          })
+          .toList()
+        ..sort((a, b) => a.pct.compareTo(b.pct));
+      if (sorted.isNotEmpty) {
+        final peorKey = sorted.first.key;
+        peorTema = _temas
+                .firstWhere((t) => t.$2 == peorKey,
+                    orElse: () => (peorKey, peorKey))
+                .$1;
+      }
+    }
+
     return ListView(
       padding: const EdgeInsets.fromLTRB(20, 12, 20, 40),
       children: [
+        // ── Preparación estimada ────────────────────────────────────────────
+        _PreparacionCard(
+          readiness: readiness,
+          totalRespondidas: totalRespondidas,
+          peorTema: peorTema,
+        ),
+        const SizedBox(height: 20),
         // ── Racha ──────────────────────────────────────────────────────────
         _RachaCard(streak: d.streak, maxStreak: d.maxStreak),
         const SizedBox(height: 20),
@@ -945,6 +949,115 @@ class _PreguntaModalState extends State<_PreguntaModal> {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+// ── Preparación estimada ──────────────────────────────────────────────────────
+
+class _PreparacionCard extends StatelessWidget {
+  final double readiness;
+  final int totalRespondidas;
+  final String? peorTema;
+
+  const _PreparacionCard({
+    required this.readiness,
+    required this.totalRespondidas,
+    this.peorTema,
+  });
+
+  Color get _color {
+    if (readiness >= 0.8) return _kGreen;
+    if (readiness >= 0.6) return _kYellow;
+    if (readiness >= 0.4) return const Color(0xFFFF9800);
+    return _kRed;
+  }
+
+  String get _mensaje {
+    if (totalRespondidas == 0) {
+      return 'Haz tu primer test para ver tu preparación.';
+    }
+    if (readiness >= 0.8) return '¡Estás listo! Sigue manteniendo el nivel.';
+    if (readiness >= 0.6) {
+      return peorTema != null
+          ? 'Buen ritmo — mejora $peorTema.'
+          : 'Buen ritmo, sigue así.';
+    }
+    if (readiness >= 0.4) {
+      return peorTema != null
+          ? 'En progreso — enfócate en $peorTema.'
+          : 'Sigue practicando cada día.';
+    }
+    return 'Empieza fuerte — practica más cada día.';
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final pct = (readiness * 100).round();
+    final color = _color;
+
+    return Container(
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: color.withValues(alpha: 0.07),
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: color.withValues(alpha: 0.35), width: 1.5),
+      ),
+      child: Row(
+        children: [
+          SizedBox(
+            width: 80,
+            height: 80,
+            child: Stack(
+              fit: StackFit.expand,
+              children: [
+                CircularProgressIndicator(
+                  value: readiness.clamp(0.0, 1.0),
+                  strokeWidth: 7,
+                  backgroundColor: color.withValues(alpha: 0.15),
+                  valueColor: AlwaysStoppedAnimation(color),
+                ),
+                Center(
+                  child: Text(
+                    '$pct%',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w900,
+                      color: color,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(width: 18),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Preparación estimada',
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: _kGrey,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                const SizedBox(height: 6),
+                Text(
+                  _mensaje,
+                  style: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w700,
+                    color: _kDark,
+                    height: 1.4,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

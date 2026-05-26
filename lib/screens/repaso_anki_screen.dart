@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../models/pregunta.dart';
 import '../data/preguntas_repository.dart';
 import '../data/anki_repository.dart';
+import '../data/daily_streak_repository.dart';
 import '../data/logros_repository.dart';
 import 'logros_screen.dart';
 
@@ -38,6 +39,7 @@ class _RepasoAnkiScreenState extends State<RepasoAnkiScreen> {
   int _correctas = 0;
   bool _finalizado = false;
   int _intervalMensaje = 1;
+  bool _estudiadoHoy = false;
 
   @override
   void initState() {
@@ -89,6 +91,12 @@ class _RepasoAnkiScreenState extends State<RepasoAnkiScreen> {
     final idxOrig = _mapaIndices[opcionDisplay];
     final ok = idxOrig == p.respuestaCorrecta;
     unawaited(AnkiRepository.registrarRespuesta(p.id, ok));
+    if (!mounted) return;
+    if (!_estudiadoHoy) {
+      _estudiadoHoy = true;
+      unawaited(DailyStreakRepository.registrarEstudio());
+      if (!mounted) return;
+    }
     _actualizarLogros();
 
     final entry = _ankiData[p.id] ?? const AnkiEntry();
@@ -119,6 +127,7 @@ class _RepasoAnkiScreenState extends State<RepasoAnkiScreen> {
     final nuevos = await LogrosRepository.checkAndUpdate();
     if (mounted && nuevos.isNotEmpty) {
       for (final l in nuevos) {
+        if (!mounted) break;
         await mostrarLogroPopup(context, l);
       }
     }
@@ -310,6 +319,7 @@ class _RepasoAnkiScreenState extends State<RepasoAnkiScreen> {
   }
 
   Widget _buildQuiz() {
+    if (_indice >= _preguntas.length) return const SizedBox.shrink();
     final p = _preguntas[_indice];
     final correctaEnDisplay =
         _respondida ? _mapaIndices.indexOf(p.respuestaCorrecta) : -1;

@@ -91,7 +91,9 @@ class LogrosRepository {
       if (idx < 0) continue;
       try {
         map[s.substring(0, idx)] = DateTime.parse(s.substring(idx + 1));
-      } catch (_) {}
+      } catch (e) {
+        debugPrint('LogrosRepository: error al parsear logro "$s": $e');
+      }
     }
     return map;
   }

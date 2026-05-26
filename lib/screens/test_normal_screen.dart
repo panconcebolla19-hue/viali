@@ -17,6 +17,7 @@ import '../data/logros_repository.dart';
 import '../data/anki_repository.dart';
 import '../data/marcadas_repository.dart';
 import '../services/notification_service.dart';
+import '../utils/tema_utils.dart';
 import '../widgets/confetti_overlay.dart';
 import 'logros_screen.dart';
 
@@ -168,46 +169,13 @@ class _TestNormalScreenState extends State<TestNormalScreen>
     }
   }
 
-  String _detectarTema(Pregunta p) {
-    final t = p.enunciado.toLowerCase();
-    if (t.contains('señal') || t.contains('prohibi') || t.contains('advertenc') ||
-        t.contains('stop') || t.contains('ceda') || t.contains('indicaci')) {
-      return 'señales';
-    }
-    if (t.contains('velocidad') || t.contains('km/h') || t.contains('límite') ||
-        t.contains('limite')) {
-      return 'velocidad';
-    }
-    if (t.contains('alcohol') || t.contains('tasa') || t.contains('droga') ||
-        t.contains('estupef')) {
-      return 'alcohol';
-    }
-    if (t.contains('adelant') || t.contains('rebasar')) { return 'adelantamientos'; }
-    if (t.contains('distancia') || t.contains('separaci') || t.contains('intervalo')) {
-      return 'distancias';
-    }
-    if (t.contains('autopista') || t.contains('autovía') || t.contains('autovia') ||
-        t.contains('vía rápida')) {
-      return 'autopista';
-    }
-    if (t.contains('medio ambi') || t.contains('contaminac') || t.contains('emisione') ||
-        t.contains('neumátic') || t.contains('neumatic')) {
-      return 'medio_ambiente';
-    }
-    if (t.contains('documentac') || t.contains('carnet') || t.contains('permiso') ||
-        t.contains('itv') || t.contains(' seguro')) {
-      return 'documentacion';
-    }
-    return 'otro';
-  }
-
   void _empezarTest() {
     List<Pregunta> pool = List.from(_todasPreguntas);
 
     switch (_modo) {
       case 'Por temática':
         final filtrado =
-            _todasPreguntas.where((p) => _detectarTema(p) == _tema).toList();
+            _todasPreguntas.where((p) => detectarTema(p) == _tema).toList();
         if (filtrado.isNotEmpty) pool = filtrado;
       case 'Por dificultad':
         switch (_dificultad) {
@@ -316,6 +284,7 @@ class _TestNormalScreenState extends State<TestNormalScreen>
     }
     if (nuevosLogros.isNotEmpty && mounted) {
       WidgetsBinding.instance.addPostFrameCallback((_) async {
+        if (!mounted) return;
         for (final logro in nuevosLogros) {
           if (!mounted) break;
           await mostrarLogroPopup(context, logro);
@@ -1211,6 +1180,17 @@ class _PreguntaFalladaCard extends StatelessWidget {
               ),
             ],
           ),
+          if (pregunta.explicacion.isNotEmpty) ...[
+            const SizedBox(height: 8),
+            Text(
+              pregunta.explicacion,
+              style: const TextStyle(
+                fontSize: 12,
+                color: _kTextGrey,
+                height: 1.4,
+              ),
+            ),
+          ],
         ],
       ),
     );

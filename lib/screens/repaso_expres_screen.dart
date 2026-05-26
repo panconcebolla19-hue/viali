@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../models/pregunta.dart';
 import '../data/preguntas_repository.dart';
 import '../data/anki_repository.dart';
+import '../data/daily_streak_repository.dart';
 import '../data/logros_repository.dart';
 import 'logros_screen.dart';
 
@@ -33,6 +34,8 @@ class _RepasoExpresScreenState extends State<RepasoExpresScreen> {
   List<Pregunta> _preguntas = [];
   int _falladasDisponibles = 0;
   bool _cargando = true;
+
+  bool _estudiadoHoy = false;
 
   // ── Phase ─────────────────────────────────────────────────────────────────
   _FaseExpres _fase = _FaseExpres.entrada;
@@ -156,6 +159,12 @@ class _RepasoExpresScreenState extends State<RepasoExpresScreen> {
       if (ok) _correctas++;
     });
     unawaited(AnkiRepository.registrarRespuesta(p.id, ok));
+    if (!mounted) return;
+    if (!_estudiadoHoy) {
+      _estudiadoHoy = true;
+      unawaited(DailyStreakRepository.registrarEstudio());
+      if (!mounted) return;
+    }
     _actualizarLogros();
 
     _autoAdvanceTimer?.cancel();
@@ -178,6 +187,7 @@ class _RepasoExpresScreenState extends State<RepasoExpresScreen> {
     final nuevos = await LogrosRepository.checkAndUpdate();
     if (mounted && nuevos.isNotEmpty) {
       for (final l in nuevos) {
+        if (!mounted) break;
         await mostrarLogroPopup(context, l);
       }
     }

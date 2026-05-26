@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import '../models/pregunta.dart';
 import '../data/preguntas_repository.dart';
 import '../data/anki_repository.dart';
+import '../data/daily_streak_repository.dart';
 import '../data/marcadas_repository.dart';
 import '../data/falladas_repository.dart';
 import '../data/test_historial_repository.dart';
 import '../data/logros_repository.dart';
+import '../utils/tema_utils.dart';
 import 'logros_screen.dart';
 
 const _kYellow = Color(0xFFF5A623);
@@ -27,41 +29,6 @@ const _temas = [
   ('Medio ambiente', 'medio_ambiente'),
   ('Documentación', 'documentacion'),
 ];
-
-String _detectarTema(Pregunta p) {
-  final t = p.enunciado.toLowerCase();
-  if (t.contains('señal') || t.contains('prohibi') || t.contains('advertenc') ||
-      t.contains('stop') || t.contains('ceda') || t.contains('indicaci')) {
-    return 'señales';
-  }
-  if (t.contains('velocidad') || t.contains('km/h') || t.contains('límite') ||
-      t.contains('limite')) {
-    return 'velocidad';
-  }
-  if (t.contains('alcohol') || t.contains('tasa') || t.contains('droga') ||
-      t.contains('estupef')) {
-    return 'alcohol';
-  }
-  if (t.contains('adelant') || t.contains('rebasar')) {
-    return 'adelantamientos';
-  }
-  if (t.contains('distancia') || t.contains('separaci') || t.contains('intervalo')) {
-    return 'distancias';
-  }
-  if (t.contains('autopista') || t.contains('autovía') || t.contains('autovia') ||
-      t.contains('vía rápida')) {
-    return 'autopista';
-  }
-  if (t.contains('medio ambi') || t.contains('contaminac') || t.contains('emisione') ||
-      t.contains('neumátic') || t.contains('neumatic')) {
-    return 'medio_ambiente';
-  }
-  if (t.contains('documentac') || t.contains('carnet') || t.contains('permiso') ||
-      t.contains('itv') || t.contains(' seguro')) {
-    return 'documentacion';
-  }
-  return 'otro';
-}
 
 enum _FaseFlash { seleccion, cartas, resumen }
 
@@ -88,6 +55,8 @@ class _FlashcardsScreenState extends State<FlashcardsScreen>
   String _filtro = 'todas'; // 'todas','marcadas','falladas','tema'
   String _temaSeleccionado = 'señales';
 
+  bool _estudiadoHoy = false;
+
   // ── Card state ──────────────────────────────────────────────────────────────
   int _indiceActual = 0;
   int _sabias = 0;
@@ -102,6 +71,7 @@ class _FlashcardsScreenState extends State<FlashcardsScreen>
 
   // ── Exit animation (swipe out) ──────────────────────────────────────────────
   late final AnimationController _exitCtrl;
+  late final void Function(AnimationStatus) _exitStatusListener;
   double _exitFromX = 0;
   double _exitToX = 0;
 
@@ -123,24 +93,28 @@ class _FlashcardsScreenState extends State<FlashcardsScreen>
       duration: const Duration(milliseconds: 240),
       vsync: this,
     );
-    _exitCtrl.addStatusListener((status) {
+    _exitStatusListener = (status) {
       if (status == AnimationStatus.completed) {
         final calificacion = _exitToX > 0 ? 2 : 0;
         _registrarYavanzar(calificacion);
         _exitCtrl.reset();
-        setState(() {
-          _dragOffset = 0;
-          _exitFromX = 0;
-          _exitToX = 0;
-        });
+        if (mounted) {
+          setState(() {
+            _dragOffset = 0;
+            _exitFromX = 0;
+            _exitToX = 0;
+          });
+        }
       }
-    });
+    };
+    _exitCtrl.addStatusListener(_exitStatusListener);
 
     _cargar();
   }
 
   @override
   void dispose() {
+    _exitCtrl.removeStatusListener(_exitStatusListener);
     _flipCtrl.dispose();
     _exitCtrl.dispose();
     super.dispose();
@@ -180,7 +154,7 @@ class _FlashcardsScreenState extends State<FlashcardsScreen>
         if (pool.isEmpty) pool = List.from(_todasPreguntas);
       case 'tema':
         pool = _todasPreguntas
-            .where((p) => _detectarTema(p) == _temaSeleccionado)
+            .where((p) => detectarTema(p) == _temaSeleccionado)
             .toList();
         if (pool.isEmpty) pool = List.from(_todasPreguntas);
       default:
@@ -215,8 +189,16 @@ class _FlashcardsScreenState extends State<FlashcardsScreen>
   }
 
   void _registrarYavanzar(int calificacion) {
+    if (!mounted) return;
+    if (_indiceActual >= _cartas.length) return;
     final p = _cartas[_indiceActual];
     unawaited(AnkiRepository.registrarFlashcard(p.id, calificacion));
+    if (!mounted) return;
+    if (!_estudiadoHoy) {
+      _estudiadoHoy = true;
+      unawaited(DailyStreakRepository.registrarEstudio());
+      if (!mounted) return;
+    }
     _actualizarLogros();
 
     _EstadoMascota mascota;
@@ -262,6 +244,7 @@ class _FlashcardsScreenState extends State<FlashcardsScreen>
     final nuevos = await LogrosRepository.checkAndUpdate();
     if (mounted && nuevos.isNotEmpty) {
       for (final l in nuevos) {
+        if (!mounted) break;
         await mostrarLogroPopup(context, l);
       }
     }
@@ -427,6 +410,7 @@ class _FlashcardsScreenState extends State<FlashcardsScreen>
   // ── Phase 2: Cards ────────────────────────────────────────────────────────────
 
   Widget _buildCartas() {
+    if (_indiceActual >= _cartas.length) return const SizedBox.shrink();
     final p = _cartas[_indiceActual];
     final total = _cartas.length;
     final cardX = _currentCardX;

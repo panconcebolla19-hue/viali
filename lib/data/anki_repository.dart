@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AnkiEntry {
@@ -17,7 +18,7 @@ class AnkiEntry {
   });
 
   bool get pendienteHoy {
-    if (ultimoRepaso == null) return false;
+    if (ultimoRepaso == null) return true;
     final last = DateTime.parse(ultimoRepaso!);
     final hoy = DateTime.now();
     final lastDate = DateTime(last.year, last.month, last.day);
@@ -75,7 +76,8 @@ class AnkiRepository {
       return decoded.map(
         (k, v) => MapEntry(int.parse(k), AnkiEntry.fromJson(v as Map<String, dynamic>)),
       );
-    } catch (_) {
+    } catch (e) {
+      debugPrint('AnkiRepository: error al parsear anki_data: $e');
       return {};
     }
   }
@@ -113,7 +115,7 @@ class AnkiRepository {
           nuevoIntervalo = 21;
           break;
         default:
-          nuevoIntervalo = 60;
+          nuevoIntervalo = 30;
       }
       updated = entry.copyWith(
         acertadasSeguidas: nuevasAcertadas,
@@ -135,7 +137,8 @@ class AnkiRepository {
       actividad = raw == null
           ? {}
           : (jsonDecode(raw) as Map<String, dynamic>).map((k, v) => MapEntry(k, v as int));
-    } catch (_) {
+    } catch (e) {
+      debugPrint('AnkiRepository: error al parsear anki_actividad: $e');
       actividad = {};
     }
 
@@ -184,7 +187,7 @@ class AnkiRepository {
         switch (nuevasAcertadas) {
           case 1: nuevoIntervalo = 7; break;
           case 2: nuevoIntervalo = 21; break;
-          default: nuevoIntervalo = 60;
+          default: nuevoIntervalo = 30;
         }
         updated = entry.copyWith(
           acertadasSeguidas: nuevasAcertadas,
@@ -201,10 +204,21 @@ class AnkiRepository {
   static Future<List<int>> pendientesHoy(List<int> todosIds) async {
     final prefs = await SharedPreferences.getInstance();
     final mapa = await _cargarMapa(prefs);
-    return todosIds.where((id) {
+
+    final srsDebidos = <int>[];
+    final nuevas = <int>[];
+
+    for (final id in todosIds) {
       final entry = mapa[id];
-      return entry != null && entry.pendienteHoy;
-    }).toList();
+      if (entry == null) {
+        nuevas.add(id);
+      } else if (entry.pendienteHoy) {
+        srsDebidos.add(id);
+      }
+    }
+
+    nuevas.shuffle();
+    return [...srsDebidos, ...nuevas.take(15)];
   }
 
   static Future<Map<int, AnkiEntry>> cargar() async {

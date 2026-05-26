@@ -2,7 +2,6 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import '../models/pregunta.dart';
 import '../data/preguntas_repository.dart';
-import '../data/falladas_repository.dart';
 import '../data/test_historial_repository.dart';
 import '../models/test_resultado.dart';
 import '../data/anki_repository.dart';
@@ -33,8 +32,8 @@ String _isoDate(DateTime d) =>
 
 class _ProgresoData {
   final List<TestResultado> historial;
-  final Map<String, int> totalPorTema;
-  final Map<String, int> falladasPorTema;
+  final Map<String, int> respondadasPorTema;
+  final Map<String, int> sinErroresPorTema;
   final int streak;
   final int maxStreak;
   final List<int> actividad7dias;
@@ -43,8 +42,8 @@ class _ProgresoData {
 
   const _ProgresoData({
     required this.historial,
-    required this.totalPorTema,
-    required this.falladasPorTema,
+    required this.respondadasPorTema,
+    required this.sinErroresPorTema,
     required this.streak,
     required this.maxStreak,
     required this.actividad7dias,
@@ -74,8 +73,6 @@ class _ProgresoScreenState extends State<ProgresoScreen> {
     final results = await Future.wait([
       PreguntasRepository.cargarPreguntas(),
       TestHistorialRepository.cargar(),
-      FalladasRepository.cargar(),
-      TestHistorialRepository.idsPreguntasFalladas(),
       AnkiRepository.cargar(),
       AnkiRepository.cargarActividad(),
       DailyStreakRepository.cargar(),
@@ -83,25 +80,24 @@ class _ProgresoScreenState extends State<ProgresoScreen> {
 
     final preguntas = results[0] as List<Pregunta>;
     final historial = results[1] as List<TestResultado>;
-    final falladasRacha = results[2] as Set<int>;
-    final falladasHistorial = results[3] as Set<int>;
-    final ankiMapa = results[4] as Map<int, AnkiEntry>;
-    final actividadMapa = results[5] as Map<String, int>;
-    final streakData = results[6] as ({int streak, int maxStreak});
-
-    final todasFalladas = {...falladasRacha, ...falladasHistorial};
-
-    final totalPorTema = <String, int>{};
-    final falladasPorTema = <String, int>{};
-    for (final p in preguntas) {
-      final tema = detectarTema(p);
-      totalPorTema[tema] = (totalPorTema[tema] ?? 0) + 1;
-      if (todasFalladas.contains(p.id)) {
-        falladasPorTema[tema] = (falladasPorTema[tema] ?? 0) + 1;
-      }
-    }
+    final ankiMapa = results[2] as Map<int, AnkiEntry>;
+    final actividadMapa = results[3] as Map<String, int>;
+    final streakData = results[4] as ({int streak, int maxStreak});
 
     final preguntasMapa = {for (final p in preguntas) p.id: p};
+
+    final respondadasPorTema = <String, int>{};
+    final sinErroresPorTema = <String, int>{};
+    for (final entry in ankiMapa.entries) {
+      if (entry.value.vistas == 0) continue;
+      final p = preguntasMapa[entry.key];
+      if (p == null) continue;
+      final tema = detectarTema(p);
+      respondadasPorTema[tema] = (respondadasPorTema[tema] ?? 0) + 1;
+      if (entry.value.totalFalladas == 0) {
+        sinErroresPorTema[tema] = (sinErroresPorTema[tema] ?? 0) + 1;
+      }
+    }
 
     final falladasConConteo = ankiMapa.entries
         .where((e) => e.value.totalFalladas > 0 && preguntasMapa.containsKey(e.key))
@@ -125,8 +121,8 @@ class _ProgresoScreenState extends State<ProgresoScreen> {
       setState(() {
         _datos = _ProgresoData(
           historial: historial,
-          totalPorTema: totalPorTema,
-          falladasPorTema: falladasPorTema,
+          respondadasPorTema: respondadasPorTema,
+          sinErroresPorTema: sinErroresPorTema,
           streak: streakData.streak,
           maxStreak: streakData.maxStreak,
           actividad7dias: actividad7dias,
@@ -171,25 +167,24 @@ class _ProgresoScreenState extends State<ProgresoScreen> {
     final totalCorrectas = d.historial.fold(0, (s, r) => s + r.correctas);
     final mediaAciertos =
         totalRespondidas > 0 ? totalCorrectas / totalRespondidas : 0.0;
-    final sinDatosTema = d.topFalladas.isEmpty && d.falladasPorTema.isEmpty;
+    final sinDatosTema = d.respondadasPorTema.isEmpty;
 
     // ── Preparación estimada ──────────────────────────────────────────────
-    final totalPreguntasTodas =
-        d.totalPorTema.values.fold(0, (a, b) => a + b);
+    final totalUnicasRespondidas =
+        d.respondadasPorTema.values.fold(0, (a, b) => a + b);
     final dominadasPct =
-        totalPreguntasTodas > 0 ? d.dominadas.length / totalPreguntasTodas : 0.0;
+        totalUnicasRespondidas > 0 ? d.dominadas.length / totalUnicasRespondidas : 0.0;
     final streakPct = (d.streak / 30.0).clamp(0.0, 1.0);
     final readiness =
         ((mediaAciertos * 0.5) + (dominadasPct * 0.3) + (streakPct * 0.2))
             .clamp(0.0, 1.0);
 
     String? peorTema;
-    if (d.falladasPorTema.isNotEmpty) {
-      final sorted = d.totalPorTema.entries
-          .where((e) => e.value > 0)
+    if (d.respondadasPorTema.isNotEmpty) {
+      final sorted = d.respondadasPorTema.entries
           .map((e) {
-            final falladas = d.falladasPorTema[e.key] ?? 0;
-            return (key: e.key, pct: (e.value - falladas) / e.value);
+            final sinErrores = d.sinErroresPorTema[e.key] ?? 0;
+            return (key: e.key, pct: sinErrores / e.value);
           })
           .toList()
         ..sort((a, b) => a.pct.compareTo(b.pct));
@@ -322,7 +317,7 @@ class _ProgresoScreenState extends State<ProgresoScreen> {
         Text(
           sinDatosTema
               ? 'Empieza a practicar para ver tus estadísticas por tema.'
-              : 'Basado en preguntas falladas alguna vez.',
+              : 'Solo incluye preguntas que has respondido.',
           style: const TextStyle(fontSize: 13, color: _kGrey),
         ),
         const SizedBox(height: 16),
@@ -353,11 +348,32 @@ class _ProgresoScreenState extends State<ProgresoScreen> {
           )
         else
           ..._temas.map((tema) {
-            final total = d.totalPorTema[tema.$2] ?? 0;
-            final falladas = d.falladasPorTema[tema.$2] ?? 0;
-            if (total == 0) return const SizedBox.shrink();
+            final respondidas = d.respondadasPorTema[tema.$2] ?? 0;
+            final sinErrores = d.sinErroresPorTema[tema.$2] ?? 0;
+            if (respondidas == 0) {
+              return Padding(
+                padding: const EdgeInsets.only(bottom: 16),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        tema.$1,
+                        style: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w700,
+                            color: _kDark),
+                      ),
+                    ),
+                    const Text(
+                      'Sin datos aún',
+                      style: TextStyle(fontSize: 12, color: _kGrey),
+                    ),
+                  ],
+                ),
+              );
+            }
             return _TemaBar(
-                label: tema.$1, total: total, falladas: falladas);
+                label: tema.$1, respondidas: respondidas, sinErrores: sinErrores);
           }),
       ],
     );
@@ -1067,13 +1083,13 @@ class _PreparacionCard extends StatelessWidget {
 
 class _TemaBar extends StatelessWidget {
   final String label;
-  final int total;
-  final int falladas;
+  final int respondidas;
+  final int sinErrores;
 
   const _TemaBar(
-      {required this.label, required this.total, required this.falladas});
+      {required this.label, required this.respondidas, required this.sinErrores});
 
-  double get _ratio => total == 0 ? 0 : (total - falladas) / total;
+  double get _ratio => respondidas == 0 ? 0 : sinErrores / respondidas;
 
   Color get _color {
     if (_ratio >= 0.7) return _kGreen;
@@ -1084,7 +1100,6 @@ class _TemaBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final pct = (_ratio * 100).round();
-    final sinErrores = total - falladas;
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
@@ -1101,7 +1116,7 @@ class _TemaBar extends StatelessWidget {
                         color: _kDark)),
               ),
               Text(
-                '$sinErrores/$total sin errores · $pct%',
+                '$sinErrores/$respondidas sin errores · $pct%',
                 style: TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.w600,

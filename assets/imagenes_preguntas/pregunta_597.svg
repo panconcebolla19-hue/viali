@@ -27,5 +27,4 @@
   <!-- Label -->
   <text x="200" y="340" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#333333">Semáforo para ciclos</text>
   <text x="200" y="360" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#555555">(bicicletas y ciclomotores)</text>
-  <text x="200" y="390" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="#777777">Sus indicaciones afectan solo a ciclos y ciclomotores</text>
 </svg>

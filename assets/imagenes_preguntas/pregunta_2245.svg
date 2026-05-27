@@ -7,5 +7,4 @@
   <rect x="138" y="230" width="55" height="10" rx="3" fill="white"/>
   <rect x="207" y="230" width="55" height="10" rx="3" fill="white"/>
   <text x="200" y="285" text-anchor="middle" font-family="Arial,sans-serif" font-size="17" fill="white">Área de descanso</text>
-  <text x="200" y="386" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#444">Área de descanso</text>
 </svg>

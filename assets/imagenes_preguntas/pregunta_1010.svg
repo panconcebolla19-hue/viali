@@ -6,5 +6,4 @@
   <circle cx="200" cy="145" r="18" fill="#CC0000"/>
   <line x1="130" y1="240" x2="200" y2="240" stroke="#CC4400" stroke-width="10"/>
   <line x1="200" y1="240" x2="270" y2="240" stroke="#CC4400" stroke-width="10"/>
-  <text x="200" y="386" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#444">P-7 Paso a nivel con barreras</text>
 </svg>

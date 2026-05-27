@@ -6,5 +6,4 @@
   <circle cx="170" cy="267" r="11" fill="#222"/>
   <circle cx="230" cy="267" r="11" fill="#222"/>
   <path d="M138,283 Q155,275 172,283 Q189,291 206,283 Q223,275 240,283" fill="none" stroke="#555" stroke-width="5" stroke-dasharray="8,5"/>
-  <text x="200" y="386" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#444">P-18 Pavimento deslizante</text>
 </svg>

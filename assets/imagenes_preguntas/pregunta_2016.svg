@@ -44,5 +44,4 @@
   <rect x="290" y="153" width="40" height="12" rx="5" fill="#FF9900"/>
   <circle cx="310" cy="153" r="7" fill="#FFCC00"/>
   <!-- Caption -->
-  <text x="200" y="375" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#333333">Vehículo de servicios municipales</text>
 </svg>

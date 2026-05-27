@@ -10,5 +10,4 @@
   <polygon points="155,188 168,182 168,194" fill="#222222"/>
   <polygon points="247,188 234,182 234,194" fill="#222222"/>
   <!-- Caption -->
-  <text x="200" y="365" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#555555">Calzada estrecha con curvas</text>
 </svg>

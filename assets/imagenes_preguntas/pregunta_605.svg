@@ -3,5 +3,4 @@
   <rect x="50" y="140" width="300" height="130" rx="8" fill="#1565C0"/>
   <text x="200" y="200" text-anchor="middle" font-family="Arial,sans-serif" font-size="52" fill="white" font-weight="bold">VADO</text>
   <text x="200" y="248" text-anchor="middle" font-family="Arial,sans-serif" font-size="30" fill="white">PERMANENTE</text>
-  <text x="200" y="386" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#444">Vado permanente</text>
 </svg>

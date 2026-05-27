@@ -38,5 +38,4 @@
   <line x1="335" y1="81" x2="309" y2="107" stroke="#FF0000" stroke-width="5" stroke-linecap="round"/>
   <!-- Caption -->
   <text x="200" y="360" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#EEEEEE">Señalización de carril — solo carriles</text>
-  <text x="200" y="378" text-anchor="middle" font-family="Arial,sans-serif" font-weight="bold" font-size="13" fill="#00CC00">con flecha verde</text>
 </svg>

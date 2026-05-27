@@ -3,5 +3,4 @@
   <polygon points="200,52 358,328 42,328" fill="white" stroke="#CC0000" stroke-width="13" stroke-linejoin="round"/>
   <path d="M230,290 Q230,200 175,175 Q155,170 150,155" fill="none" stroke="#444" stroke-width="12" stroke-linecap="round"/>
   <polygon points="150,155 135,168 162,170" fill="#444"/>
-  <text x="200" y="386" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#444">P-13a Curva izquierda</text>
 </svg>

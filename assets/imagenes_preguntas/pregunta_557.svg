@@ -42,5 +42,4 @@
   <polygon points="312,102 325,88 325,116" fill="white"/>
   <text x="348" y="107" text-anchor="middle" font-family="Arial,sans-serif" font-weight="bold" font-size="14" fill="white">→</text>
   <!-- Caption -->
-  <text x="200" y="385" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#333333">Tranvía en vía de sentido único — adelantar por ambos lados</text>
 </svg>

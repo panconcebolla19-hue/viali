@@ -23,5 +23,4 @@
   <!-- Direction arrow -->
   <polygon points="185,275 190,260 195,275" fill="white"/>
   <!-- Label -->
-  <text x="200" y="390" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="white">CEDA EL PASO — cruce con prioridad</text>
 </svg>

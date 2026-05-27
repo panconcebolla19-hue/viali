@@ -9,5 +9,4 @@
   <rect x="214" y="184" width="12" height="35" rx="3" fill="#333"/>
   <line x1="220" y1="219" x2="210" y2="247" stroke="#333" stroke-width="7" stroke-linecap="round"/>
   <line x1="220" y1="219" x2="230" y2="247" stroke="#333" stroke-width="7" stroke-linecap="round"/>
-  <text x="200" y="386" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#444">P-20 Niños/Escuelas</text>
 </svg>

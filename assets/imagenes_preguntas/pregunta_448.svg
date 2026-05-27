@@ -7,5 +7,4 @@
   <polygon points="268,211 285,220 268,229" fill="#444"/>
   <line x1="120" y1="245" x2="268" y2="245" stroke="#444" stroke-width="7"/>
   <polygon points="268,236 285,245 268,254" fill="#444"/>
-  <text x="200" y="386" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#444">P-22 Viento lateral</text>
 </svg>

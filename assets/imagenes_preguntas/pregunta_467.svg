@@ -33,5 +33,4 @@
   <!-- Labels -->
   <text x="97" y="55" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="white">Carril izq.</text>
   <text x="251" y="55" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="white">Carril der.</text>
-  <text x="200" y="390" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#333333">Debe circular por el carril derecho</text>
 </svg>

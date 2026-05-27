@@ -3,5 +3,4 @@
   <polygon points="200,52 358,328 42,328" fill="white" stroke="#CC0000" stroke-width="13" stroke-linejoin="round"/>
   <path d="M130,165 L200,165 L270,285 L130,285 Z" fill="#888"/>
   <line x1="178" y1="175" x2="230" y2="275" stroke="white" stroke-width="4" stroke-dasharray="15,10"/>
-  <text x="200" y="386" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#444">P-16 Bajada peligrosa</text>
 </svg>

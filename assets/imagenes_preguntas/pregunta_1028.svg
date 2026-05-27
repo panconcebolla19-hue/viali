@@ -14,5 +14,4 @@
   <!-- Red diagonal prohibition bar -->
   <line x1="155" y1="255" x2="245" y2="345" stroke="#CC0000" stroke-width="10" stroke-linecap="round"/>
   <!-- Caption -->
-  <text x="200" y="380" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#333333">STOP + Prohibido girar a la derecha</text>
 </svg>

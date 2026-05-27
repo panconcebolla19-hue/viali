@@ -3383,7 +3383,9 @@
             "está prohibido el cambio de dirección."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "SENTIDO ÚNICO, ESTÁ PROHIBIDA LA CIRCULACIÓN EN SENTIDO CONTRARIO . ESTA SEÑAL NO PROHÍBE CAMBIAR DE DIRECCIÓN ,\" PERO SÍ DE SENTIDO DE LA MARCHA\"."
+        "explicacion": "SENTIDO ÚNICO, ESTÁ PROHIBIDA LA CIRCULACIÓN EN SENTIDO CONTRARIO . ESTA SEÑAL NO PROHÍBE CAMBIAR DE DIRECCIÓN ,\" PERO SÍ DE SENTIDO DE LA MARCHA\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_306.svg",
+        "imagen_oculta": false
     },
     {
         "id": 307,

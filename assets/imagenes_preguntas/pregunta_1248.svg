@@ -5,5 +5,4 @@
   <circle cx="200" cy="173" r="11" fill="#CC0000"/>
   <circle cx="200" cy="205" r="11" fill="#FFD700"/>
   <circle cx="200" cy="237" r="11" fill="#4CAF50"/>
-  <text x="200" y="386" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#444">P-3 Semáforos</text>
 </svg>

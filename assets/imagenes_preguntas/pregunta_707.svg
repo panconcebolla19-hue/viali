@@ -4,5 +4,4 @@
   <circle cx="200" cy="220" r="55" fill="none" stroke="#444" stroke-width="8"/>
   <circle cx="200" cy="220" r="20" fill="#444"/>
   <polygon points="248,185 260,178 252,192" fill="#444"/>
-  <text x="200" y="386" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#444">P-4 Cruce giratorio</text>
 </svg>

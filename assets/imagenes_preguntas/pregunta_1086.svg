@@ -44,5 +44,4 @@
   <line x1="20" y1="90" x2="20" y2="200" stroke="#666" stroke-width="1"/>
   <line x1="380" y1="90" x2="380" y2="200" stroke="#666" stroke-width="1"/>
   <!-- Caption -->
-  <text x="200" y="370" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="white">Túnel con un carril — distancia mínima: 100 m</text>
 </svg>

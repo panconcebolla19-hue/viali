@@ -37,5 +37,4 @@
   <circle cx="300" cy="210" r="8" fill="#FF3333"/>
   <circle cx="90" cy="210" r="8" fill="#FF3333"/>
   <!-- Caption -->
-  <text x="200" y="385" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#333333">Agente ordena detenerse — brazo levantado</text>
 </svg>

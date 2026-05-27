@@ -35,6 +35,4 @@
   <rect x="326" y="72" width="28" height="16" rx="3" fill="#CC0000"/>
   <rect x="334" y="58" width="12" height="28" rx="3" fill="#CC0000"/>
   <!-- Caption -->
-  <text x="200" y="375" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#333333">Semáforo en rojo — giro a la derecha</text>
-  <text x="200" y="392" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="#555555">Obligatorio detenerse</text>
 </svg>

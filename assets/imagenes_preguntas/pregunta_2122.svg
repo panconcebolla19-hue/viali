@@ -25,5 +25,4 @@
   <line x1="95" y1="255" x2="165" y2="255" stroke="#CC0000" stroke-width="5"/>
   <polygon points="165,248 180,255 165,262" fill="#CC0000"/>
   <!-- Caption below triangle -->
-  <text x="200" y="370" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#333333">Estrechamiento por la izquierda</text>
 </svg>

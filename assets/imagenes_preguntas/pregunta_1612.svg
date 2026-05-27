@@ -41,6 +41,4 @@
   <!-- BOMBEROS text -->
   <text x="185" y="255" text-anchor="middle" font-family="Arial,sans-serif" font-weight="bold" font-size="14" fill="#FFDD00">BOMBEROS</text>
   <!-- Caption -->
-  <text x="200" y="378" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#333333">Vehículo de bomberos — preferencia solo</text>
-  <text x="200" y="396" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#333333">en servicio urgente señalizado</text>
 </svg>

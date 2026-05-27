@@ -2,5 +2,4 @@
   <rect width="400" height="400" fill="#F5F5F5"/>
   <circle cx="200" cy="200" r="145" fill="#1565C0"/>
   <path d="M245,160 Q200,120 155,170 L155,158 L120,198 L168,198 L168,186 Q208,143 248,168 Z" fill="white"/>
-  <text x="200" y="386" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#444">R-403 Giro oblig. izquierda</text>
 </svg>

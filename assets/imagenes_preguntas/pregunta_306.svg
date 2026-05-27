@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <rect width="400" height="400" fill="#F5F5F5"/>
+  <!-- R-400: círculo azul obligatorio, flecha blanca hacia adelante -->
+  <circle cx="200" cy="200" r="155" fill="#1565C0"/>
+  <!-- Flecha blanca apuntando hacia arriba (sentido de circulación) -->
+  <!-- Palo de la flecha -->
+  <rect x="182" y="165" width="36" height="105" rx="8" fill="white"/>
+  <!-- Cabeza de la flecha -->
+  <polygon points="200,80 268,175 132,175" fill="white"/>
+</svg>

@@ -6,5 +6,4 @@
   <path d="M150,250 L180,190 L218,210 L250,250" fill="none" stroke="white" stroke-width="10"/>
   <line x1="244" y1="198" x2="258" y2="186" stroke="white" stroke-width="8"/>
   <line x1="180" y1="190" x2="196" y2="190" stroke="white" stroke-width="8"/>
-  <text x="200" y="386" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#444">S-50 Vía para ciclos</text>
 </svg>

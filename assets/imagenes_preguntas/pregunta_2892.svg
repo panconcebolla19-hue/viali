@@ -43,7 +43,5 @@
   <!-- Arrow: pull to the right -->
   <line x1="310" y1="350" x2="360" y2="350" stroke="#00CC44" stroke-width="5" stroke-linecap="round"/>
   <polygon points="360,342 375,350 360,358" fill="#00CC44"/>
-  <text x="330" y="373" text-anchor="middle" font-family="Arial,sans-serif" font-weight="bold" font-size="13" fill="#00CC44">Derecha</text>
   <!-- Caption -->
-  <text x="200" y="395" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#CCCCCC">Coche de policía por espejo retrovisor</text>
 </svg>

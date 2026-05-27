@@ -34,5 +34,4 @@
   <polygon points="280,53 296,44 314,44 326,53 326,77 314,86 296,86 280,77" fill="#CC2200"/>
   <text x="304" y="74" text-anchor="middle" font-family="Arial,sans-serif" font-weight="bold" font-size="16" fill="white">STOP</text>
   <!-- Caption -->
-  <text x="200" y="390" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#333333">Señalista regulando el tráfico en obra</text>
 </svg>

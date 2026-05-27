@@ -2,5 +2,4 @@
   <rect width="400" height="400" fill="#F5F5F5"/>
   <circle cx="200" cy="200" r="145" fill="white" stroke="#CC0000" stroke-width="20"/>
   <text x="200" y="240" text-anchor="middle" font-family="Arial,sans-serif" font-size="110" font-weight="bold" fill="#111">50</text>
-  <text x="200" y="386" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#444">R-301(50) Vel. máx. 50</text>
 </svg>

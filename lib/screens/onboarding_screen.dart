@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'home_screen.dart';
+import 'nivel_wizard_screen.dart';
 
 const _kYellow = Color(0xFFF5A623);
 const _kDark = Color(0xFF1A1A1A);
@@ -58,7 +58,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     await prefs.setBool('onboarding_completado', true);
     if (!mounted) return;
     Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (_) => const HomeScreen()),
+      MaterialPageRoute(builder: (_) => const NivelWizardScreen()),
     );
   }
 

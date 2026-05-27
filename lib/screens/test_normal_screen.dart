@@ -662,7 +662,7 @@ class _TestNormalScreenState extends State<TestNormalScreen>
                 children: [
                   Stack(
                     children: [
-                      _QuestionCard(enunciado: pregunta.enunciado, imagen: pregunta.imagen, imagenOculta: pregunta.imagenOculta),
+                      _QuestionCard(enunciado: pregunta.enunciado, imagen: pregunta.imagen, imagenOculta: pregunta.imagenOculta, tema: detectarTema(pregunta)),
                       Positioned(
                         top: 8,
                         right: 8,
@@ -1239,7 +1239,8 @@ class _QuestionCard extends StatelessWidget {
   final String enunciado;
   final String? imagen;
   final bool imagenOculta;
-  const _QuestionCard({required this.enunciado, this.imagen, this.imagenOculta = false});
+  final String? tema;
+  const _QuestionCard({required this.enunciado, this.imagen, this.imagenOculta = false, this.tema});
 
   @override
   Widget build(BuildContext context) {
@@ -1260,6 +1261,10 @@ class _QuestionCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          if (tema != null) ...[
+            _TemaPill(tema: tema!),
+            const SizedBox(height: 8),
+          ],
           if (imagen != null && !imagenOculta) ...[
             ClipRRect(
               borderRadius: BorderRadius.circular(12),
@@ -1458,16 +1463,83 @@ class _ResultadoCard extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 10),
-          Text(
-            explicacion,
-            style: TextStyle(
-              fontSize: 13,
-              height: 1.55,
-              fontWeight: FontWeight.w400,
-              color: color.withValues(alpha: 0.85),
-            ),
+          _ExplicacionResaltada(
+            explicacion: explicacion,
+            textColor: color.withValues(alpha: 0.85),
           ),
         ],
+      ),
+    );
+  }
+}
+
+// ── Tema pill ─────────────────────────────────────────────────────────────────
+
+class _TemaPill extends StatelessWidget {
+  final String tema;
+  const _TemaPill({required this.tema});
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+        decoration: BoxDecoration(
+          color: const Color(0xFFFFF3E0),
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: const Color(0xFFFFE0A0), width: 1),
+        ),
+        child: Text(
+          '${emojiDeTema(tema)} ${nombreDeTema(tema)}',
+          style: const TextStyle(
+            fontSize: 11,
+            fontWeight: FontWeight.w700,
+            color: Color(0xFFE67E00),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// ── Explicación con números resaltados ────────────────────────────────────────
+
+class _ExplicacionResaltada extends StatelessWidget {
+  final String explicacion;
+  final Color textColor;
+  const _ExplicacionResaltada({required this.explicacion, required this.textColor});
+
+  static final _numPattern = RegExp(
+    r'\d+[\.,]?\d*\s*(?:km/h|mg/l|g/l|mg|metros?|km\b|m\b|%|días?|años?|horas?|minutos?)',
+    caseSensitive: false,
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    final spans = <TextSpan>[];
+    int lastEnd = 0;
+    for (final match in _numPattern.allMatches(explicacion)) {
+      if (match.start > lastEnd) {
+        spans.add(TextSpan(text: explicacion.substring(lastEnd, match.start)));
+      }
+      spans.add(TextSpan(
+        text: match.group(0),
+        style: const TextStyle(
+          backgroundColor: Color(0xFFFFF3CD),
+          color: Color(0xFFB06000),
+          fontWeight: FontWeight.w700,
+        ),
+      ));
+      lastEnd = match.end;
+    }
+    if (lastEnd < explicacion.length) {
+      spans.add(TextSpan(text: explicacion.substring(lastEnd)));
+    }
+    return RichText(
+      text: TextSpan(
+        style: TextStyle(fontSize: 13, height: 1.55, color: textColor),
+        children: spans,
       ),
     );
   }

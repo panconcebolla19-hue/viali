@@ -6,6 +6,7 @@ import '../data/preguntas_repository.dart';
 import '../data/anki_repository.dart';
 import '../data/daily_streak_repository.dart';
 import '../data/logros_repository.dart';
+import '../utils/tema_utils.dart';
 import 'logros_screen.dart';
 
 const _kYellow = Color(0xFFF5A623);
@@ -27,8 +28,13 @@ class RepasoAnkiScreen extends StatefulWidget {
 
 class _RepasoAnkiScreenState extends State<RepasoAnkiScreen> {
   bool _cargando = true;
+  List<Pregunta> _todasPendientes = [];
   List<Pregunta> _preguntas = [];
   Map<int, AnkiEntry> _ankiData = {};
+
+  bool _mostrarSeleccion = false;
+  int? _limitePreguntas;
+  DateTime? _sesionInicio;
 
   int _indice = 0;
   List<String> _opcionesMezcladas = [];
@@ -63,13 +69,27 @@ class _RepasoAnkiScreenState extends State<RepasoAnkiScreen> {
         .toList()
       ..shuffle(Random());
 
-    setState(() {
-      _preguntas = seleccionadas;
-      _ankiData = ankiData;
-      _cargando = false;
-    });
+    if (mounted) {
+      setState(() {
+        _todasPendientes = seleccionadas;
+        _ankiData = ankiData;
+        _cargando = false;
+        if (seleccionadas.isNotEmpty) _mostrarSeleccion = true;
+      });
+    }
+  }
 
-    if (seleccionadas.isNotEmpty) _prepararPregunta();
+  void _iniciarSesion(int? limite) {
+    final preguntas = limite != null
+        ? _todasPendientes.take(limite).toList()
+        : _todasPendientes;
+    setState(() {
+      _limitePreguntas = limite;
+      _preguntas = preguntas;
+      _mostrarSeleccion = false;
+      _sesionInicio = DateTime.now();
+    });
+    if (preguntas.isNotEmpty) _prepararPregunta();
   }
 
   void _prepararPregunta() {
@@ -174,11 +194,60 @@ class _RepasoAnkiScreenState extends State<RepasoAnkiScreen> {
       ),
       body: _cargando
           ? const Center(child: CircularProgressIndicator(color: _kYellow))
-          : _preguntas.isEmpty
+          : _todasPendientes.isEmpty
               ? _buildVacio()
-              : _finalizado
-                  ? _buildCelebracion()
-                  : _buildQuiz(),
+              : _mostrarSeleccion
+                  ? _buildSeleccion()
+                  : _finalizado
+                      ? _buildCelebracion()
+                      : _buildQuiz(),
+    );
+  }
+
+  Widget _buildSeleccion() {
+    final opciones = [
+      (label: '5 min', sublabel: '~10 preguntas', limite: 10, emoji: '⚡'),
+      (label: '10 min', sublabel: '~20 preguntas', limite: 20, emoji: '🎯'),
+      (label: '20 min', sublabel: '~40 preguntas', limite: 40, emoji: '📚'),
+      (label: 'Sin límite', sublabel: '${_todasPendientes.length} pendientes', limite: null as int?, emoji: '🚀'),
+    ];
+
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(24, 20, 24, 40),
+      child: Column(
+        children: [
+          const Spacer(),
+          Image.asset('assets/semaforo_normal.png', height: 80),
+          const SizedBox(height: 20),
+          const Text(
+            '¿Cuánto tiempo tienes?',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.w900,
+              color: _kTextDark,
+              height: 1.15,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            '${_todasPendientes.length} preguntas pendientes hoy',
+            textAlign: TextAlign.center,
+            style: const TextStyle(fontSize: 14, color: _kTextGrey),
+          ),
+          const Spacer(),
+          ...opciones.map((op) => Padding(
+            padding: const EdgeInsets.only(bottom: 12),
+            child: _SesionOpcion(
+              emoji: op.emoji,
+              label: op.label,
+              sublabel: op.sublabel,
+              onTap: () => _iniciarSesion(op.limite),
+            ),
+          )),
+          const Spacer(),
+        ],
+      ),
     );
   }
 
@@ -243,6 +312,16 @@ class _RepasoAnkiScreenState extends State<RepasoAnkiScreen> {
   }
 
   Widget _buildCelebracion() {
+    final minutos = _sesionInicio != null
+        ? DateTime.now().difference(_sesionInicio!).inMinutes
+        : 0;
+    final titulo = _limitePreguntas != null
+        ? '¡Sesión completada! 🎉'
+        : '¡Al día! 🎉';
+    final subtitulo = _limitePreguntas != null
+        ? '$_correctas de ${_preguntas.length} correctas en $minutos ${minutos == 1 ? 'minuto' : 'minutos'}'
+        : '$_correctas de ${_preguntas.length} correctas';
+
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(40),
@@ -251,10 +330,10 @@ class _RepasoAnkiScreenState extends State<RepasoAnkiScreen> {
           children: [
             Image.asset('assets/semaforo_verde.png', height: 130),
             const SizedBox(height: 28),
-            const Text(
-              '¡Al día! 🎉',
+            Text(
+              titulo,
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 28,
                 fontWeight: FontWeight.w900,
                 color: _kTextDark,
@@ -262,7 +341,8 @@ class _RepasoAnkiScreenState extends State<RepasoAnkiScreen> {
             ),
             const SizedBox(height: 12),
             Text(
-              '$_correctas de ${_preguntas.length} correctas',
+              subtitulo,
+              textAlign: TextAlign.center,
               style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w600,
@@ -336,11 +416,11 @@ class _RepasoAnkiScreenState extends State<RepasoAnkiScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  '${_indice + 1} / ${_preguntas.length}',
+                  'Pregunta ${_indice + 1} de ${_preguntas.length}',
                   style: const TextStyle(
                     fontSize: 13,
                     color: _kTextGrey,
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
                 Container(
@@ -351,7 +431,7 @@ class _RepasoAnkiScreenState extends State<RepasoAnkiScreen> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Text(
-                    '📚 ${_preguntas.length - _indice} pendientes',
+                    '📚 ${_preguntas.length - _indice} restantes',
                     style: const TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w700,
@@ -373,6 +453,7 @@ class _RepasoAnkiScreenState extends State<RepasoAnkiScreen> {
                     enunciado: p.enunciado,
                     imagen: p.imagen,
                     imagenOculta: p.imagenOculta,
+                    tema: detectarTema(p),
                   ),
                   const SizedBox(height: 14),
                   ...List.generate(_opcionesMezcladas.length, (i) {
@@ -438,14 +519,10 @@ class _RepasoAnkiScreenState extends State<RepasoAnkiScreen> {
                           ),
                           if (p.explicacion.isNotEmpty) ...[
                             const SizedBox(height: 8),
-                            Text(
-                              p.explicacion,
-                              style: TextStyle(
-                                fontSize: 12,
-                                height: 1.5,
-                                color: (esCorrecta ? _kGreen : _kRed)
-                                    .withValues(alpha: 0.85),
-                              ),
+                            _ExplicacionResaltada(
+                              explicacion: p.explicacion,
+                              textColor: (esCorrecta ? _kGreen : _kRed)
+                                  .withValues(alpha: 0.85),
                             ),
                           ],
                         ],
@@ -534,10 +611,12 @@ class _AnkiQuestionCard extends StatelessWidget {
   final String enunciado;
   final String? imagen;
   final bool imagenOculta;
+  final String? tema;
   const _AnkiQuestionCard({
     required this.enunciado,
     this.imagen,
     this.imagenOculta = false,
+    this.tema,
   });
 
   @override
@@ -559,6 +638,10 @@ class _AnkiQuestionCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          if (tema != null) ...[
+            _TemaPill(tema: tema!),
+            const SizedBox(height: 8),
+          ],
           if (imagen != null && !imagenOculta) ...[
             ClipRRect(
               borderRadius: BorderRadius.circular(10),
@@ -680,6 +763,154 @@ class _AnkiOpcionCard extends StatelessWidget {
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+// ── Sesión opción card ────────────────────────────────────────────────────────
+
+class _SesionOpcion extends StatelessWidget {
+  final String emoji;
+  final String label;
+  final String sublabel;
+  final VoidCallback onTap;
+
+  const _SesionOpcion({
+    required this.emoji,
+    required this.label,
+    required this.sublabel,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(18),
+        border: Border.all(color: const Color(0xFFE8E8E8), width: 1.5),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.04),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Material(
+        color: Colors.transparent,
+        borderRadius: BorderRadius.circular(18),
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(18),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+            child: Row(
+              children: [
+                Text(emoji, style: const TextStyle(fontSize: 28)),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        label,
+                        style: const TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.w800,
+                          color: Color(0xFF1A1A1A),
+                        ),
+                      ),
+                      Text(
+                        sublabel,
+                        style: const TextStyle(
+                          fontSize: 13,
+                          color: Color(0xFF9E9E9E),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const Icon(Icons.chevron_right_rounded,
+                    color: Color(0xFF9E9E9E), size: 20),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// ── Tema pill ─────────────────────────────────────────────────────────────────
+
+class _TemaPill extends StatelessWidget {
+  final String tema;
+  const _TemaPill({required this.tema});
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+        decoration: BoxDecoration(
+          color: const Color(0xFFFFF3E0),
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: const Color(0xFFFFE0A0), width: 1),
+        ),
+        child: Text(
+          '${emojiDeTema(tema)} ${nombreDeTema(tema)}',
+          style: const TextStyle(
+            fontSize: 11,
+            fontWeight: FontWeight.w700,
+            color: Color(0xFFE67E00),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// ── Explicación con números resaltados ────────────────────────────────────────
+
+class _ExplicacionResaltada extends StatelessWidget {
+  final String explicacion;
+  final Color textColor;
+  const _ExplicacionResaltada(
+      {required this.explicacion, required this.textColor});
+
+  static final _numPattern = RegExp(
+    r'\d+[\.,]?\d*\s*(?:km/h|mg/l|g/l|mg|metros?|km\b|m\b|%|días?|años?|horas?|minutos?)',
+    caseSensitive: false,
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    final spans = <TextSpan>[];
+    int lastEnd = 0;
+    for (final match in _numPattern.allMatches(explicacion)) {
+      if (match.start > lastEnd) {
+        spans.add(TextSpan(text: explicacion.substring(lastEnd, match.start)));
+      }
+      spans.add(TextSpan(
+        text: match.group(0),
+        style: const TextStyle(
+          backgroundColor: Color(0xFFFFF3CD),
+          color: Color(0xFFB06000),
+          fontWeight: FontWeight.w700,
+        ),
+      ));
+      lastEnd = match.end;
+    }
+    if (lastEnd < explicacion.length) {
+      spans.add(TextSpan(text: explicacion.substring(lastEnd)));
+    }
+    return RichText(
+      text: TextSpan(
+        style: TextStyle(fontSize: 12, height: 1.5, color: textColor),
+        children: spans,
       ),
     );
   }

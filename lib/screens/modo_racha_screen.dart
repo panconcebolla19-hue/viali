@@ -12,6 +12,7 @@ import '../data/logros_repository.dart';
 import '../data/anki_repository.dart';
 import '../data/marcadas_repository.dart';
 import '../services/notification_service.dart';
+import '../utils/tema_utils.dart';
 import '../widgets/confetti_overlay.dart';
 import 'logros_screen.dart';
 
@@ -625,13 +626,15 @@ class _ModoRachaScreenState extends State<ModoRachaScreen>
   Widget _buildQuestionCard(int tension) {
     final p = _preguntaActual!;
     final esMarcada = _marcadas.contains(p.id);
+    final tema = detectarTema(p);
 
     Widget card;
     if (tension < 3) {
       card = _QuestionCard(
           enunciado: p.enunciado,
           imagen: p.imagen,
-          imagenOculta: p.imagenOculta);
+          imagenOculta: p.imagenOculta,
+          tema: tema);
     } else {
       final borderColor =
           tension >= 4 ? const Color(0xFFFF8C00) : _kYellow;
@@ -663,6 +666,8 @@ class _ModoRachaScreenState extends State<ModoRachaScreen>
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              _TemaPill(tema: tema),
+              const SizedBox(height: 8),
               if (p.imagen != null && !p.imagenOculta) ...[
                 ClipRRect(
                   borderRadius: BorderRadius.circular(12),
@@ -766,7 +771,8 @@ class _QuestionCard extends StatelessWidget {
   final String enunciado;
   final String? imagen;
   final bool imagenOculta;
-  const _QuestionCard({required this.enunciado, this.imagen, this.imagenOculta = false});
+  final String? tema;
+  const _QuestionCard({required this.enunciado, this.imagen, this.imagenOculta = false, this.tema});
 
   @override
   Widget build(BuildContext context) {
@@ -787,6 +793,10 @@ class _QuestionCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          if (tema != null) ...[
+            _TemaPill(tema: tema!),
+            const SizedBox(height: 8),
+          ],
           if (imagen != null && !imagenOculta) ...[
             ClipRRect(
               borderRadius: BorderRadius.circular(12),
@@ -952,6 +962,7 @@ class _ResultadoCard extends StatelessWidget {
     final color = esCorrecta ? _kGreen : _kRed;
     final bgColor =
         esCorrecta ? const Color(0xFFF1FBF1) : const Color(0xFFFFF0F0);
+    final textColor = color.withValues(alpha: 0.85);
 
     return Container(
       padding: const EdgeInsets.all(18),
@@ -985,16 +996,80 @@ class _ResultadoCard extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 10),
-          Text(
-            explicacion,
-            style: TextStyle(
-              fontSize: 13,
-              height: 1.55,
-              fontWeight: FontWeight.w400,
-              color: color.withValues(alpha: 0.85),
-            ),
-          ),
+          _ExplicacionResaltada(explicacion: explicacion, textColor: textColor),
         ],
+      ),
+    );
+  }
+}
+
+// ── Tema pill ─────────────────────────────────────────────────────────────────
+
+class _TemaPill extends StatelessWidget {
+  final String tema;
+  const _TemaPill({required this.tema});
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+        decoration: BoxDecoration(
+          color: const Color(0xFFFFF3E0),
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: const Color(0xFFFFE0A0), width: 1),
+        ),
+        child: Text(
+          '${emojiDeTema(tema)} ${nombreDeTema(tema)}',
+          style: const TextStyle(
+            fontSize: 11,
+            fontWeight: FontWeight.w700,
+            color: Color(0xFFE67E00),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// ── Explicación con números resaltados ────────────────────────────────────────
+
+class _ExplicacionResaltada extends StatelessWidget {
+  final String explicacion;
+  final Color textColor;
+  const _ExplicacionResaltada({required this.explicacion, required this.textColor});
+
+  static final _numPattern = RegExp(
+    r'\d+[\.,]?\d*\s*(?:km/h|mg/l|g/l|mg|metros?|km\b|m\b|%|días?|años?|horas?|minutos?)',
+    caseSensitive: false,
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    final spans = <TextSpan>[];
+    int lastEnd = 0;
+    for (final match in _numPattern.allMatches(explicacion)) {
+      if (match.start > lastEnd) {
+        spans.add(TextSpan(text: explicacion.substring(lastEnd, match.start)));
+      }
+      spans.add(TextSpan(
+        text: match.group(0),
+        style: const TextStyle(
+          backgroundColor: Color(0xFFFFF3CD),
+          color: Color(0xFFB06000),
+          fontWeight: FontWeight.w700,
+        ),
+      ));
+      lastEnd = match.end;
+    }
+    if (lastEnd < explicacion.length) {
+      spans.add(TextSpan(text: explicacion.substring(lastEnd)));
+    }
+    return RichText(
+      text: TextSpan(
+        style: TextStyle(fontSize: 13, height: 1.55, color: textColor),
+        children: spans,
       ),
     );
   }

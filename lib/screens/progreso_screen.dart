@@ -39,6 +39,7 @@ class _ProgresoData {
   final List<int> actividad7dias;
   final List<(Pregunta, int)> topFalladas;
   final List<Pregunta> dominadas;
+  final int preguntasSemana;
 
   const _ProgresoData({
     required this.historial,
@@ -49,6 +50,7 @@ class _ProgresoData {
     required this.actividad7dias,
     required this.topFalladas,
     required this.dominadas,
+    required this.preguntasSemana,
   });
 }
 
@@ -117,6 +119,8 @@ class _ProgresoScreenState extends State<ProgresoScreen> {
       return actividadMapa[_isoDate(dia)] ?? 0;
     });
 
+    final preguntasSemana = actividad7dias.fold(0, (a, b) => a + b);
+
     if (mounted) {
       setState(() {
         _datos = _ProgresoData(
@@ -128,6 +132,7 @@ class _ProgresoScreenState extends State<ProgresoScreen> {
           actividad7dias: actividad7dias,
           topFalladas: topFalladas,
           dominadas: dominadas,
+          preguntasSemana: preguntasSemana,
         );
         _cargando = false;
       });
@@ -205,6 +210,7 @@ class _ProgresoScreenState extends State<ProgresoScreen> {
           readiness: readiness,
           totalRespondidas: totalRespondidas,
           peorTema: peorTema,
+          preguntasSemana: d.preguntasSemana,
         ),
         const SizedBox(height: 20),
         // ── Racha ──────────────────────────────────────────────────────────
@@ -976,11 +982,13 @@ class _PreparacionCard extends StatelessWidget {
   final double readiness;
   final int totalRespondidas;
   final String? peorTema;
+  final int preguntasSemana;
 
   const _PreparacionCard({
     required this.readiness,
     required this.totalRespondidas,
     this.peorTema,
+    required this.preguntasSemana,
   });
 
   Color get _color {
@@ -1012,6 +1020,10 @@ class _PreparacionCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final pct = (readiness * 100).round();
     final color = _color;
+    final velocidad = preguntasSemana / 7.0;
+    final int? semanasETA = velocidad >= 1 && readiness < 0.9
+        ? ((0.9 - readiness) / (velocidad * 7 * 0.005)).ceil().clamp(1, 52)
+        : null;
 
     return Container(
       padding: const EdgeInsets.all(20),
@@ -1070,6 +1082,28 @@ class _PreparacionCard extends StatelessWidget {
                     height: 1.4,
                   ),
                 ),
+                if (velocidad >= 1) ...[
+                  const SizedBox(height: 6),
+                  Text(
+                    '${velocidad.toStringAsFixed(1)} preguntas/día',
+                    style: const TextStyle(
+                      fontSize: 12,
+                      color: _kGrey,
+                    ),
+                  ),
+                ],
+                if (semanasETA != null) ...[
+                  const SizedBox(height: 2),
+                  Text(
+                    'A tu ritmo estarías listo en ~$semanasETA ${semanasETA == 1 ? 'semana' : 'semanas'}',
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w700,
+                      color: color,
+                      height: 1.35,
+                    ),
+                  ),
+                ],
               ],
             ),
           ),

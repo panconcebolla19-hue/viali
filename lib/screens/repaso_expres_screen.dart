@@ -6,6 +6,7 @@ import '../data/preguntas_repository.dart';
 import '../data/anki_repository.dart';
 import '../data/daily_streak_repository.dart';
 import '../data/logros_repository.dart';
+import '../utils/tema_utils.dart';
 import 'logros_screen.dart';
 
 const _kYellow = Color(0xFFF5A623);
@@ -16,14 +17,15 @@ const _kDark = Color(0xFF1A1A1A);
 const _kGrey = Color(0xFF9E9E9E);
 const _kBorder = Color(0xFFE8E8E8);
 
-enum _FaseExpres { entrada, quiz, resultado }
+enum _FaseExpres { seleccionTema, entrada, quiz, resultado }
 
 enum _EstadoMascota { normal, correcto, fallo }
 
 enum _EstadoOpcion { normal, correcta, incorrecta, neutra }
 
 class RepasoExpresScreen extends StatefulWidget {
-  const RepasoExpresScreen({super.key});
+  final String? temaInicial;
+  const RepasoExpresScreen({super.key, this.temaInicial});
 
   @override
   State<RepasoExpresScreen> createState() => _RepasoExpresScreenState();
@@ -31,14 +33,17 @@ class RepasoExpresScreen extends StatefulWidget {
 
 class _RepasoExpresScreenState extends State<RepasoExpresScreen> {
   // ── Data ──────────────────────────────────────────────────────────────────
+  List<Pregunta> _todasPreguntas = [];
+  Map<int, AnkiEntry> _ankiDataRaw = {};
   List<Pregunta> _preguntas = [];
   int _falladasDisponibles = 0;
   bool _cargando = true;
+  String? _temaFiltro;
 
   bool _estudiadoHoy = false;
 
   // ── Phase ─────────────────────────────────────────────────────────────────
-  _FaseExpres _fase = _FaseExpres.entrada;
+  _FaseExpres _fase = _FaseExpres.seleccionTema;
 
   // ── Quiz state ────────────────────────────────────────────────────────────
   int _indiceActual = 0;
@@ -77,35 +82,49 @@ class _RepasoExpresScreenState extends State<RepasoExpresScreen> {
     ]);
     final todas = results[0] as List<Pregunta>;
     final ankiData = results[1] as Map<int, AnkiEntry>;
-    final preguntasMapa = {for (final p in todas) p.id: p};
 
-    // Sort by totalFalladas desc
-    final conFalladas = ankiData.entries
-        .where((e) => e.value.totalFalladas > 0 && preguntasMapa.containsKey(e.key))
-        .map((e) => (preguntasMapa[e.key]!, e.value.totalFalladas))
+    if (!mounted) return;
+    setState(() {
+      _todasPreguntas = todas;
+      _ankiDataRaw = ankiData;
+      _cargando = false;
+    });
+
+    if (widget.temaInicial != null) {
+      _construirPreguntas(widget.temaInicial);
+    }
+  }
+
+  void _construirPreguntas(String? tema) {
+    final candidatas = tema == null
+        ? _todasPreguntas
+        : _todasPreguntas.where((p) => detectarTema(p) == tema).toList();
+    final candidatasMapa = {for (final p in candidatas) p.id: p};
+
+    final conFalladas = _ankiDataRaw.entries
+        .where((e) => e.value.totalFalladas > 0 && candidatasMapa.containsKey(e.key))
+        .map((e) => (candidatasMapa[e.key]!, e.value.totalFalladas))
         .toList()
       ..sort((a, b) => b.$2.compareTo(a.$2));
 
     final topFalladas = conFalladas.take(20).map((e) => e.$1).toList();
     final falladasDisp = topFalladas.length;
 
-    // Fill to 20 with randoms
     if (topFalladas.length < 20) {
       final topIds = topFalladas.map((p) => p.id).toSet();
-      final restantes = todas.where((p) => !topIds.contains(p.id)).toList()
+      final restantes = candidatas.where((p) => !topIds.contains(p.id)).toList()
         ..shuffle();
       topFalladas.addAll(restantes.take(20 - topFalladas.length));
     }
 
     topFalladas.shuffle();
 
-    if (mounted) {
-      setState(() {
-        _preguntas = topFalladas;
-        _falladasDisponibles = falladasDisp;
-        _cargando = false;
-      });
-    }
+    setState(() {
+      _temaFiltro = tema;
+      _preguntas = topFalladas;
+      _falladasDisponibles = falladasDisp;
+      _fase = _FaseExpres.entrada;
+    });
   }
 
   // ── Quiz flow ─────────────────────────────────────────────────────────────
@@ -200,7 +219,7 @@ class _RepasoExpresScreenState extends State<RepasoExpresScreen> {
   }
 
   void _repetir() {
-    _preguntas.shuffle();
+    _construirPreguntas(_temaFiltro);
     setState(() {
       _fase = _FaseExpres.quiz;
       _indiceActual = 0;
@@ -236,10 +255,87 @@ class _RepasoExpresScreenState extends State<RepasoExpresScreen> {
       );
     }
     return switch (_fase) {
+      _FaseExpres.seleccionTema => _buildSeleccionTema(),
       _FaseExpres.entrada => _buildEntrada(),
       _FaseExpres.quiz => _buildQuiz(),
       _FaseExpres.resultado => _buildResultado(),
     };
+  }
+
+  // ── Phase 0: Selección de tema ────────────────────────────────────────────
+
+  static const _kTemas = [
+    (null, 'Todas', '📚'),
+    ('señales', 'Señales', '🚦'),
+    ('velocidad', 'Velocidad', '🚀'),
+    ('alcohol', 'Alcohol/Drogas', '🍺'),
+    ('adelantamientos', 'Adelantamientos', '🔀'),
+    ('distancias', 'Distancias', '📏'),
+    ('autopista', 'Autopistas', '🛣️'),
+    ('medio_ambiente', 'Medio ambiente', '🌱'),
+    ('documentacion', 'Documentación', '📋'),
+  ];
+
+  Widget _buildSeleccionTema() {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        scrolledUnderElevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios_new_rounded, color: _kDark, size: 20),
+          onPressed: () => Navigator.pop(context),
+        ),
+        title: const Text(
+          'Repaso Exprés',
+          style: TextStyle(color: _kDark, fontWeight: FontWeight.w700, fontSize: 18),
+        ),
+      ),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(20, 12, 20, 32),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const Text(
+                '¿Por qué temática quieres repasar?',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w900,
+                  color: _kDark,
+                ),
+              ),
+              const SizedBox(height: 6),
+              const Text(
+                'Elige una temática o practica todas.',
+                style: TextStyle(fontSize: 14, color: _kGrey),
+              ),
+              const SizedBox(height: 20),
+              Expanded(
+                child: GridView.builder(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 12,
+                    crossAxisSpacing: 12,
+                    childAspectRatio: 2.0,
+                  ),
+                  itemCount: _kTemas.length,
+                  itemBuilder: (ctx, i) {
+                    final t = _kTemas[i];
+                    return _TemaCelda(
+                      emoji: t.$3,
+                      label: t.$2,
+                      onTap: () => _construirPreguntas(t.$1),
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   // ── Phase 1: Entrada ──────────────────────────────────────────────────────
@@ -785,6 +881,7 @@ class _TarjetaPregunta extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final tema = detectarTema(pregunta);
     return Container(
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
@@ -802,6 +899,8 @@ class _TarjetaPregunta extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          _TemaPill(tema: tema),
+          const SizedBox(height: 8),
           if (pregunta.imagen != null && !pregunta.imagenOculta) ...[
             ClipRRect(
               borderRadius: BorderRadius.circular(10),
@@ -982,18 +1081,136 @@ class _ExplicacionBreve extends StatelessWidget {
           ),
           const SizedBox(width: 8),
           Expanded(
-            child: Text(
-              explicacion.length > 120
-                  ? '${explicacion.substring(0, 117)}…'
+            child: _ExplicacionResaltada(
+              explicacion: explicacion.length > 150
+                  ? '${explicacion.substring(0, 147)}…'
                   : explicacion,
-              style: TextStyle(
-                fontSize: 12,
-                height: 1.5,
-                color: color.withValues(alpha: 0.9),
-              ),
+              textColor: color.withValues(alpha: 0.9),
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+// ── Tema pill ─────────────────────────────────────────────────────────────────
+
+class _TemaPill extends StatelessWidget {
+  final String tema;
+  const _TemaPill({required this.tema});
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+        decoration: BoxDecoration(
+          color: const Color(0xFFFFF3E0),
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: const Color(0xFFFFE0A0), width: 1),
+        ),
+        child: Text(
+          '${emojiDeTema(tema)} ${nombreDeTema(tema)}',
+          style: const TextStyle(
+            fontSize: 11,
+            fontWeight: FontWeight.w700,
+            color: Color(0xFFE67E00),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// ── Tema celda (grid) ─────────────────────────────────────────────────────────
+
+class _TemaCelda extends StatelessWidget {
+  final String emoji;
+  final String label;
+  final VoidCallback onTap;
+  const _TemaCelda({required this.emoji, required this.label, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        color: const Color(0xFFFFF8EE),
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: const Color(0xFFFFE0A0), width: 1.2),
+      ),
+      child: Material(
+        color: Colors.transparent,
+        borderRadius: BorderRadius.circular(16),
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(16),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+            child: Row(
+              children: [
+                Text(emoji, style: const TextStyle(fontSize: 22)),
+                const SizedBox(width: 10),
+                Flexible(
+                  child: Text(
+                    label,
+                    style: const TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w700,
+                      color: Color(0xFFB06000),
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// ── Explicación con números resaltados ────────────────────────────────────────
+
+class _ExplicacionResaltada extends StatelessWidget {
+  final String explicacion;
+  final Color textColor;
+  const _ExplicacionResaltada(
+      {required this.explicacion, required this.textColor});
+
+  static final _numPattern = RegExp(
+    r'\d+[\.,]?\d*\s*(?:km/h|mg/l|g/l|mg|metros?|km\b|m\b|%|días?|años?|horas?|minutos?)',
+    caseSensitive: false,
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    final spans = <TextSpan>[];
+    int lastEnd = 0;
+    for (final match in _numPattern.allMatches(explicacion)) {
+      if (match.start > lastEnd) {
+        spans.add(TextSpan(text: explicacion.substring(lastEnd, match.start)));
+      }
+      spans.add(TextSpan(
+        text: match.group(0),
+        style: const TextStyle(
+          backgroundColor: Color(0xFFFFF3CD),
+          color: Color(0xFFB06000),
+          fontWeight: FontWeight.w700,
+        ),
+      ));
+      lastEnd = match.end;
+    }
+    if (lastEnd < explicacion.length) {
+      spans.add(TextSpan(text: explicacion.substring(lastEnd)));
+    }
+    return RichText(
+      text: TextSpan(
+        style: TextStyle(fontSize: 12, height: 1.5, color: textColor),
+        children: spans,
       ),
     );
   }

@@ -45,6 +45,9 @@ class _HomeScreenState extends State<HomeScreen> {
   bool? _resultadoDia;
   bool _cargandoPregunta = true;
 
+  String? _nivelUsuario;
+  int _diasDesdeWizard = 0;
+
   @override
   void initState() {
     super.initState();
@@ -79,10 +82,21 @@ class _HomeScreenState extends State<HomeScreen> {
   Future<void> _cargarExtras() async {
     final prefs = await SharedPreferences.getInstance();
     final falladasIds = await FalladasRepository.cargar();
+    final nivel = prefs.getString('nivel_usuario');
+    final wizardFechaStr = prefs.getString('nivel_wizard_fecha');
+    int diasDesde = 0;
+    if (wizardFechaStr != null) {
+      final wizardFecha = DateTime.tryParse(wizardFechaStr);
+      if (wizardFecha != null) {
+        diasDesde = DateTime.now().difference(wizardFecha).inDays;
+      }
+    }
     if (mounted) {
       setState(() {
         _falladasCount = falladasIds.length;
         _totalPreguntas = prefs.getInt('preguntas_total') ?? 0;
+        _nivelUsuario = nivel;
+        _diasDesdeWizard = diasDesde;
       });
     }
   }
@@ -109,6 +123,23 @@ class _HomeScreenState extends State<HomeScreen> {
     final resultado = await PreguntaDiaRepository.getResultadoHoy();
     if (mounted) setState(() => _resultadoDia = resultado);
   }
+
+  Future<void> _abrirSeleccionTema() async {
+    await showModalBottomSheet<String>(
+      context: context,
+      backgroundColor: Colors.transparent,
+      isScrollControlled: true,
+      builder: (ctx) => _SeleccionTemaSheet(
+        onTemaSeleccionado: (tema) {
+          Navigator.pop(ctx);
+          _ir(RepasoExpresScreen(temaInicial: tema));
+        },
+      ),
+    );
+  }
+
+  bool get _mostrarRutaHoy =>
+      _nivelUsuario == 'nuevo' && _diasDesdeWizard < 21;
 
   Widget _buildHeader() {
     return Container(
@@ -188,6 +219,21 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     const SizedBox(height: 20),
                   ],
+                  if (_mostrarRutaHoy) ...[
+                    _RutaHoyCard(
+                      diasDesdeInicio: _diasDesdeWizard,
+                      onTap: () {
+                        if (_diasDesdeWizard < 7) {
+                          _ir(const TestNormalScreen());
+                        } else if (_diasDesdeWizard < 14) {
+                          _ir(const RepasoExpresScreen());
+                        } else {
+                          _ir(const ExamenSimuladoScreen());
+                        }
+                      },
+                    ),
+                    const SizedBox(height: 20),
+                  ],
                   _ModoRachaButton(onTap: () => _ir(const ModoRachaScreen())),
                   const SizedBox(height: 28),
                   const _SectionTitle('PRACTICAR'),
@@ -250,6 +296,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                   const SizedBox(height: 12),
+                  _EstudiarTemaTile(onTap: _abrirSeleccionTema),
+                  const SizedBox(height: 8),
                   _MarcadasTile(onTap: () => _ir(const MarcadasScreen())),
                   const SizedBox(height: 28),
                   const _SectionTitle('VER PROGRESO'),
@@ -655,6 +703,236 @@ class _ProgresoCard extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+// ── Ruta hoy card ─────────────────────────────────────────────────────────────
+
+class _RutaHoyCard extends StatelessWidget {
+  final int diasDesdeInicio;
+  final VoidCallback onTap;
+  const _RutaHoyCard({required this.diasDesdeInicio, required this.onTap});
+
+  String get _titulo {
+    if (diasDesdeInicio < 7) return 'Semana 1: Descúbrete';
+    if (diasDesdeInicio < 14) return 'Semana 2: Refuerza lo fallado';
+    return 'Semana 3: Simula el examen';
+  }
+
+  String get _subtitulo {
+    if (diasDesdeInicio < 7) return 'Empieza con un Test Normal para ver tu nivel real.';
+    if (diasDesdeInicio < 14) return 'Repasa con Exprés las preguntas que más te cuestan.';
+    return 'Simula el examen oficial y comprueba si estás listo.';
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          gradient: const LinearGradient(
+            colors: [Color(0xFFFFF8EE), Color(0xFFFFF3E0)],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+          borderRadius: BorderRadius.circular(18),
+          border: Border.all(color: const Color(0xFFFFE0A0), width: 1.5),
+        ),
+        child: Row(
+          children: [
+            Container(
+              width: 44,
+              height: 44,
+              decoration: BoxDecoration(
+                color: _kYellow,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: const Center(
+                child: Text('🗺️', style: TextStyle(fontSize: 22)),
+              ),
+            ),
+            const SizedBox(width: 14),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'TU RUTA DE HOY',
+                    style: TextStyle(
+                      fontSize: 10,
+                      fontWeight: FontWeight.w700,
+                      color: _kGrey,
+                      letterSpacing: 0.8,
+                    ),
+                  ),
+                  const SizedBox(height: 3),
+                  Text(
+                    _titulo,
+                    style: const TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w800,
+                      color: _kDark,
+                    ),
+                  ),
+                  const SizedBox(height: 2),
+                  Text(
+                    _subtitulo,
+                    style: const TextStyle(
+                        fontSize: 12, color: _kGrey, height: 1.3),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              ),
+            ),
+            const Icon(Icons.chevron_right_rounded, color: _kGrey, size: 20),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// ── Estudiar por tema tile ────────────────────────────────────────────────────
+
+class _EstudiarTemaTile extends StatelessWidget {
+  final VoidCallback onTap;
+  const _EstudiarTemaTile({required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.04),
+              blurRadius: 8,
+              offset: const Offset(0, 2),
+            ),
+          ],
+        ),
+        child: const Row(
+          children: [
+            Icon(Icons.category_rounded, color: _kYellow, size: 22),
+            SizedBox(width: 14),
+            Expanded(
+              child: Text(
+                'Estudiar por tema',
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w700,
+                  color: _kDark,
+                ),
+              ),
+            ),
+            Icon(Icons.chevron_right_rounded, color: _kGrey, size: 20),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// ── Selección tema bottom sheet ───────────────────────────────────────────────
+
+class _SeleccionTemaSheet extends StatelessWidget {
+  final void Function(String? tema) onTemaSeleccionado;
+  const _SeleccionTemaSheet({required this.onTemaSeleccionado});
+
+  static const _temas = [
+    (null, 'Todas las temáticas', '📚'),
+    ('señales', 'Señales', '🚦'),
+    ('velocidad', 'Velocidad', '🚀'),
+    ('alcohol', 'Alcohol/Drogas', '🍺'),
+    ('adelantamientos', 'Adelantamientos', '🔀'),
+    ('distancias', 'Distancias', '📏'),
+    ('autopista', 'Autopistas', '🛣️'),
+    ('medio_ambiente', 'Medio ambiente', '🌱'),
+    ('documentacion', 'Documentación', '📋'),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
+      ),
+      padding: const EdgeInsets.fromLTRB(20, 16, 20, 32),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Center(
+            child: Container(
+              width: 40,
+              height: 4,
+              decoration: BoxDecoration(
+                color: const Color(0xFFE0E0E0),
+                borderRadius: BorderRadius.circular(2),
+              ),
+            ),
+          ),
+          const SizedBox(height: 20),
+          const Text(
+            'Estudiar por tema',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w900,
+              color: _kDark,
+            ),
+          ),
+          const SizedBox(height: 4),
+          const Text(
+            'Selecciona una temática para el Repaso Exprés.',
+            style: TextStyle(fontSize: 13, color: _kGrey),
+          ),
+          const SizedBox(height: 16),
+          ..._temas.map(
+            (t) => Padding(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: Material(
+                color: const Color(0xFFFFF8EE),
+                borderRadius: BorderRadius.circular(14),
+                child: InkWell(
+                  onTap: () => onTemaSeleccionado(t.$1),
+                  borderRadius: BorderRadius.circular(14),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 14),
+                    child: Row(
+                      children: [
+                        Text(t.$3, style: const TextStyle(fontSize: 20)),
+                        const SizedBox(width: 14),
+                        Expanded(
+                          child: Text(
+                            t.$2,
+                            style: const TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w700,
+                              color: _kDark,
+                            ),
+                          ),
+                        ),
+                        const Icon(Icons.chevron_right_rounded,
+                            color: _kGrey, size: 18),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

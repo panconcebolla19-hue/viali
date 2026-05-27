@@ -1,5 +1,29 @@
 import '../models/pregunta.dart';
 
+String emojiDeTema(String tema) => switch (tema) {
+      'señales' => '🚦',
+      'velocidad' => '🚀',
+      'alcohol' => '🍺',
+      'adelantamientos' => '🔀',
+      'distancias' => '📏',
+      'autopista' => '🛣️',
+      'medio_ambiente' => '🌱',
+      'documentacion' => '📋',
+      _ => '📚',
+    };
+
+String nombreDeTema(String tema) => switch (tema) {
+      'señales' => 'Señales',
+      'velocidad' => 'Velocidad',
+      'alcohol' => 'Alcohol/Drogas',
+      'adelantamientos' => 'Adelantamientos',
+      'distancias' => 'Distancias',
+      'autopista' => 'Autopistas',
+      'medio_ambiente' => 'Medio ambiente',
+      'documentacion' => 'Documentación',
+      _ => 'General',
+    };
+
 String detectarTema(Pregunta p) {
   final t = p.enunciado.toLowerCase();
   if (t.contains('señal') || t.contains('prohibi') || t.contains('advertenc') ||

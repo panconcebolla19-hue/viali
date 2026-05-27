@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <rect width="400" height="400" fill="#F5F5F5"/>
+  <polygon points="200,52 358,328 42,328" fill="white" stroke="#CC0000" stroke-width="13" stroke-linejoin="round"/>
+  <line x1="110" y1="290" x2="165" y2="165" stroke="#444" stroke-width="10"/>
+  <line x1="290" y1="290" x2="235" y2="165" stroke="#444" stroke-width="10"/>
+  <line x1="165" y1="165" x2="235" y2="165" stroke="#444" stroke-width="10"/>
+  <text x="200" y="386" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#444">P-14a Estrechamiento vía</text>
+</svg>

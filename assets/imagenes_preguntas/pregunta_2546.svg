@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <rect width="400" height="400" fill="#F5F5F5"/>
+  <polygon points="200,52 358,328 42,328" fill="white" stroke="#CC0000" stroke-width="13" stroke-linejoin="round"/>
+  <rect x="130" y="268" width="140" height="15" fill="#444"/>
+  <rect x="130" y="210" width="15" height="60" fill="#444"/>
+  <rect x="255" y="210" width="15" height="60" fill="#444"/>
+  <polygon points="133,268 140,210 155,210 148,268" fill="#666"/>
+  <polygon points="267,268 260,210 245,210 252,268" fill="#666"/>
+  <text x="200" y="386" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#444">P-9 Puente móvil</text>
+</svg>

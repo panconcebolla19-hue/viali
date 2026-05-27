@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <rect width="400" height="400" fill="#F5F5F5"/>
+  <rect x="60" y="120" width="280" height="180" rx="8" fill="#1565C0"/>
+  <path d="M100,280 L100,195 Q200,120 300,195 L300,280 Z" fill="none" stroke="white" stroke-width="14"/>
+  <text x="200" y="310" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" fill="white">Inicio de túnel</text>
+  <text x="200" y="386" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#444">S Inicio de túnel</text>
+</svg>

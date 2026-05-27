@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <rect width="400" height="400" fill="#F5F5F5"/>
+  <polygon points="200,52 358,328 42,328" fill="white" stroke="#CC0000" stroke-width="13" stroke-linejoin="round"/>
+  <line x1="120" y1="195" x2="268" y2="195" stroke="#444" stroke-width="7"/>
+  <polygon points="268,186 285,195 268,204" fill="#444"/>
+  <line x1="120" y1="220" x2="268" y2="220" stroke="#444" stroke-width="7"/>
+  <polygon points="268,211 285,220 268,229" fill="#444"/>
+  <line x1="120" y1="245" x2="268" y2="245" stroke="#444" stroke-width="7"/>
+  <polygon points="268,236 285,245 268,254" fill="#444"/>
+  <text x="200" y="386" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#444">P-22 Viento lateral</text>
+</svg>

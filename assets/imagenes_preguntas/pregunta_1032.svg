@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <rect width="400" height="400" fill="#F5F5F5"/>
+  <polygon points="200,52 358,328 42,328" fill="white" stroke="#CC0000" stroke-width="13" stroke-linejoin="round"/>
+  <path d="M130,290 L200,155 L270,155 L270,290" fill="#888"/>
+  <line x1="200" y1="165" x2="200" y2="280" stroke="white" stroke-width="4" stroke-dasharray="15,10"/>
+  <text x="200" y="386" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#444">P-15a Pendiente ascendente</text>
+</svg>

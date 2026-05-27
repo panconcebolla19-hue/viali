@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <rect width="400" height="400" fill="#F5F5F5"/>
+  <circle cx="200" cy="200" r="145" fill="#1565C0"/>
+  <ellipse cx="175" cy="200" rx="30" ry="18" fill="none" stroke="white" stroke-width="10"/>
+  <ellipse cx="225" cy="200" rx="30" ry="18" fill="none" stroke="white" stroke-width="10"/>
+  <text x="200" y="386" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#444">R-311 Cadenas obligatorias</text>
+</svg>

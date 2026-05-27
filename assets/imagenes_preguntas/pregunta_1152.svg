@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <rect width="400" height="400" fill="#F5F5F5"/>
+  <rect x="60" y="120" width="280" height="180" rx="8" fill="#1565C0"/>
+  <line x1="130" y1="270" x2="130" y2="175" stroke="white" stroke-width="6"/>
+  <line x1="165" y1="270" x2="165" y2="175" stroke="white" stroke-width="6"/>
+  <path d="M130,175 Q148,145 165,175" fill="none" stroke="white" stroke-width="6"/>
+  <text x="200" y="245" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="white">AUTOPISTA</text>
+  <text x="200" y="386" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#444">S-11 Entrada autopista</text>
+</svg>

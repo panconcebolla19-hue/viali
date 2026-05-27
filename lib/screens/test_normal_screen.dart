@@ -236,8 +236,8 @@ class _TestNormalScreenState extends State<TestNormalScreen>
 
   void _continuar() {
     if (_indiceActual < _preguntasTest.length - 1) {
-      setState(() => _indiceActual++);
-      _prepararPregunta();
+      _indiceActual++;       // mutación directa: no dispara rebuild
+      _prepararPregunta();   // un solo setState que resetea todo con el índice ya actualizado
     } else {
       _finalizar();
     }

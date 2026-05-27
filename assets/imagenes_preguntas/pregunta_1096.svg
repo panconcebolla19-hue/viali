@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <rect width="400" height="400" fill="#F5F5F5"/>
+  <circle cx="200" cy="200" r="145" fill="#1565C0"/>
+  <text x="200" y="240" text-anchor="middle" font-family="Arial,sans-serif" font-size="110" font-weight="bold" fill="white">30</text>
+  <text x="200" y="386" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#444">R-413 Vel. mínima 30</text>
+</svg>

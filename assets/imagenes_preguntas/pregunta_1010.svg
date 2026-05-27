@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <rect width="400" height="400" fill="#F5F5F5"/>
+  <polygon points="200,52 358,328 42,328" fill="white" stroke="#CC0000" stroke-width="13" stroke-linejoin="round"/>
+  <line x1="155" y1="165" x2="245" y2="290" stroke="#CC0000" stroke-width="8"/>
+  <line x1="245" y1="165" x2="155" y2="290" stroke="#CC0000" stroke-width="8"/>
+  <circle cx="200" cy="145" r="18" fill="#CC0000"/>
+  <line x1="130" y1="240" x2="200" y2="240" stroke="#CC4400" stroke-width="10"/>
+  <line x1="200" y1="240" x2="270" y2="240" stroke="#CC4400" stroke-width="10"/>
+  <text x="200" y="386" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#444">P-7 Paso a nivel con barreras</text>
+</svg>

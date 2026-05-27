@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../services/notification_service.dart';
+import '../data/permiso_repository.dart';
 import 'privacidad_screen.dart';
 import 'onboarding_screen.dart';
 
@@ -21,6 +22,7 @@ class _AjustesScreenState extends State<AjustesScreen> {
   bool _notifEnabled = false;
   TimeOfDay _hora = const TimeOfDay(hour: 19, minute: 0);
   bool _guardando = false;
+  String _permiso = 'B';
 
   @override
   void initState() {
@@ -31,9 +33,11 @@ class _AjustesScreenState extends State<AjustesScreen> {
   Future<void> _cargar() async {
     final enabled = await NotificationService.isEnabled();
     final hora = await NotificationService.getTime();
+    final permiso = await PermisoRepository.getPermiso();
     setState(() {
       _notifEnabled = enabled;
       _hora = hora;
+      _permiso = permiso;
       _cargando = false;
     });
   }
@@ -110,6 +114,59 @@ class _AjustesScreenState extends State<AjustesScreen> {
       MaterialPageRoute(builder: (_) => const OnboardingScreen()),
       (_) => false,
     );
+  }
+
+  Future<void> _cambiarPermiso() async {
+    final nuevo = await showDialog<String>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        title: const Text(
+          '¿Qué permiso quieres estudiar?',
+          style: TextStyle(fontWeight: FontWeight.w700),
+        ),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            _PermisoDialogOpcion(
+              emoji: '🚗',
+              label: 'Permiso B — Coche',
+              activo: _permiso == 'B',
+              onTap: () => Navigator.pop(ctx, 'B'),
+            ),
+            const SizedBox(height: 10),
+            _PermisoDialogOpcion(
+              emoji: '🏍️',
+              label: 'Permiso A — Moto',
+              activo: _permiso == 'A',
+              onTap: () => Navigator.pop(ctx, 'A'),
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx),
+            child: const Text('Cancelar', style: TextStyle(color: _kGrey)),
+          ),
+        ],
+      ),
+    );
+    if (nuevo == null || nuevo == _permiso) return;
+    await PermisoRepository.setPermiso(nuevo);
+    setState(() => _permiso = nuevo);
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            nuevo == 'A'
+                ? 'Cambiado a Permiso A (Moto)'
+                : 'Cambiado a Permiso B (Coche)',
+          ),
+          behavior: SnackBarBehavior.floating,
+          duration: const Duration(seconds: 2),
+        ),
+      );
+    }
   }
 
   void _abrirPrivacidad() {
@@ -218,6 +275,16 @@ class _AjustesScreenState extends State<AjustesScreen> {
                 const _SectionHeader(label: 'General'),
                 const SizedBox(height: 12),
                 _SettingsTile(
+                  icon: Icons.swap_horiz_rounded,
+                  title: 'Cambiar permiso',
+                  subtitle: _permiso == 'A'
+                      ? '🏍️ Permiso A (Moto)'
+                      : '🚗 Permiso B (Coche)',
+                  onTap: _cambiarPermiso,
+                  trailing: const Icon(Icons.chevron_right_rounded, color: _kGrey),
+                ),
+                const SizedBox(height: 8),
+                _SettingsTile(
                   icon: Icons.privacy_tip_rounded,
                   title: 'Política de privacidad',
                   subtitle: 'Sin servidores, sin datos externos',
@@ -320,6 +387,60 @@ class _SettingsTile extends StatelessWidget {
                 ),
               ),
               ?trailing,
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _PermisoDialogOpcion extends StatelessWidget {
+  final String emoji;
+  final String label;
+  final bool activo;
+  final VoidCallback onTap;
+
+  const _PermisoDialogOpcion({
+    required this.emoji,
+    required this.label,
+    required this.activo,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: activo ? _kYellow.withValues(alpha: 0.12) : const Color(0xFFF9F9F9),
+      borderRadius: BorderRadius.circular(14),
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(14),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(14),
+            border: Border.all(
+              color: activo ? _kYellow : _kBorder,
+              width: activo ? 2 : 1,
+            ),
+          ),
+          child: Row(
+            children: [
+              Text(emoji, style: const TextStyle(fontSize: 24)),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Text(
+                  label,
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w700,
+                    color: activo ? _kYellow : _kDark,
+                  ),
+                ),
+              ),
+              if (activo)
+                const Icon(Icons.check_circle_rounded, color: _kYellow, size: 20),
             ],
           ),
         ),

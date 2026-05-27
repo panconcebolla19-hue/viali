@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'nivel_wizard_screen.dart';
+import '../data/permiso_repository.dart';
 
 const _kYellow = Color(0xFFF5A623);
 const _kDark = Color(0xFF1A1A1A);
@@ -41,6 +42,12 @@ class OnboardingScreen extends StatefulWidget {
 class _OnboardingScreenState extends State<OnboardingScreen> {
   final _ctrl = PageController();
   int _page = 0;
+  bool _permisoElegido = false;
+
+  Future<void> _elegirPermiso(String permiso) async {
+    await PermisoRepository.setPermiso(permiso);
+    setState(() => _permisoElegido = true);
+  }
 
   void _next() {
     if (_page < _pages.length - 1) {
@@ -70,6 +77,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    if (!_permisoElegido) {
+      return _PermisoSelectorScreen(onElegir: _elegirPermiso);
+    }
+
     final isLast = _page == _pages.length - 1;
 
     return Scaffold(
@@ -127,6 +138,124 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     );
   }
 }
+
+// ── Permiso selector ──────────────────────────────────────────────────────────
+
+class _PermisoSelectorScreen extends StatelessWidget {
+  final Future<void> Function(String permiso) onElegir;
+  const _PermisoSelectorScreen({required this.onElegir});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(32, 0, 32, 40),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const Spacer(flex: 2),
+              const Text(
+                '¿Qué permiso\nquieres sacar?',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.w900,
+                  color: _kDark,
+                  height: 1.15,
+                ),
+              ),
+              const SizedBox(height: 12),
+              const Text(
+                'Elige el tipo de carnet que quieres preparar.',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 16, color: _kGrey, height: 1.5),
+              ),
+              const Spacer(flex: 2),
+              _PermisoOpcion(
+                emoji: '🚗',
+                titulo: 'Permiso B',
+                subtitulo: 'Coche y vehículos ligeros',
+                onTap: () => onElegir('B'),
+              ),
+              const SizedBox(height: 16),
+              _PermisoOpcion(
+                emoji: '🏍️',
+                titulo: 'Permiso A',
+                subtitulo: 'Motocicletas',
+                onTap: () => onElegir('A'),
+              ),
+              const Spacer(flex: 3),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _PermisoOpcion extends StatelessWidget {
+  final String emoji;
+  final String titulo;
+  final String subtitulo;
+  final VoidCallback onTap;
+
+  const _PermisoOpcion({
+    required this.emoji,
+    required this.titulo,
+    required this.subtitulo,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: const Color(0xFFFFF8EE),
+      borderRadius: BorderRadius.circular(22),
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(22),
+        child: Container(
+          padding: const EdgeInsets.all(22),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(22),
+            border: Border.all(color: _kYellow, width: 2),
+          ),
+          child: Row(
+            children: [
+              Text(emoji, style: const TextStyle(fontSize: 40)),
+              const SizedBox(width: 20),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      titulo,
+                      style: const TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w900,
+                        color: _kDark,
+                      ),
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      subtitulo,
+                      style: const TextStyle(fontSize: 14, color: _kGrey),
+                    ),
+                  ],
+                ),
+              ),
+              const Icon(Icons.chevron_right_rounded, color: _kGrey, size: 24),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// ── Onboarding page ───────────────────────────────────────────────────────────
 
 class _OnboardingPage extends StatelessWidget {
   final _PageData data;

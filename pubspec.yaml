@@ -78,6 +78,7 @@ flutter:
 
   assets:
     - assets/preguntas.json
+    - assets/preguntas_A.json
     - assets/semaforo_normal.png
     - assets/semaforo_verde.png
     - assets/semaforo_rojo.png

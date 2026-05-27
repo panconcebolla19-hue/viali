@@ -47,6 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   String? _nivelUsuario;
   int _diasDesdeWizard = 0;
+  String _permiso = 'B';
 
   @override
   void initState() {
@@ -91,12 +92,14 @@ class _HomeScreenState extends State<HomeScreen> {
         diasDesde = DateTime.now().difference(wizardFecha).inDays;
       }
     }
+    final permiso = prefs.getString('permiso_activo') ?? 'B';
     if (mounted) {
       setState(() {
         _falladasCount = falladasIds.length;
         _totalPreguntas = prefs.getInt('preguntas_total') ?? 0;
         _nivelUsuario = nivel;
         _diasDesdeWizard = diasDesde;
+        _permiso = permiso;
       });
     }
   }
@@ -190,6 +193,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   const SizedBox(width: 10),
                   _PillBadge(text: '📚 $_totalPreguntas respondidas'),
                 ],
+              ),
+              const SizedBox(height: 6),
+              Center(
+                child: _PillBadge(
+                  text: _permiso == 'A' ? '🏍️ Permiso A' : '🚗 Permiso B',
+                ),
               ),
             ],
           ),

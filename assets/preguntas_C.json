@@ -1,0 +1,662 @@
+[
+  {
+    "id": 1,
+    "enunciado": "¿Cuál es la masa máxima autorizada (MMA) de un vehículo de la categoría C?",
+    "opciones": [
+      "Más de 3.500 kg.",
+      "Más de 7.500 kg.",
+      "Más de 12.000 kg."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Los vehículos de categoría C tienen una MMA superior a 3.500 kg. Los de categoría C1 están entre 3.500 y 7.500 kg, y los de categoría C (plena) superan los 7.500 kg."
+  },
+  {
+    "id": 2,
+    "enunciado": "¿Cuál es la velocidad máxima en autopista para un camión de MMA superior a 3.500 kg?",
+    "opciones": [
+      "90 km/h.",
+      "100 km/h.",
+      "110 km/h."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Los vehículos de más de 3.500 kg de MMA tienen una velocidad máxima de 90 km/h en autopistas y autovías."
+  },
+  {
+    "id": 3,
+    "enunciado": "¿Cuál es la velocidad máxima en carretera convencional para un camión de MMA superior a 3.500 kg?",
+    "opciones": [
+      "70 km/h.",
+      "80 km/h.",
+      "90 km/h."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "La velocidad máxima en carretera convencional para vehículos de más de 3.500 kg es de 80 km/h."
+  },
+  {
+    "id": 4,
+    "enunciado": "¿Cuántas horas de conducción diaria permite el Reglamento (CE) n.º 561/2006 como máximo?",
+    "opciones": [
+      "8 horas, ampliables a 9 horas dos veces por semana.",
+      "10 horas, ampliables a 11 horas dos veces por semana.",
+      "9 horas, ampliables a 10 horas dos veces por semana."
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "El reglamento europeo fija un máximo de 9 horas de conducción diaria, que puede ampliarse a 10 horas como máximo dos veces por semana."
+  },
+  {
+    "id": 5,
+    "enunciado": "¿Cuánto tiempo de pausa debe tomarse como mínimo tras 4,5 horas de conducción continuada?",
+    "opciones": [
+      "30 minutos, o 15 + 30 minutos en ese orden.",
+      "45 minutos, o 15 + 30 minutos en ese orden.",
+      "45 minutos, o 30 + 15 minutos en ese orden."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Tras 4,5 horas de conducción se debe hacer una pausa de 45 minutos, que puede dividirse en una primera de 15 minutos seguida de una de 30 minutos."
+  },
+  {
+    "id": 6,
+    "enunciado": "¿Cuántas horas de conducción semanal permite como máximo el reglamento europeo?",
+    "opciones": [
+      "48 horas.",
+      "56 horas.",
+      "60 horas."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "El tiempo máximo de conducción semanal es de 56 horas. Además, en dos semanas consecutivas no se pueden superar las 90 horas."
+  },
+  {
+    "id": 7,
+    "enunciado": "¿Cuál es el período mínimo de descanso diario normal que establece el reglamento europeo?",
+    "opciones": [
+      "8 horas consecutivas.",
+      "9 horas consecutivas.",
+      "11 horas consecutivas."
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "El descanso diario normal es de 11 horas consecutivas. Puede reducirse a 9 horas (descanso reducido) hasta tres veces entre dos descansos semanales."
+  },
+  {
+    "id": 8,
+    "enunciado": "¿Qué aparato registra automáticamente la velocidad, los tiempos de conducción y los períodos de descanso del conductor?",
+    "opciones": [
+      "El velocímetro.",
+      "El tacógrafo.",
+      "El limitador de velocidad."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "El tacógrafo (analógico o digital) es el aparato homologado que registra la velocidad del vehículo, las distancias recorridas y los tiempos de conducción y descanso del conductor."
+  },
+  {
+    "id": 9,
+    "enunciado": "¿Durante cuánto tiempo debe conservar el conductor las hojas de registro del tacógrafo?",
+    "opciones": [
+      "15 días.",
+      "28 días.",
+      "60 días."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "El conductor debe conservar las hojas de registro (discos o fichas del tacógrafo digital) durante al menos 28 días y llevarlas consigo para poder presentarlas a los agentes de control."
+  },
+  {
+    "id": 10,
+    "enunciado": "¿Cuál es la longitud máxima permitida para un camión rígido (sin remolque)?",
+    "opciones": [
+      "12 metros.",
+      "14 metros.",
+      "18,75 metros."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "La longitud máxima de un camión rígido es de 12 metros. Para un conjunto articulado (tractora + semirremolque) el máximo es 16,50 m y para tren de carretera 18,75 m."
+  },
+  {
+    "id": 11,
+    "enunciado": "¿Cuál es la altura máxima permitida para un camión en España?",
+    "opciones": [
+      "3,5 metros.",
+      "4 metros.",
+      "4,5 metros."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "La altura máxima permitida para vehículos de transporte por carretera en España es de 4 metros."
+  },
+  {
+    "id": 12,
+    "enunciado": "¿Cuál es la anchura máxima permitida para un camión en España?",
+    "opciones": [
+      "2,25 metros.",
+      "2,50 metros.",
+      "2,75 metros."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "La anchura máxima permitida para vehículos de transporte por carretera es de 2,55 metros (2,50 metros para vehículos que no sean frigoríficos; los frigoríficos pueden llegar a 2,60 m)."
+  },
+  {
+    "id": 13,
+    "enunciado": "¿Cuál es la masa máxima autorizada para un camión rígido de dos ejes?",
+    "opciones": [
+      "16.000 kg.",
+      "18.000 kg.",
+      "20.000 kg."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Un camión rígido de dos ejes tiene una MMA máxima de 18.000 kg (18 toneladas)."
+  },
+  {
+    "id": 14,
+    "enunciado": "¿Qué se entiende por tara de un vehículo?",
+    "opciones": [
+      "La masa total del vehículo cargado.",
+      "La masa del vehículo sin carga, con el combustible, líquidos y el conductor.",
+      "La diferencia entre la MMA y la masa real de la carga."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "La tara es el peso del vehículo en vacío, incluyendo el combustible, los líquidos necesarios para su funcionamiento y el conductor (75 kg), pero sin carga útil."
+  },
+  {
+    "id": 15,
+    "enunciado": "¿Qué es la carga máxima útil (carga útil) de un camión?",
+    "opciones": [
+      "La masa máxima autorizada del vehículo.",
+      "La diferencia entre la MMA y la tara.",
+      "El peso de la mercancía transportada en un momento dado."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "La carga útil es la diferencia entre la Masa Máxima Autorizada (MMA) y la tara del vehículo. Indica el máximo peso de carga que puede transportar legalmente."
+  },
+  {
+    "id": 16,
+    "enunciado": "¿Qué sistema de frenada es obligatorio en camiones matriculados a partir de una determinada fecha y que distribuye automáticamente la fuerza de frenado entre los ejes?",
+    "opciones": [
+      "El ABS (sistema antibloqueo de frenos).",
+      "El retarder (ralentizador).",
+      "El freno de estacionamiento independiente."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "El ABS (Anti-lock Braking System) es obligatorio en vehículos pesados y evita el bloqueo de las ruedas durante el frenado, mejorando la estabilidad y el control del vehículo."
+  },
+  {
+    "id": 17,
+    "enunciado": "¿Qué función tiene el ralentizador (retarder) en un camión?",
+    "opciones": [
+      "Aumentar la potencia del motor en pendientes ascendentes.",
+      "Frenar el vehículo sin usar los frenos de servicio, reduciendo su desgaste.",
+      "Controlar la velocidad del vehículo mediante el limitador electrónico."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "El ralentizador o retarder es un sistema de frenada auxiliar (hidráulico, eléctrico o electromagnético) que permite desacelerar el vehículo sin utilizar los frenos de servicio, especialmente útil en largas bajadas."
+  },
+  {
+    "id": 18,
+    "enunciado": "¿Cuál es la velocidad máxima que debe tener instalado el limitador de velocidad en camiones de MMA superior a 12.000 kg?",
+    "opciones": [
+      "80 km/h.",
+      "90 km/h.",
+      "100 km/h."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Los camiones de más de 12.000 kg de MMA deben llevar instalado un limitador de velocidad tarado a un máximo de 90 km/h."
+  },
+  {
+    "id": 19,
+    "enunciado": "Al circular por una pendiente descendente pronunciada con un camión cargado, ¿cuál es la técnica más adecuada?",
+    "opciones": [
+      "Meter punto muerto y usar los frenos de servicio continuamente.",
+      "Seleccionar una marcha corta antes de iniciar la bajada y usar el freno motor o ralentizador.",
+      "Acelerar para ganar inercia y frenar al final de la pendiente."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "En pendientes descendentes largas se debe seleccionar una marcha corta ANTES de iniciar la bajada y usar el freno motor o el ralentizador para controlar la velocidad, evitando el calentamiento excesivo de los frenos de servicio."
+  },
+  {
+    "id": 20,
+    "enunciado": "¿Qué triángulos de señalización de preseñalización de peligro debe llevar obligatoriamente un camión en España?",
+    "opciones": [
+      "Uno.",
+      "Dos.",
+      "Tres."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Todo vehículo a motor debe llevar dos triángulos de preseñalización de peligro para colocarlos delante y detrás del vehículo inmovilizado."
+  },
+  {
+    "id": 21,
+    "enunciado": "En caso de inmovilización en una vía interurbana, ¿a qué distancia mínima del vehículo se deben colocar los triángulos de señalización?",
+    "opciones": [
+      "A 25 metros.",
+      "A 50 metros.",
+      "A 100 metros."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Los triángulos de señalización deben colocarse a 50 metros del vehículo inmovilizado en vías interurbanas, uno delante y otro detrás, garantizando la visibilidad desde 100 metros."
+  },
+  {
+    "id": 22,
+    "enunciado": "¿Qué significa la señal V-1 (luz naranja intermitente) en la parte trasera de un camión?",
+    "opciones": [
+      "Que el camión transporta mercancías peligrosas.",
+      "Que el camión es de gran longitud o anchura (transporte especial).",
+      "Que el camión circula a menos de 40 km/h y es un vehículo de obras."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "La señal V-1 (luz ámbar giratoria o intermitente) identifica vehículos de gran longitud, anchura o masa (transportes especiales) o vehículos que realizan trabajos en la vía."
+  },
+  {
+    "id": 23,
+    "enunciado": "¿Cuándo está obligado el conductor de un camión a utilizar el carril derecho en una vía de varios carriles?",
+    "opciones": [
+      "Solo en autopistas y autovías.",
+      "Siempre que no adelante y el carril esté libre.",
+      "Cuando circule a menos de 60 km/h."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Los vehículos de más de 3.500 kg de MMA o de más de 10 m de longitud deben circular siempre por el carril derecho de la calzada salvo que vayan a adelantar u otra causa lo justifique."
+  },
+  {
+    "id": 24,
+    "enunciado": "¿Qué distancia de seguridad mínima (en metros) deben mantener entre sí los camiones fuera de poblado?",
+    "opciones": [
+      "50 metros.",
+      "100 metros.",
+      "150 metros."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Los vehículos de más de 3.500 kg de MMA o de más de 10 metros de longitud deben mantener entre sí, fuera de poblado, una distancia mínima de 50 metros. Sin embargo, en autopistas la señalización puede indicar 100 metros para facilitar los adelantamientos."
+  },
+  {
+    "id": 25,
+    "enunciado": "¿Qué documentación específica del transporte debe llevar el conductor de un camión en un transporte público de mercancías?",
+    "opciones": [
+      "La carta de porte y el certificado de aptitud profesional (CAP).",
+      "Solo el permiso de circulación del vehículo.",
+      "Solo la tarjeta de transportista."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "En un transporte público de mercancías, el conductor debe llevar la carta de porte (contrato de transporte), además del CAP vigente, el permiso de conducción, la documentación del vehículo y la autorización de transporte."
+  },
+  {
+    "id": 26,
+    "enunciado": "¿Qué es el CAP (Certificado de Aptitud Profesional) para conductores de camión?",
+    "opciones": [
+      "El permiso de circulación del vehículo pesado.",
+      "La cualificación profesional obligatoria para conductores de transporte de mercancías por carretera.",
+      "El certificado técnico de la ITV para vehículos pesados."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "El CAP es la cualificación inicial y periódica obligatoria para los conductores profesionales que realizan transporte de mercancías (permiso C/C1/C+E) o de viajeros (D). Debe renovarse cada 5 años con 35 horas de formación continua."
+  },
+  {
+    "id": 27,
+    "enunciado": "¿Cuál es la presión mínima recomendada que deben tener los neumáticos de un camión para garantizar la seguridad?",
+    "opciones": [
+      "La marcada por el fabricante según la carga del vehículo.",
+      "Siempre 8 bares, independientemente de la carga.",
+      "La misma que la de un turismo (2,2 bares)."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Los neumáticos deben inflarse según las especificaciones del fabricante en función de la carga real del vehículo. Una presión incorrecta afecta al desgaste, al consumo y a la seguridad."
+  },
+  {
+    "id": 28,
+    "enunciado": "¿Cuál es el efecto del viento lateral sobre un camión de caja cerrada con carga ligera?",
+    "opciones": [
+      "Es mínimo porque la carrocería actúa como paravientos.",
+      "Puede ser muy significativo, pudiendo desviar el vehículo o incluso volcarle.",
+      "Solo afecta cuando el vehículo circula vacío, no cuando está cargado."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Los camiones de caja cerrada o con lonas presentan una gran superficie lateral. El viento puede desviarlos o, en casos extremos, volcarlos, especialmente si la carga es ligera y el centro de gravedad es elevado."
+  },
+  {
+    "id": 29,
+    "enunciado": "¿Qué neumáticos están permitidos en el eje motriz de un camión cuando se circula sobre nieve o hielo?",
+    "opciones": [
+      "Solo neumáticos de verano con cadenas.",
+      "Neumáticos de invierno o de uso mixto (M+S), o neumáticos de verano con cadenas si la normativa lo permite.",
+      "Cualquier neumático homologado para el vehículo, sin restricción alguna."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "En condiciones de nieve o hielo se deben usar neumáticos de invierno (marcados M+S o 3PMSF) o, donde esté permitido, neumáticos de verano con cadenas montadas en las ruedas motrices."
+  },
+  {
+    "id": 30,
+    "enunciado": "¿Cómo afecta el exceso de carga al comportamiento de un camión?",
+    "opciones": [
+      "Mejora la estabilidad pero aumenta el desgaste de neumáticos.",
+      "Aumenta la distancia de frenado, sobrecarga los ejes y puede provocar averías o accidentes.",
+      "Solo afecta al consumo de combustible, no a la seguridad."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Circular con exceso de carga sobrecarga los ejes y los neumáticos, aumenta la distancia de frenado, dificulta la dirección y puede provocar la pérdida de control. Además conlleva sanciones económicas."
+  },
+  {
+    "id": 31,
+    "enunciado": "¿Qué es la ITV (Inspección Técnica de Vehículos) y con qué periodicidad deben pasarla los camiones?",
+    "opciones": [
+      "Una revisión anual, igual que los turismos.",
+      "Una inspección técnica obligatoria; los vehículos pesados la pasan anualmente desde su matriculación.",
+      "Una inspección voluntaria que sirve para reducir el seguro obligatorio."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "La ITV es obligatoria para todos los vehículos. Los camiones (vehículos de transporte de mercancías de más de 3.500 kg) deben pasarla anualmente desde su primer año de matriculación."
+  },
+  {
+    "id": 32,
+    "enunciado": "¿Qué norma regula el transporte de mercancías peligrosas por carretera en Europa?",
+    "opciones": [
+      "El Convenio ADR.",
+      "El Reglamento AETR.",
+      "El Convenio CMR."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "El Convenio ADR (Accord européen relatif au transport international des marchandises Dangereuses par Route) regula el transporte internacional de mercancías peligrosas por carretera en Europa."
+  },
+  {
+    "id": 33,
+    "enunciado": "¿Qué panel de color naranja rectangular situado en la parte delantera y trasera del camión indica?",
+    "opciones": [
+      "Que el camión es de gran tonelaje.",
+      "Que transporta mercancías peligrosas.",
+      "Que está realizando un transporte especial."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Los paneles rectangulares de color naranja (con o sin número de identificación de peligro y número ONU) señalan que el vehículo transporta mercancías peligrosas sujetas al ADR."
+  },
+  {
+    "id": 34,
+    "enunciado": "¿Cuándo está prohibido circular con un camión por el carril de adelantamiento (carril izquierdo) en una autopista de dos carriles por sentido?",
+    "opciones": [
+      "Solo cuando hay niebla.",
+      "Siempre, salvo que estén adelantando o vayan a girar a la izquierda.",
+      "Solo si el camión supera las 20 toneladas de MMA."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Los vehículos de más de 3.500 kg de MMA o más de 10 m de longitud deben circular por el carril derecho. Solo pueden ocupar el carril izquierdo para adelantar u otras causas justificadas."
+  },
+  {
+    "id": 35,
+    "enunciado": "¿Cuál es la carga máxima por eje simple que puede soportar una carretera española en condiciones normales?",
+    "opciones": [
+      "8.000 kg.",
+      "10.000 kg.",
+      "13.000 kg."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "La carga máxima por eje simple es de 10.000 kg (10 t). Para ejes en tándem o trídem, los límites son distintos y dependen de la separación entre ejes."
+  },
+  {
+    "id": 36,
+    "enunciado": "¿Cuándo debe colocarse el dispositivo de protección trasera antiempotramiento en un camión?",
+    "opciones": [
+      "Solo cuando el camión transporte carga que sobresalga por la parte trasera.",
+      "Siempre: es un elemento de seguridad pasiva obligatorio en todos los camiones.",
+      "Solo en vehículos de más de 20.000 kg de MMA."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "El dispositivo de protección trasera antiempotramiento (paragolpes trasero) es obligatorio en todos los camiones. Su función es evitar que los vehículos ligeros queden atrapados bajo el remolque en caso de colisión trasera."
+  },
+  {
+    "id": 37,
+    "enunciado": "¿A qué temperatura mínima se activa generalmente el freno de invierno o de motor (freno motor) en descensos largos?",
+    "opciones": [
+      "El freno motor se activa automáticamente solo por debajo de 0 °C.",
+      "El freno motor no se activa por temperatura; el conductor lo selecciona manualmente.",
+      "Se activa automáticamente cuando la pendiente supera el 5%."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "El freno motor (freno de compresión o ralentizador) es un dispositivo que el conductor activa manualmente para ayudar a controlar la velocidad en pendientes descendentes, sin depender de la temperatura."
+  },
+  {
+    "id": 38,
+    "enunciado": "¿Qué significa la señal de prohibición 'R-310' de altura máxima?",
+    "opciones": [
+      "Que el camión debe circular a esa altura sobre el nivel del mar.",
+      "Que no pueden pasar vehículos con una altura superior a la indicada en la señal.",
+      "Que la velocidad máxima depende de la altura del vehículo."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "La señal R-310 indica la altura máxima de los vehículos que pueden pasar. El conductor de un camión de caja alta debe conocer la altura de su vehículo para evitar colisionar con obstáculos como puentes, túneles o pasos bajos."
+  },
+  {
+    "id": 39,
+    "enunciado": "¿Qué información proporciona la carta de porte en un transporte de mercancías?",
+    "opciones": [
+      "Los datos del seguro de mercancías.",
+      "Los datos del remitente, destinatario, mercancía, peso, condiciones y precio del transporte.",
+      "El itinerario obligatorio que debe seguir el camión."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "La carta de porte es el contrato de transporte. Recoge los datos del remitente y destinatario, la descripción y cantidad de la mercancía, las instrucciones de entrega y las condiciones económicas del transporte."
+  },
+  {
+    "id": 40,
+    "enunciado": "¿Cuál es el efecto del efecto 'aquaplaning' en un camión?",
+    "opciones": [
+      "El vehículo reduce su velocidad automáticamente al circular sobre agua.",
+      "Las ruedas pierden el contacto con el suelo al flotar sobre una capa de agua, perdiendo la dirección y el frenado.",
+      "Solo afecta a los vehículos ligeros, los camiones son inmunes por su mayor peso."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "El aquaplaning ocurre cuando las ruedas se levantan sobre una película de agua y pierden el contacto con el asfalto. Aunque el peso del camión dificulta el aquaplaning, este puede ocurrir y resulta muy peligroso."
+  },
+  {
+    "id": 41,
+    "enunciado": "¿Qué es el vuelco lateral en un camión y qué lo provoca principalmente?",
+    "opciones": [
+      "Un movimiento oscilante en el eje vertical provocado por el viento.",
+      "La pérdida de estabilidad lateral del vehículo provocada por velocidad excesiva en curva, carga descentrada o frenadas bruscas.",
+      "El bloqueo de las ruedas traseras al frenar en suelo mojado."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "El vuelco lateral es uno de los accidentes más graves en camiones. Lo provoca el exceso de velocidad en curvas, la carga mal repartida o demasiado alta, el viento lateral o las maniobras bruscas."
+  },
+  {
+    "id": 42,
+    "enunciado": "¿Qué deben hacer los conductores de camión cuando se aproximan a un paso a nivel sin barreras ni semibarreras?",
+    "opciones": [
+      "Cruzarlo a velocidad constante sin detenerse.",
+      "Reducir la velocidad, detenerse si es necesario para ceder el paso al tren y asegurarse de que pueden cruzar con tiempo suficiente.",
+      "Activar las luces de emergencia y cruzar sin parar."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "En un paso a nivel sin barreras el conductor debe reducir la velocidad, mirar a ambos lados, escuchar y asegurarse de que no se acerca ningún tren antes de cruzar. Si hay señal de STOP, es obligatorio detenerse."
+  },
+  {
+    "id": 43,
+    "enunciado": "¿Cuál es la distancia mínima de seguridad que deben mantener entre sí los camiones fuera de poblado, según el Reglamento General de Circulación?",
+    "opciones": [
+      "50 metros.",
+      "100 metros.",
+      "150 metros."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "El Reglamento General de Circulación establece que los vehículos de más de 3.500 kg o más de 10 m de longitud, fuera de poblado, deben mantener una distancia de al menos 50 m con el vehículo que les precede del mismo tipo."
+  },
+  {
+    "id": 44,
+    "enunciado": "¿Cuándo puede un camionero superar la jornada semanal de conducción de 56 horas?",
+    "opciones": [
+      "Nunca; el límite de 56 horas semanales es absoluto.",
+      "En caso de urgencia y previa comunicación a la empresa.",
+      "Si en dos semanas consecutivas no supera las 90 horas en total."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "El límite de 56 horas semanales de conducción es absoluto e inviolable. El único margen de flexibilidad está en que en dos semanas consecutivas no se superen las 90 horas."
+  },
+  {
+    "id": 45,
+    "enunciado": "En el sistema de frenada EBS (Electronic Braking System), ¿cuál es la principal ventaja respecto a los sistemas convencionales?",
+    "opciones": [
+      "Elimina la necesidad del ABS.",
+      "Reduce el tiempo de respuesta del freno y distribuye electrónicamente la presión de frenado entre todos los ejes.",
+      "Permite circular sin freno de estacionamiento."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "El EBS mejora el tiempo de respuesta del sistema de frenada y optimiza electrónicamente la distribución de la fuerza de frenado entre todos los ejes, complementando al ABS y al ASR."
+  },
+  {
+    "id": 46,
+    "enunciado": "¿Qué obligación tiene el conductor de un camión respecto a la sujeción de la carga?",
+    "opciones": [
+      "Es responsabilidad exclusiva del cargador; el conductor solo conduce.",
+      "El conductor es co-responsable junto con el cargador de que la carga esté correctamente asegurada antes de iniciar la marcha.",
+      "El conductor solo debe revisar la sujeción si el trayecto supera los 100 km."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "El conductor es co-responsable de que la carga esté correctamente distribuida y sujeta. Debe comprobar el estado de la carga antes de partir y durante el trayecto, aunque el cargador también tiene su propia responsabilidad."
+  },
+  {
+    "id": 47,
+    "enunciado": "¿Cuántos faros de posición laterales de color ámbar son obligatorios en un camión de más de 6 metros de longitud?",
+    "opciones": [
+      "No son obligatorios en ningún caso.",
+      "Al menos uno por lado, visible lateralmente, en camiones de longitud superior a 6 m.",
+      "Tres por cada lado en todos los camiones."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Los vehículos de más de 6 metros de longitud deben llevar luces de posición laterales (catadióptricos o luces ámbar) para hacerse visibles lateralmente de noche o con baja visibilidad."
+  },
+  {
+    "id": 48,
+    "enunciado": "¿Cuándo está prohibido a un camión adelantar a otro vehículo pesado en una carretera de un solo carril por sentido?",
+    "opciones": [
+      "Nunca; cualquier vehículo puede adelantar cuando el carril contrario esté libre.",
+      "Cuando el camión que adelanta no pueda sobrepasar al adelantado con suficiente margen de seguridad y volver al carril en un tiempo razonable.",
+      "Solo cuando hay señal de prohibición de adelantamiento específica."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Antes de adelantar, el conductor debe asegurarse de que dispone de visibilidad suficiente, de que puede completar la maniobra con seguridad y de que hay distancia suficiente con el vehículo de frente."
+  },
+  {
+    "id": 49,
+    "enunciado": "¿Qué acción deben realizar los conductores de camión al detectar que un neumático pierde presión durante la marcha?",
+    "opciones": [
+      "Frenar a fondo inmediatamente.",
+      "Reducir la velocidad progresivamente, mantener firme el volante y detenerse de forma segura en el arcén.",
+      "Acelerar para llegar cuanto antes a un taller."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Ante un reventón o pérdida de presión, el conductor debe sujetar firmemente el volante, no frenar bruscamente, decelerar de forma progresiva y apartarse de la calzada con seguridad antes de detenerse."
+  },
+  {
+    "id": 50,
+    "enunciado": "¿Cuál de los siguientes factores NO afecta a la distancia de frenado de un camión cargado?",
+    "opciones": [
+      "El estado del pavimento (seco, mojado, con hielo).",
+      "La marca comercial de la carrocería del vehículo.",
+      "La masa del vehículo y la distribución de la carga."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "La distancia de frenado depende de la velocidad, la masa del vehículo, el estado del pavimento, las condiciones de los neumáticos y el sistema de frenada. La marca de la carrocería no influye en la distancia de frenado."
+  },
+  {
+    "id": 51,
+    "enunciado": "¿Qué significa la señal de peligro 'P-14' (silueta de un camión inclinado)?",
+    "opciones": [
+      "Prohibición de circulación de camiones.",
+      "Peligro de vuelco de vehículos pesados.",
+      "Zona de estacionamiento reservada para camiones."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "La señal de peligro P-14 advierte de peligro de vuelco de vehículos pesados, generalmente debido a una curva muy pronunciada, rampa o calzada irregular."
+  },
+  {
+    "id": 52,
+    "enunciado": "¿Cuánto tiempo puede reducirse el descanso diario normal (11 horas) en un vehículo con dos conductores (conducción en equipo)?",
+    "opciones": [
+      "Hasta 8 horas, sin necesidad de compensación.",
+      "No puede reducirse; ambos deben respetar siempre las 11 horas.",
+      "Hasta 9 horas en el período de 30 horas desde el fin del último descanso, sin necesidad de compensación."
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "En conducción en equipo (dos conductores), el descanso diario puede ser de 9 horas (reducido) dentro de un período de 30 horas desde el fin del último descanso diario o semanal."
+  },
+  {
+    "id": 53,
+    "enunciado": "¿Qué información debe figurar en las placas de matrícula traseras de un camión que realiza un transporte especial de gran tonelaje?",
+    "opciones": [
+      "Las mismas que en cualquier otro vehículo.",
+      "El número de autorización especial de transporte.",
+      "El peso total del conjunto."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Las placas de matrícula de un camión llevan la misma información que las de cualquier otro vehículo. La autorización especial de transporte se lleva como documento a bordo, no en la matrícula."
+  },
+  {
+    "id": 54,
+    "enunciado": "¿Cuál es la masa máxima autorizada de un conjunto tractora + semirremolque en España?",
+    "opciones": [
+      "36.000 kg.",
+      "40.000 kg.",
+      "44.000 kg."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "La masa máxima autorizada para un conjunto articulado (tractora + semirremolque) es de 40.000 kg (40 toneladas). Para ciertos transportes especiales por carretera puede autorizarse más peso."
+  },
+  {
+    "id": 55,
+    "enunciado": "¿En qué situación está permitido que un camión supere el límite de velocidad establecido para su categoría?",
+    "opciones": [
+      "Cuando lleve urgencia médica documentada.",
+      "En ningún caso; los límites de velocidad son absolutos para su categoría.",
+      "Si está en autopista y el tráfico es muy fluido."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "Los límites de velocidad son siempre de obligado cumplimiento. No existe ninguna excepción que permita a un camión superar el límite establecido para su categoría de vehículo."
+  },
+  {
+    "id": 56,
+    "enunciado": "¿Qué efecto tiene la conducción eficiente (eco-driving) en un camión?",
+    "opciones": [
+      "Aumenta el riesgo de accidentes al reducir la velocidad en autopista.",
+      "Reduce el consumo de combustible, las emisiones de CO₂ y el desgaste mecánico.",
+      "Solo es aplicable a vehículos ligeros, no a camiones."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "La conducción eficiente en camiones (anticipación, uso correcto de marchas, velocidad constante, aprovechamiento del freno motor) reduce significativamente el consumo de combustible, las emisiones contaminantes y el desgaste de frenos y neumáticos."
+  },
+  {
+    "id": 57,
+    "enunciado": "¿Cuándo está obligado un camión a usar cadenas en carretera?",
+    "opciones": [
+      "Siempre que la temperatura sea inferior a 0 °C.",
+      "Cuando la señalización o las autoridades lo indiquen por condiciones de nieve o hielo en la calzada.",
+      "Solo en puertos de montaña con pendiente superior al 6%."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "El uso de cadenas es obligatorio cuando la señalización lo indica (señal R-407a) debido a la presencia de nieve o hielo. El conductor debe conocer cómo colocarlas correctamente."
+  },
+  {
+    "id": 58,
+    "enunciado": "¿Qué debe verificar el conductor antes de iniciar la marcha con un camión de remolque de frenos neumáticos?",
+    "opciones": [
+      "Que la presión del aire en los circuitos de freno es la correcta.",
+      "Solo que el freno de mano está puesto.",
+      "Únicamente el nivel de aceite del motor."
+    ],
+    "respuesta_correcta": 0,
+    "explicacion": "Los camiones con frenos neumáticos requieren una presión mínima de aire para funcionar correctamente. Antes de circular, el conductor debe comprobar que los depósitos de aire están presurizados y que no hay fugas en el circuito."
+  },
+  {
+    "id": 59,
+    "enunciado": "¿Qué obligación tienen los conductores de camiones al circular por vías de montaña con pendientes prolongadas?",
+    "opciones": [
+      "Ceder siempre el paso a los vehículos que suben, independientemente de las señales.",
+      "Usar el freno de servicio de forma continuada para mantener la velocidad.",
+      "Seleccionar la marcha adecuada antes de iniciar el descenso y usar el freno motor para no sobrecalentar los frenos de servicio."
+    ],
+    "respuesta_correcta": 2,
+    "explicacion": "En pendientes largas se debe seleccionar una marcha corta antes de bajar y usar el freno motor o ralentizador para controlar la velocidad. El uso continuo del freno de servicio provoca el sobrecalentamiento y el fading (pérdida de efectividad)."
+  },
+  {
+    "id": 60,
+    "enunciado": "¿Qué es el 'fading' en los frenos de un camión?",
+    "opciones": [
+      "El desgaste normal de las pastillas de freno.",
+      "La pérdida progresiva de efectividad de los frenos por sobrecalentamiento.",
+      "El ruido que emiten los frenos al estar desgastados."
+    ],
+    "respuesta_correcta": 1,
+    "explicacion": "El fading o efecto vapor es la pérdida de eficacia de los frenos por sobrecalentamiento, que puede producirse en descensos largos con uso excesivo del freno de servicio. Puede derivar en la pérdida total de los frenos."
+  }
+]

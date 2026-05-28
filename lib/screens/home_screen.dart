@@ -6,6 +6,8 @@ import '../data/falladas_repository.dart';
 import '../data/preguntas_repository.dart';
 import '../data/pregunta_dia_repository.dart';
 import '../data/anki_repository.dart';
+import '../data/idioma_repository.dart';
+import '../utils/i18n.dart';
 import '../models/pregunta.dart';
 import 'modo_racha_screen.dart';
 import 'test_normal_screen.dart';
@@ -48,6 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
   String? _nivelUsuario;
   int _diasDesdeWizard = 0;
   String _permiso = 'B';
+  String _idioma = 'es';
 
   @override
   void initState() {
@@ -93,6 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
       }
     }
     final permiso = prefs.getString('permiso_activo') ?? 'B';
+    final idioma = await IdiomaRepository.getIdioma();
     if (mounted) {
       setState(() {
         _falladasCount = falladasIds.length;
@@ -100,6 +104,7 @@ class _HomeScreenState extends State<HomeScreen> {
         _nivelUsuario = nivel;
         _diasDesdeWizard = diasDesde;
         _permiso = permiso;
+        _idioma = idioma;
       });
     }
   }
@@ -197,7 +202,11 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 6),
               Center(
                 child: _PillBadge(
-                  text: _permiso == 'A' ? '🏍️ Permiso A' : '🚗 Permiso B',
+                  text: switch (_permiso) {
+                    'A' => '🏍️ Permiso A',
+                    'C' => '🚛 Permiso C',
+                    _ => '🚗 Permiso B',
+                  },
                 ),
               ),
             ],
@@ -243,7 +252,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     const SizedBox(height: 20),
                   ],
-                  _ModoRachaButton(onTap: () => _ir(const ModoRachaScreen())),
+                  _ModoRachaButton(idioma: _idioma, onTap: () => _ir(const ModoRachaScreen())),
                   const SizedBox(height: 28),
                   const _SectionTitle('PRACTICAR'),
                   const SizedBox(height: 4),
@@ -251,7 +260,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       Expanded(
                         child: _PracticarCard(
-                          label: 'Test Normal',
+                          label: t('test_normal', _idioma),
                           icon: Icons.quiz_outlined,
                           onTap: () => _ir(const TestNormalScreen()),
                         ),
@@ -259,7 +268,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       const SizedBox(width: 12),
                       Expanded(
                         child: _PracticarCard(
-                          label: 'Examen Simulado',
+                          label: t('examen_simulado', _idioma),
                           icon: Icons.assignment_outlined,
                           onTap: () => _ir(const ExamenSimuladoScreen()),
                         ),
@@ -404,7 +413,8 @@ class _SectionTitle extends StatelessWidget {
 
 class _ModoRachaButton extends StatelessWidget {
   final VoidCallback onTap;
-  const _ModoRachaButton({required this.onTap});
+  final String idioma;
+  const _ModoRachaButton({required this.onTap, required this.idioma});
 
   @override
   Widget build(BuildContext context) {
@@ -437,20 +447,20 @@ class _ModoRachaButton extends StatelessWidget {
               children: [
                 const Text('🔥', style: TextStyle(fontSize: 28)),
                 const SizedBox(width: 16),
-                const Expanded(
+                Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Modo Racha',
-                        style: TextStyle(
+                        t('modo_racha', idioma),
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 20,
                           fontWeight: FontWeight.w800,
                         ),
                       ),
-                      SizedBox(height: 3),
-                      Text(
+                      const SizedBox(height: 3),
+                      const Text(
                         'Responde seguidas sin fallar',
                         style: TextStyle(
                           color: Colors.white70,

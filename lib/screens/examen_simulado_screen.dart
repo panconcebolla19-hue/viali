@@ -1,10 +1,14 @@
 import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import '../widgets/pregunta_imagen.dart';
 import '../models/pregunta.dart';
 import '../models/test_resultado.dart';
 import '../data/preguntas_repository.dart';
+import '../data/pais_repository.dart';
+import '../data/idioma_repository.dart';
+import '../models/pais.dart';
+import '../utils/i18n.dart';
 import '../data/test_historial_repository.dart';
 import '../data/falladas_repository.dart';
 import '../data/daily_streak_repository.dart';
@@ -32,6 +36,12 @@ class _ExamenSimuladoScreenState extends State<ExamenSimuladoScreen>
     with SingleTickerProviderStateMixin {
   bool _cargando = true;
 
+  ExamenConfig _config = const ExamenConfig(
+    numPreguntas: 30,
+    tiempoMinutos: 30,
+    porcentajeCorte: 0.9,
+  );
+
   List<Pregunta> _preguntas = [];
   List<List<int>> _mapas = [];
   List<List<String>> _mezcladas = [];
@@ -39,11 +49,12 @@ class _ExamenSimuladoScreenState extends State<ExamenSimuladoScreen>
   int _indice = 0;
 
   Timer? _timer;
-  int _segundosRestantes = 45 * 60;
+  int _segundosRestantes = 0;
   bool _tiempoAgotado = false;
 
   bool _enResultados = false;
   TestResultado? _resultado;
+  String _idioma = 'es';
 
   late final AnimationController _confettiCtrl;
   List<ConfettiParticle> _confettiParticles = [];
@@ -64,14 +75,16 @@ class _ExamenSimuladoScreenState extends State<ExamenSimuladoScreen>
   }
 
   Future<void> _cargar() async {
+    _config = await PaisRepository.getExamenConfig();
     final todas = await PreguntasRepository.cargarPreguntas();
     final pool = List<Pregunta>.from(todas)..shuffle(Random());
-    final seleccionadas = pool.take(30).toList();
+    final seleccionadas = pool.take(_config.numPreguntas).toList();
+    final idioma = await IdiomaRepository.getIdioma();
 
     final mapas = <List<int>>[];
     final mezcladas = <List<String>>[];
     for (final p in seleccionadas) {
-      final m = [0, 1, 2]..shuffle(Random());
+      final m = List.generate(p.opciones.length, (i) => i)..shuffle(Random());
       mapas.add(m);
       mezcladas.add(m.map((i) => p.opciones[i]).toList());
     }
@@ -80,7 +93,9 @@ class _ExamenSimuladoScreenState extends State<ExamenSimuladoScreen>
       _preguntas = seleccionadas;
       _mapas = mapas;
       _mezcladas = mezcladas;
-      _respuestas = List.filled(30, null);
+      _respuestas = List.filled(_config.numPreguntas, null);
+      _segundosRestantes = _config.tiempoMinutos * 60;
+      _idioma = idioma;
       _cargando = false;
     });
     _iniciarTimer();
@@ -222,7 +237,7 @@ class _ExamenSimuladoScreenState extends State<ExamenSimuladoScreen>
           TextButton(
             onPressed: () => Navigator.pop(ctx, false),
             child:
-                const Text('Continuar', style: TextStyle(color: _kTextGrey)),
+                Text(t('continuar_examen', _idioma), style: const TextStyle(color: _kTextGrey)),
           ),
           TextButton(
             onPressed: () => Navigator.pop(ctx, true),
@@ -305,7 +320,7 @@ class _ExamenSimuladoScreenState extends State<ExamenSimuladoScreen>
                 minHeight: 4,
               ),
               LinearProgressIndicator(
-                value: _segundosRestantes / (45 * 60),
+                value: _segundosRestantes / (_config.tiempoMinutos * 60),
                 backgroundColor: const Color(0xFFEEEEEE),
                 color: _colorTimer,
                 minHeight: 4,
@@ -372,11 +387,7 @@ class _ExamenSimuladoScreenState extends State<ExamenSimuladoScreen>
                         if (p.imagen != null && !p.imagenOculta) ...[
                           ClipRRect(
                             borderRadius: BorderRadius.circular(12),
-                            child: SvgPicture.asset(
-                              p.imagen!,
-                              height: 180,
-                              fit: BoxFit.contain,
-                            ),
+                            child: PreguntaImagen(path: p.imagen!),
                           ),
                           const SizedBox(height: 14),
                         ],
@@ -446,6 +457,13 @@ class _ExamenSimuladoScreenState extends State<ExamenSimuladoScreen>
         ],
       ),
     );
+  }
+
+  String _buildMensajeResultado(int correctas) {
+    final needed = (_config.numPreguntas * _config.porcentajeCorte).round();
+    final diff = needed - correctas;
+    if (correctas >= needed - 2) return '¡Muy cerca! Un poco más de práctica y lo consigues.';
+    return 'Necesitas $diff ${diff == 1 ? "acierto más" : "aciertos más"} para aprobar. ¡Sigue practicando!';
   }
 
   Widget _buildResultados() {
@@ -568,9 +586,7 @@ class _ExamenSimuladoScreenState extends State<ExamenSimuladoScreen>
                   Text(
                     apto
                         ? '¡Enhorabuena! Estás listo para el examen real. 🎉'
-                        : r.correctas >= 25
-                            ? '¡Muy cerca! Un poco más de práctica y lo consigues.'
-                            : 'Necesitas ${27 - r.correctas} ${27 - r.correctas == 1 ? "acierto más" : "aciertos más"} para aprobar. ¡Sigue practicando!',
+                        : _buildMensajeResultado(r.correctas),
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                         color: _kTextGrey, fontSize: 14, height: 1.4),
@@ -623,21 +639,21 @@ class _ExamenSimuladoScreenState extends State<ExamenSimuladoScreen>
                 child: InkWell(
                   onTap: () => Navigator.pop(context),
                   borderRadius: BorderRadius.circular(22),
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 17),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 17),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Volver al inicio',
-                          style: TextStyle(
+                          t('volver_inicio', _idioma),
+                          style: const TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.w800,
                             fontSize: 16,
                           ),
                         ),
-                        SizedBox(width: 8),
-                        Icon(Icons.home_rounded,
+                        const SizedBox(width: 8),
+                        const Icon(Icons.home_rounded,
                             color: Colors.white, size: 20),
                       ],
                     ),

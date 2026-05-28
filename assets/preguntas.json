@@ -198,7 +198,8 @@
             "Reducir la velocidad, sin llegar a detenerse, para comprobar que no viene ningún tren."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "AL ESTAR EL SEMÁFORO APAGADO, HAY QUE HACERLE CASO A LAS SEÑALES VERTICALES. EN ESTE CASO UN STOP."
+        "explicacion": "AL ESTAR EL SEMÁFORO APAGADO, HAY QUE HACERLE CASO A LAS SEÑALES VERTICALES. EN ESTE CASO UN STOP.",
+        "imagen_oculta": true
     },
     {
         "id": 19,
@@ -410,7 +411,8 @@
             "60 Kilómetros por hora."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "LA VELOCIDAD MÁXIMA PARA UN CICLOMOTOR EN CUALQUIER VÍA ES DE: 45 KM/H. DEBE CIRCULAR POR EL ARCÉN, SI ESTE ES PRACTICABLE. DE NO SER, POR EL LADO DERECHO DE LA CALZADA."
+        "explicacion": "LA VELOCIDAD MÁXIMA PARA UN CICLOMOTOR EN CUALQUIER VÍA ES DE: 45 KM/H. DEBE CIRCULAR POR EL ARCÉN, SI ESTE ES PRACTICABLE. DE NO SER, POR EL LADO DERECHO DE LA CALZADA.",
+        "imagen_oculta": true
     },
     {
         "id": 38,
@@ -835,7 +837,8 @@
             "Solo si al adelantar no ocupa la totalidad del carril de sentido contrario."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "ESTÁ PROHIBIDO ADELANTAR EN LAS CURVAS Y CAMBIOS DE RASANTE DE VISIBILIDAD REDUCIDA. EXCEPTO: QUE PARA ELLO NO SE INVADA EL SENTIDO CONTRARIO. \" y a vehículos de dos ruedas dejando 1,50 metros)."
+        "explicacion": "ESTÁ PROHIBIDO ADELANTAR EN LAS CURVAS Y CAMBIOS DE RASANTE DE VISIBILIDAD REDUCIDA. EXCEPTO: QUE PARA ELLO NO SE INVADA EL SENTIDO CONTRARIO. \" y a vehículos de dos ruedas dejando 1,50 metros).",
+        "imagen_oculta": true
     },
     {
         "id": 76,
@@ -940,7 +943,8 @@
             "Sobre la línea de división de sentidos, superándola un poco si fuera preciso."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"En el borde derecho y esperar hasta poder hacerlo sin peligro.\"."
+        "explicacion": "La respuesta correcta es: \"En el borde derecho y esperar hasta poder hacerlo sin peligro.\".",
+        "imagen_oculta": true
     },
     {
         "id": 85,
@@ -1256,7 +1260,8 @@
             "No, porque es una vía interurbana."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "FUERA DE LA VÍA PÚBLICA SE PUEDE PARAR Y ESTACIONAR. Y EN ESTE CASO AL NO HABER ARCÉN, SE PUEDE ESTACIONAR FUERA DE LA CALZADA. \" ( En vía interurbana está prohibido parar o estacionar en el arcén).  \" SOLO ESTA PERMITIDO LA DETENCIÓN EN EL ARCÉN POR: AVERÍA O MAL ESTADO FÍSICO DEL CONDUCTOR O SUS OCUPANTES)."
+        "explicacion": "FUERA DE LA VÍA PÚBLICA SE PUEDE PARAR Y ESTACIONAR. Y EN ESTE CASO AL NO HABER ARCÉN, SE PUEDE ESTACIONAR FUERA DE LA CALZADA. \" ( En vía interurbana está prohibido parar o estacionar en el arcén).  \" SOLO ESTA PERMITIDO LA DETENCIÓN EN EL ARCÉN POR: AVERÍA O MAL ESTADO FÍSICO DEL CONDUCTOR O SUS OCUPANTES).",
+        "imagen_oculta": true
     },
     {
         "id": 113,
@@ -2976,7 +2981,8 @@
             "No, porque la señal me lo prohíbe."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "LA SEÑAL INDICA: ACCESO PROHIBIDO. PUEDEN VENIR VEHÍCULOS EN SENTIDO CONTRARIO. \" ACCESO PROHIBIDO\"."
+        "explicacion": "LA SEÑAL INDICA: ACCESO PROHIBIDO. PUEDEN VENIR VEHÍCULOS EN SENTIDO CONTRARIO. \" ACCESO PROHIBIDO\".",
+        "imagen_oculta": true
     },
     {
         "id": 266,
@@ -3356,7 +3362,8 @@
             "Está permitido el estacionamiento en el arcén."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"Señala el borde de la calzada.\"."
+        "explicacion": "La respuesta correcta es: \"Señala el borde de la calzada.\".",
+        "imagen_oculta": true
     },
     {
         "id": 300,
@@ -3417,7 +3424,8 @@
             "La distancia de seguridad."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "UN VEHÍCULO QUE CIRCULE DETRÁS DE OTRO, DEBERÁ LLEVAR UNA DISTANCIA DE SEGURIDAD. LOS VEHÍCULOS CON UNA MMA SUPERIOR A 3.500 KG Y LOS VEHÍCULOS Y CONJUNTO DE VEHÍCULOS DE MÁS DE 10 METROS DE LONGITUD, DEBERÁN GUARDAR UNA DISTANCIA DE 50 MEROS. EXCEPTO: POBLADO, DONDE ESTUVIESE PROHIBIDO EL ADELANTAMIENTO, HUBIESE MÁS DE UN CARRIL EN EL MISMO SENTIDO Y CUANDO LA VÍA ESTUVIESE TAN SATURADA, QUE NO PERMITA EL ADELANTAMIENTO."
+        "explicacion": "UN VEHÍCULO QUE CIRCULE DETRÁS DE OTRO, DEBERÁ LLEVAR UNA DISTANCIA DE SEGURIDAD. LOS VEHÍCULOS CON UNA MMA SUPERIOR A 3.500 KG Y LOS VEHÍCULOS Y CONJUNTO DE VEHÍCULOS DE MÁS DE 10 METROS DE LONGITUD, DEBERÁN GUARDAR UNA DISTANCIA DE 50 MEROS. EXCEPTO: POBLADO, DONDE ESTUVIESE PROHIBIDO EL ADELANTAMIENTO, HUBIESE MÁS DE UN CARRIL EN EL MISMO SENTIDO Y CUANDO LA VÍA ESTUVIESE TAN SATURADA, QUE NO PERMITA EL ADELANTAMIENTO.",
+        "imagen_oculta": true
     },
     {
         "id": 305,
@@ -4477,7 +4485,8 @@
             "Las luces de corto alcance y las de emergencia."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "AL SER UNA TRAVESÍA, HAY QUE DEJAR LAS LUCES DE POSICIÓN O LAS DE ESTACIONAMIENTO.\" SI FUERA EN UNA VÍA URBANA QUE SE VIERA UN VEHÍCULO A UNA SUFICIENTE DISTANCIA, NINGUNA\"."
+        "explicacion": "AL SER UNA TRAVESÍA, HAY QUE DEJAR LAS LUCES DE POSICIÓN O LAS DE ESTACIONAMIENTO.\" SI FUERA EN UNA VÍA URBANA QUE SE VIERA UN VEHÍCULO A UNA SUFICIENTE DISTANCIA, NINGUNA\".",
+        "imagen_oculta": true
     },
     {
         "id": 399,
@@ -4609,7 +4618,8 @@
             "está prohibido tanto la parada como el estacionamiento."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "LAS MARCAS AZULES: INDICAN QUE EL TIEMPO DE ESTACIONAMIENTO ES LIMITADO."
+        "explicacion": "LAS MARCAS AZULES: INDICAN QUE EL TIEMPO DE ESTACIONAMIENTO ES LIMITADO.",
+        "imagen_oculta": true
     },
     {
         "id": 411,
@@ -4865,7 +4875,8 @@
             "Sí, siempre que lo haga en el arcén."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "LA PARADA ESTÁ PROHIBIDA EN LAS CURVAS Y CAMBIOS DE RASANTE DE VISIBILIDAD REDUCIDA Y EN SUS PROXIMIDADES. PORQUE SUPONDRÍA UN PELIGRO PARA EL VEHÍCULO PARADO Y PARA LOS DEMÁS USUARIOS QUE TUVIESEN QUE REBASARLO."
+        "explicacion": "LA PARADA ESTÁ PROHIBIDA EN LAS CURVAS Y CAMBIOS DE RASANTE DE VISIBILIDAD REDUCIDA Y EN SUS PROXIMIDADES. PORQUE SUPONDRÍA UN PELIGRO PARA EL VEHÍCULO PARADO Y PARA LOS DEMÁS USUARIOS QUE TUVIESEN QUE REBASARLO.",
+        "imagen_oculta": true
     },
     {
         "id": 434,
@@ -4887,7 +4898,8 @@
             "Sí, ya que sólo se prohíbe el adelantamiento."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "COMO NORMA GENERAL, DONDE ESTÉ PROHIBIDO ADELANTAR TAMBIÉN ESTÁ PROHIBIDO HACER UN CAMBIO DE SENTIDO, EXCEPTO QUE UNA SEÑAL INDIQUE QUE SE PUEDE REALIZAR."
+        "explicacion": "COMO NORMA GENERAL, DONDE ESTÉ PROHIBIDO ADELANTAR TAMBIÉN ESTÁ PROHIBIDO HACER UN CAMBIO DE SENTIDO, EXCEPTO QUE UNA SEÑAL INDIQUE QUE SE PUEDE REALIZAR.",
+        "imagen_oculta": true
     },
     {
         "id": 436,
@@ -5159,7 +5171,8 @@
             "Sí, en todas las vías, si así lo indica el certificado."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "IGUAL QUE LAS EMBARAZADAS CON LOS CINTURONES DE SEGURIDAD, SIEMPRE QUE HAYA UN CERTIFICADO MÉDICO QUE INDIQUE QUE NO PUEDE LLEVARLO, NO LO LLEVARÁ."
+        "explicacion": "IGUAL QUE LAS EMBARAZADAS CON LOS CINTURONES DE SEGURIDAD, SIEMPRE QUE HAYA UN CERTIFICADO MÉDICO QUE INDIQUE QUE NO PUEDE LLEVARLO, NO LO LLEVARÁ.",
+        "imagen_oculta": true
     },
     {
         "id": 460,
@@ -5372,7 +5385,8 @@
             "No, ya que los peatones no tienen prioridad de paso."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "AL NO FUNCIONAR EL SEMÁFORO, TIENEN PREFERENCIA LOS PEATONES, PORQUE ASÍ LO INDICAN LAS MARCAS VIALES MARCADAS EN EL SUELO."
+        "explicacion": "AL NO FUNCIONAR EL SEMÁFORO, TIENEN PREFERENCIA LOS PEATONES, PORQUE ASÍ LO INDICAN LAS MARCAS VIALES MARCADAS EN EL SUELO.",
+        "imagen_oculta": true
     },
     {
         "id": 479,
@@ -6932,7 +6946,8 @@
             "Entro en la curva y después reduzco la velocidad."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "PARA TOMAR UNA CURVA ADECUADAMENTE ES NECESARIO, ANTES DE ENTRAR EN LA CURVA , ADECUAR LA VELOCIDAD DEL VEHÍCULO CAMBIANDO, SI ES NECESARIO, A UNA MARCHA MÁS CORTA."
+        "explicacion": "PARA TOMAR UNA CURVA ADECUADAMENTE ES NECESARIO, ANTES DE ENTRAR EN LA CURVA , ADECUAR LA VELOCIDAD DEL VEHÍCULO CAMBIANDO, SI ES NECESARIO, A UNA MARCHA MÁS CORTA.",
+        "imagen_oculta": true
     },
     {
         "id": 616,
@@ -8770,7 +8785,8 @@
             "No, ni parar ni estacionar."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"Únicamente está permitido parar.\"."
+        "explicacion": "La respuesta correcta es: \"Únicamente está permitido parar.\".",
+        "imagen_oculta": true
     },
     {
         "id": 780,
@@ -9678,7 +9694,8 @@
             "Solo turismos y motocicletas."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "LA VELOCIDAD MÁXIMA DE UNA AUTOVÍA ES DE 120 KILÓMETROS POR HORA, EXCEPTO QUE HAYA UNA SEÑAL QUE INDIQUE OTRO VELOCIDAD.\" COMO EN ESTE CASO\"."
+        "explicacion": "LA VELOCIDAD MÁXIMA DE UNA AUTOVÍA ES DE 120 KILÓMETROS POR HORA, EXCEPTO QUE HAYA UNA SEÑAL QUE INDIQUE OTRO VELOCIDAD.\" COMO EN ESTE CASO\".",
+        "imagen_oculta": true
     },
     {
         "id": 861,
@@ -10104,7 +10121,8 @@
             "Fuera de la calzada, en el lado derecho, dejando libre la parte transitable del arcén."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "EN AUTOPISTAS Y AUTOVÍAS HAY QUE PARAR O ESTACIONAR, EN LOS SITIOS HABILITADOS PARA ELLO: ÁREAS DE SERVICIO O DE DESCANSO."
+        "explicacion": "EN AUTOPISTAS Y AUTOVÍAS HAY QUE PARAR O ESTACIONAR, EN LOS SITIOS HABILITADOS PARA ELLO: ÁREAS DE SERVICIO O DE DESCANSO.",
+        "imagen_oculta": true
     },
     {
         "id": 899,
@@ -11105,7 +11123,8 @@
             "No, está prohibido."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "FALTA LO MÁS IMPORTANTE PARA PODER REALIZAR UNA MANIOBRA,\" LA VISIBILIDAD\"."
+        "explicacion": "FALTA LO MÁS IMPORTANTE PARA PODER REALIZAR UNA MANIOBRA,\" LA VISIBILIDAD\".",
+        "imagen_oculta": true
     },
     {
         "id": 988,
@@ -11452,7 +11471,8 @@
             "No, en esta motocicleta no es obligatorio el uso de elementos de seguridad."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "AL LLEVAR LA MOTOCICLETA, CARROCERÍA NO ES NECESARIO CASO, PERO SI LLEVAR CINTURÓN."
+        "explicacion": "AL LLEVAR LA MOTOCICLETA, CARROCERÍA NO ES NECESARIO CASO, PERO SI LLEVAR CINTURÓN.",
+        "imagen_oculta": true
     },
     {
         "id": 1019,
@@ -11496,7 +11516,8 @@
             "A 60 km/h."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "EN AUTOPISTAS Y AUTOVÍAS, LA VELOCIDAD MÍNIMA: ES 60 KM/H, SIN CAUSA JUSTIFICADA. \" MÁXIMA PARA TURISMOS Y MOTOCICLETAS: 120 KM/H.\"."
+        "explicacion": "EN AUTOPISTAS Y AUTOVÍAS, LA VELOCIDAD MÍNIMA: ES 60 KM/H, SIN CAUSA JUSTIFICADA. \" MÁXIMA PARA TURISMOS Y MOTOCICLETAS: 120 KM/H.\".",
+        "imagen_oculta": true
     },
     {
         "id": 1023,
@@ -12660,7 +12681,8 @@
             "90 km/h."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "TURISMOS Y MOTOCICLETAS: EN AUTOPISTA Y AUTOVÍA: 120 KM/H. \" EN CARRETERAS CONVENCIONALES: 90 KM/H.\" INCLUIDO PARA ADELANTAR."
+        "explicacion": "TURISMOS Y MOTOCICLETAS: EN AUTOPISTA Y AUTOVÍA: 120 KM/H. \" EN CARRETERAS CONVENCIONALES: 90 KM/H.\" INCLUIDO PARA ADELANTAR.",
+        "imagen_oculta": true
     },
     {
         "id": 1126,
@@ -14810,7 +14832,8 @@
             "Aquellos que en llano puedan sobrepasar los 60 km/h"
         ],
         "respuesta_correcta": 1,
-        "explicacion": "El velocímetro será obligatorio para todos aquellos vehiculos de motor y ciclomotores que superen los 40 kilómetros por hora en llano.\n\n¿Crees que la respuesta es incorrecta?"
+        "explicacion": "El velocímetro será obligatorio para todos aquellos vehiculos de motor y ciclomotores que superen los 40 kilómetros por hora en llano.\n\n¿Crees que la respuesta es incorrecta?",
+        "imagen_oculta": true
     },
     {
         "id": 1317,
@@ -15875,7 +15898,8 @@
             "Cuando hay muchos vehículos circulando."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"Cuando por emergencia o avería se circule a velocidad anormalmente reducida.\"."
+        "explicacion": "La respuesta correcta es: \"Cuando por emergencia o avería se circule a velocidad anormalmente reducida.\".",
+        "imagen_oculta": true
     },
     {
         "id": 1413,
@@ -17192,7 +17216,8 @@
             "La luz de posición y la larga."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"La luz de posición y la corta.\"."
+        "explicacion": "La respuesta correcta es: \"La luz de posición y la corta.\".",
+        "imagen_oculta": true
     },
     {
         "id": 1532,
@@ -17812,7 +17837,8 @@
             "Sí, en el tiempo más breve posible."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"No, porque es un cambio de rasante de visibilidad reducida.\"."
+        "explicacion": "La respuesta correcta es: \"No, porque es un cambio de rasante de visibilidad reducida.\".",
+        "imagen_oculta": true
     },
     {
         "id": 1588,
@@ -18761,7 +18787,8 @@
             "Las luces de largo alcance (de carretera)."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"Las luces de corto alcance (de cruce).\"."
+        "explicacion": "La respuesta correcta es: \"Las luces de corto alcance (de cruce).\".",
+        "imagen_oculta": true
     },
     {
         "id": 1673,
@@ -19499,7 +19526,8 @@
             "En el pedal izquierdo"
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"A mano para que el conductor no se distraiga\"."
+        "explicacion": "La respuesta correcta es: \"A mano para que el conductor no se distraiga\".",
+        "imagen_oculta": true
     },
     {
         "id": 1739,
@@ -19610,7 +19638,8 @@
             "Sí, porqué puedo aumentar la velocidad en 20 km/hora para adelantar."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"No, porqué lo prohíbe la señal.\"."
+        "explicacion": "La respuesta correcta es: \"No, porqué lo prohíbe la señal.\".",
+        "imagen_oculta": true
     },
     {
         "id": 1749,
@@ -20385,7 +20414,8 @@
             "En la curva no, pero sí en sus proximidades."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"No, ni en la curva, ni en sus proximidades.\"."
+        "explicacion": "La respuesta correcta es: \"No, ni en la curva, ni en sus proximidades.\".",
+        "imagen_oculta": true
     },
     {
         "id": 1819,
@@ -21010,7 +21040,8 @@
             "Sí, cuando la vía sea muy estrecha."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"Sí, cuando la vía sea muy estrecha.\"."
+        "explicacion": "La respuesta correcta es: \"Sí, cuando la vía sea muy estrecha.\".",
+        "imagen_oculta": true
     },
     {
         "id": 1875,
@@ -22000,7 +22031,8 @@
             "Con los neumáticos a temperatura ambiente."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"Con los neumáticos fríos.\"."
+        "explicacion": "La respuesta correcta es: \"Con los neumáticos fríos.\".",
+        "imagen_oculta": true
     },
     {
         "id": 1963,
@@ -22659,7 +22691,8 @@
             "conviene tomar algún estimulante o bebida alcohólica para combatir el frío."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"la conducción será más cómoda y segura si la motocicleta dispone de carenado.\"."
+        "explicacion": "La respuesta correcta es: \"la conducción será más cómoda y segura si la motocicleta dispone de carenado.\".",
+        "imagen_oculta": true
     },
     {
         "id": 2022,
@@ -22681,7 +22714,8 @@
             "La distancia que permita a otros vehículos adelantarme."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"La distancia de seguridad.\"."
+        "explicacion": "La respuesta correcta es: \"La distancia de seguridad.\".",
+        "imagen_oculta": true
     },
     {
         "id": 2024,
@@ -22758,7 +22792,8 @@
             "No, en ningún caso."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"No, en ningún caso.\"."
+        "explicacion": "La respuesta correcta es: \"No, en ningún caso.\".",
+        "imagen_oculta": true
     },
     {
         "id": 2031,
@@ -26400,7 +26435,8 @@
             "Sí, a los ciclistas que circulan por el carril bici."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"Sí, a los ciclistas que circulan por el carril bici.\"."
+        "explicacion": "La respuesta correcta es: \"Sí, a los ciclistas que circulan por el carril bici.\".",
+        "imagen_oculta": true
     },
     {
         "id": 2357,
@@ -26764,7 +26800,8 @@
             "Al inicio del carril."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"Al inicio del carril.\"."
+        "explicacion": "La respuesta correcta es: \"Al inicio del carril.\".",
+        "imagen_oculta": true
     },
     {
         "id": 2390,
@@ -28807,7 +28844,8 @@
             "50 km/h."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"50 km/h.\"."
+        "explicacion": "La respuesta correcta es: \"50 km/h.\".",
+        "imagen_oculta": true
     },
     {
         "id": 2573,
@@ -29958,7 +29996,8 @@
             "La que indica la señalización."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"La que indica la señalización.\"."
+        "explicacion": "La respuesta correcta es: \"La que indica la señalización.\".",
+        "imagen_oculta": true
     },
     {
         "id": 2676,
@@ -30145,7 +30184,8 @@
             "Fríos"
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La presión de inflado se mide con un manómetro, que puede ser de bolsillo o encontrarse en un taller o estación de servicio. Debemos comprobar la presión de los neumáticos con frecuencia, antes de iniciar un viaje largo y estando los neumáticos fríos.\n\n¿Crees que la respuesta es incorrecta?"
+        "explicacion": "La presión de inflado se mide con un manómetro, que puede ser de bolsillo o encontrarse en un taller o estación de servicio. Debemos comprobar la presión de los neumáticos con frecuencia, antes de iniciar un viaje largo y estando los neumáticos fríos.\n\n¿Crees que la respuesta es incorrecta?",
+        "imagen_oculta": true
     },
     {
         "id": 2693,
@@ -30280,7 +30320,8 @@
         ],
         "respuesta_correcta": 2,
         "explicacion": "La respuesta correcta es: \"Que en esta curva peligrosa la velocidad máxima permitida es de 50 km/h.\".",
-        "imagen_oculta": true
+        "imagen_oculta": false,
+        "imagen": "assets/imagenes_preguntas/pregunta_2704.svg"
     },
     {
         "id": 2705,
@@ -31516,7 +31557,8 @@
             "No, excepto en los lugares autorizados y señalizados."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"No, excepto en los lugares autorizados y señalizados.\"."
+        "explicacion": "La respuesta correcta es: \"No, excepto en los lugares autorizados y señalizados.\".",
+        "imagen_oculta": true
     },
     {
         "id": 2816,
@@ -31802,7 +31844,8 @@
             "40 km/h."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"40 km/h.\"."
+        "explicacion": "La respuesta correcta es: \"40 km/h.\".",
+        "imagen_oculta": true
     },
     {
         "id": 2842,

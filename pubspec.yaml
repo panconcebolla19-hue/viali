@@ -79,10 +79,13 @@ flutter:
   assets:
     - assets/preguntas.json
     - assets/preguntas_A.json
+    - assets/preguntas_C.json
+    - assets/preguntas_IT_B.json
     - assets/semaforo_normal.png
     - assets/semaforo_verde.png
     - assets/semaforo_rojo.png
     - assets/imagenes_preguntas/
+    - assets/imagenes_it/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

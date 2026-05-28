@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Viali — Permiso B</title>
+<style>
+:root {
+  --yellow: #F5A623;
+  --yellow-light: #FFF8EE;
+  --yellow-dim: rgba(245,166,35,0.14);
+  --dark: #1A1A1A;
+  --grey: #9E9E9E;
+  --border: #E8E8E8;
+  --bg: #F4F4F4;
+  --green: #4CAF50;
+  --green-light: #F1FBF1;
+  --red: #F44336;
+  --red-light: #FFF0F0;
+  --amber: #FF9800;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--dark);
+  min-height: 100vh;
+}
+.container { max-width: 740px; margin: 0 auto; padding: 28px 20px 80px; }
+.hidden { display: none !important; }
+
+/* ── Header ── */
+.app-header { text-align: center; margin-bottom: 28px; padding-top: 8px; }
+.app-logo { font-size: 42px; margin-bottom: 6px; }
+.app-title { font-size: 28px; font-weight: 900; color: var(--dark); }
+.app-sub  { font-size: 14px; color: var(--grey); margin-top: 4px; }
+
+/* ── Stats ── */
+.stats { display: flex; gap: 12px; margin-bottom: 28px; }
+.stat {
+  flex: 1; background: white; border: 1.5px solid var(--border);
+  border-radius: 16px; padding: 14px; text-align: center;
+}
+.stat-n { font-size: 22px; font-weight: 900; color: var(--yellow); }
+.stat-l { font-size: 11px; color: var(--grey); font-weight: 600; margin-top: 2px; }
+
+/* ── Mode buttons ── */
+.mode-btn {
+  display: flex; align-items: center; gap: 16px;
+  background: white; border: 2px solid var(--border); border-radius: 20px;
+  padding: 20px 22px; width: 100%; cursor: pointer; text-align: left;
+  margin-bottom: 14px; transition: border-color .15s, transform .1s, box-shadow .15s;
+}
+.mode-btn:hover { border-color: var(--yellow); box-shadow: 0 4px 18px rgba(245,166,35,.14); transform: translateY(-1px); }
+.mode-btn:active { transform: translateY(0); }
+.mode-icon {
+  width: 52px; height: 52px; border-radius: 14px; background: var(--yellow-dim);
+  display: flex; align-items: center; justify-content: center; font-size: 26px; flex-shrink: 0;
+}
+.mode-info { flex: 1; }
+.mode-title { font-size: 17px; font-weight: 800; color: var(--dark); margin-bottom: 3px; }
+.mode-desc  { font-size: 13px; color: var(--grey); }
+.mode-arrow { font-size: 22px; color: #ccc; }
+
+/* ── Top bar ── */
+.top-bar { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.btn-back {
+  background: white; border: 1.5px solid var(--border); border-radius: 10px;
+  padding: 8px 14px; cursor: pointer; font-size: 14px; font-weight: 600;
+  color: var(--dark); white-space: nowrap; transition: background .15s;
+}
+.btn-back:hover { background: #f0f0f0; }
+.top-center { flex: 1; text-align: center; font-size: 15px; font-weight: 700; }
+.top-right  { font-size: 14px; font-weight: 700; color: var(--grey); min-width: 70px; text-align: right; }
+.t-red    { color: var(--red) !important; }
+.t-amber  { color: var(--amber) !important; }
+.t-green  { color: var(--green) !important; }
+
+/* ── Progress ── */
+.progress { height: 4px; background: var(--border); border-radius: 2px; margin-bottom: 18px; overflow: hidden; }
+.progress-fill { height: 100%; background: var(--yellow); border-radius: 2px; transition: width .3s ease; }
+
+/* ── Card ── */
+.card {
+  background: white; border-radius: 20px; border: 1.5px solid var(--border);
+  padding: 22px 24px; margin-bottom: 14px;
+  box-shadow: 0 2px 10px rgba(0,0,0,.04);
+}
+.q-text { font-size: 17px; font-weight: 700; line-height: 1.55; }
+.img-note {
+  font-size: 12px; color: var(--grey); background: #f9f9f9;
+  border-radius: 8px; padding: 8px 12px; margin-top: 12px;
+  border-left: 3px solid var(--border);
+}
+
+/* ── Options ── */
+.options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px; }
+.opt {
+  display: flex; align-items: flex-start; gap: 14px; background: white;
+  border: 1.5px solid var(--border); border-radius: 16px; padding: 15px 18px;
+  cursor: pointer; text-align: left; transition: border-color .12s, background .12s; width: 100%;
+}
+.opt:hover:not(:disabled) { border-color: var(--yellow); background: var(--yellow-light); }
+.opt:disabled { cursor: default; }
+.opt.selected  { border: 2px solid var(--yellow); background: var(--yellow-light); }
+.opt.correct   { border: 2px solid var(--green);  background: var(--green-light); }
+.opt.wrong     { border: 2px solid var(--red);    background: var(--red-light); }
+.opt-letter {
+  width: 32px; height: 32px; border-radius: 9px; background: #f0f0f0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 800; color: var(--grey); flex-shrink: 0;
+}
+.opt.selected .opt-letter { background: rgba(245,166,35,.2); color: var(--yellow); }
+.opt.correct  .opt-letter { background: rgba(76,175,80,.2);  color: var(--green); }
+.opt.wrong    .opt-letter { background: rgba(244,67,54,.2);  color: var(--red); }
+.opt-text { flex: 1; font-size: 15px; font-weight: 500; line-height: 1.4; color: var(--dark); padding-top: 4px; }
+
+/* ── Explanation ── */
+.expl {
+  background: #FAFAFA; border-radius: 14px; padding: 16px;
+  font-size: 13px; color: #555; line-height: 1.55;
+  margin-bottom: 12px; border-left: 3px solid var(--yellow);
+}
+.expl-label {
+  font-size: 11px; font-weight: 800; text-transform: uppercase;
+  color: var(--yellow); letter-spacing: .5px; margin-bottom: 6px;
+}
+
+/* ── Buttons ── */
+.btn-primary {
+  background: var(--yellow); color: white; border: none; border-radius: 16px;
+  padding: 15px 24px; font-size: 16px; font-weight: 800; cursor: pointer; width: 100%;
+  transition: opacity .15s, transform .1s;
+}
+.btn-primary:hover  { opacity: .9; }
+.btn-primary:active { transform: scale(.99); }
+.btn-secondary {
+  background: white; color: var(--dark); border: 1.5px solid var(--border);
+  border-radius: 16px; padding: 13px 20px; font-size: 15px; font-weight: 700;
+  cursor: pointer; transition: background .15s; flex: 1;
+}
+.btn-secondary:hover  { background: #f5f5f5; }
+.btn-secondary:disabled { opacity: .4; cursor: default; }
+.exam-nav { display: flex; gap: 12px; margin-bottom: 10px; }
+.exam-nav .btn-primary { flex: 1; padding: 13px; font-size: 15px; }
+.btn-exit {
+  background: white; color: var(--red); border: 1.5px solid rgba(244,67,54,.3);
+  border-radius: 16px; padding: 13px; font-size: 14px; font-weight: 700;
+  cursor: pointer; width: 100%; transition: background .15s;
+}
+.btn-exit:hover { background: var(--red-light); }
+.resp-count { text-align: center; font-size: 12px; color: var(--grey); margin-top: 8px; }
+
+/* ── Resultado ── */
+.res-timeout {
+  background: #FFF3E0; border: 1.5px solid rgba(255,152,0,.3); border-radius: 14px;
+  padding: 12px 16px; font-size: 13px; color: var(--amber); font-weight: 700;
+  margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+}
+.res-card { text-align: center; padding: 36px 28px; }
+.res-badge {
+  display: inline-block; padding: 8px 22px; border-radius: 24px;
+  font-size: 13px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 18px;
+}
+.badge-apto    { background: var(--green); color: white; }
+.badge-no-apto { background: var(--red);   color: white; }
+.res-score { font-size: 74px; font-weight: 900; line-height: 1; }
+.res-total { font-size: 36px; font-weight: 700; opacity: .45; }
+.res-msg { font-size: 15px; color: var(--grey); line-height: 1.5; margin-top: 14px; }
+
+/* ── Review ── */
+.review-title { font-size: 16px; font-weight: 800; margin: 24px 0 12px; }
+.rev-item {
+  display: flex; gap: 12px; padding: 12px 14px; border-radius: 14px; margin-bottom: 8px;
+}
+.rev-ok   { background: var(--green-light); border: 1px solid rgba(76,175,80,.22); }
+.rev-fail { background: var(--red-light);   border: 1px solid rgba(244,67,54,.22); }
+.rev-icon {
+  width: 28px; height: 28px; border-radius: 8px; display: flex;
+  align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; color: white;
+}
+.rev-ok   .rev-icon { background: var(--green); }
+.rev-fail .rev-icon { background: var(--red); }
+.rev-body { flex: 1; }
+.rev-enunciado { font-size: 13px; font-weight: 600; color: var(--dark); line-height: 1.4; margin-bottom: 3px; }
+.rev-correcta  { font-size: 12px; color: var(--green); font-weight: 600; }
+.rev-selected  { font-size: 12px; color: var(--red); }
+.rev-expl      { font-size: 11px; color: #777; margin-top: 3px; line-height: 1.4; }
+
+/* ── Keyboard hint ── */
+.kbd-hint { font-size: 12px; color: var(--grey); text-align: center; margin-top: 6px; }
+kbd {
+  background: #eee; border: 1px solid #ccc; border-radius: 4px;
+  padding: 1px 6px; font-size: 11px; font-family: inherit;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- ════════════════════ HOME ════════════════════ -->
+<div id="v-home">
+  <div class="app-header">
+    <div class="app-logo">🚗</div>
+    <div class="app-title">Viali — Permiso B</div>
+    <div class="app-sub" id="home-sub">Cargando preguntas…</div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="stat-n" id="st-total">—</div><div class="stat-l">Preguntas</div></div>
+    <div class="stat"><div class="stat-n">30</div><div class="stat-l">Examen DGT</div></div>
+    <div class="stat"><div class="stat-n">90%</div><div class="stat-l">Para aprobar</div></div>
+  </div>
+
+  <button class="mode-btn" onclick="iniciarPractica()">
+    <div class="mode-icon">📚</div>
+    <div class="mode-info">
+      <div class="mode-title">Práctica libre</div>
+      <div class="mode-desc">Preguntas aleatorias con feedback inmediato y explicación</div>
+    </div>
+    <span class="mode-arrow">›</span>
+  </button>
+
+  <button class="mode-btn" onclick="iniciarExamen()">
+    <div class="mode-icon">📝</div>
+    <div class="mode-info">
+      <div class="mode-title">Examen simulado</div>
+      <div class="mode-desc">30 preguntas · 30 minutos · Formato oficial DGT</div>
+    </div>
+    <span class="mode-arrow">›</span>
+  </button>
+</div>
+
+<!-- ════════════════════ PRÁCTICA ════════════════════ -->
+<div id="v-practica" class="hidden">
+  <div class="top-bar">
+    <button class="btn-back" onclick="volver()">← Inicio</button>
+    <div class="top-center" id="p-counter"></div>
+    <div class="top-right t-green" id="p-score"></div>
+  </div>
+  <div class="progress"><div class="progress-fill" id="p-prog"></div></div>
+
+  <div class="card">
+    <div class="q-text" id="p-enunciado"></div>
+    <div class="img-note hidden" id="p-img-note">📷 Esta pregunta incluye una imagen en la app móvil</div>
+  </div>
+
+  <div class="options" id="p-opts"></div>
+
+  <div id="p-feedback" class="hidden">
+    <div class="expl">
+      <div class="expl-label">Explicación</div>
+      <div id="p-expl-text"></div>
+    </div>
+    <button class="btn-primary" id="p-next-btn" onclick="siguientePractica()">Siguiente →</button>
+    <div class="kbd-hint">Pulsa <kbd>Enter</kbd> o <kbd>Espacio</kbd> para continuar</div>
+  </div>
+</div>
+
+<!-- ════════════════════ EXAMEN ════════════════════ -->
+<div id="v-examen" class="hidden">
+  <div class="top-bar">
+    <button class="btn-back" onclick="confirmarSalir()">← Salir</button>
+    <div class="top-center" id="e-counter"></div>
+    <div class="top-right" id="e-timer">30:00</div>
+  </div>
+  <div class="progress"><div class="progress-fill" id="e-prog"></div></div>
+
+  <div class="card">
+    <div class="q-text" id="e-enunciado"></div>
+    <div class="img-note hidden" id="e-img-note">📷 Esta pregunta incluye una imagen en la app móvil</div>
+  </div>
+
+  <div class="options" id="e-opts"></div>
+
+  <div class="exam-nav">
+    <button class="btn-secondary" id="e-prev" onclick="examNav(-1)" disabled>← Anterior</button>
+    <button class="btn-primary"   id="e-next" onclick="examNav(1)">Siguiente →</button>
+  </div>
+  <button class="btn-exit" onclick="confirmarFinalizar()">Finalizar examen</button>
+  <div class="resp-count" id="e-resp-count"></div>
+</div>
+
+<!-- ════════════════════ RESULTADO ════════════════════ -->
+<div id="v-resultado" class="hidden">
+  <div class="top-bar" style="margin-bottom:14px">
+    <button class="btn-back" onclick="volver()">← Inicio</button>
+    <div class="top-center">Resultado del examen</div>
+    <div style="min-width:70px"></div>
+  </div>
+
+  <div id="r-timeout" class="res-timeout hidden">⏱ Tiempo agotado — el examen finalizó automáticamente</div>
+
+  <div class="card res-card" id="r-card">
+    <div class="res-badge" id="r-badge"></div>
+    <div>
+      <span class="res-score" id="r-correctas"></span>
+      <span class="res-total">/30</span>
+    </div>
+    <div class="res-msg" id="r-msg"></div>
+  </div>
+
+  <div class="review-title">Revisión completa</div>
+  <div id="r-review"></div>
+  <button class="btn-primary" onclick="volver()" style="margin-top:8px">Volver al inicio</button>
+</div>
+
+</div><!-- /container -->
+
+<script src="questions.js"></script>
+<script>
+// ── Datos ────────────────────────────────────────────────────────────────────
+let Q = [];
+
+// ── Estado práctica ──────────────────────────────────────────────────────────
+let pQueue = [], pIdx = 0, pAciertos = 0, pRespondida = false, pShuffle = null;
+
+// ── Estado examen ────────────────────────────────────────────────────────────
+let ePregs = [], eShuffles = [], eResp = [], eIdx = 0;
+let eTimerId = null, eSecs = 1800, eTimeout = false;
+
+// ── Vista actual ─────────────────────────────────────────────────────────────
+let vista = 'home';
+
+// ── Init ─────────────────────────────────────────────────────────────────────
+window.addEventListener('DOMContentLoaded', () => {
+  if (typeof PREGUNTAS === 'undefined' || !PREGUNTAS.length) {
+    document.getElementById('home-sub').textContent =
+      '⚠️ Ejecuta generar_preguntas.py para crear questions.js';
+    return;
+  }
+  Q = PREGUNTAS;
+  document.getElementById('home-sub').textContent = 'Practica para el carnet · Permiso B';
+  document.getElementById('st-total').textContent = Q.length.toLocaleString('es-ES');
+});
+
+// ── Teclado ──────────────────────────────────────────────────────────────────
+document.addEventListener('keydown', e => {
+  if (vista === 'practica') {
+    if (!pRespondida) {
+      if (e.key === '1' || e.key === 'a' || e.key === 'A') clickOpcion('p', 0);
+      if (e.key === '2' || e.key === 'b' || e.key === 'B') clickOpcion('p', 1);
+      if (e.key === '3' || e.key === 'c' || e.key === 'C') clickOpcion('p', 2);
+    } else {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); siguientePractica(); }
+    }
+  }
+  if (vista === 'examen') {
+    if (e.key === '1' || e.key === 'a' || e.key === 'A') clickOpcion('e', 0);
+    if (e.key === '2' || e.key === 'b' || e.key === 'B') clickOpcion('e', 1);
+    if (e.key === '3' || e.key === 'c' || e.key === 'C') clickOpcion('e', 2);
+    if (e.key === 'ArrowRight') examNav(1);
+    if (e.key === 'ArrowLeft')  examNav(-1);
+  }
+});
+
+// ── Utils ────────────────────────────────────────────────────────────────────
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function mezclarPregunta(p) {
+  const idx = shuffle([0, 1, 2]);
+  return {
+    opciones:  idx.map(i => p.opciones[i]),
+    correcta:  idx.indexOf(p.respuesta_correcta),
+  };
+}
+
+function showVista(id) {
+  ['v-home','v-practica','v-examen','v-resultado'].forEach(v =>
+    document.getElementById(v).classList.toggle('hidden', v !== id)
+  );
+  vista = id.replace('v-', '');
+}
+
+function volver() {
+  pararTimer();
+  showVista('v-home');
+}
+
+function fmtTime(s) {
+  return String(Math.floor(s/60)).padStart(2,'0') + ':' + String(s%60).padStart(2,'0');
+}
+
+function clickOpcion(modo, i) {
+  const btns = document.querySelectorAll(`#${modo === 'p' ? 'p' : 'e'}-opts .opt`);
+  if (btns[i] && !btns[i].disabled) btns[i].click();
+}
+
+// ── Práctica libre ───────────────────────────────────────────────────────────
+function iniciarPractica() {
+  pQueue = shuffle([...Q]);
+  pIdx = 0; pAciertos = 0; pRespondida = false;
+  showVista('v-practica');
+  mostrarPQ();
+}
+
+function mostrarPQ() {
+  const p = pQueue[pIdx];
+  pShuffle = mezclarPregunta(p);
+  pRespondida = false;
+
+  document.getElementById('p-counter').textContent = `${pIdx + 1} / ${pQueue.length}`;
+  document.getElementById('p-score').textContent = `✓ ${pAciertos}`;
+  document.getElementById('p-prog').style.width = `${(pIdx / pQueue.length) * 100}%`;
+  document.getElementById('p-enunciado').textContent = p.enunciado;
+  document.getElementById('p-img-note').classList.toggle('hidden', !p.tiene_imagen);
+  document.getElementById('p-feedback').classList.add('hidden');
+
+  const c = document.getElementById('p-opts');
+  c.innerHTML = '';
+  pShuffle.opciones.forEach((txt, i) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.innerHTML = `<span class="opt-letter">${'ABC'[i]}</span><span class="opt-text">${txt}</span>`;
+    b.onclick = () => responderP(i);
+    c.appendChild(b);
+  });
+}
+
+function responderP(sel) {
+  if (pRespondida) return;
+  pRespondida = true;
+  const ok = sel === pShuffle.correcta;
+  if (ok) pAciertos++;
+
+  document.getElementById('p-score').textContent = `✓ ${pAciertos}`;
+  document.querySelectorAll('#p-opts .opt').forEach((b, i) => {
+    b.disabled = true;
+    if (i === pShuffle.correcta) b.classList.add('correct');
+    else if (i === sel)          b.classList.add('wrong');
+  });
+
+  const p = pQueue[pIdx];
+  document.getElementById('p-expl-text').textContent = p.explicacion || 'Sin explicación disponible.';
+  document.getElementById('p-feedback').classList.remove('hidden');
+  document.getElementById('p-next-btn').focus();
+}
+
+function siguientePractica() {
+  pIdx++;
+  if (pIdx >= pQueue.length) { pQueue = shuffle([...Q]); pIdx = 0; }
+  mostrarPQ();
+}
+
+// ── Examen simulado ───────────────────────────────────────────────────────────
+function iniciarExamen() {
+  ePregs   = shuffle([...Q]).slice(0, 30);
+  eShuffles = ePregs.map(mezclarPregunta);
+  eResp    = new Array(30).fill(null);
+  eIdx     = 0; eSecs = 1800; eTimeout = false;
+  showVista('v-examen');
+  mostrarEQ();
+  iniciarTimer();
+}
+
+function mostrarEQ() {
+  const p  = ePregs[eIdx];
+  const sh = eShuffles[eIdx];
+  const sel = eResp[eIdx];
+
+  document.getElementById('e-counter').textContent = `${eIdx + 1} / 30`;
+  document.getElementById('e-prog').style.width = `${((eIdx + 1) / 30) * 100}%`;
+  document.getElementById('e-enunciado').textContent = p.enunciado;
+  document.getElementById('e-img-note').classList.toggle('hidden', !p.tiene_imagen);
+
+  document.getElementById('e-prev').disabled = eIdx === 0;
+  document.getElementById('e-next').textContent = eIdx < 29 ? 'Siguiente →' : 'Ver resultado';
+
+  const resp = eResp.filter(r => r !== null).length;
+  document.getElementById('e-resp-count').textContent = `${resp} de 30 respondidas`;
+
+  const c = document.getElementById('e-opts');
+  c.innerHTML = '';
+  sh.opciones.forEach((txt, i) => {
+    const b = document.createElement('button');
+    b.className = 'opt' + (sel === i ? ' selected' : '');
+    b.innerHTML = `<span class="opt-letter">${'ABC'[i]}</span><span class="opt-text">${txt}</span>`;
+    b.onclick = () => { eResp[eIdx] = i; mostrarEQ(); };
+    c.appendChild(b);
+  });
+}
+
+function examNav(dir) {
+  if (dir === 1 && eIdx === 29) { confirmarFinalizar(); return; }
+  const n = eIdx + dir;
+  if (n >= 0 && n < 30) { eIdx = n; mostrarEQ(); }
+}
+
+function iniciarTimer() {
+  pararTimer();
+  eTimerId = setInterval(() => {
+    eSecs--;
+    const el = document.getElementById('e-timer');
+    if (el) {
+      el.textContent = fmtTime(eSecs);
+      el.className = 'top-right' + (eSecs <= 300 ? ' t-red' : eSecs <= 600 ? ' t-amber' : '');
+    }
+    if (eSecs <= 0) { eTimeout = true; pararTimer(); finalizarExamen(); }
+  }, 1000);
+}
+
+function pararTimer() {
+  if (eTimerId) { clearInterval(eTimerId); eTimerId = null; }
+}
+
+function confirmarSalir() {
+  if (confirm('¿Abandonar el examen? Se perderá el progreso.')) volver();
+}
+
+function confirmarFinalizar() {
+  const nr = eResp.filter(r => r === null).length;
+  const msg = nr > 0
+    ? `Tienes ${nr} pregunta${nr > 1 ? 's' : ''} sin responder. ¿Finalizar igualmente?`
+    : '¿Finalizar el examen?';
+  if (confirm(msg)) finalizarExamen();
+}
+
+function finalizarExamen() {
+  pararTimer();
+  let correctas = 0;
+  ePregs.forEach((p, i) => {
+    if (eResp[i] !== null && eShuffles[i].correcta === eResp[i]) correctas++;
+  });
+
+  const pct = correctas / 30;
+  const apto = pct >= 0.9;
+  showVista('v-resultado');
+
+  document.getElementById('r-timeout').classList.toggle('hidden', !eTimeout);
+
+  const card = document.getElementById('r-card');
+  card.style.background = apto ? '#F1FBF1' : '#FFF0F0';
+  card.style.borderColor = apto ? 'rgba(76,175,80,.25)' : 'rgba(244,67,54,.25)';
+
+  const badge = document.getElementById('r-badge');
+  badge.textContent = (apto ? 'APTO' : 'NO APTO') + ` · ${Math.round(pct * 100)}%`;
+  badge.className = 'res-badge ' + (apto ? 'badge-apto' : 'badge-no-apto');
+
+  const sc = document.getElementById('r-correctas');
+  sc.textContent = correctas;
+  sc.style.color = apto ? 'var(--green)' : 'var(--red)';
+  document.querySelector('.res-total').style.color = apto
+    ? 'rgba(76,175,80,.45)' : 'rgba(244,67,54,.45)';
+
+  const diff = 27 - correctas;
+  document.getElementById('r-msg').textContent = apto
+    ? '¡Enhorabuena! Estás listo para el examen real. 🎉'
+    : correctas >= 25
+      ? '¡Muy cerca! Un poco más de práctica y lo consigues.'
+      : `Necesitas ${diff} ${diff === 1 ? 'acierto más' : 'aciertos más'} para aprobar. ¡Sigue practicando!`;
+
+  const rv = document.getElementById('r-review');
+  rv.innerHTML = '';
+  ePregs.forEach((p, i) => {
+    const sel = eResp[i];
+    const ok  = sel !== null && eShuffles[i].correcta === sel;
+    const noR = sel === null;
+
+    const div = document.createElement('div');
+    div.className = 'rev-item ' + (ok ? 'rev-ok' : 'rev-fail');
+    div.innerHTML = `
+      <div class="rev-icon">${ok ? '✓' : '✗'}</div>
+      <div class="rev-body">
+        <div class="rev-enunciado">${i + 1}. ${p.enunciado}</div>
+        ${!ok ? `
+          <div class="rev-selected">${noR ? 'Sin responder' : `Tu respuesta: ${eShuffles[i].opciones[sel]}`}</div>
+          <div class="rev-correcta">Correcta: ${p.opciones[p.respuesta_correcta]}</div>
+          ${p.explicacion ? `<div class="rev-expl">${p.explicacion}</div>` : ''}
+        ` : ''}
+      </div>`;
+    rv.appendChild(div);
+  });
+}
+</script>
+</body>
+</html>

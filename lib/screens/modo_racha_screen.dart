@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import '../widgets/pregunta_imagen.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../models/pregunta.dart';
@@ -13,6 +13,8 @@ import '../data/anki_repository.dart';
 import '../data/marcadas_repository.dart';
 import '../services/notification_service.dart';
 import '../utils/tema_utils.dart';
+import '../utils/i18n.dart';
+import '../data/idioma_repository.dart';
 import '../widgets/confetti_overlay.dart';
 import 'logros_screen.dart';
 
@@ -56,6 +58,7 @@ class _ModoRachaScreenState extends State<ModoRachaScreen>
   bool _showRecordBanner = false;
   List<ConfettiParticle> _confettiParticles = [];
   bool _estudiadoHoy = false;
+  String _idioma = 'es';
 
   // ── Animation controllers ────────────────────────────────────────────────────
   late AnimationController _pulseCtrl;   // loops: counter pulse
@@ -163,12 +166,14 @@ class _ModoRachaScreenState extends State<ModoRachaScreen>
     final preguntas = await PreguntasRepository.cargarPreguntas();
     final prefs = await SharedPreferences.getInstance();
     final marcadas = await MarcadasRepository.cargar();
+    final idioma = await IdiomaRepository.getIdioma();
     setState(() {
       _preguntas = preguntas;
       _indicesPendientes =
           List.generate(preguntas.length, (i) => i)..shuffle();
       _recordPersonal = prefs.getInt('racha_record') ?? 0;
       _marcadas = marcadas;
+      _idioma = idioma;
       _cargando = false;
     });
     _siguientePregunta();
@@ -196,7 +201,7 @@ class _ModoRachaScreenState extends State<ModoRachaScreen>
     }
     final idx = _indicesPendientes.removeLast();
     final pregunta = _preguntas[idx];
-    final mapa = [0, 1, 2]..shuffle(Random());
+    final mapa = List.generate(pregunta.opciones.length, (i) => i)..shuffle(Random());
     setState(() {
       _preguntaActual = pregunta;
       _mapaIndices = mapa;
@@ -414,6 +419,7 @@ class _ModoRachaScreenState extends State<ModoRachaScreen>
                           _ResultadoCard(
                             esCorrecta: esCorrecta,
                             explicacion: _preguntaActual!.explicacion,
+                            idioma: _idioma,
                           ),
                           const SizedBox(height: 16),
                           _ActionButton(
@@ -671,11 +677,7 @@ class _ModoRachaScreenState extends State<ModoRachaScreen>
               if (p.imagen != null && !p.imagenOculta) ...[
                 ClipRRect(
                   borderRadius: BorderRadius.circular(12),
-                  child: SvgPicture.asset(
-                    p.imagen!,
-                    height: 180,
-                    fit: BoxFit.contain,
-                  ),
+                  child: PreguntaImagen(path: p.imagen!),
                 ),
                 const SizedBox(height: 14),
               ],
@@ -800,11 +802,7 @@ class _QuestionCard extends StatelessWidget {
           if (imagen != null && !imagenOculta) ...[
             ClipRRect(
               borderRadius: BorderRadius.circular(12),
-              child: SvgPicture.asset(
-                imagen!,
-                height: 180,
-                fit: BoxFit.contain,
-              ),
+              child: PreguntaImagen(path: imagen!),
             ),
             const SizedBox(height: 14),
           ],
@@ -954,8 +952,9 @@ class _OpcionCard extends StatelessWidget {
 class _ResultadoCard extends StatelessWidget {
   final bool esCorrecta;
   final String explicacion;
+  final String idioma;
   const _ResultadoCard(
-      {required this.esCorrecta, required this.explicacion});
+      {required this.esCorrecta, required this.explicacion, required this.idioma});
 
   @override
   Widget build(BuildContext context) {
@@ -986,7 +985,7 @@ class _ResultadoCard extends StatelessWidget {
               ),
               const SizedBox(width: 8),
               Text(
-                esCorrecta ? '¡Correcto!' : 'Respuesta incorrecta',
+                esCorrecta ? t('correcto', idioma) : t('respuesta_incorrecta', idioma),
                 style: TextStyle(
                   fontWeight: FontWeight.w800,
                   color: color,

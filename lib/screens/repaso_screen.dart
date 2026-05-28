@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import '../widgets/pregunta_imagen.dart';
 import '../models/pregunta.dart';
 import '../data/preguntas_repository.dart';
 import '../data/falladas_repository.dart';
@@ -423,7 +423,7 @@ class _QuestionCard extends StatelessWidget {
           if (imagen != null && !imagenOculta) ...[
             ClipRRect(
               borderRadius: BorderRadius.circular(10),
-              child: SvgPicture.asset(imagen!, height: 170, fit: BoxFit.contain),
+              child: PreguntaImagen(path: imagen!, height: 170),
             ),
             const SizedBox(height: 12),
           ],

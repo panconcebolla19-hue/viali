@@ -4,7 +4,7 @@ import 'dart:math';
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import '../widgets/pregunta_imagen.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
 import '../models/pregunta.dart';
@@ -209,7 +209,7 @@ class _TestNormalScreenState extends State<TestNormalScreen>
 
   void _prepararPregunta() {
     final p = _preguntasTest[_indiceActual];
-    final mapa = [0, 1, 2]..shuffle(Random());
+    final mapa = List.generate(p.opciones.length, (i) => i)..shuffle(Random());
     setState(() {
       _mapaIndices = mapa;
       _opcionesMezcladas = mapa.map((i) => p.opciones[i]).toList();
@@ -1268,11 +1268,7 @@ class _QuestionCard extends StatelessWidget {
           if (imagen != null && !imagenOculta) ...[
             ClipRRect(
               borderRadius: BorderRadius.circular(12),
-              child: SvgPicture.asset(
-                imagen!,
-                height: 180,
-                fit: BoxFit.contain,
-              ),
+              child: PreguntaImagen(path: imagen!),
             ),
             const SizedBox(height: 14),
           ],

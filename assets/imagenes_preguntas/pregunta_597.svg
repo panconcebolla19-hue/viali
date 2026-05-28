@@ -24,7 +24,4 @@
   <!-- Handlebar -->
   <line x1="214" y1="246" x2="218" y2="237" stroke="black" stroke-width="2.5" stroke-linecap="round"/>
   <line x1="216" y1="237" x2="222" y2="237" stroke="black" stroke-width="2" stroke-linecap="round"/>
-  <!-- Label -->
-  <text x="200" y="340" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#333333">Semáforo para ciclos</text>
-  <text x="200" y="360" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#555555">(bicicletas y ciclomotores)</text>
 </svg>

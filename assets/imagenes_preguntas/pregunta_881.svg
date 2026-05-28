@@ -36,9 +36,4 @@
   <rect x="222" y="200" width="36" height="60" rx="6" fill="#FF6600"/>
   <rect x="227" y="208" width="12" height="18" rx="2" fill="#FFE8CC" opacity="0.8"/>
   <rect x="243" y="208" width="12" height="18" rx="2" fill="#FFE8CC" opacity="0.8"/>
-  <!-- Labels -->
-  <text x="65" y="360" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="white">LIBRE</text>
-  <text x="155" y="360" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="white">CERRADO</text>
-  <text x="245" y="360" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="white">LIBRE</text>
-  <text x="335" y="360" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="white">CERRADO</text>
 </svg>

@@ -140,7 +140,8 @@
             "Sí, a los vehículos que se aproximen por la derecha."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "CRUCE SIN SEÑALIZAR, O BIEN CON LA SEÑAL DE CRUCE NORMAL, HAY QUE CEDERLE EL PASO A LA DERECHA. Y \" VELOCIDAD MÁXIMA 50 KM/H\"."
+        "explicacion": "CRUCE SIN SEÑALIZAR, O BIEN CON LA SEÑAL DE CRUCE NORMAL, HAY QUE CEDERLE EL PASO A LA DERECHA. Y \" VELOCIDAD MÁXIMA 50 KM/H\".",
+        "imagen_oculta": true
     },
     {
         "id": 14,
@@ -362,7 +363,8 @@
             "No, es obligatorio girar a la izquierda o seguir de frente."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "SEÑAL DE OBLIGACIÓN. \" OBLIGA A IR DE FRENTE O BIEN A LA IZQUIERDA\"."
+        "explicacion": "SEÑAL DE OBLIGACIÓN. \" OBLIGA A IR DE FRENTE O BIEN A LA IZQUIERDA\".",
+        "imagen_oculta": true
     },
     {
         "id": 34,
@@ -384,7 +386,8 @@
             "Que la circulación es en los dos sentidos."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"Que la circulación es en los dos sentidos.\"."
+        "explicacion": "La respuesta correcta es: \"Que la circulación es en los dos sentidos.\".",
+        "imagen_oculta": true
     },
     {
         "id": 36,
@@ -650,7 +653,8 @@
             "Extremar la precaución y, en su caso, ceder el paso a ambos lados."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "EL SEMÁFORO AMARILLO INTERMITENTE O DESTELLANTE NOS EXIGE EXTREMAR LA PRECAUCIÓN Y RESPETAR EL RESTO DE SEÑALES Y SI NO LAS HAY CEDER EL PASO A LA VÍA TRANSVERSAL. EN ESTE CASO DEBEMOS RESPETAR EL STOP."
+        "explicacion": "EL SEMÁFORO AMARILLO INTERMITENTE O DESTELLANTE NOS EXIGE EXTREMAR LA PRECAUCIÓN Y RESPETAR EL RESTO DE SEÑALES Y SI NO LAS HAY CEDER EL PASO A LA VÍA TRANSVERSAL. EN ESTE CASO DEBEMOS RESPETAR EL STOP.",
+        "imagen_oculta": true
     },
     {
         "id": 60,
@@ -683,7 +687,8 @@
             "Sí, la señal prohíbe adelantar a todos los vehículos en general y especialmente a los camiones."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "ADELANTAMIENTO PROHIBIDO PARA CAMIONES DE MÁS DE: 3.500 KG. MMA.. \" LOS DEMÁS VEHÍCULOS PUEDEN ADELANTAR\"."
+        "explicacion": "ADELANTAMIENTO PROHIBIDO PARA CAMIONES DE MÁS DE: 3.500 KG. MMA.. \" LOS DEMÁS VEHÍCULOS PUEDEN ADELANTAR\".",
+        "imagen_oculta": true
     },
     {
         "id": 63,
@@ -762,7 +767,8 @@
             "No, salvo que la MMA. del remolque supere la cifra indicada en la señal."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "ENTRADA PROHIBIDA A VEHÍCULOS DE MOTOR CON REMOLQUE, QUE NO SEA UN:  SEMIRREMOLQUE O UN REMOLQUE DE UN SOLO EJE."
+        "explicacion": "ENTRADA PROHIBIDA A VEHÍCULOS DE MOTOR CON REMOLQUE, QUE NO SEA UN:  SEMIRREMOLQUE O UN REMOLQUE DE UN SOLO EJE.",
+        "imagen_oculta": true
     },
     {
         "id": 70,
@@ -850,7 +856,9 @@
             "acelerar para aumentar la velocidad."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "CEDER EL PASO CUANDO CIRCULEN VEHÍCULOS POR LA VÍA A LA QUE VAMOS A INCORPORARNOS."
+        "explicacion": "CEDER EL PASO CUANDO CIRCULEN VEHÍCULOS POR LA VÍA A LA QUE VAMOS A INCORPORARNOS.",
+        "imagen": "assets/imagenes_preguntas/pregunta_77.svg",
+        "imagen_oculta": false
     },
     {
         "id": 78,
@@ -986,7 +994,8 @@
             "Que el vehículo o el conjunto de vehículos tiene una longitud superior a 12 metros."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"Que el vehículo o el conjunto de vehículos tiene una longitud superior a 12 metros.\"."
+        "explicacion": "La respuesta correcta es: \"Que el vehículo o el conjunto de vehículos tiene una longitud superior a 12 metros.\".",
+        "imagen_oculta": true
     },
     {
         "id": 90,
@@ -1030,7 +1039,8 @@
             "está prohibida la circulación de ciclomotores."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "VÍA RESERVADA PARA CICLOMOTORES. OBLIGACIÓN PARA LOS CONDUCTORES DE CICLOMOTORES DE CIRCULAR POR LA VÍA A CUYA ENTRADA ESTÁ SITUADA Y PROHIBICIÓN A LOS DEMÁS USUARIOS DE LA VÍA DE UTILIZARLA. \" FIJARSE EN LA SEÑAL: PEDAL.- CICLOMOTOR. SIN PEDAL CICLOS\". CON CONDUCTOR MOTOCICLETAS."
+        "explicacion": "VÍA RESERVADA PARA CICLOMOTORES. OBLIGACIÓN PARA LOS CONDUCTORES DE CICLOMOTORES DE CIRCULAR POR LA VÍA A CUYA ENTRADA ESTÁ SITUADA Y PROHIBICIÓN A LOS DEMÁS USUARIOS DE LA VÍA DE UTILIZARLA. \" FIJARSE EN LA SEÑAL: PEDAL.- CICLOMOTOR. SIN PEDAL CICLOS\". CON CONDUCTOR MOTOCICLETAS.",
+        "imagen_oculta": true
     },
     {
         "id": 94,
@@ -1151,7 +1161,9 @@
             "que no se puede pasar cuando se obligue a los vehículos que vengan en sentido contrario a detenerse."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"prioridad respecto al sentido contrario.\"."
+        "explicacion": "La respuesta correcta es: \"prioridad respecto al sentido contrario.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_104.svg",
+        "imagen_oculta": false
     },
     {
         "id": 105,
@@ -1162,7 +1174,9 @@
             "Detenerse solo si se aproximan vehículos por la izquierda."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "ANTE UN \"STOP\"  1Âº DETENERSE Y 2Âª CEDER EL PASO A LOS VEHÍCULOS DE AMBOS LADOS."
+        "explicacion": "ANTE UN \"STOP\"  1Âº DETENERSE Y 2Âª CEDER EL PASO A LOS VEHÍCULOS DE AMBOS LADOS.",
+        "imagen": "assets/imagenes_preguntas/pregunta_105.svg",
+        "imagen_oculta": false
     },
     {
         "id": 106,
@@ -1173,7 +1187,8 @@
             "prohibidos."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "SEÑALES: AZUL CIRCULAR.- OBLIGATORIO. AZUL RECTANGULAR O CUADRADA: INDICAN ALGO. CIRCULAR ROJA: PROHIBIDO. \"OBLIGACIÓN DE SEGUIR LA FLECHA\""
+        "explicacion": "SEÑALES: AZUL CIRCULAR.- OBLIGATORIO. AZUL RECTANGULAR O CUADRADA: INDICAN ALGO. CIRCULAR ROJA: PROHIBIDO. \"OBLIGACIÓN DE SEGUIR LA FLECHA\"",
+        "imagen_oculta": true
     },
     {
         "id": 107,
@@ -1283,7 +1298,9 @@
             "Detenerse antes de entrar en la intersección."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "DEBEMOS RESPETAR EL SEMÁFORO. \" AUNQUE ESTÉ DESPUÉS DE LA INTERSECCIÓN\"."
+        "explicacion": "DEBEMOS RESPETAR EL SEMÁFORO. \" AUNQUE ESTÉ DESPUÉS DE LA INTERSECCIÓN\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_116.svg",
+        "imagen_oculta": false
     },
     {
         "id": 117,
@@ -1338,7 +1355,8 @@
             "Sólo si se trata de vehículos de transporte colectivo de viajeros."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "PELIGRO INCORPORACIÓN POR LA DERECHA, CUYOS USUARIOS DEBEN CEDER EL PASO. \" NOSOTROS TENEMOS PRIORIDAD, PERO DEBEMOS FACILITAR LA INCORPORACIÓN EN LA MEDIDA QUE NOS SEA POSIBLE\"."
+        "explicacion": "PELIGRO INCORPORACIÓN POR LA DERECHA, CUYOS USUARIOS DEBEN CEDER EL PASO. \" NOSOTROS TENEMOS PRIORIDAD, PERO DEBEMOS FACILITAR LA INCORPORACIÓN EN LA MEDIDA QUE NOS SEA POSIBLE\".",
+        "imagen_oculta": true
     },
     {
         "id": 122,
@@ -1503,7 +1521,9 @@
             "80 kilómetros por hora."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "AUTOPISTAS Y AUTOVÍAS: 1/ CAMIONES, 2/TRACTOCAMIONES, 3/FURGONES, 4/ AUTOCARAVANAS SUPERIOR A 3.500 KG, 5/ARTICULADOS, 6/REMOLQUES : 90 KM/H \"CONVENCIONALES: 80 KM/H."
+        "explicacion": "AUTOPISTAS Y AUTOVÍAS: 1/ CAMIONES, 2/TRACTOCAMIONES, 3/FURGONES, 4/ AUTOCARAVANAS SUPERIOR A 3.500 KG, 5/ARTICULADOS, 6/REMOLQUES : 90 KM/H \"CONVENCIONALES: 80 KM/H.",
+        "imagen": "assets/imagenes_preguntas/pregunta_136.svg",
+        "imagen_oculta": false
     },
     {
         "id": 137,
@@ -1615,7 +1635,8 @@
             "Sólo por la calzada central."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"Por la calzada de la derecha y por la central cuando haya señales que así me lo permiten.\"."
+        "explicacion": "La respuesta correcta es: \"Por la calzada de la derecha y por la central cuando haya señales que así me lo permiten.\".",
+        "imagen_oculta": true
     },
     {
         "id": 147,
@@ -1659,7 +1680,8 @@
             "A 80 Km/h."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "VELOCIDAD MÁXIMA EN AUTOPISTA: 120 KM/H. CUANDO TRANSCURRE POR ZONA URBANA: 80 KM/H."
+        "explicacion": "VELOCIDAD MÁXIMA EN AUTOPISTA: 120 KM/H. CUANDO TRANSCURRE POR ZONA URBANA: 80 KM/H.",
+        "imagen_oculta": true
     },
     {
         "id": 151,
@@ -1692,7 +1714,8 @@
             "Sí, pero solamente cuando no exista peligro."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "A UN VEHÍCULO INMOVILIZADO LO PODEMOS SOBREPASAR PORQUE ES UN REBASAMIENTO , AUNQUE PARA ELLO NECESITE PISAR LA LÍNEA CONTINUA .\" DESPUÉS DE ASEGURARSE QUE SE PUEDE REALIZAR SIN PELIGRO\"."
+        "explicacion": "A UN VEHÍCULO INMOVILIZADO LO PODEMOS SOBREPASAR PORQUE ES UN REBASAMIENTO , AUNQUE PARA ELLO NECESITE PISAR LA LÍNEA CONTINUA .\" DESPUÉS DE ASEGURARSE QUE SE PUEDE REALIZAR SIN PELIGRO\".",
+        "imagen_oculta": true
     },
     {
         "id": 154,
@@ -1747,7 +1770,9 @@
             "A la genérica de la vía."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "VELOCIDAD MÁXIMA: 80 KM/H. MÍNIMA: 60 KM/H. Y LUZ DE CRUCE ENCENDIDA. PARA TODOS."
+        "explicacion": "VELOCIDAD MÁXIMA: 80 KM/H. MÍNIMA: 60 KM/H. Y LUZ DE CRUCE ENCENDIDA. PARA TODOS.",
+        "imagen": "assets/imagenes_preguntas/pregunta_158.svg",
+        "imagen_oculta": false
     },
     {
         "id": 159,
@@ -1846,7 +1871,8 @@
             "Solo en vías fuera de poblado con un carril para cada sentido de circulación."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "AL ESTAR FUERA DE LA CALZADA Y DEL ARCÉN, (DE LA VÍA) NO NECESITA SEÑALIZARLO."
+        "explicacion": "AL ESTAR FUERA DE LA CALZADA Y DEL ARCÉN, (DE LA VÍA) NO NECESITA SEÑALIZARLO.",
+        "imagen_oculta": true
     },
     {
         "id": 168,
@@ -1857,7 +1883,8 @@
             "En el carril de la derecha."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "EN VÍAS URBANAS, CIRCULAREMOS POR EL CARRIL QUE MEJOR CONVENGA A NUESTRO DESTINO, SI VAMOS A IR A LA DERECHA, DEBEMOS DE CIRCULAR POR EL CARRIL DE LA DERECHA."
+        "explicacion": "EN VÍAS URBANAS, CIRCULAREMOS POR EL CARRIL QUE MEJOR CONVENGA A NUESTRO DESTINO, SI VAMOS A IR A LA DERECHA, DEBEMOS DE CIRCULAR POR EL CARRIL DE LA DERECHA.",
+        "imagen_oculta": true
     },
     {
         "id": 169,
@@ -1879,7 +1906,9 @@
             "que hay un tramo de curvas peligrosas."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "LA SEÑAL ADVIERTE DEL PELIGRO POR LA PROXIMIDAD DE UNA ZONA DE LA CALZADA CUYO PAVIMENTO PUEDE RESULTAR MUY DESLIZANTE."
+        "explicacion": "LA SEÑAL ADVIERTE DEL PELIGRO POR LA PROXIMIDAD DE UNA ZONA DE LA CALZADA CUYO PAVIMENTO PUEDE RESULTAR MUY DESLIZANTE.",
+        "imagen": "assets/imagenes_preguntas/pregunta_170.svg",
+        "imagen_oculta": false
     },
     {
         "id": 171,
@@ -1956,7 +1985,8 @@
             "Ninguna, ya que el trazado viene marcado por las señales de balizamiento, y las marcas no son obligatorias."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "LAS SEÑALES CIRCUNSTANCIALES PREVALECEN SOBRE TODAS LAS DEMÁS SEÑALES, EXCEPTO SOBRE LAS SEÑALES DE LOS AGENTES DE LA CIRCULACIÓN. \"POR ELLO DEBEMOS OBEDECER LAS SEÑALES AMARILLAS\"."
+        "explicacion": "LAS SEÑALES CIRCUNSTANCIALES PREVALECEN SOBRE TODAS LAS DEMÁS SEÑALES, EXCEPTO SOBRE LAS SEÑALES DE LOS AGENTES DE LA CIRCULACIÓN. \"POR ELLO DEBEMOS OBEDECER LAS SEÑALES AMARILLAS\".",
+        "imagen_oculta": true
     },
     {
         "id": 178,
@@ -2055,7 +2085,8 @@
             "Los lados de la calzada en los que está permitido estacionar."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "LOS LADOS DEL REFUGIO POR DONDE LOS VEHÍCULOS HAN DE PASAR."
+        "explicacion": "LOS LADOS DEL REFUGIO POR DONDE LOS VEHÍCULOS HAN DE PASAR.",
+        "imagen_oculta": true
     },
     {
         "id": 187,
@@ -2288,7 +2319,8 @@
             "En autopistas, autovías y vías para automóviles."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "COLOR AZUL: AUTOPISTA, AUTOVÍA O VÍA PARA AUTOMÓVILES. /- SALIDA A: 100 METROS. //- SALIDA A: 200 METROS. ///-SALIDA A: 300 METROS."
+        "explicacion": "COLOR AZUL: AUTOPISTA, AUTOVÍA O VÍA PARA AUTOMÓVILES. /- SALIDA A: 100 METROS. //- SALIDA A: 200 METROS. ///-SALIDA A: 300 METROS.",
+        "imagen_oculta": true
     },
     {
         "id": 208,
@@ -2299,7 +2331,8 @@
             "Sí, porque no hay marcas que delimiten los carriles."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"No, se circulará por la derecha de la calzada, lo más cerca posible del borde derecho.\"."
+        "explicacion": "La respuesta correcta es: \"No, se circulará por la derecha de la calzada, lo más cerca posible del borde derecho.\".",
+        "imagen_oculta": true
     },
     {
         "id": 209,
@@ -2310,7 +2343,8 @@
             "No, porque es de día y las condiciones meteorológicas son favorables."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"Sí, al menos, la luz de cruce porque el vehículo circula por un carril reversible.\"."
+        "explicacion": "La respuesta correcta es: \"Sí, al menos, la luz de cruce porque el vehículo circula por un carril reversible.\".",
+        "imagen_oculta": true
     },
     {
         "id": 210,
@@ -2376,7 +2410,9 @@
             "su altura máxima, incluida la carga, supere la indicada."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "ANCHURA."
+        "explicacion": "ANCHURA.",
+        "imagen": "assets/imagenes_preguntas/pregunta_215.svg",
+        "imagen_oculta": false
     },
     {
         "id": 216,
@@ -2420,7 +2456,8 @@
             "se circulará normalmente, pues el niño no ha invadido la vía."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "CON PEATONES EN LA CALZADA SE DEBE MODERAR LA VELOCIDAD Y EXTREMAR LA PRECAUCIÓN. EL CLAXON TAMBIÉN SE PUEDE UTILIZAR EN CASO DE PELIGRO. \" LOS NIÑOS TIENEN MÁS PELIGRO, POR SU BAJA ESTATURA  Y QUE PUEDEN CRUZAR INESPERADAMENTE \"."
+        "explicacion": "CON PEATONES EN LA CALZADA SE DEBE MODERAR LA VELOCIDAD Y EXTREMAR LA PRECAUCIÓN. EL CLAXON TAMBIÉN SE PUEDE UTILIZAR EN CASO DE PELIGRO. \" LOS NIÑOS TIENEN MÁS PELIGRO, POR SU BAJA ESTATURA  Y QUE PUEDEN CRUZAR INESPERADAMENTE \".",
+        "imagen_oculta": true
     },
     {
         "id": 220,
@@ -2519,7 +2556,8 @@
             "Todos los vehículos de dos ruedas."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"Las motocicletas sin sidecar.\"."
+        "explicacion": "La respuesta correcta es: \"Las motocicletas sin sidecar.\".",
+        "imagen_oculta": true
     },
     {
         "id": 229,
@@ -2563,7 +2601,8 @@
             "turismos."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "OBLIGACIÓN PARA:   AUTOMÓVILES ,\" EXCEPTO MOTOCICLETAS SIN SIDECAR, DE CIRCULAR POR LA CALZADA A CUYA ENTRADA ESTE SITUADA\" (Entendiendo por automóviles: Turismos, motocicletas, autobuses, camiones y furgones)."
+        "explicacion": "OBLIGACIÓN PARA:   AUTOMÓVILES ,\" EXCEPTO MOTOCICLETAS SIN SIDECAR, DE CIRCULAR POR LA CALZADA A CUYA ENTRADA ESTE SITUADA\" (Entendiendo por automóviles: Turismos, motocicletas, autobuses, camiones y furgones).",
+        "imagen_oculta": true
     },
     {
         "id": 233,
@@ -2574,7 +2613,9 @@
             "El estacionamiento a turismos y motocicletas."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "\"PROHIBICIÓN DE ACCEDO A VEHÍCULOS DE MOTOR\". LOS CICLOMOTORES PUEDEN PASAR.( NO SE CONSIDERAN VEHÍCULOS DE MOTOR)"
+        "explicacion": "\"PROHIBICIÓN DE ACCEDO A VEHÍCULOS DE MOTOR\". LOS CICLOMOTORES PUEDEN PASAR.( NO SE CONSIDERAN VEHÍCULOS DE MOTOR)",
+        "imagen": "assets/imagenes_preguntas/pregunta_233.svg",
+        "imagen_oculta": false
     },
     {
         "id": 234,
@@ -2695,7 +2736,8 @@
             "Solo si la parada es inferior a un minuto."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "EN EL ARCÉN NO PODEMOS NI PARAR NI ESTACIONAR. PODEMOS DETENERNOS POR AVERÍA O MAL ESTADO FÍSICO DEL CONDUCTOR O OCUPANTES. \" FUERA DEL ARCÉN: PODEMOS: DETENERNOS, PARAR Y ESTACIONAR. PORQUE ESTAMOS FUERA DE LA VÍA \"."
+        "explicacion": "EN EL ARCÉN NO PODEMOS NI PARAR NI ESTACIONAR. PODEMOS DETENERNOS POR AVERÍA O MAL ESTADO FÍSICO DEL CONDUCTOR O OCUPANTES. \" FUERA DEL ARCÉN: PODEMOS: DETENERNOS, PARAR Y ESTACIONAR. PORQUE ESTAMOS FUERA DE LA VÍA \".",
+        "imagen_oculta": true
     },
     {
         "id": 245,
@@ -2807,7 +2849,9 @@
             "A todos los camiones de menos de 3.500 Kg. de MMA."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"A los camiones de más de 3.500 Kg. de MMA.\"."
+        "explicacion": "La respuesta correcta es: \"A los camiones de más de 3.500 Kg. de MMA.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_254.svg",
+        "imagen_oculta": false
     },
     {
         "id": 255,
@@ -2818,7 +2862,9 @@
             "Sí, porque sólo prohíbe estacionar hasta el día 15."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "PROHIBICIÓN DE ESTACIONAR:  \" DESDE LAS 9 HORAS DEL DÍA 1 HASTA LAS 9 HORAS DEL DÍA 16\". SALVO INDICACIÓN EN CONTRA \" . NO PROHÍBE LA PARADA."
+        "explicacion": "PROHIBICIÓN DE ESTACIONAR:  \" DESDE LAS 9 HORAS DEL DÍA 1 HASTA LAS 9 HORAS DEL DÍA 16\". SALVO INDICACIÓN EN CONTRA \" . NO PROHÍBE LA PARADA.",
+        "imagen": "assets/imagenes_preguntas/pregunta_255.svg",
+        "imagen_oculta": false
     },
     {
         "id": 256,
@@ -3181,7 +3227,9 @@
             "Estrechamiento por el lado izquierdo de la calzada."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"Estrechamiento por el lado derecho de la calzada.\"."
+        "explicacion": "La respuesta correcta es: \"Estrechamiento por el lado derecho de la calzada.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_288.svg",
+        "imagen_oculta": false
     },
     {
         "id": 289,
@@ -3203,7 +3251,9 @@
             "Obliga a circular por el arcén a los vehículos con altura superior a 3,5 metros."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"Prohibido el paso a vehículos con altura mayor a 3,5 metros incluida la carga.\"."
+        "explicacion": "La respuesta correcta es: \"Prohibido el paso a vehículos con altura mayor a 3,5 metros incluida la carga.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_290.svg",
+        "imagen_oculta": false
     },
     {
         "id": 291,
@@ -3269,7 +3319,9 @@
             "Después de la marca vial de STOP, aunque se rebase la intersección."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"Inmediatamente antes de la intersección.\"."
+        "explicacion": "La respuesta correcta es: \"Inmediatamente antes de la intersección.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_296.svg",
+        "imagen_oculta": false
     },
     {
         "id": 297,
@@ -3324,7 +3376,9 @@
             "peligro por la proximidad de un estrechamiento de la calzada."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"la proximidad de un peligro distinto de los advertidos por otras señales.\"."
+        "explicacion": "La respuesta correcta es: \"la proximidad de un peligro distinto de los advertidos por otras señales.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_301.svg",
+        "imagen_oculta": false
     },
     {
         "id": 302,
@@ -3484,7 +3538,8 @@
             "Solo si el vehículo azul ha indicado su intención de girar a la derecha."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "ESTÁ PROHIBIDO ADELANTAR EN LAS INTERSECCIONES Y EN SUS PROXIMIDADES , SALVO CUANDO SE TRATE DE UNA PLAZA O GLORIETA , CUANDO EL ADELANTAMIENTO DEBA EFECTUARSE POR LA DERECHA O CANDO LA CALZADA EN LA QUE SE REALICE GOCE DE PRIORIDAD EN LA INTERSECCIÓN Y HAYA SEÑAL EXPRESA QUE LO INDIQUE."
+        "explicacion": "ESTÁ PROHIBIDO ADELANTAR EN LAS INTERSECCIONES Y EN SUS PROXIMIDADES , SALVO CUANDO SE TRATE DE UNA PLAZA O GLORIETA , CUANDO EL ADELANTAMIENTO DEBA EFECTUARSE POR LA DERECHA O CANDO LA CALZADA EN LA QUE SE REALICE GOCE DE PRIORIDAD EN LA INTERSECCIÓN Y HAYA SEÑAL EXPRESA QUE LO INDIQUE.",
+        "imagen_oculta": true
     },
     {
         "id": 316,
@@ -3528,7 +3583,8 @@
             "A la mitad de la genérica señalada para cada categoría de vehículos."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "/ TANTO EL VEHÍCULO QUE CIRCULA POR EL CARRIL ADICIONAL COMO LOS QUE CIRCULAN POR EL CONTIGUO DEBEN LLEVAR: LAS LUCES DE CRUCE ENCENDIDAS Y VELOCIDAD: NO SUPERIOR A 80 NI INFERIOR A 60 KM/H.( excepto que estuviera indicado por una señal)."
+        "explicacion": "/ TANTO EL VEHÍCULO QUE CIRCULA POR EL CARRIL ADICIONAL COMO LOS QUE CIRCULAN POR EL CONTIGUO DEBEN LLEVAR: LAS LUCES DE CRUCE ENCENDIDAS Y VELOCIDAD: NO SUPERIOR A 80 NI INFERIOR A 60 KM/H.( excepto que estuviera indicado por una señal).",
+        "imagen_oculta": true
     },
     {
         "id": 320,
@@ -3572,7 +3628,9 @@
             "Permite el acceso a los vehículos de más de 5,5 toneladas dedicados al transporte de mercancías, cuando circulan vacíos."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "PROHÍBE EL ACCESO A LOS VEHÍCULOS DESTINADOS AL TRANSPORTE DE MERCANCÍAS DE MÁS DE 5,5 TONELADAS. \" ENTENDIÉNDOSE COMO TALES: CAMIONES Y FURGONES\""
+        "explicacion": "PROHÍBE EL ACCESO A LOS VEHÍCULOS DESTINADOS AL TRANSPORTE DE MERCANCÍAS DE MÁS DE 5,5 TONELADAS. \" ENTENDIÉNDOSE COMO TALES: CAMIONES Y FURGONES\"",
+        "imagen": "assets/imagenes_preguntas/pregunta_323.svg",
+        "imagen_oculta": false
     },
     {
         "id": 324,
@@ -3693,7 +3751,9 @@
             "cualquier vehículo de más de 3.500 kg."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"camiones de MMA mayor de 3.500 Kg ni vehículos articulados.\"."
+        "explicacion": "La respuesta correcta es: \"camiones de MMA mayor de 3.500 Kg ni vehículos articulados.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_334.svg",
+        "imagen_oculta": false
     },
     {
         "id": 335,
@@ -3836,7 +3896,8 @@
             "Sí, haya o no obreros trabajando."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"Sí, haya o no obreros trabajando.\"."
+        "explicacion": "La respuesta correcta es: \"Sí, haya o no obreros trabajando.\".",
+        "imagen_oculta": true
     },
     {
         "id": 348,
@@ -4045,7 +4106,9 @@
             "prohíbe el estacionamiento en el lado de la calzada en que esté situada la señal."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "PERMITIDO PARAR. \"PROHIBIDO ESTACIONAR\"."
+        "explicacion": "PERMITIDO PARAR. \"PROHIBIDO ESTACIONAR\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_366.svg",
+        "imagen_oculta": false
     },
     {
         "id": 367,
@@ -4102,7 +4165,8 @@
             "Solo si va girar a la izquierda."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"Sí, pero debe esperar hasta que pueda pasar sin bloquear el cruce.\"."
+        "explicacion": "La respuesta correcta es: \"Sí, pero debe esperar hasta que pueda pasar sin bloquear el cruce.\".",
+        "imagen_oculta": true
     },
     {
         "id": 372,
@@ -4135,7 +4199,8 @@
             "procedente de una autopista o autovía."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "LA PRÓXIMA SALIDA, A LA A9, AUTOPISTA 9. SABEMOS QUE ES UN AUTOPISTA O AUTOVÍA POR QUE LO INDICA LA: A"
+        "explicacion": "LA PRÓXIMA SALIDA, A LA A9, AUTOPISTA 9. SABEMOS QUE ES UN AUTOPISTA O AUTOVÍA POR QUE LO INDICA LA: A",
+        "imagen_oculta": true
     },
     {
         "id": 375,
@@ -4146,7 +4211,9 @@
             "Sí, si las circunstancias lo permiten."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "AL PASAR LA SEÑAL, ENTRA EN VÍA INTERURBANA. 90 KM/H. LA SEÑAL INDICA: FIN DE VÍA URBANA O TRAVESÍA."
+        "explicacion": "AL PASAR LA SEÑAL, ENTRA EN VÍA INTERURBANA. 90 KM/H. LA SEÑAL INDICA: FIN DE VÍA URBANA O TRAVESÍA.",
+        "imagen": "assets/imagenes_preguntas/pregunta_375.svg",
+        "imagen_oculta": false
     },
     {
         "id": 376,
@@ -4361,7 +4428,8 @@
             "50 metros de distancia, al menos, del vehículo o la carga."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "SI NO SE DISPONE DE LA SEÑAL LUMINOSA V-16, SE PODRÁ UTILIZAR LOS TRIÁNGULOS HASTA EL 01-01-2016 Y SE COLOCARÁN A 50 METROS COMO MÍNIMO ( al menos) Y VISIBLES AL MENOS A: 100 METROS."
+        "explicacion": "SI NO SE DISPONE DE LA SEÑAL LUMINOSA V-16, SE PODRÁ UTILIZAR LOS TRIÁNGULOS HASTA EL 01-01-2016 Y SE COLOCARÁN A 50 METROS COMO MÍNIMO ( al menos) Y VISIBLES AL MENOS A: 100 METROS.",
+        "imagen_oculta": true
     },
     {
         "id": 395,
@@ -4372,7 +4440,9 @@
             "No, sólo prohíbe el cambio de sentido."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "PROHÍBE DE UNA FORMA INDIRECTA, DADO QUE TENGO QUE SEGUIR DE FRENTE DE FORMA OBLIGATORIA, SIN POSIBILIDAD DE GIRAR A LA IZQUIERDA O A LA DERECHA."
+        "explicacion": "PROHÍBE DE UNA FORMA INDIRECTA, DADO QUE TENGO QUE SEGUIR DE FRENTE DE FORMA OBLIGATORIA, SIN POSIBILIDAD DE GIRAR A LA IZQUIERDA O A LA DERECHA.",
+        "imagen": "assets/imagenes_preguntas/pregunta_395.svg",
+        "imagen_oculta": false
     },
     {
         "id": 396,
@@ -4592,7 +4662,8 @@
             "Sí, pero debo ceder el paso a los vehículos de la derecha."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "LAS MARCAS AMARILLAS, NOS INDICAN QUE NO PODEMOS PERMANECER ENCIMA DE ELLAS, POR ESA RAZÓN TENGO QUE ESPERAR A TENER SITIO DELANTE."
+        "explicacion": "LAS MARCAS AMARILLAS, NOS INDICAN QUE NO PODEMOS PERMANECER ENCIMA DE ELLAS, POR ESA RAZÓN TENGO QUE ESPERAR A TENER SITIO DELANTE.",
+        "imagen_oculta": true
     },
     {
         "id": 416,
@@ -4825,7 +4896,9 @@
             "en la travesía."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "CUANDO EXISTA UNA SEÑAL DE PROHIBICIÓN ENCIMA DE UNA SEÑAL DE POBLADO, \"LA PROHIBICIÓN ES PARA TODO EL POBLADO\"."
+        "explicacion": "CUANDO EXISTA UNA SEÑAL DE PROHIBICIÓN ENCIMA DE UNA SEÑAL DE POBLADO, \"LA PROHIBICIÓN ES PARA TODO EL POBLADO\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_436.svg",
+        "imagen_oculta": false
     },
     {
         "id": 437,
@@ -4847,7 +4920,9 @@
             "está prohibido pasar sin detenerse."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "PROHIBICIÓN DE PASAR SIN DETENERSE. \"  ADUANA, POLICÍA O PEAJE\"."
+        "explicacion": "PROHIBICIÓN DE PASAR SIN DETENERSE. \"  ADUANA, POLICÍA O PEAJE\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_438.svg",
+        "imagen_oculta": false
     },
     {
         "id": 439,
@@ -4981,7 +5056,9 @@
             "Parar y estacionar a ambos lados de la calzada donde esté situada."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "PERMITE LA PARADA Y PROHÍBE EL ESTACIONAMIENTO."
+        "explicacion": "PERMITE LA PARADA Y PROHÍBE EL ESTACIONAMIENTO.",
+        "imagen": "assets/imagenes_preguntas/pregunta_450.svg",
+        "imagen_oculta": false
     },
     {
         "id": 451,
@@ -5102,7 +5179,8 @@
             "25 Km/h."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "UN VEHÍCULO ESPECIAL: SI CARECEN DE LUZ DE FRENADO O BIEN LLEVAN REMOLQUE. VELOCIDAD MÁXIMA: 25 KM/H."
+        "explicacion": "UN VEHÍCULO ESPECIAL: SI CARECEN DE LUZ DE FRENADO O BIEN LLEVAN REMOLQUE. VELOCIDAD MÁXIMA: 25 KM/H.",
+        "imagen_oculta": true
     },
     {
         "id": 462,
@@ -5113,7 +5191,8 @@
             "Me indica un peligro y me informa del sentido de la circulación."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"Prohíbe el paso y me informa del sentido de la circulación, no pudiendo atravesar la línea que forman los conos.\"."
+        "explicacion": "La respuesta correcta es: \"Prohíbe el paso y me informa del sentido de la circulación, no pudiendo atravesar la línea que forman los conos.\".",
+        "imagen_oculta": true
     },
     {
         "id": 463,
@@ -5302,7 +5381,8 @@
             "Solamente los furgones y camiones pesados."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"Toda clase de camiones y furgones, independientemente de su masa.\"."
+        "explicacion": "La respuesta correcta es: \"Toda clase de camiones y furgones, independientemente de su masa.\".",
+        "imagen_oculta": true
     },
     {
         "id": 480,
@@ -5324,7 +5404,9 @@
             "Prohíbe la entrada a toda clase de camiones cisterna."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"Prohíbe la entrada a los vehículos que transporten mercancías peligrosas.\"."
+        "explicacion": "La respuesta correcta es: \"Prohíbe la entrada a los vehículos que transporten mercancías peligrosas.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_481.svg",
+        "imagen_oculta": false
     },
     {
         "id": 482,
@@ -5368,7 +5450,8 @@
             "Que la vía va a tener un único sentido."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"Que el carril de la derecha va a finalizar.\"."
+        "explicacion": "La respuesta correcta es: \"Que el carril de la derecha va a finalizar.\".",
+        "imagen_oculta": true
     },
     {
         "id": 486,
@@ -5412,7 +5495,9 @@
             "No, indica el final de un túnel o paso inferior."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "LA SEÑAL INDICA: PRINCIPIO DE UN TÚNEL, UN PASO INFERIOR O UN TRAMO DE VÍA EQUIPARADO A UN TÚNEL."
+        "explicacion": "LA SEÑAL INDICA: PRINCIPIO DE UN TÚNEL, UN PASO INFERIOR O UN TRAMO DE VÍA EQUIPARADO A UN TÚNEL.",
+        "imagen": "assets/imagenes_preguntas/pregunta_489.svg",
+        "imagen_oculta": false
     },
     {
         "id": 490,
@@ -5434,7 +5519,8 @@
             "La distancia para que otro vehículo pueda adelantar."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "DEJARÉ LA DISTANCIA DE SEGURIDAD, DADO QUE EL QUE QUIERA PUEDE ADELANTAR POR EL CARRIL IZQUIERDO."
+        "explicacion": "DEJARÉ LA DISTANCIA DE SEGURIDAD, DADO QUE EL QUE QUIERA PUEDE ADELANTAR POR EL CARRIL IZQUIERDO.",
+        "imagen_oculta": true
     },
     {
         "id": 492,
@@ -5445,7 +5531,8 @@
             "No, porque el conductor del vehículo blanco tiene preferencia."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "AL INICIAR EL ADELANTAMIENTO ANTES QUE USTED, TIENE PRIORIDAD."
+        "explicacion": "AL INICIAR EL ADELANTAMIENTO ANTES QUE USTED, TIENE PRIORIDAD.",
+        "imagen_oculta": true
     },
     {
         "id": 493,
@@ -5489,7 +5576,9 @@
             "Obedecer a la señal de Stop."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"Obedecer a la señal de Stop.\"."
+        "explicacion": "La respuesta correcta es: \"Obedecer a la señal de Stop.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_496.svg",
+        "imagen_oculta": false
     },
     {
         "id": 497,
@@ -5555,7 +5644,9 @@
             "en zona urbana."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"en autopista o en autovía.\"."
+        "explicacion": "La respuesta correcta es: \"en autopista o en autovía.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_502.svg",
+        "imagen_oculta": false
     },
     {
         "id": 503,
@@ -5680,7 +5771,9 @@
             "es especial y está realizando trabajos en la vía."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"es lento y no puede superar los 40 km/h.\"."
+        "explicacion": "La respuesta correcta es: \"es lento y no puede superar los 40 km/h.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_513.svg",
+        "imagen_oculta": false
     },
     {
         "id": 514,
@@ -5713,7 +5806,8 @@
             "el momento en que empiece la maniobra."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "LA NORMA DE SEÑALIZAR UNA MANIOBRA ES PARA INDICARLO MIENTRAS ÉSTA SE REALICE, POR ESO UNA VEZ QUE FINALICE EL DESPLAZAMIENTO O GIRO, EN ESTE CASO, SE DEBE EXTINGUIR."
+        "explicacion": "LA NORMA DE SEÑALIZAR UNA MANIOBRA ES PARA INDICARLO MIENTRAS ÉSTA SE REALICE, POR ESO UNA VEZ QUE FINALICE EL DESPLAZAMIENTO O GIRO, EN ESTE CASO, SE DEBE EXTINGUIR.",
+        "imagen_oculta": true
     },
     {
         "id": 517,
@@ -5724,7 +5818,8 @@
             "Cerca del borde derecho de la calzada."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "DOBLE SENTIDO: EN EL EJE SIN INVADIR EL SENTIDO CONTRARIO. SENTIDO ÚNICO: A LA IZQUIERDA."
+        "explicacion": "DOBLE SENTIDO: EN EL EJE SIN INVADIR EL SENTIDO CONTRARIO. SENTIDO ÚNICO: A LA IZQUIERDA.",
+        "imagen_oculta": true
     },
     {
         "id": 518,
@@ -5735,7 +5830,8 @@
             "Cambio de dirección dentro de la vía."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"Salida con cambio de sentido a distinto nivel.\"."
+        "explicacion": "La respuesta correcta es: \"Salida con cambio de sentido a distinto nivel.\".",
+        "imagen_oculta": true
     },
     {
         "id": 519,
@@ -5746,7 +5842,9 @@
             "80 km/h, porque el arcén es inferior a 1,5 metros."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "TURISMOS Y MOTOCICLETAS, VELOCIDAD MÁXIMA EN: AUTOPISTAS Y AUTOVÍAS: 120 KM/H. \" CONVENCIONALES: 90 KM/H\". INCLUIDO PARA ADELANTAR"
+        "explicacion": "TURISMOS Y MOTOCICLETAS, VELOCIDAD MÁXIMA EN: AUTOPISTAS Y AUTOVÍAS: 120 KM/H. \" CONVENCIONALES: 90 KM/H\". INCLUIDO PARA ADELANTAR",
+        "imagen": "assets/imagenes_preguntas/pregunta_519.svg",
+        "imagen_oculta": false
     },
     {
         "id": 520,
@@ -5856,7 +5954,8 @@
             "A ninguna, ya que en caso de contradicción, las señales se anulan."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "SI LA CONTRADICCIÓN SE PRODUCE ENTRE SEÑALES DEL MISMO TIPO , PREVALECERÁ LA MÁS RESTRICTIVA."
+        "explicacion": "SI LA CONTRADICCIÓN SE PRODUCE ENTRE SEÑALES DEL MISMO TIPO , PREVALECERÁ LA MÁS RESTRICTIVA.",
+        "imagen_oculta": true
     },
     {
         "id": 530,
@@ -5913,7 +6012,8 @@
             "Sí, cuando no coincida esa velocidad con la genérica de la vía."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "LA VELOCIDAD MÁXIMA ESTABLECIDA PARA ESTE TRAMO DE VÍA ES DE 70 KILÓMETROS POR HORA, Y EL VEHÍCULO QUE NOS PRECEDE CIRCULA A 70 KILÓMETROS HORA, AL IR YA A LA VELOCIDAD MÁXIMA ESTABLECIDA, ESTÁ PROHIBIDO ADELANTARLE. \"LO PROHÍBE LA SEÑAL\""
+        "explicacion": "LA VELOCIDAD MÁXIMA ESTABLECIDA PARA ESTE TRAMO DE VÍA ES DE 70 KILÓMETROS POR HORA, Y EL VEHÍCULO QUE NOS PRECEDE CIRCULA A 70 KILÓMETROS HORA, AL IR YA A LA VELOCIDAD MÁXIMA ESTABLECIDA, ESTÁ PROHIBIDO ADELANTARLE. \"LO PROHÍBE LA SEÑAL\"",
+        "imagen_oculta": true
     },
     {
         "id": 535,
@@ -5935,7 +6035,8 @@
             "la distancia en que se aplica la prohibición en el sentido de la flecha."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"la distancia en que se aplica la prohibición en el sentido de la flecha.\"."
+        "explicacion": "La respuesta correcta es: \"la distancia en que se aplica la prohibición en el sentido de la flecha.\".",
+        "imagen_oculta": true
     },
     {
         "id": 537,
@@ -6146,7 +6247,9 @@
             "los camiones, exclusivamente."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "CAMIONES Y FURGONES INDEPENDIENTEMENTE DE SU MASA.."
+        "explicacion": "CAMIONES Y FURGONES INDEPENDIENTEMENTE DE SU MASA..",
+        "imagen": "assets/imagenes_preguntas/pregunta_555.svg",
+        "imagen_oculta": false
     },
     {
         "id": 556,
@@ -6247,7 +6350,8 @@
             "parar y estacionar."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "PARAR Y ESTACIONAR."
+        "explicacion": "PARAR Y ESTACIONAR.",
+        "imagen_oculta": true
     },
     {
         "id": 565,
@@ -6258,7 +6362,9 @@
             "peligro por la proximidad de un tramo de la vía con pavimento deslizante por hielo."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "PELIGRO POR LA PROXIMIDAD DE UN LUGAR EN QUE HAY VEHÍCULOS QUE OBSTRUYEN LA CALZADA DEBIDO A:  AVERÍA, ACCIDENTE U OTRAS CAUSAS."
+        "explicacion": "PELIGRO POR LA PROXIMIDAD DE UN LUGAR EN QUE HAY VEHÍCULOS QUE OBSTRUYEN LA CALZADA DEBIDO A:  AVERÍA, ACCIDENTE U OTRAS CAUSAS.",
+        "imagen": "assets/imagenes_preguntas/pregunta_565.svg",
+        "imagen_oculta": false
     },
     {
         "id": 566,
@@ -6269,7 +6375,8 @@
             "A detenerse."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"A disminuir la velocidad.\"."
+        "explicacion": "La respuesta correcta es: \"A disminuir la velocidad.\".",
+        "imagen_oculta": true
     },
     {
         "id": 567,
@@ -6346,7 +6453,8 @@
             "Sobre la línea discontinua, invadiendo ligeramente el sentido contrario."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"Junto a la línea discontinua, sin invadir el  sentido contrario.\"."
+        "explicacion": "La respuesta correcta es: \"Junto a la línea discontinua, sin invadir el  sentido contrario.\".",
+        "imagen_oculta": true
     },
     {
         "id": 574,
@@ -6390,7 +6498,9 @@
             "Sí, porque no es un vehículo a motor."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "PROHIBICIÓN DE CIRCULACIÓN DE TODA CLASE DE VEHÍCULOS:  EN AMBOS SENTIDOS."
+        "explicacion": "PROHIBICIÓN DE CIRCULACIÓN DE TODA CLASE DE VEHÍCULOS:  EN AMBOS SENTIDOS.",
+        "imagen": "assets/imagenes_preguntas/pregunta_577.svg",
+        "imagen_oculta": false
     },
     {
         "id": 578,
@@ -6467,7 +6577,9 @@
             "Obliga a dejar una distancia de 80 metros con el vehículo que circula delante."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "OBLIGACIÓN: SON CIRCULARES. \" INDICACIÓN: CUADRADAS O RECTANGULARES\""
+        "explicacion": "OBLIGACIÓN: SON CIRCULARES. \" INDICACIÓN: CUADRADAS O RECTANGULARES\"",
+        "imagen": "assets/imagenes_preguntas/pregunta_584.svg",
+        "imagen_oculta": false
     },
     {
         "id": 585,
@@ -6489,7 +6601,9 @@
             "La altura máxima, incluida la carga, indicada en la señal."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "ALTURA"
+        "explicacion": "ALTURA",
+        "imagen": "assets/imagenes_preguntas/pregunta_586.svg",
+        "imagen_oculta": false
     },
     {
         "id": 587,
@@ -6634,7 +6748,8 @@
             "el vehículo este pintado de oscuro y la calzada sea de doble sentido."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"la calzada tenga una anchura igual o inferior a 6,50 metros.\"."
+        "explicacion": "La respuesta correcta es: \"la calzada tenga una anchura igual o inferior a 6,50 metros.\".",
+        "imagen_oculta": true
     },
     {
         "id": 600,
@@ -6768,7 +6883,8 @@
             "No."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "PUEDE SER SUSTITUIDO POR UNA FOTOCOPIA DEBIDAMENTE COTEJADA EN: LAS JEFATURAS PROVINCIALES DE TRÁFICO O EN CUALQUIER OTRO ORGANISMO PÚBLICO."
+        "explicacion": "PUEDE SER SUSTITUIDO POR UNA FOTOCOPIA DEBIDAMENTE COTEJADA EN: LAS JEFATURAS PROVINCIALES DE TRÁFICO O EN CUALQUIER OTRO ORGANISMO PÚBLICO.",
+        "imagen_oculta": true
     },
     {
         "id": 612,
@@ -6823,7 +6939,9 @@
             "recomienda girar a la derecha o a la izquierda."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "OBLIGACIÓN DEL REALIZAR EL PAGO POR EL SISTEMA DE TELEPEAJE."
+        "explicacion": "OBLIGACIÓN DEL REALIZAR EL PAGO POR EL SISTEMA DE TELEPEAJE.",
+        "imagen": "assets/imagenes_preguntas/pregunta_616.svg",
+        "imagen_oculta": false
     },
     {
         "id": 617,
@@ -6834,7 +6952,8 @@
             "Detenerse, pero sólo si hay peatones cruzando."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "CUANDO HAY SEMÁFOROS CON DISTINTAS INDICCIONES A LA DERECHA E IZQUIERDA. LOS QUE VAN DE FRENTE O BIEN GIREN A LA IZQUIERDA: TIENEN QUE OBEDECER EL SEMÁFORO DE LA IZQUIERDA. Y LOS QUE VAN A LA DERECHA: SOLO LA DE LA DERECHA."
+        "explicacion": "CUANDO HAY SEMÁFOROS CON DISTINTAS INDICCIONES A LA DERECHA E IZQUIERDA. LOS QUE VAN DE FRENTE O BIEN GIREN A LA IZQUIERDA: TIENEN QUE OBEDECER EL SEMÁFORO DE LA IZQUIERDA. Y LOS QUE VAN A LA DERECHA: SOLO LA DE LA DERECHA.",
+        "imagen_oculta": true
     },
     {
         "id": 618,
@@ -7076,7 +7195,8 @@
             "A 30 km/h como recomendación, durante el tramo que subsista el peligro."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "AL ESTAR EN EL MISMO POSTE Y SER DE VELOCIDAD. TERMINA LA RECOMENDACIÓN \"SEÑAL CUADRADA\" CUANDO TERMINA EL PELIGRO INDICADO."
+        "explicacion": "AL ESTAR EN EL MISMO POSTE Y SER DE VELOCIDAD. TERMINA LA RECOMENDACIÓN \"SEÑAL CUADRADA\" CUANDO TERMINA EL PELIGRO INDICADO.",
+        "imagen_oculta": true
     },
     {
         "id": 640,
@@ -7109,7 +7229,8 @@
             "Que hay una vía que tiene cuatro carreteras."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "INDICA LAS DIRECCIONES DE LAS DISTINTAS SALIDAS DE LA PRÓXIMA GLORIETA. SI ALGUNA INSCRIPCIÓN FIGURA SOBRE FONDO AZUL, INDICA QUE LA SALIDA CONDUCE HACIA UNA AUTOPISTA O AUTOVÍA."
+        "explicacion": "INDICA LAS DIRECCIONES DE LAS DISTINTAS SALIDAS DE LA PRÓXIMA GLORIETA. SI ALGUNA INSCRIPCIÓN FIGURA SOBRE FONDO AZUL, INDICA QUE LA SALIDA CONDUCE HACIA UNA AUTOPISTA O AUTOVÍA.",
+        "imagen_oculta": true
     },
     {
         "id": 643,
@@ -7175,7 +7296,9 @@
             "Obligación de seguir de frente porque el carril izquierdo desaparece."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"Bifurcación hacia la izquierda en calzda de tres carriles.\"."
+        "explicacion": "La respuesta correcta es: \"Bifurcación hacia la izquierda en calzda de tres carriles.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_648.svg",
+        "imagen_oculta": false
     },
     {
         "id": 649,
@@ -7241,7 +7364,8 @@
             "Sí, a esa distancia ya son visibles."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "EN CASO DE AVERÍA SE DEBE SEÑALIZAR EL OBSTÁCULO CREADO, CON LA SEÑAL V-16 (que se pondrá en el techo del vehículo)  O BIEN MEDIANTE LOS TRIÁNGULOS DE PRESEÑALIZACIÓN DE PELIGRO( hasta 01-0-2026). ESTOS DISPOSITIVOS SE COLOCARÁN UNO POR DELANTE Y OTRO POR DETRÁS DEL VEHÍCULO, COMO MÍNIMO A 50 METROS DE DISTANCIA Y DE FORMA QUE SEAN VISIBLES POR LOS CONDUCTORES QUE SE APROXIMEN DESDE AL MENOS 100 METROS."
+        "explicacion": "EN CASO DE AVERÍA SE DEBE SEÑALIZAR EL OBSTÁCULO CREADO, CON LA SEÑAL V-16 (que se pondrá en el techo del vehículo)  O BIEN MEDIANTE LOS TRIÁNGULOS DE PRESEÑALIZACIÓN DE PELIGRO( hasta 01-0-2026). ESTOS DISPOSITIVOS SE COLOCARÁN UNO POR DELANTE Y OTRO POR DETRÁS DEL VEHÍCULO, COMO MÍNIMO A 50 METROS DE DISTANCIA Y DE FORMA QUE SEAN VISIBLES POR LOS CONDUCTORES QUE SE APROXIMEN DESDE AL MENOS 100 METROS.",
+        "imagen_oculta": true
     },
     {
         "id": 655,
@@ -7252,7 +7376,9 @@
             "90 Km/h."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "TURISMOS Y MOTOCICLETAS EN AUTOPISTAS Y AUTOVÍAS: 120 KM/K. EN CARRETERAS CONVENCIONALES: 90 KM/H. INCLUIDO PARA ADELANTAR  (Una vía para automóviles es una carretera convencional)."
+        "explicacion": "TURISMOS Y MOTOCICLETAS EN AUTOPISTAS Y AUTOVÍAS: 120 KM/K. EN CARRETERAS CONVENCIONALES: 90 KM/H. INCLUIDO PARA ADELANTAR  (Una vía para automóviles es una carretera convencional).",
+        "imagen": "assets/imagenes_preguntas/pregunta_655.svg",
+        "imagen_oculta": false
     },
     {
         "id": 656,
@@ -7329,7 +7455,9 @@
             "El vehículo que circula en sentido contrario."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "PROHIBIDO ENTRAR, SIN ANTES DAR PRIORIDAD AL SENTIDO CONTRARIO."
+        "explicacion": "PROHIBIDO ENTRAR, SIN ANTES DAR PRIORIDAD AL SENTIDO CONTRARIO.",
+        "imagen": "assets/imagenes_preguntas/pregunta_662.svg",
+        "imagen_oculta": false
     },
     {
         "id": 663,
@@ -7395,7 +7523,8 @@
             "que no debe superar esta velocidad hasta la próxima intersección."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"la velocidad máxima a la que se puede circular por el carril en el que está situada.\"."
+        "explicacion": "La respuesta correcta es: \"la velocidad máxima a la que se puede circular por el carril en el que está situada.\".",
+        "imagen_oculta": true
     },
     {
         "id": 669,
@@ -7428,7 +7557,8 @@
             "No, pero está permitido a ciclomotores y motocicletas."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "LAS SEÑALES DE OBLIGACIÓN PARA: CICLOS, CICLOMOTORES, ANIMALES DE MONTURA Y PEATONES. \" PROHÍBE LA ENTRADA A LOS DEMÁS USUARIOS\" LAS DEMÁS  SEÑALES NO. \" ESTA SEÑAL DE VEHÍCULOS DE TRACCIÓN ANIMAL, ES OBLIGATORIA PARA ELLOS, PERO LOS DEMÁS PUEDEN ENTRAR\"."
+        "explicacion": "LAS SEÑALES DE OBLIGACIÓN PARA: CICLOS, CICLOMOTORES, ANIMALES DE MONTURA Y PEATONES. \" PROHÍBE LA ENTRADA A LOS DEMÁS USUARIOS\" LAS DEMÁS  SEÑALES NO. \" ESTA SEÑAL DE VEHÍCULOS DE TRACCIÓN ANIMAL, ES OBLIGATORIA PARA ELLOS, PERO LOS DEMÁS PUEDEN ENTRAR\".",
+        "imagen_oculta": true
     },
     {
         "id": 672,
@@ -7450,7 +7580,8 @@
             "Sí, siempre."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"Sí, siempre.\"."
+        "explicacion": "La respuesta correcta es: \"Sí, siempre.\".",
+        "imagen_oculta": true
     },
     {
         "id": 674,
@@ -7472,7 +7603,9 @@
             "La circulación de vehículos a motor por ser una vía exclusiva para animales de montura."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"La entra a animales de montura.\"."
+        "explicacion": "La respuesta correcta es: \"La entra a animales de montura.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_675.svg",
+        "imagen_oculta": false
     },
     {
         "id": 676,
@@ -7505,7 +7638,8 @@
             "Es indiferente; se le puede adelantar por la derecha como por la izquierda."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "POR LA DERECHA, DADO QUE POR LA IZQUIERDA PUEDEN VENIR VEHÍCULOS EN SENTIDO CONTRARIO. \" SI FUERA DE SENTIDO ÚNICO: TANTO POR LA IZQUIERDA COMO POR LA DERECHA."
+        "explicacion": "POR LA DERECHA, DADO QUE POR LA IZQUIERDA PUEDEN VENIR VEHÍCULOS EN SENTIDO CONTRARIO. \" SI FUERA DE SENTIDO ÚNICO: TANTO POR LA IZQUIERDA COMO POR LA DERECHA.",
+        "imagen_oculta": true
     },
     {
         "id": 679,
@@ -7527,7 +7661,8 @@
             "Que para poder circular es necesario utilizar cadenas o neumáticos de invierno."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "NEGRO: CERRADO. \" CARRETERA INTRANSITABLE PARA CUALQUIER TIPO DE VEHÍCULO\" . ROJO: OBLIGATORIO USO DE CADENAS Y VELOCIDAD MÁXIMA: 30 KM/H."
+        "explicacion": "NEGRO: CERRADO. \" CARRETERA INTRANSITABLE PARA CUALQUIER TIPO DE VEHÍCULO\" . ROJO: OBLIGATORIO USO DE CADENAS Y VELOCIDAD MÁXIMA: 30 KM/H.",
+        "imagen_oculta": true
     },
     {
         "id": 681,
@@ -7815,7 +7950,9 @@
             "la parada y el estacionamiento de vehículos."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "PROHÍBE PARAR Y EN CONSECUENCIA ESTACIONAR, POR ELLO PROHÍBE \"PARAR Y ESTACIONAR\""
+        "explicacion": "PROHÍBE PARAR Y EN CONSECUENCIA ESTACIONAR, POR ELLO PROHÍBE \"PARAR Y ESTACIONAR\"",
+        "imagen": "assets/imagenes_preguntas/pregunta_706.svg",
+        "imagen_oculta": false
     },
     {
         "id": 707,
@@ -7883,7 +8020,8 @@
             "A 50 metros como máximo y deben ser visibles desde al menos 100 metros."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"A 50 metros como mínimo y deben ser visibles desde, al menos, 100 metros.\"."
+        "explicacion": "La respuesta correcta es: \"A 50 metros como mínimo y deben ser visibles desde, al menos, 100 metros.\".",
+        "imagen_oculta": true
     },
     {
         "id": 713,
@@ -7894,7 +8032,9 @@
             "estacionar durante un tiempo máximo de 1 hora y 15 minutos."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"estacionar la primera quincena del mes.\"."
+        "explicacion": "La respuesta correcta es: \"estacionar la primera quincena del mes.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_713.svg",
+        "imagen_oculta": false
     },
     {
         "id": 714,
@@ -8004,7 +8144,8 @@
             "Sí, pero sólo al primer ciclista."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "AUNQUE SALEN POR LA IZQUIERDA. YA ESTÁN METIDOS EN EL CRUCE. \" POR ELLO HAY QUE DEJAR PASAR AL GRUPO\"."
+        "explicacion": "AUNQUE SALEN POR LA IZQUIERDA. YA ESTÁN METIDOS EN EL CRUCE. \" POR ELLO HAY QUE DEJAR PASAR AL GRUPO\".",
+        "imagen_oculta": true
     },
     {
         "id": 724,
@@ -8171,7 +8312,9 @@
             "No; prohíbe la entrada a ciclomotores y a vehículos para personas de movilidad reducida."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "PROHIBICIÓN DE ACCESO A:  CICLOMOTORES DE DOS Y TRES RUEDAS Y CUADRICICLOS LIGEROS. IGUALMENTE PROHÍBE LA ENTRADA A:  VEHÍCULOS PARA PERSONAS DE MOVILIDAD REDUCIDA."
+        "explicacion": "PROHIBICIÓN DE ACCESO A:  CICLOMOTORES DE DOS Y TRES RUEDAS Y CUADRICICLOS LIGEROS. IGUALMENTE PROHÍBE LA ENTRADA A:  VEHÍCULOS PARA PERSONAS DE MOVILIDAD REDUCIDA.",
+        "imagen": "assets/imagenes_preguntas/pregunta_738.svg",
+        "imagen_oculta": false
     },
     {
         "id": 739,
@@ -8182,7 +8325,8 @@
             "Únicamente, hasta una nueva señal de limitación de velocidad diferente."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "CUANDO EN UN MISMO POSTE HAYA UNA SEÑAL DE LÍMITE DE VELOCIDAD Y UNA DE PELIGRO. LA VELOCIDAD, TERMINA CUANDO TERMINA EL PELIGRO. \"NO OCURRE ASÍ CON OTRAS SEÑALES QUE NO SEAN DE LÍMITES DE VELOCIDAD\"."
+        "explicacion": "CUANDO EN UN MISMO POSTE HAYA UNA SEÑAL DE LÍMITE DE VELOCIDAD Y UNA DE PELIGRO. LA VELOCIDAD, TERMINA CUANDO TERMINA EL PELIGRO. \"NO OCURRE ASÍ CON OTRAS SEÑALES QUE NO SEAN DE LÍMITES DE VELOCIDAD\".",
+        "imagen_oculta": true
     },
     {
         "id": 740,
@@ -8644,7 +8788,8 @@
             "una carretera convencional."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "A-3 AUTOPISTA HACIA VALENCIA."
+        "explicacion": "A-3 AUTOPISTA HACIA VALENCIA.",
+        "imagen_oculta": true
     },
     {
         "id": 782,
@@ -8688,7 +8833,8 @@
             "Uno por detrás del vehículo a 50 metros como mínimo."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "SI NO DISPONE DE LA V-16, PONDRÁ UNO DETRÁS DEL VEHÍCULO A 50 METROS DE DISTANCIA MÍNIMO Y VISIBLES A 100 METROS."
+        "explicacion": "SI NO DISPONE DE LA V-16, PONDRÁ UNO DETRÁS DEL VEHÍCULO A 50 METROS DE DISTANCIA MÍNIMO Y VISIBLES A 100 METROS.",
+        "imagen_oculta": true
     },
     {
         "id": 786,
@@ -8963,7 +9109,8 @@
             "Por la izquierda."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "LA FLECHA APUNTA POR LA IZQUIERDA, POR ELLO DEBEMOS PASAR POR LA IZQUIERDA."
+        "explicacion": "LA FLECHA APUNTA POR LA IZQUIERDA, POR ELLO DEBEMOS PASAR POR LA IZQUIERDA.",
+        "imagen_oculta": true
     },
     {
         "id": 811,
@@ -9119,7 +9266,8 @@
             "El lugar donde se debe ceder el paso a los vehículos que entran por la derecha."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "ES UN CRUCE SIN SEÑALIZAR LA PREFERENCIA, POR ELLO DEBEMOS CEDER EL PASO A LOS VEHÍCULOS QUE ENTREN POR LA DERECHA, Y LA LÍNEA DISCONTINUA NOS INDICA EL SITIO DONDE DEBEMOS DE HACERLO,"
+        "explicacion": "ES UN CRUCE SIN SEÑALIZAR LA PREFERENCIA, POR ELLO DEBEMOS CEDER EL PASO A LOS VEHÍCULOS QUE ENTREN POR LA DERECHA, Y LA LÍNEA DISCONTINUA NOS INDICA EL SITIO DONDE DEBEMOS DE HACERLO,",
+        "imagen_oculta": true
     },
     {
         "id": 825,
@@ -9130,7 +9278,8 @@
             "girar a la derecha o la izquierda."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "ÚNICAS DIRECCIONES Y SENTIDOS PERMITIDOS. LAS FLECHAS SEÑALAN LAS ÚNICAS DIRECCIONES Y SENTIDOS QUE LOS VEHÍCULOS PUEDEN TOMAR."
+        "explicacion": "ÚNICAS DIRECCIONES Y SENTIDOS PERMITIDOS. LAS FLECHAS SEÑALAN LAS ÚNICAS DIRECCIONES Y SENTIDOS QUE LOS VEHÍCULOS PUEDEN TOMAR.",
+        "imagen_oculta": true
     },
     {
         "id": 826,
@@ -9321,7 +9470,9 @@
             "Cualquier vehículo de dos ruedas."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "FÍJATE EN LA SEÑAL: SI LLEVA PEDAL, PROHÍBE A CICLOMOTORES, SI NO LLEVA PEDAL: PROHÍBE A CICLOS.\" BICICLETAS\". SI LLEVA CONDUCTOR: A MOTOCICLETAS."
+        "explicacion": "FÍJATE EN LA SEÑAL: SI LLEVA PEDAL, PROHÍBE A CICLOMOTORES, SI NO LLEVA PEDAL: PROHÍBE A CICLOS.\" BICICLETAS\". SI LLEVA CONDUCTOR: A MOTOCICLETAS.",
+        "imagen": "assets/imagenes_preguntas/pregunta_842.svg",
+        "imagen_oculta": false
     },
     {
         "id": 843,
@@ -9332,7 +9483,8 @@
             "Que se aproxima a una zona con nieve en la calzada."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"Que en caso de nieve no puede superar la velocidad indicada.\"."
+        "explicacion": "La respuesta correcta es: \"Que en caso de nieve no puede superar la velocidad indicada.\".",
+        "imagen_oculta": true
     },
     {
         "id": 844,
@@ -9420,7 +9572,9 @@
             "Que hay un carril para circulación lenta."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "TERMINA EL CARRIL IZQUIERDO Y QUE HAY OBRAS. (POR SER DE COLOR AMARILLO)."
+        "explicacion": "TERMINA EL CARRIL IZQUIERDO Y QUE HAY OBRAS. (POR SER DE COLOR AMARILLO).",
+        "imagen": "assets/imagenes_preguntas/pregunta_851.svg",
+        "imagen_oculta": false
     },
     {
         "id": 852,
@@ -9640,7 +9794,9 @@
             "mediante el sistema de peaje dinámico o telepeaje."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "\" CUADRADA: PUEDE ABONAR EL IMPORTE EN METÁLICO O BIEN DE FORMA DINÁMICA. \" REDONDA: SÓLO DINÁMICO O TELEPEAJE\"."
+        "explicacion": "\" CUADRADA: PUEDE ABONAR EL IMPORTE EN METÁLICO O BIEN DE FORMA DINÁMICA. \" REDONDA: SÓLO DINÁMICO O TELEPEAJE\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_871.svg",
+        "imagen_oculta": false
     },
     {
         "id": 872,
@@ -9651,7 +9807,8 @@
             "No, basta con encender la señal de emergencia."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "COLOCARÉ LA SEÑAL V-16, EN LA PARTE MÁS ALTA DEL VEHÍCULO. (Si no dispongo de la señal V-16, puedo utilizar los triángulos hasta el 01-01-2026). ADEMÁS DEBERÉ PONER LAS LUCES DE EMERGENCIA DEL VEHÍCULO Y SI LAS CONDICIONES ATMOSFÉRICAS LO REQUIEREN TAMBIÉN PONDRÉ LAS LUCES DE POSICIÓN."
+        "explicacion": "COLOCARÉ LA SEÑAL V-16, EN LA PARTE MÁS ALTA DEL VEHÍCULO. (Si no dispongo de la señal V-16, puedo utilizar los triángulos hasta el 01-01-2026). ADEMÁS DEBERÉ PONER LAS LUCES DE EMERGENCIA DEL VEHÍCULO Y SI LAS CONDICIONES ATMOSFÉRICAS LO REQUIEREN TAMBIÉN PONDRÉ LAS LUCES DE POSICIÓN.",
+        "imagen_oculta": true
     },
     {
         "id": 873,
@@ -9774,7 +9931,9 @@
             "Hasta que finalice el tramo de curvas."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "\" CUANDO UNA SEÑAL DE VELOCIDAD ESTÁ EN EL MISMO POSTE QUE UNA SEÑAL DE PELIGRO, LA VELOCIDAD TERMINA CUANDO TERMINE EL PELIGRO INDICADO\"."
+        "explicacion": "\" CUANDO UNA SEÑAL DE VELOCIDAD ESTÁ EN EL MISMO POSTE QUE UNA SEÑAL DE PELIGRO, LA VELOCIDAD TERMINA CUANDO TERMINE EL PELIGRO INDICADO\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_883.svg",
+        "imagen_oculta": false
     },
     {
         "id": 884,
@@ -9851,7 +10010,8 @@
             "Nunca, los vehículos a motor siempre tienen preferencia sobre las bicicletas."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "CUANDO SE APROXIMEN POR LA DERECHA. Y \" DE FORMA EXCEPCIONAL: SI SE APROXIMAN POR LA IZQUIERDA Y YA ESTÁN METIDOS EN EL CRUCE\"."
+        "explicacion": "CUANDO SE APROXIMEN POR LA DERECHA. Y \" DE FORMA EXCEPCIONAL: SI SE APROXIMAN POR LA IZQUIERDA Y YA ESTÁN METIDOS EN EL CRUCE\".",
+        "imagen_oculta": true
     },
     {
         "id": 891,
@@ -9961,7 +10121,8 @@
             "A los 30 metros después de haber realizado el giro."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"Tan pronto como el vehículo haya tomado la nueva trayectoria.\"."
+        "explicacion": "La respuesta correcta es: \"Tan pronto como el vehículo haya tomado la nueva trayectoria.\".",
+        "imagen_oculta": true
     },
     {
         "id": 901,
@@ -10071,7 +10232,8 @@
             "50 km/h."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "LA VELOCIDAD MÁXIMA EN UNA AUTOPISTA O AUTOVÍA DENTRO DE POBLADO ES: 80 KM/H."
+        "explicacion": "LA VELOCIDAD MÁXIMA EN UNA AUTOPISTA O AUTOVÍA DENTRO DE POBLADO ES: 80 KM/H.",
+        "imagen_oculta": true
     },
     {
         "id": 911,
@@ -10104,7 +10266,9 @@
             "No, porque tengo preferencia sobre los vehículos que circulen por una vía sin pavimentar."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "EN AUSENCIA DE LOS AGENTES, TANTO LOS OPERARIOS, COMO ACOMPAÑANTES DE ESCOLARES, ETC. ESTÁN AUTORIZADOS A REGULAR EL TRÁFICO Y DEBEMOS OBEDECERLES."
+        "explicacion": "EN AUSENCIA DE LOS AGENTES, TANTO LOS OPERARIOS, COMO ACOMPAÑANTES DE ESCOLARES, ETC. ESTÁN AUTORIZADOS A REGULAR EL TRÁFICO Y DEBEMOS OBEDECERLES.",
+        "imagen": "assets/imagenes_preguntas/pregunta_913.svg",
+        "imagen_oculta": false
     },
     {
         "id": 914,
@@ -10348,7 +10512,9 @@
             "A todos los vehículos de más de 3.500 kilogramos de MMA."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "PROHIBICIÓN DE ACCESO A VEHÍCULOS DESTINADOS AL TRANSPORTE DE MERCANCÍAS. \"ENTENDIÉNDOSE COMO TALES: CAMIONES Y FURGONES INDEPENDIENTEMENTE DE SU MASA\"."
+        "explicacion": "PROHIBICIÓN DE ACCESO A VEHÍCULOS DESTINADOS AL TRANSPORTE DE MERCANCÍAS. \"ENTENDIÉNDOSE COMO TALES: CAMIONES Y FURGONES INDEPENDIENTEMENTE DE SU MASA\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_935.svg",
+        "imagen_oculta": false
     },
     {
         "id": 936,
@@ -10359,7 +10525,9 @@
             "Sí, salvo que no exista línea de detención."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "SI HAY UNA CONTRADICCIÓN ENTRE SEÑALES, PREVALECE LA SIGUIENTE JERARQUÍA. 1Âº AGENTES, 2Âº BALIZAMIENTO, 3Âº SEMÁFOROS, 4Âº SEÑALES VERTICALES, 5Âº MARCAS VÍALES.\" POR ELLO NO ES OBLIGATORIO DETENERSE SIEMPRE\"."
+        "explicacion": "SI HAY UNA CONTRADICCIÓN ENTRE SEÑALES, PREVALECE LA SIGUIENTE JERARQUÍA. 1Âº AGENTES, 2Âº BALIZAMIENTO, 3Âº SEMÁFOROS, 4Âº SEÑALES VERTICALES, 5Âº MARCAS VÍALES.\" POR ELLO NO ES OBLIGATORIO DETENERSE SIEMPRE\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_936.svg",
+        "imagen_oculta": false
     },
     {
         "id": 937,
@@ -10460,7 +10628,9 @@
             "Fin de velocidad mínima aconsejada"
         ],
         "respuesta_correcta": 1,
-        "explicacion": "FIN DE VELOCIDAD MÁXIMA ACONSEJADA."
+        "explicacion": "FIN DE VELOCIDAD MÁXIMA ACONSEJADA.",
+        "imagen": "assets/imagenes_preguntas/pregunta_945.svg",
+        "imagen_oculta": false
     },
     {
         "id": 946,
@@ -10537,7 +10707,9 @@
             "El principio de un túnel."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"El final de un túnel o paso inferior.\"."
+        "explicacion": "La respuesta correcta es: \"El final de un túnel o paso inferior.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_952.svg",
+        "imagen_oculta": false
     },
     {
         "id": 953,
@@ -10559,7 +10731,8 @@
             "No, los animales en la calzada no tienen nunca prioridad de paso."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "LOS CONDUCTORES DEBEN CEDER EL PASO: A LOS ANIMALES,  EN LAS CAÑADAS DEBIDAMENTE SEÑALIZADAS, CUANDO CRUCEN UN ARCÉN POR EL QUE ESTÉN CIRCULANDO ANIMALES QUE NO DISPONGAN DE CAÑADA Y CUANDO VAYAN A GIRAR CON SU VEHÍCULO PARA ENTRAR EN OTRA VÍA Y HAYA ANIMALES CRUZÁNDOLA, COMO EN ESTE CASO."
+        "explicacion": "LOS CONDUCTORES DEBEN CEDER EL PASO: A LOS ANIMALES,  EN LAS CAÑADAS DEBIDAMENTE SEÑALIZADAS, CUANDO CRUCEN UN ARCÉN POR EL QUE ESTÉN CIRCULANDO ANIMALES QUE NO DISPONGAN DE CAÑADA Y CUANDO VAYAN A GIRAR CON SU VEHÍCULO PARA ENTRAR EN OTRA VÍA Y HAYA ANIMALES CRUZÁNDOLA, COMO EN ESTE CASO.",
+        "imagen_oculta": true
     },
     {
         "id": 955,
@@ -10702,7 +10875,9 @@
             "Solo si su vehículo tiene mayores dificultades de maniobra."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "LA SEÑAL INDICA: PRIORIDAD SOBRE EL VEHÍCULO DE SENTIDO CONTRARIO."
+        "explicacion": "LA SEÑAL INDICA: PRIORIDAD SOBRE EL VEHÍCULO DE SENTIDO CONTRARIO.",
+        "imagen": "assets/imagenes_preguntas/pregunta_967.svg",
+        "imagen_oculta": false
     },
     {
         "id": 968,
@@ -10858,7 +11033,8 @@
             "Por el carril central, ya que el carril derecho está reservado para los vehículos que no puedan superar dicha velocidad."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "LA NORMA GENERAL ES CIRCULAR POR EL CARRIL DERECHO, EL CARRIL CENTRAL, SOLAMENTE INDICA QUE PARA CIRCULAR POR EL HAY QUE IR COMO MÍNIMO A 70KM/H."
+        "explicacion": "LA NORMA GENERAL ES CIRCULAR POR EL CARRIL DERECHO, EL CARRIL CENTRAL, SOLAMENTE INDICA QUE PARA CIRCULAR POR EL HAY QUE IR COMO MÍNIMO A 70KM/H.",
+        "imagen_oculta": true
     },
     {
         "id": 982,
@@ -11146,7 +11322,9 @@
             "A los vehículos o conjunto de vehículos cuya longitud máxima, incluida la carga, supere la indicada."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"A los vehículos o conjunto de vehículos cuya longitud máxima, incluida la carga, supere la indicada.\"."
+        "explicacion": "La respuesta correcta es: \"A los vehículos o conjunto de vehículos cuya longitud máxima, incluida la carga, supere la indicada.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_1007.svg",
+        "imagen_oculta": false
     },
     {
         "id": 1008,
@@ -11335,7 +11513,9 @@
             "La velocidad máxima a la que se debe circular por esta vía que está en obras."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "COLOR AMARILLO OBRAS. \" SEÑAL CON FONDO AMARILLO ES POR OBRAS\" PROHIBIDO CIRCULAR A MÁS DE 40 KM/H.\""
+        "explicacion": "COLOR AMARILLO OBRAS. \" SEÑAL CON FONDO AMARILLO ES POR OBRAS\" PROHIBIDO CIRCULAR A MÁS DE 40 KM/H.\"",
+        "imagen": "assets/imagenes_preguntas/pregunta_1024.svg",
+        "imagen_oculta": false
     },
     {
         "id": 1025,
@@ -11403,7 +11583,8 @@
             "situación de un paso de peatones."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "OBLIGACIÓN PARA LOS PEATONES DE TRANSITAR POR EL CAMINO A CUYA ENTRADA ESTÉ SITUADA Y PROHIBICIÓN A LOS DEMÁS USUARIOS DE LA VÍA DE UTILIZARLO."
+        "explicacion": "OBLIGACIÓN PARA LOS PEATONES DE TRANSITAR POR EL CAMINO A CUYA ENTRADA ESTÉ SITUADA Y PROHIBICIÓN A LOS DEMÁS USUARIOS DE LA VÍA DE UTILIZARLO.",
+        "imagen_oculta": true
     },
     {
         "id": 1031,
@@ -11438,7 +11619,8 @@
             "No, lo prohíbe la señal."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "EL LÍMITE DE VELOCIDAD  MÁXIMA SÓLO AFECTA AL CARRIL DONDE ESTÁ SEÑALIZADO, POR LO TANTO, POR EL CARRIL DE LA DERECHA SE PUEDE CIRCULAR A UNA VELOCIDAD SUPERIOR. \"ESTO SÓLO OCURRE CON LÍMITES DE VELOCIDAD PINTADOS EN EL CARRIL, NO CON SEÑALES VERTICALES\"."
+        "explicacion": "EL LÍMITE DE VELOCIDAD  MÁXIMA SÓLO AFECTA AL CARRIL DONDE ESTÁ SEÑALIZADO, POR LO TANTO, POR EL CARRIL DE LA DERECHA SE PUEDE CIRCULAR A UNA VELOCIDAD SUPERIOR. \"ESTO SÓLO OCURRE CON LÍMITES DE VELOCIDAD PINTADOS EN EL CARRIL, NO CON SEÑALES VERTICALES\".",
+        "imagen_oculta": true
     },
     {
         "id": 1034,
@@ -11504,7 +11686,9 @@
             "Que el carril de la derecha es obligatoria para tráfico lento."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"Que el carril de la derecha se desvía.\"."
+        "explicacion": "La respuesta correcta es: \"Que el carril de la derecha se desvía.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_1039.svg",
+        "imagen_oculta": false
     },
     {
         "id": 1040,
@@ -11801,7 +11985,8 @@
             "Tanto en el borde derecho como en el izquierdo de la calzada."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "SENTIDO ÚNICO: A LA IZQUIERDA DE LA CALZADA. DE DOBLE SENTIDO: AL EJE DE LA CALZADA."
+        "explicacion": "SENTIDO ÚNICO: A LA IZQUIERDA DE LA CALZADA. DE DOBLE SENTIDO: AL EJE DE LA CALZADA.",
+        "imagen_oculta": true
     },
     {
         "id": 1067,
@@ -11812,7 +11997,9 @@
             "Sí, pero solamente si la masa del vehículo supera las toneladas."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "ENTRADA PROHIBIDA A LOS VEHÍCULOS QUE TRANSPORTEN MERCANCÍAS PELIGROSAS."
+        "explicacion": "ENTRADA PROHIBIDA A LOS VEHÍCULOS QUE TRANSPORTEN MERCANCÍAS PELIGROSAS.",
+        "imagen": "assets/imagenes_preguntas/pregunta_1067.svg",
+        "imagen_oculta": false
     },
     {
         "id": 1068,
@@ -11856,7 +12043,8 @@
             "permitida en la curva."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "CUANDO UNA SEÑAL DE LIMITE DE VELOCIDAD ESTÁ EN EL MIMO POSTE QUE UNA DE PELIGRO. \" DICHA VELOCIDAD TERMINA CUANDO TERMINA EL PELIGRO INDICADO\"."
+        "explicacion": "CUANDO UNA SEÑAL DE LIMITE DE VELOCIDAD ESTÁ EN EL MIMO POSTE QUE UNA DE PELIGRO. \" DICHA VELOCIDAD TERMINA CUANDO TERMINA EL PELIGRO INDICADO\".",
+        "imagen_oculta": true
     },
     {
         "id": 1072,
@@ -11867,7 +12055,8 @@
             "Ante la línea de detención más cercana."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"Ante la línea de detención más cercana.\"."
+        "explicacion": "La respuesta correcta es: \"Ante la línea de detención más cercana.\".",
+        "imagen_oculta": true
     },
     {
         "id": 1073,
@@ -11878,7 +12067,8 @@
             "50 km/h, porque no hay otras señales."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "EN VÍAS URBANAS LAS VELOCIDADES GENÉRICAS SON: 20 KM/H. EN VÍAS QUE DISPONGAN DE PLATAFORMA ÚNICA DE CALZADA Y ACERA. 30 KM/H. EN VÍAS DE UN ÚNICO CARRIL POR SENTIDO DE CIRCULACIÓN. 50 KM/H. EN VÍAS DE DOS O MÁS CARRILES POR SENTIDO DE CIRCULACIÓN. \" TRAVESÍAS: 50 KM/H. EN AMBAS SE PUEDE ESTABLECER VELOCIDADES INFERIORES A TRAVÉS DE SEÑALES."
+        "explicacion": "EN VÍAS URBANAS LAS VELOCIDADES GENÉRICAS SON: 20 KM/H. EN VÍAS QUE DISPONGAN DE PLATAFORMA ÚNICA DE CALZADA Y ACERA. 30 KM/H. EN VÍAS DE UN ÚNICO CARRIL POR SENTIDO DE CIRCULACIÓN. 50 KM/H. EN VÍAS DE DOS O MÁS CARRILES POR SENTIDO DE CIRCULACIÓN. \" TRAVESÍAS: 50 KM/H. EN AMBAS SE PUEDE ESTABLECER VELOCIDADES INFERIORES A TRAVÉS DE SEÑALES.",
+        "imagen_oculta": true
     },
     {
         "id": 1074,
@@ -11957,7 +12147,8 @@
             "No, porque está prohibido."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "SÓLO FUERA DE POBLADO: PARA ADVERTIR MI PRESENCIA EN CARRETERAS ESTRECHAS CON MUCHAS CURVAS. \" PARA ADVERTIR EL ADELANTAMIENTO A OTRO CONDUCTOR\"  DENTRO Y FUERA DE POBLADO: PARA EVITAR UN ACCIDENTE Y INDICAR QUE TRANSPORTO UN HERIDO EN UN VEHÍCULO PARTICULAR\"."
+        "explicacion": "SÓLO FUERA DE POBLADO: PARA ADVERTIR MI PRESENCIA EN CARRETERAS ESTRECHAS CON MUCHAS CURVAS. \" PARA ADVERTIR EL ADELANTAMIENTO A OTRO CONDUCTOR\"  DENTRO Y FUERA DE POBLADO: PARA EVITAR UN ACCIDENTE Y INDICAR QUE TRANSPORTO UN HERIDO EN UN VEHÍCULO PARTICULAR\".",
+        "imagen_oculta": true
     },
     {
         "id": 1081,
@@ -12258,7 +12449,9 @@
             "Permite circular a vehículos de dos ruedas."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "OBLIGACIÓN PARA LOS CONDUCTORES DE CICLOS (BICICLETAS) DE CIRCULAR POR LA VÍA A CUYA ENTRADA ESTÉ SITUADA Y PROHIBICIÓN A LOS DEMÁS USUARIOS DE LA VÍA DE UTILIZARLA. fijate en la señal. \"Si no lleva pedal: bicicletas. Si lleva pedal: ciclomotores\"."
+        "explicacion": "OBLIGACIÓN PARA LOS CONDUCTORES DE CICLOS (BICICLETAS) DE CIRCULAR POR LA VÍA A CUYA ENTRADA ESTÉ SITUADA Y PROHIBICIÓN A LOS DEMÁS USUARIOS DE LA VÍA DE UTILIZARLA. fijate en la señal. \"Si no lleva pedal: bicicletas. Si lleva pedal: ciclomotores\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_1107.svg",
+        "imagen_oculta": false
     },
     {
         "id": 1108,
@@ -12280,7 +12473,9 @@
             "Obligan a circular a menos de 40 km/h en la travesía solamente."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"Prohíben circular a más de 40 km/h en toda la población.\"."
+        "explicacion": "La respuesta correcta es: \"Prohíben circular a más de 40 km/h en toda la población.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_1109.svg",
+        "imagen_oculta": false
     },
     {
         "id": 1110,
@@ -12324,7 +12519,8 @@
             "Detenerse obligatoriamente ante esa marca."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "LA MARCA SIMPLEMENTE NOS INDICA DONDE DEBEMOS DETENERNOS, CUANDO SEA NECESARIO CEDER EL PASO PARA CUMPLIR LAS NORMAS DE PRIORIDAD."
+        "explicacion": "LA MARCA SIMPLEMENTE NOS INDICA DONDE DEBEMOS DETENERNOS, CUANDO SEA NECESARIO CEDER EL PASO PARA CUMPLIR LAS NORMAS DE PRIORIDAD.",
+        "imagen_oculta": true
     },
     {
         "id": 1114,
@@ -12557,7 +12753,8 @@
             "El conductor del vehículo rojo porque tiene preferencia de paso."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "AL TENER LOS DOS UN CEDA EL PASO. SE ANULAN. \" POR ELLO HAY QUE RECURRIR A LA NORMA GENERAL, CEDER AL DE LA DERECHA. \" EL AUTOBÚS ENCUENTRA AL ROJO POR SU DERECHA, Y EL ROJO NO TIENE A NADIE EN SU DERECHA, POR ELLO PREFERENCIA\"."
+        "explicacion": "AL TENER LOS DOS UN CEDA EL PASO. SE ANULAN. \" POR ELLO HAY QUE RECURRIR A LA NORMA GENERAL, CEDER AL DE LA DERECHA. \" EL AUTOBÚS ENCUENTRA AL ROJO POR SU DERECHA, Y EL ROJO NO TIENE A NADIE EN SU DERECHA, POR ELLO PREFERENCIA\".",
+        "imagen_oculta": true
     },
     {
         "id": 1135,
@@ -12667,7 +12864,9 @@
             "El sitio exacto donde hay que ceder el paso en la próxima intersección."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"La distancia a la que se encuentra la señal de stop en la próxima intersección.\"."
+        "explicacion": "La respuesta correcta es: \"La distancia a la que se encuentra la señal de stop en la próxima intersección.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_1144.svg",
+        "imagen_oculta": false
     },
     {
         "id": 1145,
@@ -12678,7 +12877,9 @@
             "40 km/h en la travesía y 50 km/h en el resto de la población."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "AL ESTAR LA SEÑAL DE PROHIBICIÓN ENCIMA DE LA LOCALIZACIÓN, ES PARA TODA LA POBLACIÓN, SI NO ESTUVIERA ERA SOLO PARA LA VÍA."
+        "explicacion": "AL ESTAR LA SEÑAL DE PROHIBICIÓN ENCIMA DE LA LOCALIZACIÓN, ES PARA TODA LA POBLACIÓN, SI NO ESTUVIERA ERA SOLO PARA LA VÍA.",
+        "imagen": "assets/imagenes_preguntas/pregunta_1145.svg",
+        "imagen_oculta": false
     },
     {
         "id": 1146,
@@ -12944,7 +13145,8 @@
             "Cuando el vehículo haya adoptado la nueva trayectoria."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "LOS INDICADORES SEÑALIZAN LOS DESPLAZAMIENTOS, POR LO TANTO UNA VEZ EN EL CARRIL ELEGIDO, DEBEMOS EXTINGUIRLO."
+        "explicacion": "LOS INDICADORES SEÑALIZAN LOS DESPLAZAMIENTOS, POR LO TANTO UNA VEZ EN EL CARRIL ELEGIDO, DEBEMOS EXTINGUIRLO.",
+        "imagen_oculta": true
     },
     {
         "id": 1170,
@@ -13032,7 +13234,8 @@
             "salida inmediata hacia carretera convencional y dirección propia en autopista o autovía."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "PRESEÑALIZACIÓN CON SEÑALES SOBRE LA CALZADA EN AUTOPISTA O AUTOVÍA HACIA CUALQUIER CARRETERA Y DIRECCIÓN PROPIA. INDICA LAS DIRECCIONES DEL RAMAL DE LA PRÓXIMA SALIDA, LA DISTANCIA A LA QUE SE ENCUENTRA Y EL NÚMERO DE ENLACE."
+        "explicacion": "PRESEÑALIZACIÓN CON SEÑALES SOBRE LA CALZADA EN AUTOPISTA O AUTOVÍA HACIA CUALQUIER CARRETERA Y DIRECCIÓN PROPIA. INDICA LAS DIRECCIONES DEL RAMAL DE LA PRÓXIMA SALIDA, LA DISTANCIA A LA QUE SE ENCUENTRA Y EL NÚMERO DE ENLACE.",
+        "imagen_oculta": true
     },
     {
         "id": 1178,
@@ -13089,7 +13292,9 @@
             "Si, mientras no se pueda continuar la marcha sin obligar a detenerse a los vehículos que circulen en sentido contrario"
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"Si, mientras no se pueda continuar la marcha sin obligar a detenerse a los vehículos que circulen en sentido contrario\"."
+        "explicacion": "La respuesta correcta es: \"Si, mientras no se pueda continuar la marcha sin obligar a detenerse a los vehículos que circulen en sentido contrario\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_1182.svg",
+        "imagen_oculta": false
     },
     {
         "id": 1183,
@@ -13144,7 +13349,9 @@
             "No, porque no hay ninguna señal de velocidad que lo indique."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"Sí, porque hay curvas peligrosas.\"."
+        "explicacion": "La respuesta correcta es: \"Sí, porque hay curvas peligrosas.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_1187.svg",
+        "imagen_oculta": false
     },
     {
         "id": 1188,
@@ -13155,7 +13362,9 @@
             "A partir de las 9 horas del día 1 y hasta las 9 horas del día 16."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "EL DÍA PARA ESTA SEÑAL CAMBIA: A LAS 9 DE LA MAÑANA. \" NO A LAS DOCE DE LA NOCHE\" LA SEÑAL PERMITE PARAR Y PROHÍBE ESTACIONAR DESDE: LAS 9 HORAS DEL DÍA 16 HASTA LAS 9 DE LA MAÑANA DEL DÍA 1."
+        "explicacion": "EL DÍA PARA ESTA SEÑAL CAMBIA: A LAS 9 DE LA MAÑANA. \" NO A LAS DOCE DE LA NOCHE\" LA SEÑAL PERMITE PARAR Y PROHÍBE ESTACIONAR DESDE: LAS 9 HORAS DEL DÍA 16 HASTA LAS 9 DE LA MAÑANA DEL DÍA 1.",
+        "imagen": "assets/imagenes_preguntas/pregunta_1188.svg",
+        "imagen_oculta": false
     },
     {
         "id": 1189,
@@ -13254,7 +13463,8 @@
             "Sí, cuando vayan acompañados por un conductor de ganado."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"No.\"."
+        "explicacion": "La respuesta correcta es: \"No.\".",
+        "imagen_oculta": true
     },
     {
         "id": 1198,
@@ -13353,7 +13563,8 @@
             "A la mínima y máxima genérica establecida para el tipo de vía por la que circula."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "MÍNIMA 60 KM/H. Y MÁXIMA 80 KM/H."
+        "explicacion": "MÍNIMA 60 KM/H. Y MÁXIMA 80 KM/H.",
+        "imagen_oculta": true
     },
     {
         "id": 1207,
@@ -13364,7 +13575,9 @@
             "la velocidad máxima recomendada es de 80 kilómetros por hora."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"finaliza la prohibición de superar la velocidad de 80 kilómetros por hora.\"."
+        "explicacion": "La respuesta correcta es: \"finaliza la prohibición de superar la velocidad de 80 kilómetros por hora.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_1207.svg",
+        "imagen_oculta": false
     },
     {
         "id": 1208,
@@ -13408,7 +13621,8 @@
             "Solo si la parada tiene un duración inferior a dos minutos."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "EN LOS ARCENES DE AUTOPISTAS Y AUTOVÍAS ESTÁ PROHIBIDO PARAR Y ESTACIONAR, HAY QUE HACERLO EN LOS LUGARES ADECUADOS PARA ELLO. ÁREAS DE DESCANSO, SERVICIO, ETC. \" SI SE PUEDE DETENER: POR AVERÍA O MAL ESTADO FÍSICO DEL CONDUCTOR O DE ALGÚN OCUPANTE\"."
+        "explicacion": "EN LOS ARCENES DE AUTOPISTAS Y AUTOVÍAS ESTÁ PROHIBIDO PARAR Y ESTACIONAR, HAY QUE HACERLO EN LOS LUGARES ADECUADOS PARA ELLO. ÁREAS DE DESCANSO, SERVICIO, ETC. \" SI SE PUEDE DETENER: POR AVERÍA O MAL ESTADO FÍSICO DEL CONDUCTOR O DE ALGÚN OCUPANTE\".",
+        "imagen_oculta": true
     },
     {
         "id": 1212,
@@ -13507,7 +13721,8 @@
             "Sentido único."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "LA FLECHA SEÑALA LAS ÚNICAS DIRECCIONES Y SENTIDOS QUE LOS VEHÍCULOS PUEDEN TOMAR."
+        "explicacion": "LA FLECHA SEÑALA LAS ÚNICAS DIRECCIONES Y SENTIDOS QUE LOS VEHÍCULOS PUEDEN TOMAR.",
+        "imagen_oculta": true
     },
     {
         "id": 1221,
@@ -13564,7 +13779,9 @@
             "Que está prohibido circular a más de 60 km/h. en la intersección."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "//LA PROHIBICIÓN TERMINA AL TERMINAR EL CRUCE. POR ESTAR LA SEÑAL EN EL MISMO POSTE QUE EL CRUCE. (ESTO SÓLO SE DA CON LAS SEÑALES DE VELOCIDAD)"
+        "explicacion": "//LA PROHIBICIÓN TERMINA AL TERMINAR EL CRUCE. POR ESTAR LA SEÑAL EN EL MISMO POSTE QUE EL CRUCE. (ESTO SÓLO SE DA CON LAS SEÑALES DE VELOCIDAD)",
+        "imagen": "assets/imagenes_preguntas/pregunta_1225.svg",
+        "imagen_oculta": false
     },
     {
         "id": 1226,
@@ -13766,7 +13983,8 @@
             "más restrictiva."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "CUANDO HAY CONTRADICCIÓN ENTRE UN INDICADOR DE DIRECCIÓN Y LA SEÑAL REALIZADA CON EL BRAZO DEL CONDUCTOR, PREVALECE LA DEL BRAZO."
+        "explicacion": "CUANDO HAY CONTRADICCIÓN ENTRE UN INDICADOR DE DIRECCIÓN Y LA SEÑAL REALIZADA CON EL BRAZO DEL CONDUCTOR, PREVALECE LA DEL BRAZO.",
+        "imagen_oculta": true
     },
     {
         "id": 1244,
@@ -13878,7 +14096,9 @@
             "Que a 150 metros hay un puente."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"Que se termina el carril de la izquierda a 150 metros.\"."
+        "explicacion": "La respuesta correcta es: \"Que se termina el carril de la izquierda a 150 metros.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_1253.svg",
+        "imagen_oculta": false
     },
     {
         "id": 1254,
@@ -13922,7 +14142,9 @@
             "La cercanía de un paso a nivel, puente móvil o muelle."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"La cercanía de un paso a nivel, puente móvil o muelle.\"."
+        "explicacion": "La respuesta correcta es: \"La cercanía de un paso a nivel, puente móvil o muelle.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_1257.svg",
+        "imagen_oculta": false
     },
     {
         "id": 1258,
@@ -14021,7 +14243,8 @@
             "El vehículo azul."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "EN DEFECTO DE SEÑAL QUE REGULE LA PREFERENCIA DE PASO EL CONDUCTOR ESTÁ OBLIGADO A CEDER EL PASO A LOS VEHÍCULOS QUE SE APROXIMEN POR SU DERECHA.\" PASARÁ EN PRIMER LUGAR EL QUE TENGA SU DERECHA LIBRE\"."
+        "explicacion": "EN DEFECTO DE SEÑAL QUE REGULE LA PREFERENCIA DE PASO EL CONDUCTOR ESTÁ OBLIGADO A CEDER EL PASO A LOS VEHÍCULOS QUE SE APROXIMEN POR SU DERECHA.\" PASARÁ EN PRIMER LUGAR EL QUE TENGA SU DERECHA LIBRE\".",
+        "imagen_oculta": true
     },
     {
         "id": 1267,
@@ -14098,7 +14321,8 @@
             "Los ciclos y los ciclomotores."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "( SI LA FIGURA TIENE PEDAL CICLOMOTOR SI NO TIENE PEDAL BICICLETA). SI NO TIENE ESTRUCTURA Y LLEVA CONDUCTOR: MOTOCICLETA."
+        "explicacion": "( SI LA FIGURA TIENE PEDAL CICLOMOTOR SI NO TIENE PEDAL BICICLETA). SI NO TIENE ESTRUCTURA Y LLEVA CONDUCTOR: MOTOCICLETA.",
+        "imagen_oculta": true
     },
     {
         "id": 1274,
@@ -14131,7 +14355,9 @@
             "Que se debe cambiar de carril."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "PROHIBICIÓN DE ACCESO A VEHÍCULOS DE MOTOR.\"  NO PROHÍBE EL ACCESO A MOTOCICLETAS DE DOS RUEDAS SIN SIDECAR\"."
+        "explicacion": "PROHIBICIÓN DE ACCESO A VEHÍCULOS DE MOTOR.\"  NO PROHÍBE EL ACCESO A MOTOCICLETAS DE DOS RUEDAS SIN SIDECAR\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_1276.svg",
+        "imagen_oculta": false
     },
     {
         "id": 1277,
@@ -14153,7 +14379,8 @@
             "realizar un cambio de sentido."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "LA SEÑAL NOS INDICA EL MOVIMIENTO GIRATORIO QUE LOS VEHÍCULOS DEBEN SEGUIR Y PUEDEN TANTO CAMBIAR DE DIRECCIÓN COMO DE SENTIDO."
+        "explicacion": "LA SEÑAL NOS INDICA EL MOVIMIENTO GIRATORIO QUE LOS VEHÍCULOS DEBEN SEGUIR Y PUEDEN TANTO CAMBIAR DE DIRECCIÓN COMO DE SENTIDO.",
+        "imagen_oculta": true
     },
     {
         "id": 1279,
@@ -14241,7 +14468,8 @@
             "la distancia a la que termina el peligro."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "EL PANEL AL NO TENER FLECHAS LATERALES, INDICA LA DISTANCIA A LA QUE COMIENZA EL PELIGRO. SI TUVIERA FLECHAS LATERALES INDICARÍA: LA LONGITUD DEL PELIGRO."
+        "explicacion": "EL PANEL AL NO TENER FLECHAS LATERALES, INDICA LA DISTANCIA A LA QUE COMIENZA EL PELIGRO. SI TUVIERA FLECHAS LATERALES INDICARÍA: LA LONGITUD DEL PELIGRO.",
+        "imagen_oculta": true
     },
     {
         "id": 1287,
@@ -14395,7 +14623,8 @@
             "Obligación de detención"
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"Obligación de reanudar la marcha\"."
+        "explicacion": "La respuesta correcta es: \"Obligación de reanudar la marcha\".",
+        "imagen_oculta": true
     },
     {
         "id": 1301,
@@ -14428,7 +14657,9 @@
             "Proximidad de zona detenida por exceso de tráfico de vehículos"
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La señal vertical de congestión que podemos encontrar en una vía pública, nos advierte de que nos acercamos a una zona en que podemos quedarnos detenidos con nuestro vehículo por el exceso de tráfico de vehículos.\n\n¿Crees que la respuesta es incorrecta?"
+        "explicacion": "La señal vertical de congestión que podemos encontrar en una vía pública, nos advierte de que nos acercamos a una zona en que podemos quedarnos detenidos con nuestro vehículo por el exceso de tráfico de vehículos.\n\n¿Crees que la respuesta es incorrecta?",
+        "imagen": "assets/imagenes_preguntas/pregunta_1303.svg",
+        "imagen_oculta": false
     },
     {
         "id": 1304,
@@ -15000,7 +15231,8 @@
             "La longitud en que existe pavimento en mal estado."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"La longitud en que existe el peligro.\"."
+        "explicacion": "La respuesta correcta es: \"La longitud en que existe el peligro.\".",
+        "imagen_oculta": true
     },
     {
         "id": 1356,
@@ -15154,7 +15386,8 @@
             "De un extintor de incendios y un teléfono de emergencia."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"De un extintor de incendios y un teléfono de emergencia.\"."
+        "explicacion": "La respuesta correcta es: \"De un extintor de incendios y un teléfono de emergencia.\".",
+        "imagen_oculta": true
     },
     {
         "id": 1370,
@@ -15297,7 +15530,8 @@
             "Sí, porque se trata de una vía destinada a la circulación de vehículos de dos ruedas."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"No, porque se trata de una vía que está destinada exclusivamente a la circulación de ciclomotores.\"."
+        "explicacion": "La respuesta correcta es: \"No, porque se trata de una vía que está destinada exclusivamente a la circulación de ciclomotores.\".",
+        "imagen_oculta": true
     },
     {
         "id": 1383,
@@ -15961,7 +16195,8 @@
             "A 50 metros"
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"A 100 metros\"."
+        "explicacion": "La respuesta correcta es: \"A 100 metros\".",
+        "imagen_oculta": true
     },
     {
         "id": 1443,
@@ -15994,7 +16229,8 @@
             "A 80 km/h."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"A 80 km/h.\"."
+        "explicacion": "La respuesta correcta es: \"A 80 km/h.\".",
+        "imagen_oculta": true
     },
     {
         "id": 1446,
@@ -16313,7 +16549,9 @@
             "Sí, la señal prohíbe adelantar a todos los vehículos en general y especialmente a los camiones."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"No.\"."
+        "explicacion": "La respuesta correcta es: \"No.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_1474.svg",
+        "imagen_oculta": false
     },
     {
         "id": 1475,
@@ -16412,7 +16650,8 @@
             "A detenerse."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"A disminuir la velocidad.\"."
+        "explicacion": "La respuesta correcta es: \"A disminuir la velocidad.\".",
+        "imagen_oculta": true
     },
     {
         "id": 1484,
@@ -16456,7 +16695,8 @@
             "Sí, a todo el grupo."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"Sí, a todo el grupo.\"."
+        "explicacion": "La respuesta correcta es: \"Sí, a todo el grupo.\".",
+        "imagen_oculta": true
     },
     {
         "id": 1488,
@@ -16599,7 +16839,8 @@
             "Tres"
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"Dos\"."
+        "explicacion": "La respuesta correcta es: \"Dos\".",
+        "imagen_oculta": true
     },
     {
         "id": 1501,
@@ -16885,7 +17126,8 @@
             "Obligación de detenerse delante del vehículo policial"
         ],
         "respuesta_correcta": 2,
-        "explicacion": "Cuando desde su vehículo, los Agentes de la Circulación nos realizan una señal con una luz roja intermitente o destellante, esto nos querrá decir que tenemos la obligación de detenernos delante del vehículo policial para la acción que se nos requiera.\n\n¿Crees que la respuesta es incorrecta?"
+        "explicacion": "Cuando desde su vehículo, los Agentes de la Circulación nos realizan una señal con una luz roja intermitente o destellante, esto nos querrá decir que tenemos la obligación de detenernos delante del vehículo policial para la acción que se nos requiera.\n\n¿Crees que la respuesta es incorrecta?",
+        "imagen_oculta": true
     },
     {
         "id": 1527,
@@ -17259,7 +17501,9 @@
             "Cuando salga de la travesía."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"Cuando encuentre una señal de final de prohibiciones.\"."
+        "explicacion": "La respuesta correcta es: \"Cuando encuentre una señal de final de prohibiciones.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_1560.svg",
+        "imagen_oculta": false
     },
     {
         "id": 1561,
@@ -17347,7 +17591,9 @@
             "No hay que obedecer ninguna señal, porque contradicen la normativa general."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"No podré parar ni estacionar.\"."
+        "explicacion": "La respuesta correcta es: \"No podré parar ni estacionar.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_1568.svg",
+        "imagen_oculta": false
     },
     {
         "id": 1569,
@@ -17622,7 +17868,9 @@
             "resalto."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"badén.\"."
+        "explicacion": "La respuesta correcta es: \"badén.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_1593.svg",
+        "imagen_oculta": false
     },
     {
         "id": 1594,
@@ -17820,7 +18068,9 @@
             "Se debe conducir a una velocidad máxima de 50 km/hora"
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"Se debe evitar la producción de ruido\"."
+        "explicacion": "La respuesta correcta es: \"Se debe evitar la producción de ruido\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_1611.svg",
+        "imagen_oculta": false
     },
     {
         "id": 1612,
@@ -18119,7 +18369,9 @@
             "No."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"No.\"."
+        "explicacion": "La respuesta correcta es: \"No.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_1638.svg",
+        "imagen_oculta": false
     },
     {
         "id": 1639,
@@ -18141,7 +18393,9 @@
             "No, indica únicamente el principio de un túnel."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"Sí, y también el principio de un túnel o de un tramo equiparado al túnel.\"."
+        "explicacion": "La respuesta correcta es: \"Sí, y también el principio de un túnel o de un tramo equiparado al túnel.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_1640.svg",
+        "imagen_oculta": false
     },
     {
         "id": 1641,
@@ -18207,7 +18461,8 @@
             "Las luces de posición."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"Las luces de posición.\"."
+        "explicacion": "La respuesta correcta es: \"Las luces de posición.\".",
+        "imagen_oculta": true
     },
     {
         "id": 1647,
@@ -18372,7 +18627,8 @@
             "Dos velocidades, la mayor de las cuales se debe superar en 20 km/hora"
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La señal de intervalo aconsejado de velocidades, recomienda mantener la velocidad entre los valores indicados, siempre que las condiciones meteorológicas y ambientales de la vía y de la circulación sean favorables.\n\n¿Crees que la respuesta es incorrecta?"
+        "explicacion": "La señal de intervalo aconsejado de velocidades, recomienda mantener la velocidad entre los valores indicados, siempre que las condiciones meteorológicas y ambientales de la vía y de la circulación sean favorables.\n\n¿Crees que la respuesta es incorrecta?",
+        "imagen_oculta": true
     },
     {
         "id": 1662,
@@ -18583,7 +18839,8 @@
             "No, ya que esa norma se considera implícita al entrar en el vehículo"
         ],
         "respuesta_correcta": 2,
-        "explicacion": "Dicha señal vertical no existe, dado que la obligación ya viene implícita al conducir un vehículo.\n\n¿Crees que la respuesta es incorrecta?"
+        "explicacion": "Dicha señal vertical no existe, dado que la obligación ya viene implícita al conducir un vehículo.\n\n¿Crees que la respuesta es incorrecta?",
+        "imagen_oculta": true
     },
     {
         "id": 1681,
@@ -18594,7 +18851,8 @@
             "Los semáforos y las marcas viales"
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La señalización en la circulación de vehículos está formada de manera general por las señales de tráfico (señales verticales o marcas viales entre otras), y las órdenes efectuadas por los Agentes de la Autoridad en el ejercicio de sus funciones.\n\n¿Crees que la respuesta es incorrecta?"
+        "explicacion": "La señalización en la circulación de vehículos está formada de manera general por las señales de tráfico (señales verticales o marcas viales entre otras), y las órdenes efectuadas por los Agentes de la Autoridad en el ejercicio de sus funciones.\n\n¿Crees que la respuesta es incorrecta?",
+        "imagen_oculta": true
     },
     {
         "id": 1682,
@@ -18704,7 +18962,8 @@
             "Sí, está permitido parar y estacionar."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"Sí.\"."
+        "explicacion": "La respuesta correcta es: \"Sí.\".",
+        "imagen_oculta": true
     },
     {
         "id": 1692,
@@ -18715,7 +18974,8 @@
             "Que la próxima salida está a 300 metros."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"Que la próxima salida está a 300 metros.\"."
+        "explicacion": "La respuesta correcta es: \"Que la próxima salida está a 300 metros.\".",
+        "imagen_oculta": true
     },
     {
         "id": 1693,
@@ -18825,7 +19085,9 @@
             "camiones y furgones, solamente."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"los vehículos cuya masa en carga sea superior a la indicada.\"."
+        "explicacion": "La respuesta correcta es: \"los vehículos cuya masa en carga sea superior a la indicada.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_1702.svg",
+        "imagen_oculta": false
     },
     {
         "id": 1703,
@@ -18847,7 +19109,8 @@
             "La E"
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"La P\"."
+        "explicacion": "La respuesta correcta es: \"La P\".",
+        "imagen_oculta": true
     },
     {
         "id": 1705,
@@ -18858,7 +19121,8 @@
             "Porque solo se encuentran en travesías y glorietas"
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"Porque modifican el régimen normal de uso de la vía\"."
+        "explicacion": "La respuesta correcta es: \"Porque modifican el régimen normal de uso de la vía\".",
+        "imagen_oculta": true
     },
     {
         "id": 1706,
@@ -19155,7 +19419,9 @@
             "Proximidad de aeropuerto con aviones volando a mucha altura"
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"Proximidad de aeropuerto con aviones volando a baja altura\"."
+        "explicacion": "La respuesta correcta es: \"Proximidad de aeropuerto con aviones volando a baja altura\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_1732.svg",
+        "imagen_oculta": false
     },
     {
         "id": 1733,
@@ -19177,7 +19443,8 @@
             "Sí, porque se incorpora por la derecha."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"No, ya que se incorpora desde una vía sin pavimentar.\"."
+        "explicacion": "La respuesta correcta es: \"No, ya que se incorpora desde una vía sin pavimentar.\".",
+        "imagen_oculta": true
     },
     {
         "id": 1735,
@@ -19254,7 +19521,8 @@
             "Preseñalización de glorieta"
         ],
         "respuesta_correcta": 2,
-        "explicacion": "Dentro de las señales de preseñalización, podemos encontrar que estas adviertan entre otras de la proximidad de una glorieta, de direcciones hacia una carretera convencional y hacia una vía rápida. Así pues éstas señales pueden preseñalizar la existencia de una glorieta, pero no de una vía cerrada o sinuosa.\n\n¿Crees que la respuesta es incorrecta?"
+        "explicacion": "Dentro de las señales de preseñalización, podemos encontrar que estas adviertan entre otras de la proximidad de una glorieta, de direcciones hacia una carretera convencional y hacia una vía rápida. Así pues éstas señales pueden preseñalizar la existencia de una glorieta, pero no de una vía cerrada o sinuosa.\n\n¿Crees que la respuesta es incorrecta?",
+        "imagen_oculta": true
     },
     {
         "id": 1742,
@@ -19595,7 +19863,8 @@
             "Señales de reglamentación"
         ],
         "respuesta_correcta": 1,
-        "explicacion": "Existen seis dispositivos de señalización de obras fijas: 1- Señales de advertencia de peligro, 2- Señales y dispositivos manuales, 3-Señales de reglamentación, 4- Señales de indicación, 5-Elementos de balizamiento reflectantes y 6-Elementos luminosos.\n\n¿Crees que la respuesta es incorrecta?"
+        "explicacion": "Existen seis dispositivos de señalización de obras fijas: 1- Señales de advertencia de peligro, 2- Señales y dispositivos manuales, 3-Señales de reglamentación, 4- Señales de indicación, 5-Elementos de balizamiento reflectantes y 6-Elementos luminosos.\n\n¿Crees que la respuesta es incorrecta?",
+        "imagen_oculta": true
     },
     {
         "id": 1773,
@@ -19859,7 +20128,8 @@
             "Sobre un cabezal telescópico y situado en el lugar más alto"
         ],
         "respuesta_correcta": 2,
-        "explicacion": "El dispositivo de señal luminosa V-1 de vehículo prioritario en las motocicletas, irá situado en la parte trasera de la misma, sobre un cabezal telescópico que permita elevarlo por encima de la parte más alta de ésta, o incrustado en la parte delantera y trasera de las motocicletas sin sobresalir del carenado.\n\n¿Crees que la respuesta es incorrecta?"
+        "explicacion": "El dispositivo de señal luminosa V-1 de vehículo prioritario en las motocicletas, irá situado en la parte trasera de la misma, sobre un cabezal telescópico que permita elevarlo por encima de la parte más alta de ésta, o incrustado en la parte delantera y trasera de las motocicletas sin sobresalir del carenado.\n\n¿Crees que la respuesta es incorrecta?",
+        "imagen_oculta": true
     },
     {
         "id": 1797,
@@ -19881,7 +20151,9 @@
             "Se puede pagar mediante el sistema de telepeaje o en metálico."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"Es obligatorio efectuar el pago del peaje mediante el sistema de peaje dinámico o telepeaje.\"."
+        "explicacion": "La respuesta correcta es: \"Es obligatorio efectuar el pago del peaje mediante el sistema de peaje dinámico o telepeaje.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_1798.svg",
+        "imagen_oculta": false
     },
     {
         "id": 1799,
@@ -19947,7 +20219,8 @@
             "Los automóviles."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"Los peatones.\"."
+        "explicacion": "La respuesta correcta es: \"Los peatones.\".",
+        "imagen_oculta": true
     },
     {
         "id": 1805,
@@ -20299,7 +20572,8 @@
             "Las direcciones de las diferentes salidas en la próxima rotonda."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"Las direcciones de las diferentes salidas en la próxima rotonda.\"."
+        "explicacion": "La respuesta correcta es: \"Las direcciones de las diferentes salidas en la próxima rotonda.\".",
+        "imagen_oculta": true
     },
     {
         "id": 1837,
@@ -20442,7 +20716,8 @@
             "Posibilidad de desprendimientos."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"Ráfagas de viento.\"."
+        "explicacion": "La respuesta correcta es: \"Ráfagas de viento.\".",
+        "imagen_oculta": true
     },
     {
         "id": 1850,
@@ -20585,7 +20860,8 @@
             "No"
         ],
         "respuesta_correcta": 2,
-        "explicacion": "Están obligados a llevar dispositivos portátiles de preseñalización de peligro todos los vehículos de motor excepto las motocicletas y los vehículos de tres ruedas, que se utilizarán en caso de emergencia.\n\n¿Crees que la respuesta es incorrecta?"
+        "explicacion": "Están obligados a llevar dispositivos portátiles de preseñalización de peligro todos los vehículos de motor excepto las motocicletas y los vehículos de tres ruedas, que se utilizarán en caso de emergencia.\n\n¿Crees que la respuesta es incorrecta?",
+        "imagen_oculta": true
     },
     {
         "id": 1863,
@@ -20607,7 +20883,8 @@
             "Junto al borde derecho de la calzada."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"Junto al borde izquierdo de la calzada.\"."
+        "explicacion": "La respuesta correcta es: \"Junto al borde izquierdo de la calzada.\".",
+        "imagen_oculta": true
     },
     {
         "id": 1865,
@@ -20640,7 +20917,8 @@
             "Realizar derrapes"
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"Cambiar el sentido de la marcha\"."
+        "explicacion": "La respuesta correcta es: \"Cambiar el sentido de la marcha\".",
+        "imagen_oculta": true
     },
     {
         "id": 1868,
@@ -20684,7 +20962,9 @@
             "una zona de frenado de emergencia."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"una zona de frenado de emergencia.\"."
+        "explicacion": "La respuesta correcta es: \"una zona de frenado de emergencia.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_1871.svg",
+        "imagen_oculta": false
     },
     {
         "id": 1872,
@@ -20728,7 +21008,8 @@
             "Dispositivo de vía"
         ],
         "respuesta_correcta": 2,
-        "explicacion": "Existen dos tipos de elementos de señalización circunstancial: Los paneles de mensaje variable y los dispositivos de barrera, que cambiaran las circunstancias de la vía según el lugar dónde se encuentren situados.\n\n¿Crees que la respuesta es incorrecta?"
+        "explicacion": "Existen dos tipos de elementos de señalización circunstancial: Los paneles de mensaje variable y los dispositivos de barrera, que cambiaran las circunstancias de la vía según el lugar dónde se encuentren situados.\n\n¿Crees que la respuesta es incorrecta?",
+        "imagen_oculta": true
     },
     {
         "id": 1876,
@@ -20849,7 +21130,8 @@
             "Por la izquierda."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"Por la derecha.\"."
+        "explicacion": "La respuesta correcta es: \"Por la derecha.\".",
+        "imagen_oculta": true
     },
     {
         "id": 1887,
@@ -20937,7 +21219,8 @@
             "El estacionamiento, los días impares, en el lado de la calzada dónde se encuentre la señal."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"El estacionamiento, los días impares, en el lado de la calzada dónde se encuentre la señal.\"."
+        "explicacion": "La respuesta correcta es: \"El estacionamiento, los días impares, en el lado de la calzada dónde se encuentre la señal.\".",
+        "imagen_oculta": true
     },
     {
         "id": 1895,
@@ -20970,7 +21253,9 @@
             "60 kilómetros por hora."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"50 kilómetros por hora.\"."
+        "explicacion": "La respuesta correcta es: \"50 kilómetros por hora.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_1897.svg",
+        "imagen_oculta": false
     },
     {
         "id": 1898,
@@ -21203,7 +21488,8 @@
             "Ciclomotores."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"Ciclomotores.\"."
+        "explicacion": "La respuesta correcta es: \"Ciclomotores.\".",
+        "imagen_oculta": true
     },
     {
         "id": 1919,
@@ -21214,7 +21500,8 @@
             "No, sólo prohíbe cambiar de sentido."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"Sí, porqué he de seguir la dirección y sentido que indica la flecha.\"."
+        "explicacion": "La respuesta correcta es: \"Sí, porqué he de seguir la dirección y sentido que indica la flecha.\".",
+        "imagen_oculta": true
     },
     {
         "id": 1920,
@@ -21247,7 +21534,8 @@
             "Sí, porque los vehículos de dos ruedas siempre tienen preferencia."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"Sí, porque se aproxima por la derecha.\"."
+        "explicacion": "La respuesta correcta es: \"Sí, porque se aproxima por la derecha.\".",
+        "imagen_oculta": true
     },
     {
         "id": 1923,
@@ -21291,7 +21579,8 @@
             "En las autopistas, las autovías y las vías para automóviles."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"En las autopistas, las autovías y las vías para automóviles.\"."
+        "explicacion": "La respuesta correcta es: \"En las autopistas, las autovías y las vías para automóviles.\".",
+        "imagen_oculta": true
     },
     {
         "id": 1927,
@@ -21379,7 +21668,9 @@
             "Estacionamiento prohibido en un vado."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"Zona de estacionamiento limitado.\"."
+        "explicacion": "La respuesta correcta es: \"Zona de estacionamiento limitado.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_1934.svg",
+        "imagen_oculta": false
     },
     {
         "id": 1935,
@@ -21390,7 +21681,9 @@
             "La velocidad máxima en una zona en la que tienen prioridad los peatones."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"La velocidad máxima en una zona en la que tienen prioridad los peatones.\"."
+        "explicacion": "La respuesta correcta es: \"La velocidad máxima en una zona en la que tienen prioridad los peatones.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_1935.svg",
+        "imagen_oculta": false
     },
     {
         "id": 1936,
@@ -21513,7 +21806,9 @@
             "Sí, por el arcén de la derecha."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"No, porque está prohibido.\"."
+        "explicacion": "La respuesta correcta es: \"No, porque está prohibido.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_1946.svg",
+        "imagen_oculta": false
     },
     {
         "id": 1947,
@@ -21656,7 +21951,8 @@
             "Que la regla se aplica fuera de ese poblado"
         ],
         "respuesta_correcta": 1,
-        "explicacion": "Una señal de reglamentación colocada al lado o en la vertical de una señal que indique el nombre del poblado indicará que la regla se aplica a todo el poblado, excepto si en éste se indicara otra reglamentación distinta.\n\n¿Crees que la respuesta es incorrecta?"
+        "explicacion": "Una señal de reglamentación colocada al lado o en la vertical de una señal que indique el nombre del poblado indicará que la regla se aplica a todo el poblado, excepto si en éste se indicara otra reglamentación distinta.\n\n¿Crees que la respuesta es incorrecta?",
+        "imagen_oculta": true
     },
     {
         "id": 1960,
@@ -21722,7 +22018,9 @@
             "Sí, existe"
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La señal vertical R-306, prohíbe a los camiones cuya masa máxima autorizada exceda de 3.500 kilogramos, de adelantar a los vehículos de motor que circulen por la calzada en la que dicho camión se encuentre.\n\n¿Crees que la respuesta es incorrecta?"
+        "explicacion": "La señal vertical R-306, prohíbe a los camiones cuya masa máxima autorizada exceda de 3.500 kilogramos, de adelantar a los vehículos de motor que circulen por la calzada en la que dicho camión se encuentre.\n\n¿Crees que la respuesta es incorrecta?",
+        "imagen": "assets/imagenes_preguntas/pregunta_1965.svg",
+        "imagen_oculta": false
     },
     {
         "id": 1966,
@@ -21878,7 +22176,8 @@
             "Señal de indicación general"
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La señal S-5 de túnel, está dentro de las conocidas como señales verticales de indicación general, y nos indica el principio de un túnel, paso inferior o tramo de vía equiparado a túnel.\n\n¿Crees que la respuesta es incorrecta?"
+        "explicacion": "La señal S-5 de túnel, está dentro de las conocidas como señales verticales de indicación general, y nos indica el principio de un túnel, paso inferior o tramo de vía equiparado a túnel.\n\n¿Crees que la respuesta es incorrecta?",
+        "imagen_oculta": true
     },
     {
         "id": 1980,
@@ -21889,7 +22188,8 @@
             "Una carretera convencional."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"Una autopista o una autovía.\"."
+        "explicacion": "La respuesta correcta es: \"Una autopista o una autovía.\".",
+        "imagen_oculta": true
     },
     {
         "id": 1981,
@@ -22608,7 +22908,8 @@
             "El azul."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"El amarillo.\"."
+        "explicacion": "La respuesta correcta es: \"El amarillo.\".",
+        "imagen_oculta": true
     },
     {
         "id": 2046,
@@ -22795,7 +23096,8 @@
             "Que no se puede superar esta velocidad hasta la próxima intersección."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"La velocidad máxima para el carril en el que se encuentra.\"."
+        "explicacion": "La respuesta correcta es: \"La velocidad máxima para el carril en el que se encuentra.\".",
+        "imagen_oculta": true
     },
     {
         "id": 2063,
@@ -22817,7 +23119,8 @@
             "No."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"No.\"."
+        "explicacion": "La respuesta correcta es: \"No.\".",
+        "imagen_oculta": true
     },
     {
         "id": 2065,
@@ -22916,7 +23219,8 @@
             "Sí, prohibe parada y estacionamiento"
         ],
         "respuesta_correcta": 1,
-        "explicacion": "Según el Reglamento de Circulación la señal vertical R-308B prohíbe el estacionamiento, en el lado de la calzada en que esté situada la señal, los días pares, pero no prohibirá la parada de vehículo. Salvo indicación en contrario, la prohibición comienza en la vertical de la señal y termina en la intersección más próxima.\n\n¿Crees que la respuesta es incorrecta?"
+        "explicacion": "Según el Reglamento de Circulación la señal vertical R-308B prohíbe el estacionamiento, en el lado de la calzada en que esté situada la señal, los días pares, pero no prohibirá la parada de vehículo. Salvo indicación en contrario, la prohibición comienza en la vertical de la señal y termina en la intersección más próxima.\n\n¿Crees que la respuesta es incorrecta?",
+        "imagen_oculta": true
     },
     {
         "id": 2074,
@@ -23224,7 +23528,8 @@
             "En la parte delantera y posterior en los vehículos destinados exclusivamente al transporte de mercancías."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"En la parte posterior de la carga que sobresalga de cualquier vehículo hasta un 10% de su largura.\"."
+        "explicacion": "La respuesta correcta es: \"En la parte posterior de la carga que sobresalga de cualquier vehículo hasta un 10% de su largura.\".",
+        "imagen_oculta": true
     },
     {
         "id": 2102,
@@ -23492,7 +23797,8 @@
             "Las de color amarillo, ya que se trata de una zona de obras."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"Las de color amarillo, ya que se trata de una zona de obras.\"."
+        "explicacion": "La respuesta correcta es: \"Las de color amarillo, ya que se trata de una zona de obras.\".",
+        "imagen_oculta": true
     },
     {
         "id": 2126,
@@ -23536,7 +23842,8 @@
             "Está prohibida la circulación de ciclomotores."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"Está prohibido que la utilicen todos los usuarios que no sean conductores de ciclomotores.\"."
+        "explicacion": "La respuesta correcta es: \"Está prohibido que la utilicen todos los usuarios que no sean conductores de ciclomotores.\".",
+        "imagen_oculta": true
     },
     {
         "id": 2130,
@@ -23624,7 +23931,8 @@
             "Advertir de que un vehículo ha quedado inmovilizado"
         ],
         "respuesta_correcta": 2,
-        "explicacion": "Los dispositivos de preseñalización de peligro se utilizarán para advertir al rseto de usuarios de la vía de la presencia de un vehículo en la vía, que ha quedado inmovilizado ya sea por un accidente como por otro tipo de emergencia.\n\n¿Crees que la respuesta es incorrecta?"
+        "explicacion": "Los dispositivos de preseñalización de peligro se utilizarán para advertir al rseto de usuarios de la vía de la presencia de un vehículo en la vía, que ha quedado inmovilizado ya sea por un accidente como por otro tipo de emergencia.\n\n¿Crees que la respuesta es incorrecta?",
+        "imagen_oculta": true
     },
     {
         "id": 2138,
@@ -23668,7 +23976,8 @@
             "Obligación de que todos los usuarios hacía los que se dirija la luz se detengan"
         ],
         "respuesta_correcta": 2,
-        "explicacion": "Cuando observemos que un Agente de la Circulación realiza una señal balanceando una luz roja o amarilla, significará que todos los usuarios que circulen por la vía en la que se encuentre, y que se dirijan hacia dicha luz, deberán detener sus vehículos hasta que reciban otra orden.\n\n¿Crees que la respuesta es incorrecta?"
+        "explicacion": "Cuando observemos que un Agente de la Circulación realiza una señal balanceando una luz roja o amarilla, significará que todos los usuarios que circulen por la vía en la que se encuentre, y que se dirijan hacia dicha luz, deberán detener sus vehículos hasta que reciban otra orden.\n\n¿Crees que la respuesta es incorrecta?",
+        "imagen_oculta": true
     },
     {
         "id": 2142,
@@ -23756,7 +24065,8 @@
             "Al semáforo de la izquierda."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"Al semáforo de la izquierda.\"."
+        "explicacion": "La respuesta correcta es: \"Al semáforo de la izquierda.\".",
+        "imagen_oculta": true
     },
     {
         "id": 2150,
@@ -23789,7 +24099,8 @@
             "A 80 km/h porque en el sentido de su marcha hay dos carriles."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"A 80 km/h porque en el sentido de su marcha hay dos carriles.\"."
+        "explicacion": "La respuesta correcta es: \"A 80 km/h porque en el sentido de su marcha hay dos carriles.\".",
+        "imagen_oculta": true
     },
     {
         "id": 2153,
@@ -23844,7 +24155,9 @@
             "La velocidad máxima recomendada."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"La velocidad máxima permitida.\"."
+        "explicacion": "La respuesta correcta es: \"La velocidad máxima permitida.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_2157.svg",
+        "imagen_oculta": false
     },
     {
         "id": 2158,
@@ -24031,7 +24344,8 @@
             "El rojo y el azul."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"El verde y el rojo.\"."
+        "explicacion": "La respuesta correcta es: \"El verde y el rojo.\".",
+        "imagen_oculta": true
     },
     {
         "id": 2175,
@@ -24053,7 +24367,8 @@
             "Que circula en servicio no urgente"
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"Que circula en servicio urgente\"."
+        "explicacion": "La respuesta correcta es: \"Que circula en servicio urgente\".",
+        "imagen_oculta": true
     },
     {
         "id": 2177,
@@ -24064,7 +24379,9 @@
             "Estacionar la primera quincena del mes."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"Estacionar la primera quincena del mes.\"."
+        "explicacion": "La respuesta correcta es: \"Estacionar la primera quincena del mes.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_2177.svg",
+        "imagen_oculta": false
     },
     {
         "id": 2178,
@@ -24229,7 +24546,9 @@
             "Proximidad de cruce con tranvía que NO tiene preferencia"
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La señal vertical de advertencia de peligro de cruce de tranvía, como su nombre bien indica, nos informa y advierte de la proximidad de cruce con un tranvía, el cual tiene preferencia sobre nuestro vehículo.\n\n¿Crees que la respuesta es incorrecta?"
+        "explicacion": "La señal vertical de advertencia de peligro de cruce de tranvía, como su nombre bien indica, nos informa y advierte de la proximidad de cruce con un tranvía, el cual tiene preferencia sobre nuestro vehículo.\n\n¿Crees que la respuesta es incorrecta?",
+        "imagen": "assets/imagenes_preguntas/pregunta_2192.svg",
+        "imagen_oculta": false
     },
     {
         "id": 2193,
@@ -24251,7 +24570,8 @@
             "Únicamente detenerse si hay peatones cruzando."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"Detenerse, obedeciendo al semáforo situado a la izquierda.\"."
+        "explicacion": "La respuesta correcta es: \"Detenerse, obedeciendo al semáforo situado a la izquierda.\".",
+        "imagen_oculta": true
     },
     {
         "id": 2195,
@@ -24262,7 +24582,8 @@
             "Un triángulo por detrás a una distancia mínima de 50 metros del vehículo y visible al menos desde 100 metros de distancia."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"Un triángulo por detrás a una distancia mínima de 50 metros del vehículo y visible al menos desde 100 metros de distancia.\"."
+        "explicacion": "La respuesta correcta es: \"Un triángulo por detrás a una distancia mínima de 50 metros del vehículo y visible al menos desde 100 metros de distancia.\".",
+        "imagen_oculta": true
     },
     {
         "id": 2196,
@@ -24306,7 +24627,8 @@
             "Sí, si tiene prisa."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"No, está prohibido.\"."
+        "explicacion": "La respuesta correcta es: \"No, está prohibido.\".",
+        "imagen_oculta": true
     },
     {
         "id": 2200,
@@ -24471,7 +24793,8 @@
             "Sólo cuando está lloviendo."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"Sólo cuando está lloviendo.\"."
+        "explicacion": "La respuesta correcta es: \"Sólo cuando está lloviendo.\".",
+        "imagen_oculta": true
     },
     {
         "id": 2215,
@@ -24493,7 +24816,9 @@
             "indica la proximidad de un peligro distinto de los advertidos por otras señales."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"indica la proximidad de un peligro distinto de los advertidos por otras señales.\"."
+        "explicacion": "La respuesta correcta es: \"indica la proximidad de un peligro distinto de los advertidos por otras señales.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_2216.svg",
+        "imagen_oculta": false
     },
     {
         "id": 2217,
@@ -24713,7 +25038,8 @@
             "Señal de obligación"
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La señal R-412, se engloba dentro de las señales verticales de obligación para el conductor, y obliga a circular por la vía en que dicha señal se encuentre con cadenas, clavos u otros dispositivos análogos.\n\n¿Crees que la respuesta es incorrecta?"
+        "explicacion": "La señal R-412, se engloba dentro de las señales verticales de obligación para el conductor, y obliga a circular por la vía en que dicha señal se encuentre con cadenas, clavos u otros dispositivos análogos.\n\n¿Crees que la respuesta es incorrecta?",
+        "imagen_oculta": true
     },
     {
         "id": 2237,
@@ -24735,7 +25061,8 @@
             "Solo pueden circular con la luz de cruce encendida."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"Deben encender la luz de cruce juntamente con la señal de emergencia.\"."
+        "explicacion": "La respuesta correcta es: \"Deben encender la luz de cruce juntamente con la señal de emergencia.\".",
+        "imagen_oculta": true
     },
     {
         "id": 2239,
@@ -24790,7 +25117,8 @@
             "Que puede ser adelantado por el lado derecho."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"Le ordena detenerse en el lado derecho de la calzada.\"."
+        "explicacion": "La respuesta correcta es: \"Le ordena detenerse en el lado derecho de la calzada.\".",
+        "imagen_oculta": true
     },
     {
         "id": 2244,
@@ -24926,7 +25254,9 @@
             "al lugar donde tiene que detenerse en la próxima intersección."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"a la que se encuentra la señal de detención obligatoria de la próxima intersección.\"."
+        "explicacion": "La respuesta correcta es: \"a la que se encuentra la señal de detención obligatoria de la próxima intersección.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_2255.svg",
+        "imagen_oculta": false
     },
     {
         "id": 2256,
@@ -24959,7 +25289,8 @@
             "No, porque para eso ya están las estaciones"
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"Sí\"."
+        "explicacion": "La respuesta correcta es: \"Sí\".",
+        "imagen_oculta": true
     },
     {
         "id": 2259,
@@ -25014,7 +25345,9 @@
             "El estacionamiento desde las 9 horas del día 1 hasta las 9 horas del día 16."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"El estacionamiento desde las 9 horas del día 1 hasta las 9 horas del día 16.\"."
+        "explicacion": "La respuesta correcta es: \"El estacionamiento desde las 9 horas del día 1 hasta las 9 horas del día 16.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_2263.svg",
+        "imagen_oculta": false
     },
     {
         "id": 2264,
@@ -25192,7 +25525,8 @@
             "Ceñido al borde izquierdo de la calzada."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"En el carril central, siempre que esté libre.\"."
+        "explicacion": "La respuesta correcta es: \"En el carril central, siempre que esté libre.\".",
+        "imagen_oculta": true
     },
     {
         "id": 2280,
@@ -25236,7 +25570,8 @@
             "Sí, es obligatorio llevar dos, homologados."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"Sí, es obligatorio llevar dos, homologados.\"."
+        "explicacion": "La respuesta correcta es: \"Sí, es obligatorio llevar dos, homologados.\".",
+        "imagen_oculta": true
     },
     {
         "id": 2284,
@@ -25445,7 +25780,8 @@
             "Por la calzada, lo más cerca posible del borde derecho."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"Por la calzada, lo más cerca posible del borde derecho.\"."
+        "explicacion": "La respuesta correcta es: \"Por la calzada, lo más cerca posible del borde derecho.\".",
+        "imagen_oculta": true
     },
     {
         "id": 2303,
@@ -25742,7 +26078,9 @@
             "En carreteras sinuosas"
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"A la entrada de un tunel\"."
+        "explicacion": "La respuesta correcta es: \"A la entrada de un tunel\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_2329.svg",
+        "imagen_oculta": false
     },
     {
         "id": 2330,
@@ -25753,7 +26091,9 @@
             "Obliga a conducir a una velocidad mínima de 30km/h."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"Obliga a conducir a una velocidad mínima de 30km/h.\"."
+        "explicacion": "La respuesta correcta es: \"Obliga a conducir a una velocidad mínima de 30km/h.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_2330.svg",
+        "imagen_oculta": false
     },
     {
         "id": 2331,
@@ -25830,7 +26170,8 @@
             "Obligación de control de alcoholemia"
         ],
         "respuesta_correcta": 1,
-        "explicacion": "A parte de las señales acústicas con el silbato, y ópticas con sus brazos, los Agentes de la Circulación podrán dar órdenes desde su vehículo portando una bandera amarilla, que obligará al resto de conductores y usuarios de la vía a extremar la precaución y la atención ante un peligro próximo.\n\n¿Crees que la respuesta es incorrecta?"
+        "explicacion": "A parte de las señales acústicas con el silbato, y ópticas con sus brazos, los Agentes de la Circulación podrán dar órdenes desde su vehículo portando una bandera amarilla, que obligará al resto de conductores y usuarios de la vía a extremar la precaución y la atención ante un peligro próximo.\n\n¿Crees que la respuesta es incorrecta?",
+        "imagen_oculta": true
     },
     {
         "id": 2338,
@@ -25863,7 +26204,8 @@
             "Máxima en dicho carril."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"Máxima en dicho carril.\"."
+        "explicacion": "La respuesta correcta es: \"Máxima en dicho carril.\".",
+        "imagen_oculta": true
     },
     {
         "id": 2341,
@@ -25896,7 +26238,8 @@
             "En servicio urgente si no se pone en peligro a los demás conductores"
         ],
         "respuesta_correcta": 2,
-        "explicacion": "Excepcionalmente los conductores de los vehículos prioritarios deberán utilizar la señal luminosa aisladamente cuando circulen en servicio urgente, y la omisión de las señales acústicas especiales no entrañe peligro alguno para los demás usuarios.\n\n¿Crees que la respuesta es incorrecta?"
+        "explicacion": "Excepcionalmente los conductores de los vehículos prioritarios deberán utilizar la señal luminosa aisladamente cuando circulen en servicio urgente, y la omisión de las señales acústicas especiales no entrañe peligro alguno para los demás usuarios.\n\n¿Crees que la respuesta es incorrecta?",
+        "imagen_oculta": true
     },
     {
         "id": 2344,
@@ -26050,7 +26393,8 @@
             "Prohibición de detenerse en el lugar cuya inscripción se ve en la señal de tráfico."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"Prohibición de continuar sin pasar por un puesto de peaje, un control aduanero, una comisaría de policía u otro punto de control.\"."
+        "explicacion": "La respuesta correcta es: \"Prohibición de continuar sin pasar por un puesto de peaje, un control aduanero, una comisaría de policía u otro punto de control.\".",
+        "imagen_oculta": true
     },
     {
         "id": 2358,
@@ -26567,7 +26911,9 @@
             "Que la velocidad está controlada por radar."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"Que hay un tramo de vía regulado por semáforos.\"."
+        "explicacion": "La respuesta correcta es: \"Que hay un tramo de vía regulado por semáforos.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_2404.svg",
+        "imagen_oculta": false
     },
     {
         "id": 2405,
@@ -26633,7 +26979,8 @@
             "Sí, pero únicamente en travesías"
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La señal de prohibido girar a la izquierda. También prohíbe el cambio se sentido de la marcha en cualquier tipo de vía.\n\n¿Crees que la respuesta es incorrecta?"
+        "explicacion": "La señal de prohibido girar a la izquierda. También prohíbe el cambio se sentido de la marcha en cualquier tipo de vía.\n\n¿Crees que la respuesta es incorrecta?",
+        "imagen_oculta": true
     },
     {
         "id": 2411,
@@ -27264,7 +27611,8 @@
             "Ordenar la circulación en la zona afectada"
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La señalización de obras tiene por finalidad informar de la presencia de obras a los usuarios de la vía y ordenar la circulación en las zonas afectadas. Existen diferentes dispositivos de señalización de obras fijas como por ejemplo las señales de advertencias de peligro o los elementos de balizamiento reflectantes y elementos luminosos.\n\n¿Crees que la respuesta es incorrecta?"
+        "explicacion": "La señalización de obras tiene por finalidad informar de la presencia de obras a los usuarios de la vía y ordenar la circulación en las zonas afectadas. Existen diferentes dispositivos de señalización de obras fijas como por ejemplo las señales de advertencias de peligro o los elementos de balizamiento reflectantes y elementos luminosos.\n\n¿Crees que la respuesta es incorrecta?",
+        "imagen_oculta": true
     },
     {
         "id": 2468,
@@ -27451,7 +27799,8 @@
             "Sí, de forma obligatoria."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"Sí, de forma obligatoria.\"."
+        "explicacion": "La respuesta correcta es: \"Sí, de forma obligatoria.\".",
+        "imagen_oculta": true
     },
     {
         "id": 2485,
@@ -27508,7 +27857,8 @@
             "Amarillo"
         ],
         "respuesta_correcta": 1,
-        "explicacion": "El dispositivo de preseñalización de peligro, que todos los vehículos deben llevar, consiste en un triángulo equilátero con bordes de color rojo, cuya función es la de señalizar un accidente o emergencia para así poder evitar otras.\n\n¿Crees que la respuesta es incorrecta?"
+        "explicacion": "El dispositivo de preseñalización de peligro, que todos los vehículos deben llevar, consiste en un triángulo equilátero con bordes de color rojo, cuya función es la de señalizar un accidente o emergencia para así poder evitar otras.\n\n¿Crees que la respuesta es incorrecta?",
+        "imagen_oculta": true
     },
     {
         "id": 2490,
@@ -27563,7 +27913,8 @@
             "Cuando encontremos al policía mas cercano"
         ],
         "respuesta_correcta": 1,
-        "explicacion": "Por regla general en las señales de prohibición de parada y estacionamiento, y salvo indicación en contrario, la prohibición comienza en la vertical de la señal y termina en la intersección más próxima.\n\n¿Crees que la respuesta es incorrecta?"
+        "explicacion": "Por regla general en las señales de prohibición de parada y estacionamiento, y salvo indicación en contrario, la prohibición comienza en la vertical de la señal y termina en la intersección más próxima.\n\n¿Crees que la respuesta es incorrecta?",
+        "imagen_oculta": true
     },
     {
         "id": 2495,
@@ -27596,7 +27947,9 @@
             "De la proximidad de una zona dónde sopla a menudo viento fuerte en dirección transversal."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"De la proximidad de una zona dónde sopla a menudo viento fuerte en dirección transversal.\"."
+        "explicacion": "La respuesta correcta es: \"De la proximidad de una zona dónde sopla a menudo viento fuerte en dirección transversal.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_2497.svg",
+        "imagen_oculta": false
     },
     {
         "id": 2498,
@@ -27629,7 +27982,8 @@
             "Haré señales luminosas para que el conductor sepa que estoy ahí."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"Disminuiré la velocidad y, si hiciera falta, detendré el vehículo.\"."
+        "explicacion": "La respuesta correcta es: \"Disminuiré la velocidad y, si hiciera falta, detendré el vehículo.\".",
+        "imagen_oculta": true
     },
     {
         "id": 2501,
@@ -27651,7 +28005,8 @@
             "Si, después de asegurarme de que lo puede realizar sin ningún peligro."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"Si, después de asegurarme de que lo puede realizar sin ningún peligro.\"."
+        "explicacion": "La respuesta correcta es: \"Si, después de asegurarme de que lo puede realizar sin ningún peligro.\".",
+        "imagen_oculta": true
     },
     {
         "id": 2503,
@@ -27695,7 +28050,8 @@
             "La calzada está cerrada al tráfico"
         ],
         "respuesta_correcta": 1,
-        "explicacion": "A parte de las señales acústicas con el silbato, y ópticas con sus brazos, los Agentes de la Circulación podrán dar órdenes desde su vehículo portando una bandera verde, que significará que una calzada queda de nuevo abierta al tráfico tras un paro o cierre de la misma.\n\n¿Crees que la respuesta es incorrecta?"
+        "explicacion": "A parte de las señales acústicas con el silbato, y ópticas con sus brazos, los Agentes de la Circulación podrán dar órdenes desde su vehículo portando una bandera verde, que significará que una calzada queda de nuevo abierta al tráfico tras un paro o cierre de la misma.\n\n¿Crees que la respuesta es incorrecta?",
+        "imagen_oculta": true
     },
     {
         "id": 2507,
@@ -27849,7 +28205,8 @@
             "Advertir, informar, ordenar o reglamentar el comportamiento de los usuarios de la vía."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"Advertir, informar, ordenar o reglamentar el comportamiento de los usuarios de la vía.\"."
+        "explicacion": "La respuesta correcta es: \"Advertir, informar, ordenar o reglamentar el comportamiento de los usuarios de la vía.\".",
+        "imagen_oculta": true
     },
     {
         "id": 2521,
@@ -27992,7 +28349,9 @@
             "Detenerse delante de la línea de detención y ceder el paso."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"Detenerse delante de la línea de detención y ceder el paso.\"."
+        "explicacion": "La respuesta correcta es: \"Detenerse delante de la línea de detención y ceder el paso.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_2533.svg",
+        "imagen_oculta": false
     },
     {
         "id": 2534,
@@ -28003,7 +28362,8 @@
             "Obligación a todos los vehículos de ceder el paso"
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"Obligación de que se detengan aquellos vehículos que corten la dirección indicada por el brazo\"."
+        "explicacion": "La respuesta correcta es: \"Obligación de que se detengan aquellos vehículos que corten la dirección indicada por el brazo\".",
+        "imagen_oculta": true
     },
     {
         "id": 2535,
@@ -28192,7 +28552,8 @@
             "Los vehículos grua"
         ],
         "respuesta_correcta": 2,
-        "explicacion": "Los vehículos-grúa estarán siempre obligados a llevar la señal luminosa rotativa de color amarillo para advertir de su presencia al resto de usuarios de la vía y hacer sus dimensiones más visibles.\n\n¿Crees que la respuesta es incorrecta?"
+        "explicacion": "Los vehículos-grúa estarán siempre obligados a llevar la señal luminosa rotativa de color amarillo para advertir de su presencia al resto de usuarios de la vía y hacer sus dimensiones más visibles.\n\n¿Crees que la respuesta es incorrecta?",
+        "imagen_oculta": true
     },
     {
         "id": 2552,
@@ -28313,7 +28674,9 @@
             "Indica un desnivel a lo largo de la vía en el lado derecho."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"Indica un desnivel a lo largo de la vía en el lado derecho.\"."
+        "explicacion": "La respuesta correcta es: \"Indica un desnivel a lo largo de la vía en el lado derecho.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_2562.svg",
+        "imagen_oculta": false
     },
     {
         "id": 2563,
@@ -28335,7 +28698,9 @@
             "Que no le permite circular los fines de semana."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"Que es un conductor novel.\"."
+        "explicacion": "La respuesta correcta es: \"Que es un conductor novel.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_2564.svg",
+        "imagen_oculta": false
     },
     {
         "id": 2565,
@@ -28434,7 +28799,8 @@
             "200 metros"
         ],
         "respuesta_correcta": 1,
-        "explicacion": "Los triángulos de preseñalización de peligro, deberán colocarse en el borde de la calzada, uno por delante y otro por detrás a 50 metros de distancia como mínimo, excepto en vías de sentido único o de más de tres carriles en las que es suficiente colocar el de la parte posterior.\n\n¿Crees que la respuesta es incorrecta?"
+        "explicacion": "Los triángulos de preseñalización de peligro, deberán colocarse en el borde de la calzada, uno por delante y otro por detrás a 50 metros de distancia como mínimo, excepto en vías de sentido único o de más de tres carriles en las que es suficiente colocar el de la parte posterior.\n\n¿Crees que la respuesta es incorrecta?",
+        "imagen_oculta": true
     },
     {
         "id": 2574,
@@ -28643,7 +29009,9 @@
             "Obliga a seguir una de las direcciones."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"Obliga a seguir una de las direcciones.\"."
+        "explicacion": "La respuesta correcta es: \"Obliga a seguir una de las direcciones.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_2592.svg",
+        "imagen_oculta": false
     },
     {
         "id": 2593,
@@ -28808,7 +29176,8 @@
             "Calzada en obras o mantenimiento"
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"Calzada cerrada temporalmente al tráfico excepto para la autoridad\"."
+        "explicacion": "La respuesta correcta es: \"Calzada cerrada temporalmente al tráfico excepto para la autoridad\".",
+        "imagen_oculta": true
     },
     {
         "id": 2608,
@@ -29008,7 +29377,9 @@
             "Nieve"
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La señal vertical de pavimento deslizante, indica a los usuarios de la vía que circulen por ella, que la calzada de dicha vía será deslizante y resbaladiza debido a fenómenos como la nieve o la lluvia, y que deberemos tener extrema precaución.\n\n¿Crees que la respuesta es incorrecta?"
+        "explicacion": "La señal vertical de pavimento deslizante, indica a los usuarios de la vía que circulen por ella, que la calzada de dicha vía será deslizante y resbaladiza debido a fenómenos como la nieve o la lluvia, y que deberemos tener extrema precaución.\n\n¿Crees que la respuesta es incorrecta?",
+        "imagen": "assets/imagenes_preguntas/pregunta_2625.svg",
+        "imagen_oculta": false
     },
     {
         "id": 2626,
@@ -29107,7 +29478,9 @@
             "el estacionamiento desde las 9 horas del día 16 hasta las 9 horas del día 1."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"el estacionamiento desde las 9 horas del día 16 hasta las 9 horas del día 1.\"."
+        "explicacion": "La respuesta correcta es: \"el estacionamiento desde las 9 horas del día 16 hasta las 9 horas del día 1.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_2634.svg",
+        "imagen_oculta": false
     },
     {
         "id": 2635,
@@ -29250,7 +29623,8 @@
             "Sí."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"Sí.\"."
+        "explicacion": "La respuesta correcta es: \"Sí.\".",
+        "imagen_oculta": true
     },
     {
         "id": 2648,
@@ -29338,7 +29712,9 @@
             "La señal de STOP porque es más restrictiva."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"La señal de ceda el paso.\"."
+        "explicacion": "La respuesta correcta es: \"La señal de ceda el paso.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_2655.svg",
+        "imagen_oculta": false
     },
     {
         "id": 2656,
@@ -29371,7 +29747,9 @@
             "Me obliga a pasar por el lado derecho de la isleta."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"Me obliga a pasar por el lado derecho de la isleta.\"."
+        "explicacion": "La respuesta correcta es: \"Me obliga a pasar por el lado derecho de la isleta.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_2658.svg",
+        "imagen_oculta": false
     },
     {
         "id": 2659,
@@ -29415,7 +29793,9 @@
             "A los vehículos de anchura mayor que la expresado en la señal, incluida la anchura de la carga."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"A los vehículos de altura mayor que la expresado en la señal, incluida la altura de la carga.\"."
+        "explicacion": "La respuesta correcta es: \"A los vehículos de altura mayor que la expresado en la señal, incluida la altura de la carga.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_2662.svg",
+        "imagen_oculta": false
     },
     {
         "id": 2663,
@@ -29426,7 +29806,8 @@
             "Un único triángulo en la parte trasera del vehículo"
         ],
         "respuesta_correcta": 1,
-        "explicacion": "Los triángulos de preseñalización de peligro, deberán colocarse en el borde de la calzada, uno por delante y otro por detrás a 50 metros de distancia como mínimo, excepto en vías de sentido único o de más de tres carriles en las que es suficiente colocar el de la parte posterior.\n\n¿Crees que la respuesta es incorrecta?"
+        "explicacion": "Los triángulos de preseñalización de peligro, deberán colocarse en el borde de la calzada, uno por delante y otro por detrás a 50 metros de distancia como mínimo, excepto en vías de sentido único o de más de tres carriles en las que es suficiente colocar el de la parte posterior.\n\n¿Crees que la respuesta es incorrecta?",
+        "imagen_oculta": true
     },
     {
         "id": 2664,
@@ -29822,7 +30203,8 @@
             "No, se podrán utilizar en caso de accidente"
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La señal vertical R-310 de Advertencias acústicas prohibidas, recuerda la prohibición general de efectuar señales acústicas, salvo para evitar un accidente, caso excepcional en el que sí se podrán utilizar.\n\n¿Crees que la respuesta es incorrecta?"
+        "explicacion": "La señal vertical R-310 de Advertencias acústicas prohibidas, recuerda la prohibición general de efectuar señales acústicas, salvo para evitar un accidente, caso excepcional en el que sí se podrán utilizar.\n\n¿Crees que la respuesta es incorrecta?",
+        "imagen_oculta": true
     },
     {
         "id": 2700,
@@ -29877,7 +30259,8 @@
             "Que en esta curva peligrosa la velocidad máxima permitida es de 50 km/h."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"Que en esta curva peligrosa la velocidad máxima permitida es de 50 km/h.\"."
+        "explicacion": "La respuesta correcta es: \"Que en esta curva peligrosa la velocidad máxima permitida es de 50 km/h.\".",
+        "imagen_oculta": true
     },
     {
         "id": 2705,
@@ -30031,7 +30414,8 @@
             "Marca vial"
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"Señal de balizamiento\"."
+        "explicacion": "La respuesta correcta es: \"Señal de balizamiento\".",
+        "imagen_oculta": true
     },
     {
         "id": 2719,
@@ -30053,7 +30437,8 @@
             "Sí, porque no hay ninguna señal que advierta de otra cosa."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"No, si es previsible que quede detenido dentro o que obstaculice un paso de peatones.\"."
+        "explicacion": "La respuesta correcta es: \"No, si es previsible que quede detenido dentro o que obstaculice un paso de peatones.\".",
+        "imagen_oculta": true
     },
     {
         "id": 2721,
@@ -30097,7 +30482,8 @@
             "Menos de 50 km/h."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"Menos de 50 km/h.\"."
+        "explicacion": "La respuesta correcta es: \"Menos de 50 km/h.\".",
+        "imagen_oculta": true
     },
     {
         "id": 2725,
@@ -30108,7 +30494,9 @@
             "La incorporación en una autopista"
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"El principio de una autopista\"."
+        "explicacion": "La respuesta correcta es: \"El principio de una autopista\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_2725.svg",
+        "imagen_oculta": false
     },
     {
         "id": 2726,
@@ -30284,7 +30672,8 @@
             "En servicio urgente cuando no hay peligro para los demás conductores"
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"En servicio urgente y si hay peligro para los demás conductores\"."
+        "explicacion": "La respuesta correcta es: \"En servicio urgente y si hay peligro para los demás conductores\".",
+        "imagen_oculta": true
     },
     {
         "id": 2742,
@@ -30493,7 +30882,8 @@
             "El vehículo que circula en sentido ascendente, salvo si puede llegar a un apartadero antes."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"El vehículo que circula en sentido ascendente, salvo si puede llegar a un apartadero antes.\"."
+        "explicacion": "La respuesta correcta es: \"El vehículo que circula en sentido ascendente, salvo si puede llegar a un apartadero antes.\".",
+        "imagen_oculta": true
     },
     {
         "id": 2761,
@@ -30504,7 +30894,8 @@
             "Cuando realicen trabajos y su situación pueda suponer un peligro"
         ],
         "respuesta_correcta": 2,
-        "explicacion": "Los vehículos destinados a obras o servicios utilizarán la señal luminosa V-2, cuando se encuentre realizando trabajos en la vía y su situación pueda suponer un peligro para los demás. Si su tarea se desarrolla en autovías y autopistas, la utilizarán desde que entren en la misma hasta que lleguen al lugar donde se realice el trabajo.\n\n¿Crees que la respuesta es incorrecta?"
+        "explicacion": "Los vehículos destinados a obras o servicios utilizarán la señal luminosa V-2, cuando se encuentre realizando trabajos en la vía y su situación pueda suponer un peligro para los demás. Si su tarea se desarrolla en autovías y autopistas, la utilizarán desde que entren en la misma hasta que lleguen al lugar donde se realice el trabajo.\n\n¿Crees que la respuesta es incorrecta?",
+        "imagen_oculta": true
     },
     {
         "id": 2762,
@@ -30559,7 +30950,8 @@
             "En el lado derecho en el sentido de mi marcha."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"En el lado derecho en el sentido de mi marcha.\"."
+        "explicacion": "La respuesta correcta es: \"En el lado derecho en el sentido de mi marcha.\".",
+        "imagen_oculta": true
     },
     {
         "id": 2767,
@@ -30581,7 +30973,9 @@
             "La distancia al inicio de un tramo de la vía con curvas peligrosas a la izquierda."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"La distancia al inicio de un tramo de la vía con curvas peligrosas a la derecha.\"."
+        "explicacion": "La respuesta correcta es: \"La distancia al inicio de un tramo de la vía con curvas peligrosas a la derecha.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_2768.svg",
+        "imagen_oculta": false
     },
     {
         "id": 2769,
@@ -30603,7 +30997,8 @@
             "Obligación de detenerse en el lado derecho"
         ],
         "respuesta_correcta": 2,
-        "explicacion": "Un agente de la Circulación que regula el tráfico extendiendo su brazo inclinado hacia abajo, obliga a detenerse en el lado derecho a todos los usuarios de la vía que se acerquen al Agente de frente, excepto aquellos que no puedan detenerse en condiciones de seguridad suficientes.\n\n¿Crees que la respuesta es incorrecta?"
+        "explicacion": "Un agente de la Circulación que regula el tráfico extendiendo su brazo inclinado hacia abajo, obliga a detenerse en el lado derecho a todos los usuarios de la vía que se acerquen al Agente de frente, excepto aquellos que no puedan detenerse en condiciones de seguridad suficientes.\n\n¿Crees que la respuesta es incorrecta?",
+        "imagen_oculta": true
     },
     {
         "id": 2771,
@@ -30680,7 +31075,8 @@
             "Sí, pero únicamente en autovías"
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La señal vertical de fin de velocidad máxima aconsejada indica el final de un tramo en el que se recomienda circular a la velocidad en kilómetros por hora indicada en la señal.\n\n¿Crees que la respuesta es incorrecta?"
+        "explicacion": "La señal vertical de fin de velocidad máxima aconsejada indica el final de un tramo en el que se recomienda circular a la velocidad en kilómetros por hora indicada en la señal.\n\n¿Crees que la respuesta es incorrecta?",
+        "imagen_oculta": true
     },
     {
         "id": 2778,
@@ -30768,7 +31164,8 @@
             "No, únicamente existe la de estacionamiento prohibido los días impares"
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La señal vertical R-308b existe, y prohíbe a todo tipo de vehículos el estacionamiento en la zona por la que se extienda su prohibición, en los días pares del mes. No prohibirá la parada en cambio. También existe la señal R-308a que prohíbe también el estacionamiento, pero en los días impares del mes.\n\n¿Crees que la respuesta es incorrecta?"
+        "explicacion": "La señal vertical R-308b existe, y prohíbe a todo tipo de vehículos el estacionamiento en la zona por la que se extienda su prohibición, en los días pares del mes. No prohibirá la parada en cambio. También existe la señal R-308a que prohíbe también el estacionamiento, pero en los días impares del mes.\n\n¿Crees que la respuesta es incorrecta?",
+        "imagen_oculta": true
     },
     {
         "id": 2786,
@@ -31043,7 +31440,8 @@
             "Sí, es un paso de animales domésticos y se debe ceder el paso."
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La respuesta correcta es: \"Sí, es un paso de animales domésticos y se debe ceder el paso.\"."
+        "explicacion": "La respuesta correcta es: \"Sí, es un paso de animales domésticos y se debe ceder el paso.\".",
+        "imagen_oculta": true
     },
     {
         "id": 2811,
@@ -31450,7 +31848,9 @@
             "Fenómenos meteorológicos como la niebla"
         ],
         "respuesta_correcta": 2,
-        "explicacion": "La señal P-33 de visibilidad reducida nos avisa del peligro por la proximidad de un tramo de vía en que la circulación se ve dificultada por una pérdida notable de visibilidad debida a niebla, lluvia, nieve, humos, etc.\n\n¿Crees que la respuesta es incorrecta?"
+        "explicacion": "La señal P-33 de visibilidad reducida nos avisa del peligro por la proximidad de un tramo de vía en que la circulación se ve dificultada por una pérdida notable de visibilidad debida a niebla, lluvia, nieve, humos, etc.\n\n¿Crees que la respuesta es incorrecta?",
+        "imagen": "assets/imagenes_preguntas/pregunta_2847.svg",
+        "imagen_oculta": false
     },
     {
         "id": 2848,
@@ -31505,7 +31905,8 @@
             "Que es un carril para autobuses y camiones."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"Que sólo se puede pagar con sistema de telepeaje.\"."
+        "explicacion": "La respuesta correcta es: \"Que sólo se puede pagar con sistema de telepeaje.\".",
+        "imagen_oculta": true
     },
     {
         "id": 2853,
@@ -31584,7 +31985,9 @@
             "Ciclos y ciclomotores."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"Ciclos.\"."
+        "explicacion": "La respuesta correcta es: \"Ciclos.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_2859.svg",
+        "imagen_oculta": false
     },
     {
         "id": 2860,
@@ -31751,7 +32154,8 @@
             "Indica el final de un carril reservado para determinado vehículos."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"Indica el comienzo de un carril reservado para determinados vehículos.\"."
+        "explicacion": "La respuesta correcta es: \"Indica el comienzo de un carril reservado para determinados vehículos.\".",
+        "imagen_oculta": true
     },
     {
         "id": 2875,
@@ -31773,7 +32177,9 @@
             "De grandes charcos de agua que obligan a reducir la velocidad."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"De un tramo de carretera en el cual existe el riesgo de que se levante gravilla al pasar los vehículos.\"."
+        "explicacion": "La respuesta correcta es: \"De un tramo de carretera en el cual existe el riesgo de que se levante gravilla al pasar los vehículos.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_2876.svg",
+        "imagen_oculta": false
     },
     {
         "id": 2877,
@@ -31839,7 +32245,8 @@
             "Los metros que faltan para llegar a la pendiente"
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"El porcentaje de bajada de la pendiente\"."
+        "explicacion": "La respuesta correcta es: \"El porcentaje de bajada de la pendiente\".",
+        "imagen_oculta": true
     },
     {
         "id": 2883,
@@ -32263,7 +32670,9 @@
             "Desprendimientos."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"Proyección de gravilla.\"."
+        "explicacion": "La respuesta correcta es: \"Proyección de gravilla.\".",
+        "imagen": "assets/imagenes_preguntas/pregunta_2920.svg",
+        "imagen_oculta": false
     },
     {
         "id": 2921,
@@ -32384,7 +32793,8 @@
             "No, nunca."
         ],
         "respuesta_correcta": 0,
-        "explicacion": "La respuesta correcta es: \"Sí, cuando la detención no es obligatoria.\"."
+        "explicacion": "La respuesta correcta es: \"Sí, cuando la detención no es obligatoria.\".",
+        "imagen_oculta": true
     },
     {
         "id": 2932,
@@ -32395,7 +32805,8 @@
             "Por cualquiera de ellos, siempre que mi velocidad supere los 70 km/hora."
         ],
         "respuesta_correcta": 1,
-        "explicacion": "La respuesta correcta es: \"Por el carril derecho, y utilizaré cuando convenga el resto de carriles según las circunstancias del tráfico.\"."
+        "explicacion": "La respuesta correcta es: \"Por el carril derecho, y utilizaré cuando convenga el resto de carriles según las circunstancias del tráfico.\".",
+        "imagen_oculta": true
     },
     {
         "id": 2933,

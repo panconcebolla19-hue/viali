@@ -387,7 +387,8 @@
         ],
         "respuesta_correcta": 2,
         "explicacion": "La respuesta correcta es: \"Que la circulación es en los dos sentidos.\".",
-        "imagen_oculta": true
+        "imagen_oculta": false,
+        "imagen": "assets/imagenes_preguntas/pregunta_35.svg"
     },
     {
         "id": 36,
@@ -995,7 +996,8 @@
         ],
         "respuesta_correcta": 2,
         "explicacion": "La respuesta correcta es: \"Que el vehículo o el conjunto de vehículos tiene una longitud superior a 12 metros.\".",
-        "imagen_oculta": true
+        "imagen_oculta": false,
+        "imagen": "assets/imagenes_preguntas/pregunta_89.svg"
     },
     {
         "id": 90,
@@ -5451,7 +5453,8 @@
         ],
         "respuesta_correcta": 0,
         "explicacion": "La respuesta correcta es: \"Que el carril de la derecha va a finalizar.\".",
-        "imagen_oculta": true
+        "imagen_oculta": false,
+        "imagen": "assets/imagenes_preguntas/pregunta_485.svg"
     },
     {
         "id": 486,
@@ -6036,7 +6039,8 @@
         ],
         "respuesta_correcta": 2,
         "explicacion": "La respuesta correcta es: \"la distancia en que se aplica la prohibición en el sentido de la flecha.\".",
-        "imagen_oculta": true
+        "imagen_oculta": false,
+        "imagen": "assets/imagenes_preguntas/pregunta_536.svg"
     },
     {
         "id": 537,
@@ -9110,7 +9114,8 @@
         ],
         "respuesta_correcta": 2,
         "explicacion": "LA FLECHA APUNTA POR LA IZQUIERDA, POR ELLO DEBEMOS PASAR POR LA IZQUIERDA.",
-        "imagen_oculta": true
+        "imagen_oculta": false,
+        "imagen": "assets/imagenes_preguntas/pregunta_810.svg"
     },
     {
         "id": 811,
@@ -11584,7 +11589,8 @@
         ],
         "respuesta_correcta": 0,
         "explicacion": "OBLIGACIÓN PARA LOS PEATONES DE TRANSITAR POR EL CAMINO A CUYA ENTRADA ESTÉ SITUADA Y PROHIBICIÓN A LOS DEMÁS USUARIOS DE LA VÍA DE UTILIZARLO.",
-        "imagen_oculta": true
+        "imagen_oculta": false,
+        "imagen": "assets/imagenes_preguntas/pregunta_1030.svg"
     },
     {
         "id": 1031,
@@ -13464,7 +13470,8 @@
         ],
         "respuesta_correcta": 0,
         "explicacion": "La respuesta correcta es: \"No.\".",
-        "imagen_oculta": true
+        "imagen_oculta": false,
+        "imagen": "assets/imagenes_preguntas/pregunta_1197.svg"
     },
     {
         "id": 1198,
@@ -14469,7 +14476,8 @@
         ],
         "respuesta_correcta": 1,
         "explicacion": "EL PANEL AL NO TENER FLECHAS LATERALES, INDICA LA DISTANCIA A LA QUE COMIENZA EL PELIGRO. SI TUVIERA FLECHAS LATERALES INDICARÍA: LA LONGITUD DEL PELIGRO.",
-        "imagen_oculta": true
+        "imagen_oculta": false,
+        "imagen": "assets/imagenes_preguntas/pregunta_1286.svg"
     },
     {
         "id": 1287,
@@ -15232,7 +15240,8 @@
         ],
         "respuesta_correcta": 0,
         "explicacion": "La respuesta correcta es: \"La longitud en que existe el peligro.\".",
-        "imagen_oculta": true
+        "imagen_oculta": false,
+        "imagen": "assets/imagenes_preguntas/pregunta_1355.svg"
     },
     {
         "id": 1356,
@@ -15387,7 +15396,8 @@
         ],
         "respuesta_correcta": 2,
         "explicacion": "La respuesta correcta es: \"De un extintor de incendios y un teléfono de emergencia.\".",
-        "imagen_oculta": true
+        "imagen_oculta": false,
+        "imagen": "assets/imagenes_preguntas/pregunta_1369.svg"
     },
     {
         "id": 1370,
@@ -18975,7 +18985,8 @@
         ],
         "respuesta_correcta": 2,
         "explicacion": "La respuesta correcta es: \"Que la próxima salida está a 300 metros.\".",
-        "imagen_oculta": true
+        "imagen_oculta": false,
+        "imagen": "assets/imagenes_preguntas/pregunta_1692.svg"
     },
     {
         "id": 1693,
@@ -20717,7 +20728,8 @@
         ],
         "respuesta_correcta": 1,
         "explicacion": "La respuesta correcta es: \"Ráfagas de viento.\".",
-        "imagen_oculta": true
+        "imagen_oculta": false,
+        "imagen": "assets/imagenes_preguntas/pregunta_1849.svg"
     },
     {
         "id": 1850,
@@ -20918,7 +20930,8 @@
         ],
         "respuesta_correcta": 0,
         "explicacion": "La respuesta correcta es: \"Cambiar el sentido de la marcha\".",
-        "imagen_oculta": true
+        "imagen_oculta": false,
+        "imagen": "assets/imagenes_preguntas/pregunta_1867.svg"
     },
     {
         "id": 1868,
@@ -21220,7 +21233,8 @@
         ],
         "respuesta_correcta": 2,
         "explicacion": "La respuesta correcta es: \"El estacionamiento, los días impares, en el lado de la calzada dónde se encuentre la señal.\".",
-        "imagen_oculta": true
+        "imagen_oculta": false,
+        "imagen": "assets/imagenes_preguntas/pregunta_1894.svg"
     },
     {
         "id": 1895,
@@ -21489,7 +21503,8 @@
         ],
         "respuesta_correcta": 2,
         "explicacion": "La respuesta correcta es: \"Ciclomotores.\".",
-        "imagen_oculta": true
+        "imagen_oculta": false,
+        "imagen": "assets/imagenes_preguntas/pregunta_1918.svg"
     },
     {
         "id": 1919,
@@ -23220,7 +23235,8 @@
         ],
         "respuesta_correcta": 1,
         "explicacion": "Según el Reglamento de Circulación la señal vertical R-308B prohíbe el estacionamiento, en el lado de la calzada en que esté situada la señal, los días pares, pero no prohibirá la parada de vehículo. Salvo indicación en contrario, la prohibición comienza en la vertical de la señal y termina en la intersección más próxima.\n\n¿Crees que la respuesta es incorrecta?",
-        "imagen_oculta": true
+        "imagen_oculta": false,
+        "imagen": "assets/imagenes_preguntas/pregunta_2073.svg"
     },
     {
         "id": 2074,
@@ -23529,7 +23545,8 @@
         ],
         "respuesta_correcta": 1,
         "explicacion": "La respuesta correcta es: \"En la parte posterior de la carga que sobresalga de cualquier vehículo hasta un 10% de su largura.\".",
-        "imagen_oculta": true
+        "imagen_oculta": false,
+        "imagen": "assets/imagenes_preguntas/pregunta_2101.svg"
     },
     {
         "id": 2102,
@@ -24794,7 +24811,8 @@
         ],
         "respuesta_correcta": 2,
         "explicacion": "La respuesta correcta es: \"Sólo cuando está lloviendo.\".",
-        "imagen_oculta": true
+        "imagen_oculta": false,
+        "imagen": "assets/imagenes_preguntas/pregunta_2214.svg"
     },
     {
         "id": 2215,
@@ -26980,7 +26998,8 @@
         ],
         "respuesta_correcta": 1,
         "explicacion": "La señal de prohibido girar a la izquierda. También prohíbe el cambio se sentido de la marcha en cualquier tipo de vía.\n\n¿Crees que la respuesta es incorrecta?",
-        "imagen_oculta": true
+        "imagen_oculta": false,
+        "imagen": "assets/imagenes_preguntas/pregunta_2410.svg"
     },
     {
         "id": 2411,
@@ -30204,7 +30223,8 @@
         ],
         "respuesta_correcta": 2,
         "explicacion": "La señal vertical R-310 de Advertencias acústicas prohibidas, recuerda la prohibición general de efectuar señales acústicas, salvo para evitar un accidente, caso excepcional en el que sí se podrán utilizar.\n\n¿Crees que la respuesta es incorrecta?",
-        "imagen_oculta": true
+        "imagen_oculta": false,
+        "imagen": "assets/imagenes_preguntas/pregunta_2699.svg"
     },
     {
         "id": 2700,
@@ -31906,7 +31926,8 @@
         ],
         "respuesta_correcta": 1,
         "explicacion": "La respuesta correcta es: \"Que sólo se puede pagar con sistema de telepeaje.\".",
-        "imagen_oculta": true
+        "imagen_oculta": false,
+        "imagen": "assets/imagenes_preguntas/pregunta_2852.svg"
     },
     {
         "id": 2853,

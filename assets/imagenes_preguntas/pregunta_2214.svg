@@ -1,0 +1,7 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+<rect width="400" height="400" fill="#F5F5F5"/>
+<circle cx="200" cy="173" r="128" fill="white" stroke="#1565C0" stroke-width="15"/>
+<text x="200" y="220" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="110" font-weight="900" fill="#1565C0">70</text>
+<rect x="110" y="308" width="180" height="54" rx="6" fill="white" stroke="#1565C0" stroke-width="4"/>
+<text x="200" y="344" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="28" font-weight="900" fill="#1565C0">LLUVIA</text>
+</svg>
